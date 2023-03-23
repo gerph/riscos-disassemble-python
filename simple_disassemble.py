@@ -38,5 +38,5 @@ with open(filename, 'rb') as fh:
                                                        char((word>>8) & 255),
                                                        char((word>>16) & 255),
                                                        char((word>>24) & 255),
-                                                       arm))
+                                                       arm or '<No disassembly available>'))
         addr += 4
