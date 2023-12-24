@@ -1,15 +1,15 @@
 """
 Disassembly of instructions in RISC OS style.
 
-This module is used to perform disassembly of ARM instructions in a form which is
-expected by RISC OS users. It uses the Capstone library to perform most of the
-disassembly. The output is then modified to reformat the output to reformat it
-for use in RISC OS.
+This module is used to perform disassembly of ARM and Thumb instructions
+in a form which is expected by RISC OS users. It uses the Capstone library
+to perform most of the disassembly. The output is then modified to reformat
+the output to reformat it for use in RISC OS.
 
 The disassembly is managed through the `Disassemble` object. The method
-`disassemble_instruction` is used to perform the disassembly of a 32bit word
-value at a given address, and return a string describing it. The string may
-include comments about the instruction.
+`disassemble_instruction` is used to perform the disassembly of a 32bit or
+16bit word value at a given address, and return a string describing it.
+The string may include comments about the instruction.
 
 The disassembly can be configured to have different functionality through the
 `DisassembleConfig()` object.
@@ -34,7 +34,8 @@ method docstrings for more details:
 * `get_memory_word`:    Read a word from memory
 * `get_memory_string`:  Read a string from memory
 
-Simple usage of the `Disassemble` class might be something like:
+
+Simple usage of the `Disassemble` class for ARM code might be something like:
 
     import struct
     import disassemble
@@ -779,14 +780,16 @@ class Disassemble(object):
         return (mnemonic, op_str, None)
 
     def disassemble_instruction(self, address, inst,
-                                live_registers=False, live_memory=False):
+                                live_registers=False, live_memory=False,
+                                thumb=False):
         """
         Disassemble an instruction into a formatted string.
 
         @param address:         Address the instruction comes from
-        @param inst:            32bit instruction word
+        @param inst:            32bit/16bit instruction word
         @param live_registers:  Whether registers may be used to provide more information
         @param live_memory:     Whether memory reads may be used to provide more information
+        @param thumb:           True to disassemble as a Thumb instruction
 
         @return: String describing the instruction
         """
@@ -880,6 +883,19 @@ class Disassemble(object):
 
                 op_str = self._tidy_shifts(op_str)
 
+            elif mnemonic[0:3] == 'ADR' and \
+                 i.operands[1].type == self._const.ARM_OP_IMM:
+                # Thumb ADR instruction
+                imm = address + i.operands[1].imm + 4
+                op_prefix, _ = op_str.split(',', 1)
+                op_suffix = '&%08X' % (imm,)
+                op_str = '%s, %s' % (op_prefix, op_suffix)
+
+                if live_memory:
+                    desc = self.describe_address(imm)
+                    if desc:
+                        comment = '-> %s' % ('; '.join(desc),)
+
             elif mnemonic[0:3] in ('ADD', 'SUB', 'ADC', 'SBC', 'RSB', 'RSC'):
                 if i.operands[1].type == self._const.ARM_OP_REG and \
                    i.operands[1].reg == self._const.ARM_REG_R15 and \
@@ -931,7 +947,8 @@ class Disassemble(object):
                     accumulator.extend(self._operand_registers(i.operands[1]))
                     accumulator.extend(self._operand_registers(i.operands[2]))
 
-                accumulator.extend(self._operand_constant(i.operands[2]))
+                if len(i.operands) > 2:
+                    accumulator.extend(self._operand_constant(i.operands[2]))
 
                 if accumulator:
                     comment = ', '.join(accumulator)
@@ -946,7 +963,13 @@ class Disassemble(object):
                    # Length of operands is broken in Capstone 5.0.1 (only includes a
                    # single operand).
                     mem = i.operands[1].mem
-                    addr = address + mem.disp + 8
+                    if thumb:
+                        addr = address + mem.disp + 4
+                        # Thumb address is rounded down if this is a word operation
+                        if 'B' not in mnemonic and 'H' not in mnemonic:
+                            addr = addr & ~3
+                    else:
+                        addr = address + mem.disp + 8
                     op_prefix, _ = op_str.split(',', 1)
                     op_suffix = '&%08X' % (addr,)
                     op_str = '%s, %s' % (op_prefix, op_suffix)
@@ -983,7 +1006,7 @@ class Disassemble(object):
 
             elif mnemonic[0:3] in ('MOV', 'CMP', 'TEQ', 'TST'):
 
-                if mnemonic[0:3] != 'MOV':
+                if not thumb and mnemonic[0:3] != 'MOV':
                     # This could be a 'P' operation but to find out we need to extract the word
                     word = struct.unpack('<L', i.bytes)[0]
                     armregd = (word>>12) & 15

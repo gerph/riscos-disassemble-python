@@ -2,9 +2,10 @@
 
 ## Introduction
 
-This repository contains the module used to disassemble ARM code for RISC OS
-Pyromaniac. It uses the Capstone library to do so, but modifies the output
-so that the disassembly is in a form which is generally seen by RISC OS users.
+This repository contains the module used to disassemble ARM and Thumb code
+for RISC OS Pyromaniac. It uses the Capstone library to do so, but modifies
+the output so that the disassembly is in a form which is generally seen by
+RISC OS users.
 
 ## Usage
 
