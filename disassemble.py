@@ -98,15 +98,18 @@ class DisassembleConfig(object):
 
     show_referenced_registers = True
     """
-    Controls whether disassembly will include details of the registers
-    which are referenced in the instruction. The registers reported are the values
-    before the instruction is executed.
+    Controls whether disassembly will include details of the registers which are
+    referenced in the instruction. The registers reported are the values before
+    the instruction is executed. The register values can only be reported if
+    the `live_registers` parameter is passed to the `disassemble_instruction`
+    method.
     """
 
     show_referenced_pointers = True
     """
-    Controls whether disassembly will include details of the pointer
-    values in registers.
+    Controls whether disassembly will include details of the pointer values in
+    registers. The memory values can only be reported if the `live_memory`
+    parameter is passed to the `disassemble_instruction` method.
     """
 
     support_fpa = True
