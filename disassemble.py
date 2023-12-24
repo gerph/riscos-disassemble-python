@@ -445,9 +445,32 @@ class Disassemble(object):
 
         return accumulator
 
+
+    def _operand_multiple_registers(self, operands, maybe_presentable=False):
+        """
+        Return a list of register values related to the list of operands supplied.
+
+        We will omit operands which have been repeated in the arguments; this
+        prevents us reporting R0 multiple times in AND r0, r0, r0 (for example).
+        """
+        accumulator = []
+        seen = set()
+        for operand in operands:
+            if operand.type == self._const.ARM_OP_REG:
+                if operand.reg not in seen:
+                    accumulator.extend(self._operand_registers(operand, maybe_presentable))
+                    seen.add(operand.reg)
+            else:
+                accumulator.extend(self._operand_registers(operand, maybe_presentable))
+
+        return accumulator
+
     def _operand_registers(self, operand, maybe_presentable=False):
         """
         Return a list of register values related to the operand supplied
+
+        @param operand:             The Capstone operand to display
+        @param maybe_presentable:   True to describe addresses and pointers.
         """
         accumulator = []
         if operand.type == self._const.ARM_OP_REG:
@@ -936,8 +959,8 @@ class Disassemble(object):
                 else:
                     accumulator = []
                     if live_registers and self.config.show_referenced_registers:
-                        accumulator.extend(self._operand_registers(i.operands[1]))
-                        accumulator.extend(self._operand_registers(i.operands[2]))
+                        accumulator.extend(self._operand_multiple_registers([i.operands[1],
+                                                                             i.operands[2]]))
 
                     if accumulator:
                         comment = ', '.join(accumulator)
@@ -947,8 +970,8 @@ class Disassemble(object):
             elif mnemonic[0:3] in ('ORR', 'BIC', 'AND', 'EOR', 'MUL', 'MLA'):
                 accumulator = []
                 if live_registers and self.config.show_referenced_registers:
-                    accumulator.extend(self._operand_registers(i.operands[1]))
-                    accumulator.extend(self._operand_registers(i.operands[2]))
+                        accumulator.extend(self._operand_multiple_registers([i.operands[1],
+                                                                             i.operands[2]]))
 
                 if len(i.operands) > 2:
                     accumulator.extend(self._operand_constant(i.operands[2]))
