@@ -116,6 +116,20 @@ class DisassembleConfig(object):
     disassembler may be incomplete, so they may be disabled.
     """
 
+    rename_r13_to_sp = True
+    """
+    Controls whether we use `sp` in place of `r13` in the disassembly. By default we
+    make this change. In almost all RISC OS code, register 13 will refer to the stack
+    pointer.
+    """
+
+    rename_r14_to_lr = True
+    """
+    Controls whether we use `lr` in place of `r14` in the disassembly. By default we
+    make this change. In almost all RISC OS code, register 14 will refer to the link
+    register.
+    """
+
 
 class Disassemble(object):
     cc_values = {
@@ -161,8 +175,10 @@ class Disassemble(object):
 
     def __init__(self, config):
         self._capstone = None
+        self._capstone_version = None
         self._const = None
         self.config = config
+        self.md = None
 
         # Values initialised when capstone is initialised
         self.mnemonic_replacements = {}
@@ -181,6 +197,8 @@ class Disassemble(object):
                 import capstone
                 import capstone.arm_const
                 self._capstone = capstone
+                self._capstone_version = capstone.cs_version()
+                self._capstone_version_major = self._capstone_version[0]
                 self._const = capstone.arm_const
                 self.md = capstone.Cs(capstone.CS_ARCH_ARM, capstone.CS_MODE_ARM)
                 self.md.syntax = capstone.CS_OPT_SYNTAX_NOREGNAME
@@ -775,9 +793,25 @@ class Disassemble(object):
         if not self.capstone:
             return None
 
+        self.md.mode = self._capstone.CS_MODE_THUMB if thumb else self._capstone.CS_MODE_ARM
         for i in self.md.disasm(inst, address):
             mnemonic = i.mnemonic.upper()
             op_str = i.op_str
+
+            if self._capstone_version_major == 5:
+                # In Capstone 5, r13 is returned as `r13`
+                # (and r14 as `lr`)
+                if self.config.rename_r13_to_sp:
+                    op_str = op_str.replace('r13', 'sp')
+                if self.config.rename_r14_to_lr:
+                    op_str = op_str.replace('r14', 'lr')
+            else:
+                # In Capstone 4 and below, r13 is returned as `sp` (so we need to undo that)
+                # (and r14 as `lr`)
+                if not self.config.rename_r13_to_sp:
+                    op_str = op_str.replace('sp', 'r13')
+                if not self.config.rename_r14_to_lr:
+                    op_str = op_str.replace('lr', 'r14')
 
             if self.config.format == 'capstone':
                 op = "%-8s%s" % (mnemonic, op_str)
@@ -905,9 +939,12 @@ class Disassemble(object):
                 op_str = self._tidy_shifts(op_str)
 
             elif mnemonic[0:3] in ('LDR', 'STR'):
-                if i.operands[1].type == self._const.ARM_OP_MEM and \
+                if len(i.operands) > 1 and \
+                   i.operands[1].type == self._const.ARM_OP_MEM and \
                    i.operands[1].reg == self._const.ARM_REG_R15 and \
                    i.operands[1].mem.index == 0:
+                   # Length of operands is broken in Capstone 5.0.1 (only includes a
+                   # single operand).
                     mem = i.operands[1].mem
                     addr = address + mem.disp + 8
                     op_prefix, _ = op_str.split(',', 1)
