@@ -1,42 +1,70 @@
+#!/usr/bin/env python
 """
-Very simple example disassembly for RISC OS code.
+Example disassembly for RISC OS code.
 """
 
+import argparse
+import os
 import struct
 import sys
 
 import disassemble
 
 
-if len(sys.argv) < 2:
-    print("Syntax: {} <filename>".format(sys.argv[0]))
-    exit(1)
+def setup_argparse():
+    parser = argparse.ArgumentParser(usage="%s [<options>] <binary-file>" % (os.path.basename(sys.argv[0]),),
+                                     description="Disassemble a file of ARM or Thumb code")
+    parser.add_argument('--thumb', action='store_true',
+                        help="Disassemble as Thumb code")
+    parser.add_argument('filename',
+                        help='File to disassemble')
+    return parser
 
-filename = sys.argv[1]
 
-config = disassemble.DisassembleConfig()
-dis = disassemble.Disassemble(config)
+def main():
+    parser = setup_argparse()
+    options = parser.parse_args()
 
-with open(filename, 'rb') as fh:
-    addr = 0
-    while True:
-        data = fh.read(4)
-        if len(data) < 4:
-            break
+    config = disassemble.DisassembleConfig()
+    dis = disassemble.Disassemble(config)
 
-        word = struct.unpack('<L', data)[0]
+    thumb = options.thumb
+    inst_width = 2 if thumb else 4
 
-        arm = dis.disassemble_instruction(addr, data)
+    with open(options.filename, 'rb') as fh:
+        addr = 0
+        while True:
+            data = fh.read(inst_width)
+            if len(data) < inst_width:
+                break
 
-        def char(x):
-            if x < 0x20 or x>=0x7f:
-                return '.'
-            return chr(x)
+            if thumb:
+                word = struct.unpack('<H', data)[0]
+            else:
+                word = struct.unpack('<L', data)[0]
 
-        print("{:08x} : {:08x} : {}{}{}{} : {}".format(addr, word,
-                                                       char(word & 255),
-                                                       char((word>>8) & 255),
-                                                       char((word>>16) & 255),
-                                                       char((word>>24) & 255),
-                                                       arm or '<No disassembly available>'))
-        addr += 4
+            disassembly = dis.disassemble_instruction(addr, data, thumb=thumb)
+
+            def char(x):
+                if x < 0x20 or x>=0x7f:
+                    return '.'
+                return chr(x)
+
+            if thumb:
+                text = ''.join((char(word & 255),
+                                char((word>>8) & 255)))
+                wordstr = "{:04x}".format(word)
+            else:
+                text = ''.join((char(word & 255),
+                                char((word>>8) & 255),
+                                char((word>>16) & 255),
+                                char((word>>24) & 255)))
+                wordstr = "{:08x}".format(word)
+
+            print("{:08x} : {} : {} : {}".format(addr, wordstr, text,
+                                                 disassembly or '<No disassembly available>'))
+            addr += inst_width
+
+
+if __name__ == '__main__':
+    main()
