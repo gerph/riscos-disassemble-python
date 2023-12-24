@@ -1058,7 +1058,8 @@ class Disassemble(object):
                     if func:
                         comment = '-> Function: %s' % (func,)
 
-            elif mnemonic[0:3] in ('LDC', 'STC', 'CDP', 'MCR', 'MRC'):
+            elif mnemonic[0:3] in ('LDC', 'STC', 'CDP', 'MCR', 'MRC') and \
+                 self.config.support_fpa:
                 (mnemonic, op_str, comment) = self.disassemble_fpa_instruction(i, mnemonic, op_str)
 
             if live_memory:
