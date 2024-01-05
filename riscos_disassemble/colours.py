@@ -302,9 +302,9 @@ class ColourDisassemblyANSI(ColourDisassembly):
                     ansi_coloured.append((seq, s))
                 else:
                     # Any not-understood colours just get the reset
-                    ansi_coloured.append(self.colour_reset, part)
+                    ansi_coloured.append((self.colour_reset, part))
 
             else:
-                ansi_coloured.append(self.colour_reset, part)
+                ansi_coloured.append((self.colour_reset, part))
 
         return ansi_coloured
