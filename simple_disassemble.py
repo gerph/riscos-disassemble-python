@@ -7,7 +7,7 @@ import os
 import struct
 import sys
 
-import disassemble
+import riscos_disassemble.disassemble as disassemble
 
 
 if len(sys.argv) < 2:

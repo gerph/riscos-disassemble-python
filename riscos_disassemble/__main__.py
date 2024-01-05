@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 """
-Disassembly of RISC OS code in the same style as *DumpI.
+Disassembly of RISC OS code in a similar style to *DumpI.
 """
 
 import argparse
@@ -8,11 +8,14 @@ import os
 import struct
 import sys
 
-import disassemble
+from . import disassemble
 
 
 def setup_argparse():
-    parser = argparse.ArgumentParser(usage="%s [<options>] <binary-file>" % (os.path.basename(sys.argv[0]),),
+    name = os.path.basename(sys.argv[0])
+    if name == '__main__.py':
+        name = 'riscos-dumpi'
+    parser = argparse.ArgumentParser(usage="%s [<options>] <binary-file>" % (name,),
                                      description="Disassemble a file of ARM or Thumb code")
     parser.add_argument('--thumb', action='store_true',
                         help="Disassemble as Thumb code")
