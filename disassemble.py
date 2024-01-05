@@ -825,7 +825,7 @@ class Disassemble(object):
                                 live_registers=False, live_memory=False,
                                 thumb=False):
         """
-        Disassemble an instruction into a formatted string.
+        Disassemble an instruction into broken down values.
 
         @param address:         Address the instruction comes from
         @param inst:            32bit/16bit instruction word
@@ -833,10 +833,12 @@ class Disassemble(object):
         @param live_memory:     Whether memory reads may be used to provide more information
         @param thumb:           True to disassemble as a Thumb instruction
 
-        @return: String describing the instruction
+        @return: Tuple of (bytes-consumed, mnemonic string, operands string, comment string)
+                 Mnemonic string, operands string and comment string will be None if no
+                 disassembly was available.
         """
         if not self.capstone:
-            return None
+            return (2 if thumb else 4, None, None, None)
 
         self.md.mode = self._capstone.CS_MODE_THUMB if thumb else self._capstone.CS_MODE_ARM
         for i in self.md.disasm(inst, address):
@@ -859,8 +861,7 @@ class Disassemble(object):
                     op_str = op_str.replace('lr', 'r14')
 
             if self.config.format == 'capstone':
-                op = "%-8s%s" % (mnemonic, op_str)
-                return op
+                return (2 if thumb else 4, mnemonic, op_str, '')
 
             op_str = op_str.replace('0x', '&')
             comment = None
@@ -1136,14 +1137,38 @@ class Disassemble(object):
                     else:
                         comment = 'Function: %s' % (funcname,)
 
-            if comment:
-                op_str = op_str + (' ' * (24 - len(op_str))) + "  ; " + comment
-
             # Apply any fixups for the mnemonic name which are easily translatable
             mnemonic = self.mnemonic_replacements.get(mnemonic, mnemonic)
 
-            op = "%-8s%s" % (mnemonic, op_str)
-            return op
+            return (2 if thumb else 4, mnemonic, op_str, comment)
 
-        # FIXME: Decide whether this should be 'undefined instruction'?
-        return "<No disassembly available>"
+        return (2 if thumb else 4, 'Undefined instruction', '', '')
+
+    def disassemble(self, address, inst,
+                    live_registers=False, live_memory=False,
+                    thumb=False):
+        """
+        Disassemble an instruction into a formatted string.
+
+        @param address:         Address the instruction comes from
+        @param inst:            32bit/16bit instruction word
+        @param live_registers:  Whether registers may be used to provide more information
+        @param live_memory:     Whether memory reads may be used to provide more information
+        @param thumb:           True to disassemble as a Thumb instruction
+
+        @return:         Tuple of (consumed, string describing the instruction or None if not disassembly)
+        """
+        (consumed, mnemonic, op_str, comment) = self.disassemble_instruction(address, inst,
+                                                                             live_registers=live_registers,
+                                                                             live_memory=live_memory,
+                                                                             thumb=thumb)
+        if mnemonic:
+            if comment:
+                op_str = op_str + (' ' * (24 - len(op_str))) + "  ; " + comment
+            if op_str:
+                text = "%-8s%s" % (mnemonic, op_str)
+            else:
+                text = mnemonic
+            return (consumed, text)
+
+        return (consumed, mnemonic)
