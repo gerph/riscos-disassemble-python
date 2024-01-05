@@ -14,3 +14,13 @@ and subclass the `Disassemble` class to add functions necessary to access
 memory and registers, and to decode SWI calls. However, if you do not care
 about these things, the simplest usage can be found in the example script
 `simple_disassemble.py`.
+
+A more advanced version, which allows context colouring is provided as
+a tool within the module. To use it, use:
+
+    python -m riscos_disassemble <file>
+
+Use `--thumb` to disassemble Thumb code.
+
+Use `--colour` or `--colour-8bit` for coloured output using the primary
+colours, or the 8bit colour palette.

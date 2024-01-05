@@ -9,6 +9,7 @@ import struct
 import sys
 
 from . import disassemble
+from . import colours
 
 
 def setup_argparse():
@@ -19,6 +20,10 @@ def setup_argparse():
                                      description="Disassemble a file of ARM or Thumb code")
     parser.add_argument('--thumb', action='store_true',
                         help="Disassemble as Thumb code")
+    parser.add_argument('--colour', action='store_true',
+                        help="Use colours")
+    parser.add_argument('--colour-8bit', action='store_true',
+                        help="Use 8bit colours")
     parser.add_argument('filename',
                         help='File to disassemble')
     return parser
@@ -30,6 +35,11 @@ def main():
 
     config = disassemble.DisassembleConfig()
     dis = disassemble.Disassemble(config)
+    cdis = colours.ColourDisassemblyANSI()
+
+    if options.colour_8bit:
+        options.colour = True
+        cdis.use_8bit()
 
     thumb = options.thumb
     inst_width = 2 if thumb else 4
@@ -64,8 +74,18 @@ def main():
                                 char((word>>24) & 255)))
                 wordstr = "{:08x}".format(word)
 
-            print("{:08x} : {} : {} : {}".format(addr, wordstr, text,
-                                                 disassembly or '<No disassembly available>'))
+            if options.colour and disassembly:
+                coloured = cdis.colour(disassembly)
+                coloured = [colour + s.encode('latin-1') for colour, s in coloured]
+                try:
+                    disassembly = sum(coloured, bytearray()) + cdis.colour_reset
+                except TypeError:
+                    # Python 3
+                    disassembly = b''.join(bytes(b) for b in coloured) + cdis.colour_reset
+                    disassembly = disassembly.decode('latin-1')
+
+            sys.stdout.write("{:08x} : {} : {} : {}\n".format(addr, wordstr, text,
+                                                              disassembly or '<No disassembly available>'))
             addr += inst_width
 
 
