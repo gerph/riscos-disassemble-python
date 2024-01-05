@@ -880,7 +880,7 @@ class Disassemble(object):
                     rn = 10 if swi & 255 == 0x6f else 12
                     if live_registers:
                         real_swi = self.get_reg(rn)
-                        comment = 'R%s = &%X' % (rn, real_swi)
+                        comment = 'R%s = &%x' % (rn, real_swi)
                         callaswi_name = self.get_swi_name(real_swi)
                         if callaswi_name:
                             comment += '  (%s)' % (callaswi_name,)
@@ -931,7 +931,7 @@ class Disassemble(object):
                 # Thumb ADR instruction
                 imm = address + i.operands[1].imm + 4
                 op_prefix, _ = op_str.split(',', 1)
-                op_suffix = '&%08X' % (imm,)
+                op_suffix = '&%08x' % (imm,)
                 op_str = '%s, %s' % (op_prefix, op_suffix)
 
                 if live_memory:
@@ -950,7 +950,7 @@ class Disassemble(object):
                     else:
                         imm = address - i.operands[2].imm + 8
                     op_prefix, _ = op_str.split(',', 1)
-                    op_suffix = '&%08X' % (imm,)
+                    op_suffix = '&%08x' % (imm,)
                     op_str = '%s, %s' % (op_prefix, op_suffix)
                     mnemonic = 'ADR%s' % (mnemonic[3:],)
 
@@ -1014,7 +1014,7 @@ class Disassemble(object):
                     else:
                         addr = address + mem.disp + 8
                     op_prefix, _ = op_str.split(',', 1)
-                    op_suffix = '&%08X' % (addr,)
+                    op_suffix = '&%08x' % (addr,)
                     op_str = '%s, %s' % (op_prefix, op_suffix)
 
                     # If we can work out what the address is, do so - don't if it's
@@ -1115,7 +1115,7 @@ class Disassemble(object):
 
             elif mnemonic in ('B', 'BL') or (len(mnemonic) > 2) and mnemonic[:-2] in ('B', 'BL'):
                 if op_str[0:2] == '#&':
-                    op_str = '&%08X' % (int(op_str[2:], 16),)
+                    op_str = '&%08x' % (int(op_str[2:], 16),)
                 if live_memory:
                     # We can allow this to be omitted in cases if the memory that's being debugged
                     # is not actually live memory (could be relocated, synthetic, etc).
