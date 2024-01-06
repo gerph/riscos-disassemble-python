@@ -1,1 +1,5 @@
 *.pyc
+build/
+dist/
+riscos_disassemble.egg-info/
+            

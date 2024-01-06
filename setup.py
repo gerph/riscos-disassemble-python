@@ -34,6 +34,7 @@ setup(
     keywords = ['disassemble', 'arm', 'riscos'],
     entry_points={ 'console_scripts': ['riscos-dumpi = riscos_disassemble.__main__:main'] },
     install_requires= [
+            'capstone',
         ],
     classifiers= [
             'Development Status :: 4 - Beta',
