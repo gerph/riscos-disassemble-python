@@ -8,6 +8,20 @@ the output so that the disassembly is in a form which is generally seen by
 RISC OS users.
 
 
+## Installation
+
+The tool for disassembly can be installed manually using this repository
+(see 'Usage' below) or through PyPI. To install, use:
+
+    pip3 install riscos_disassemble
+
+The tool can then be invoked as `riscos-dumpi`. For example:
+
+    riscos-dumpi hello_world,ffc
+
+For colour, use the switches `--colour` or `--colour-8bit`.
+
+
 ## Requirements
 
 The disassembly code requires the Capstone library to be installed. Capstone

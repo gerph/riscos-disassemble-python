@@ -4,6 +4,7 @@ Disassembly of RISC OS code in a similar style to *DumpI.
 """
 
 import argparse
+import errno
 import os
 import struct
 import sys
@@ -11,6 +12,10 @@ import sys
 from . import disassemble
 from . import colours
 from . import swis
+
+
+class NoCapstoneError(Exception):
+    pass
 
 
 class DisassembleTool(disassemble.Disassemble):
@@ -62,22 +67,18 @@ def setup_argparse():
     return parser
 
 
-def main():
-    parser = setup_argparse()
-    options = parser.parse_args()
+def disassemble_file(filename, thumb=False, colourer=None):
 
     config = disassemble.DisassembleConfig()
     dis = DisassembleTool(config)
-    cdis = colours.ColourDisassemblyANSI()
 
-    if options.colour_8bit:
-        options.colour = True
-        cdis.use_8bit()
+    if not dis.available:
+        raise NoCapstoneError("The Python Capstone package must be installed. "
+                              "Use 'pip{} install capstone'.".format('3' if sys.version_info.major == 3 else ''))
 
-    thumb = options.thumb
     inst_width = 2 if thumb else 4
 
-    with open(options.filename, 'rb') as fh:
+    with open(filename, 'rb') as fh:
         addr = 0
         while True:
             data = fh.read(inst_width)
@@ -107,11 +108,11 @@ def main():
                                 char((word>>24) & 255)))
                 wordstr = "{:08x}".format(word)
 
-            if options.colour and disassembly:
-                coloured = cdis.colour(disassembly)
+            if colourer and disassembly:
+                coloured = colourer.colour(disassembly)
                 coloured = [colour + s.encode('latin-1') for colour, s in coloured]
                 try:
-                    disassembly = sum(coloured, bytearray()) + cdis.colour_reset
+                    disassembly = sum(coloured, bytearray()) + colourer.colour_reset
                 except TypeError:
                     # Python 3
                     disassembly = b''.join(bytes(b) for b in coloured) + cdis.colour_reset
@@ -120,6 +121,32 @@ def main():
             sys.stdout.write("{:08x} : {} : {} : {}\n".format(addr, wordstr, text,
                                                               disassembly or '<No disassembly available>'))
             addr += inst_width
+
+def main():
+    parser = setup_argparse()
+    options = parser.parse_args()
+
+    cdis = colours.ColourDisassemblyANSI()
+    if options.colour_8bit:
+        options.colour = True
+        cdis.use_8bit()
+
+    thumb = options.thumb
+
+    try:
+        disassemble_file(options.filename, thumb=thumb, colourer=cdis)
+
+    except IOError as exc:
+        if exc.errno == errno.EISDIR:
+            sys.exit("'%s' is a directory" % (options.filename,))
+        if exc.errno == errno.ENOENT:
+            sys.exit("'%s' not found" % (options.filename,))
+        if exc.errno == errno.EACCES:
+            sys.exit("'%s' is not accessible" % (options.filename,))
+        raise
+
+    except NoCapstoneError as exc:
+        sys.exit(str(exc))
 
 
 if __name__ == '__main__':
