@@ -931,7 +931,7 @@ class Disassemble(object):
                 # Thumb ADR instruction
                 imm = address + i.operands[1].imm + 4
                 op_prefix, _ = op_str.split(',', 1)
-                op_suffix = '&%08x' % (imm,)
+                op_suffix = '&%08x' % (imm & 0xFFFFFFFF,)
                 op_str = '%s, %s' % (op_prefix, op_suffix)
 
                 if live_memory:
@@ -950,7 +950,7 @@ class Disassemble(object):
                     else:
                         imm = address - i.operands[2].imm + 8
                     op_prefix, _ = op_str.split(',', 1)
-                    op_suffix = '&%08x' % (imm,)
+                    op_suffix = '&%08x' % (imm & 0xFFFFFFFF,)
                     op_str = '%s, %s' % (op_prefix, op_suffix)
                     mnemonic = 'ADR%s' % (mnemonic[3:],)
 
