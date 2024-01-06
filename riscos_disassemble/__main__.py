@@ -10,6 +10,39 @@ import sys
 
 from . import disassemble
 from . import colours
+from . import swis
+
+
+class DisassembleTool(disassemble.Disassemble):
+
+    swi_cache = None
+
+    def get_swi_name(self, swi):
+        """
+        Decode a SWI number into a SWI name.
+
+        @param swi: SWI number to decode
+
+        @return:    SWI name, eg "OS_WriteC", "OS_WriteI+'B'", "XIIC_Control", or &XXXXX
+        """
+        if self.swi_cache is None:
+            swi_cache = {}
+            for name in dir(swis):
+                if name[0] != '_' and '_' in name:
+                    number = getattr(swis, name)
+                    swi_cache[number] = name
+            # Populate OS_WriteI
+            for vdu in range(256):
+                swi_cache[0x100 + vdu] = 'OS_WriteI+' + ('"%c"' % (vdu,) if 0x20 <= vdu < 0x7f else str(vdu))
+            self.swi_cache = swi_cache
+
+        xbit = swi & 0x20000
+        name = self.swi_cache.get(swi & ~0x20000, None)
+        if name:
+            if xbit:
+                name = 'X' + name
+            return name
+        return '&{:x}'.format(swi)
 
 
 def setup_argparse():
@@ -34,7 +67,7 @@ def main():
     options = parser.parse_args()
 
     config = disassemble.DisassembleConfig()
-    dis = disassemble.Disassemble(config)
+    dis = DisassembleTool(config)
     cdis = colours.ColourDisassemblyANSI()
 
     if options.colour_8bit:
