@@ -20,7 +20,7 @@ The tool for disassembly can be installed manually using this repository
 
 Once installed, the tool can be invoked as `riscos-dumpi`. For example:
 
-    riscos-dumpi hello_world,ffc
+    riscos-dumpi examples/hello_world,ffc
 
 The following switches are supported:
 
@@ -49,9 +49,13 @@ Supported flags:
 * `UseVDU`: Use VDU x instead of SWI OS_WriteI+x.
 
 The flags may be specified on the command line with
-`--debuggerplus <flags>` repeated, or as a comma-separated list.
+`--debuggerplus=<flags>` repeated, or as a comma-separated list.
 The flags may also be configured using the environment variable
 `RISCOS_DUMPI_DEBUGGERPLUS`.
+
+Flags prefixed by a `-` character will be disabled. This is useful to
+disable the configuration in the environment variable, or those default
+options. `Lower` is currently selected automatically by default.
 
 
 ## Use as a git text converter
@@ -112,7 +116,7 @@ with:
 
 ## Examples
 
-Two example files are supplied to demonstrate the disassembly:
+Example files are supplied in the `examples` directory to demonstrate the disassembly:
 
 * `hello_world` utility file (suffixed by `,ffc`) is a test from the RISC OS Pyromaniac project, which verifies the behaviour of the SWI `OS_Write0`.
 * `osbyte81_version` utility file is another test program, which checks the behaviour of `OS_Byte &81` when reading the operating system version.
