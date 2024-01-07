@@ -37,7 +37,10 @@ class BadARMFlagError(ToolError):
     pass
 
 
-class DisassembleTool(disassemble.Disassemble):
+class DisassembleSWIs(object):
+    """
+    Mixin for the Disassemble classes, which adds in SWI decoding.
+    """
 
     swi_cache = None
 
@@ -69,6 +72,10 @@ class DisassembleTool(disassemble.Disassemble):
         return '&{:x}'.format(swi)
 
 
+class DisassembleTool(DisassembleSWIs, disassemble.Disassemble):
+    pass
+
+
 def setup_argparse():
     parser = argparse.ArgumentParser(usage="%s [<options>] <binary-file>" % (get_tool_name(),),
                                      description="Disassemble a file of ARM or Thumb code")
@@ -87,12 +94,12 @@ def setup_argparse():
     return parser
 
 
-def disassemble_file(filename, thumb=False, colourer=None, postprocess=None):
+def disassemble_file(filename, arch='arm', colourer=None, postprocess=None):
     """
     Disassemble a file into ARM/Thumb instructions.
 
     @param filename:        File to process
-    @param thumb:           True to process as Thumb code; False for ARM code
+    @param arch:            'arm' or 'thumb'
     @param colourer:        A colouring object to process the content into output colours
                             Or None to not apply colouring
     @param postprocess:     A post processor function which takes the instruction and text to convert to another form
@@ -106,7 +113,7 @@ def disassemble_file(filename, thumb=False, colourer=None, postprocess=None):
         raise NoCapstoneError("The Python Capstone package must be installed. "
                               "Use 'pip{} install capstone'.".format('3' if sys.version_info.major == 3 else ''))
 
-    inst_width = 2 if thumb else 4
+    inst_width = 2 if arch == 'thumb' else 4
 
     with open(filename, 'rb') as fh:
         addr = 0
@@ -115,19 +122,19 @@ def disassemble_file(filename, thumb=False, colourer=None, postprocess=None):
             if len(data) < inst_width:
                 break
 
-            if thumb:
+            if inst_width == 2:
                 word = struct.unpack('<H', data)[0]
             else:
                 word = struct.unpack('<L', data)[0]
 
-            (consumed, disassembly) = dis.disassemble(addr, data, thumb=thumb)
+            (consumed, disassembly) = dis.disassemble(addr, data, thumb=(arch=='thumb'))
 
             def char(x):
                 if x < 0x20 or x>=0x7f:
                     return '.'
                 return chr(x)
 
-            if thumb:
+            if inst_width == 2:
                 text = ''.join((char(word & 255),
                                 char((word>>8) & 255)))
                 wordstr = "{:04x}".format(word)
@@ -148,7 +155,7 @@ def disassemble_file(filename, thumb=False, colourer=None, postprocess=None):
                     disassembly = sum(coloured, bytearray()) + colourer.colour_reset
                 except TypeError:
                     # Python 3
-                    disassembly = b''.join(bytes(b) for b in coloured) + cdis.colour_reset
+                    disassembly = b''.join(bytes(b) for b in coloured) + colourer.colour_reset
                     disassembly = disassembly.decode('latin-1')
 
             sys.stdout.write("{:08x} : {} : {} : {}\n".format(addr, wordstr, text,
@@ -230,7 +237,7 @@ def main():
         if options.debuggerplus:
             for flags in options.debuggerplus:
                 update_arm_flags(armflags, flags)
-    except ToolErrorError as exc:
+    except ToolError as exc:
         sys.exit(str(exc))
 
     if options.help_debuggerplus:
@@ -245,11 +252,12 @@ def main():
         options.colour = True
         cdis.use_8bit()
 
-    thumb = options.thumb
-
     try:
+        arch = 'arm'
+        if options.thumb:
+            arch = 'thumb'
         disassemble_file(options.filename,
-                         thumb=thumb,
+                         arch=arch,
                          colourer=cdis if options.colour else None,
                          postprocess=armflags.transform)
 
