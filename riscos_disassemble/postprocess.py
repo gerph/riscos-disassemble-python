@@ -160,17 +160,20 @@ class DebuggerARMFlags(object):
             # Nothing to change, so return as-is
             return dis
 
+        if isinstance(word, bytes):
+            (wordvalue,) = struct.unpack("<L", word)
+        else:
+            wordvalue = word
+
         # Use DCD
         if self.flags & self.Flag_UseDCD:
             match = self.undef_re.search(dis)
             if match:
-                (wordvalue,) = struct.unpack("<L", word)
                 dis = "DCD     &{:08x}                 ; {}".format(wordvalue, dis)
 
         # ANDEQasDCD
         if self.flags & self.Flag_ANDEQasDCD:
             if dis.startswith('ANDEQ'):
-                (wordvalue,) = struct.unpack("<L", word)
                 dis = "DCD     &{:08x}                 ; {}".format(wordvalue, dis)
 
         # Break down the disassembly into components

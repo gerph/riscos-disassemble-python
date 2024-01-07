@@ -8,6 +8,7 @@ import errno
 import os
 import struct
 import sys
+import textwrap
 
 from . import disassemble
 from . import colours
@@ -15,11 +16,24 @@ from . import swis
 from . import postprocess
 
 
-class NoCapstoneError(Exception):
+ENV_DEBUGGERPLUS = 'RISCOS_DUMPI_DEBUGGERPLUS'
+
+def get_tool_name():
+    tool_name = os.path.basename(sys.argv[0])
+    if tool_name == '__main__.py':
+        tool_name = 'riscos-dumpi'
+    return tool_name
+
+
+class ToolError(Exception):
     pass
 
 
-class BadARMFlagError(Exception):
+class NoCapstoneError(ToolError):
+    pass
+
+
+class BadARMFlagError(ToolError):
     pass
 
 
@@ -56,10 +70,7 @@ class DisassembleTool(disassemble.Disassemble):
 
 
 def setup_argparse():
-    name = os.path.basename(sys.argv[0])
-    if name == '__main__.py':
-        name = 'riscos-dumpi'
-    parser = argparse.ArgumentParser(usage="%s [<options>] <binary-file>" % (name,),
+    parser = argparse.ArgumentParser(usage="%s [<options>] <binary-file>" % (get_tool_name(),),
                                      description="Disassemble a file of ARM or Thumb code")
     parser.add_argument('--help-debuggerplus', action='store_true',
                         help="Get help on the DebuggerPlus flags")
@@ -71,7 +82,7 @@ def setup_argparse():
                         help="Use colours")
     parser.add_argument('--colour-8bit', action='store_true',
                         help="Use 8bit colours")
-    parser.add_argument('filename',
+    parser.add_argument('filename', nargs="?", default=None,
                         help='File to disassemble')
     return parser
 
@@ -166,6 +177,44 @@ def update_arm_flags(armflags, flags):
             raise BadARMFlagError("DebuggerPlus flag '%s' is not supported (cannot be changed)" % (flag,))
 
 
+def help_debuggerplus(armflags):
+    """
+    Report how the DebuggerPlus options work.
+    """
+    message = """\
+DebuggerPlus is a module by Darren Salt, which provides more options for disassembly than
+the standard Debugger module provided by RISC OS. These options were indicated by flags
+which could be set at the command line. This tool supports a subset of those flags."""
+
+    for line in textwrap.wrap(message):
+        print(line)
+
+    print("")
+
+    print("Supported flags (+ for enabled):")
+
+    indent = 2
+    spacing = 14
+
+    for (flag, bit, desc) in sorted(armflags.flag_name_mapping.values()):
+        if armflags.supported_flags & bit:
+            # Only report on the supported flags
+            enabled = armflags.flags & bit
+            leader = "%*s%-*s" % (indent, '+' if enabled else ' ', spacing, flag)
+            for line in textwrap.wrap(desc, width=70 - indent - spacing):
+                print(leader + line)
+                leader = ' ' * (indent + spacing)
+    print("")
+
+    message = """\
+The flags may be specified on the command line with `--debuggerplus <flags>` repeated,
+or as a comma-separated list. The flags may also be configured using the environment
+variable %s.""" % (ENV_DEBUGGERPLUS,)
+
+    for line in textwrap.wrap(message):
+        print(line)
+
+
 def main():
     parser = setup_argparse()
     options = parser.parse_args()
@@ -173,7 +222,7 @@ def main():
     armflags = postprocess.DebuggerARMFlags()
     try:
         # Environment variable comes first, so that the command line can override
-        env_flags = os.environ.get('RISCOS_DUMPI_DEBUGGERPLUS')
+        env_flags = os.environ.get(ENV_DEBUGGERPLUS)
         if env_flags:
             update_arm_flags(armflags, env_flags)
 
@@ -181,8 +230,15 @@ def main():
         if options.debuggerplus:
             for flags in options.debuggerplus:
                 update_arm_flags(armflags, flags)
-    except BadARMFlagError as exc:
+    except ToolErrorError as exc:
         sys.exit(str(exc))
+
+    if options.help_debuggerplus:
+        help_debuggerplus(armflags)
+        sys.exit(0)
+
+    if not options.filename:
+        sys.exit("A filename must be supplied to %s" % (get_tool_name(),))
 
     cdis = colours.ColourDisassemblyANSI()
     if options.colour_8bit:
@@ -206,7 +262,7 @@ def main():
             sys.exit("'%s' is not accessible" % (options.filename,))
         raise
 
-    except NoCapstoneError as exc:
+    except ToolError as exc:
         sys.exit(str(exc))
 
 
