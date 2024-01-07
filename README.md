@@ -36,7 +36,7 @@ but you could use any name you preferred. For example:
     examples/*,* diff=armbinary
 
 This indicates that any file containing a comma (`,`) within the `examples`
-directory is to be convertee through the `armbinary` conversion.
+directory is to be converted through the `armbinary` conversion.
 
 To tell Git how to perform the conversion it is necessary to update the
 `.gitconfig` file to know how to perform the conversion.
