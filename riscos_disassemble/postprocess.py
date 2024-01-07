@@ -133,7 +133,7 @@ class DebuggerARMFlags(object):
             (re.compile(r'R1', re.I), 'A2', 'a2'),
             (re.compile(r'R0', re.I), 'A1', 'a1'),
         ]
-    register_re = re.compile(r'\b(R[0-9]|R[1[0-5]|SP|LR|PC|C[0-7]|P[0-9]|P1[0-5]|F[0-7])\b', re.I)
+    register_re = re.compile(r'\b(R[0-9]|R1[0-5]|SP|LR|PC|C[0-7]|P[0-9]|P1[0-5]|F[0-7])\b', re.I)
     psr_re = re.compile(r'\b([asc]psr(?:_[a-z]+))\b', re.I)
     undef_re = re.compile(r'^Undefined instruction', re.I)
     breakdown_re = re.compile(r'^([^ ]+)( +)(.*?)(?:( +)(;.*))?$')
