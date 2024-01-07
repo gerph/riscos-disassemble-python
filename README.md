@@ -22,6 +22,38 @@ The tool can then be invoked as `riscos-dumpi`. For example:
 For colour, use the switches `--colour` or `--colour-8bit`.
 
 
+## Use as a git text converter
+
+If you have RISC OS binaries (or other ARM binaries) checked in to your Git
+repository, it can be useful to be able to display and diff them. This can
+be achieved by giving the binary files an attribute to indicate that they
+should be converted to text first.
+
+To mark the binary files, create a `.gitattributes` (or update your existing
+file) with the attribute `diff=armbinary`. `armbinary` a label I have chosen
+but you could use any name you preferred. For example:
+
+    examples/*,* diff=armbinary
+
+This indicates that any file containing a comma (`,`) within the `examples`
+directory is to be convertee through the `armbinary` conversion.
+
+To tell Git how to perform the conversion it is necessary to update the
+`.gitconfig` file to know how to perform the conversion.
+
+    git config --global diff.armbinary.textconv "riscos-dumpi"
+
+This indicates that when performing a diff (including `log -p` and others),
+any files with the diff attribute `armbinary` will be passed to the `riscos-dumpi`
+tool. You may prefer to use the colourised version of the disassembly, although
+this will make it more difficult to see where changes are in diffs:
+
+    git config --global diff.armbinary.textconv "riscos-dumpi --colour-8bit"
+
+For more information on the Git attributes, see:
+https://git-scm.com/docs/gitattributes#_performing_text_diffs_of_binary_files
+
+
 ## Requirements
 
 The disassembly code requires the Capstone library to be installed. Capstone
@@ -51,15 +83,17 @@ Use `--colour` or `--colour-8bit` for coloured output using the primary
 colours, or the 8bit colour palette.
 
 
-## Example
+## Examples
 
-The `hello_world` utility file (suffixed by `,ffc`) is supplied as an example.
-This is a simple test program from RISC OS Pyromaniac which verifies the
-behaviour of the SWI `OS_Write0`. It can be used to demonstrate the behaviour
-of the tool:
+Two example files are supplied to demonstrate the disassembly:
+
+* `hello_world` utility file (suffixed by `,ffc`) is a test from the RISC OS Pyromaniac project, which verifies the behaviour of the SWI `OS_Write0`.
+* `osbyte81_version` utility file is another test program, which checks the behaviour of `OS_Byte &81` when reading the operating system version.
+
+Disassembling the example `hello_world` example is simple:
 
 ```
-charles@laputa ~/riscos-disassemble-python $ python -m riscos_disassemble hello_world,ffc
+charles@laputa ~/riscos-disassemble-python $ python -m riscos_disassemble examples/hello_world,ffc
 00000000 : e28f001c : .... : ADR     r0, &00000024
 00000004 : ef000002 : .... : SWI     OS_Write0
 00000008 : e28f1020 :  ... : ADR     r1, &00000030
