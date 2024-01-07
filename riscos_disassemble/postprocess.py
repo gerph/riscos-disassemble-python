@@ -222,7 +222,7 @@ class DebuggerARMFlags(object):
             # QuoteSWIs
             if self.flags & self.Flag_QuoteSWIs:
                 if mnemonic.startswith('SWI'):
-                    if not operands.startswith("OS_WriteI+"):
+                    if not operands.startswith(("OS_WriteI+", "&")):
                         operands = '"{}"'.format(operands)
 
             # Fix up the spaces to line up to operands
