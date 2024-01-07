@@ -12,9 +12,14 @@ import sys
 from . import disassemble
 from . import colours
 from . import swis
+from . import postprocess
 
 
 class NoCapstoneError(Exception):
+    pass
+
+
+class BadARMFlagError(Exception):
     pass
 
 
@@ -56,6 +61,10 @@ def setup_argparse():
         name = 'riscos-dumpi'
     parser = argparse.ArgumentParser(usage="%s [<options>] <binary-file>" % (name,),
                                      description="Disassemble a file of ARM or Thumb code")
+    parser.add_argument('--help-debuggerplus', action='store_true',
+                        help="Get help on the DebuggerPlus flags")
+    parser.add_argument('--debuggerplus', action='append',
+                        help="Specify a list of DebuggerPlus flags to apply, prefixed by '-' to disable flags")
     parser.add_argument('--thumb', action='store_true',
                         help="Disassemble as Thumb code")
     parser.add_argument('--colour', action='store_true',
@@ -67,7 +76,17 @@ def setup_argparse():
     return parser
 
 
-def disassemble_file(filename, thumb=False, colourer=None):
+def disassemble_file(filename, thumb=False, colourer=None, postprocess=None):
+    """
+    Disassemble a file into ARM/Thumb instructions.
+
+    @param filename:        File to process
+    @param thumb:           True to process as Thumb code; False for ARM code
+    @param colourer:        A colouring object to process the content into output colours
+                            Or None to not apply colouring
+    @param postprocess:     A post processor function which takes the instruction and text to convert to another form
+                            Or None to not apply post-processing
+    """
 
     config = disassemble.DisassembleConfig()
     dis = DisassembleTool(config)
@@ -108,6 +127,9 @@ def disassemble_file(filename, thumb=False, colourer=None):
                                 char((word>>24) & 255)))
                 wordstr = "{:08x}".format(word)
 
+            if postprocess and disassembly:
+                disassembly = postprocess(word, disassembly)
+
             if colourer and disassembly:
                 coloured = colourer.colour(disassembly)
                 coloured = [colour + s.encode('latin-1') for colour, s in coloured]
@@ -122,9 +144,45 @@ def disassemble_file(filename, thumb=False, colourer=None):
                                                               disassembly or '<No disassembly available>'))
             addr += inst_width
 
+
+def update_arm_flags(armflags, flags):
+    """
+    Given a list of flags, update the DebuggerARMFlags object.
+    """
+    for flag in flags.replace(' ', ',').split(','):
+        negate = False
+        if flag and flag[0] == '-':
+            flag = flag[1:]
+            negate = True
+        (name, bit, desc) = armflags.flag_name_mapping.get(flag.upper(), (None, None, None))
+        if not name:
+            raise BadARMFlagError("DebuggerPlus flag '%s' is not understood" % (flag,))
+        before = armflags.flags
+        if negate:
+            armflags.update(bic=bit, eor=0)
+        else:
+            armflags.update(bic=bit, eor=bit)
+        if armflags.flags == before:
+            raise BadARMFlagError("DebuggerPlus flag '%s' is not supported (cannot be changed)" % (flag,))
+
+
 def main():
     parser = setup_argparse()
     options = parser.parse_args()
+
+    armflags = postprocess.DebuggerARMFlags()
+    try:
+        # Environment variable comes first, so that the command line can override
+        env_flags = os.environ.get('RISCOS_DUMPI_DEBUGGERPLUS')
+        if env_flags:
+            update_arm_flags(armflags, env_flags)
+
+        # Command line options
+        if options.debuggerplus:
+            for flags in options.debuggerplus:
+                update_arm_flags(armflags, flags)
+    except BadARMFlagError as exc:
+        sys.exit(str(exc))
 
     cdis = colours.ColourDisassemblyANSI()
     if options.colour_8bit:
@@ -134,7 +192,10 @@ def main():
     thumb = options.thumb
 
     try:
-        disassemble_file(options.filename, thumb=thumb, colourer=cdis)
+        disassemble_file(options.filename,
+                         thumb=thumb,
+                         colourer=cdis if options.colour else None,
+                         postprocess=armflags.transform)
 
     except IOError as exc:
         if exc.errno == errno.EISDIR:
