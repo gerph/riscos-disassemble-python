@@ -442,7 +442,7 @@ class Disassemble(object):
                 if imm in self.bit_numbers:
                     values.append(self.bit_numbers[imm])
                 else:
-                    imm32 = operand.imm & 0xFFFFFFFF
+                    imm32 = imm & 0xFFFFFFFF
                     if imm32 > 4096:
                         for shift, mask in ((28, 0xFFFFFFF),
                                             (24, 0xFFFFFF),

@@ -15,11 +15,47 @@ The tool for disassembly can be installed manually using this repository
 
     pip3 install riscos_disassemble
 
-The tool can then be invoked as `riscos-dumpi`. For example:
 
-    riscos-dumpi hello_world,ffc
+## Usage
 
-For colour, use the switches `--colour` or `--colour-8bit`.
+Once installed, the tool can be invoked as `riscos-dumpi`. For example:
+
+    riscos-dumpi examples/hello_world,ffc
+
+The following switches are supported:
+
+* `--thumb`: Disassembles Thumb code, rather than ARM code
+* `--colour`: Uses the original primary and secondary ANSI colours.
+* `--colour-8bit`: Use the more featureful 8bit colour palette.
+* `--debuggerplus`: Specify a list of modifications to the debugger output,
+  which originated in [DebuggerPlus](https://old-www.moreofthesa.me.uk/progs.utils.html).
+* `--help-debuggerplus`: More information on the flags.
+
+### DebuggerPlus
+
+DebuggerPlus is a module by Darren Salt, which provides more options
+for disassembly than the standard Debugger module provided by RISC OS.
+These options were indicated by flags which could be set at the
+command line. The `riscos-dumpi` tool supports a subset of those flags.
+
+Supported flags:
+
+* `ANDEQasDCD`: Use DCD instead of ANDEQ, MOV Rn,Rn (same register) etc.
+* `APCS`: Use APCS-R register set.
+* `Lower`: Force all register names to lower case.
+* `QuoteSWIs`: Put quotes around SWI names.
+* `UseDCD`: Use DCD instead of 'Undefined instruction', and BRK where DCD &x6000010 would be used.
+* `UseNOP`: Use NOP instead of MOV R0,R0.
+* `UseVDU`: Use VDU x instead of SWI OS_WriteI+x.
+
+The flags may be specified on the command line with
+`--debuggerplus=<flags>` repeated, or as a comma-separated list.
+The flags may also be configured using the environment variable
+`RISCOS_DUMPI_DEBUGGERPLUS`.
+
+Flags prefixed by a `-` character will be disabled. This is useful to
+disable the configuration in the environment variable, or those default
+options. `Lower` is currently selected automatically by default.
 
 
 ## Use as a git text converter
@@ -64,7 +100,7 @@ pip install 'capstone<5'
 ```
 
 
-## Usage
+## Reuse
 
 To use this in another project you would usually need to import the module
 and subclass the `Disassemble` class to add functions necessary to access
@@ -72,20 +108,15 @@ memory and registers, and to decode SWI calls. However, if you do not care
 about these things, the simplest usage can be found in the example script
 `simple_disassemble.py`.
 
-A more advanced version, which allows context colouring is provided as
-a tool within the module. To use it, use:
+The `riscos-dumpi` tool is provided in the package and can be invoked
+with:
 
-    python -m riscos_disassemble <file>
-
-Use `--thumb` to disassemble Thumb code.
-
-Use `--colour` or `--colour-8bit` for coloured output using the primary
-colours, or the 8bit colour palette.
+    python -m riscos_disassemble <options>
 
 
 ## Examples
 
-Two example files are supplied to demonstrate the disassembly:
+Example files are supplied in the `examples` directory to demonstrate the disassembly:
 
 * `hello_world` utility file (suffixed by `,ffc`) is a test from the RISC OS Pyromaniac project, which verifies the behaviour of the SWI `OS_Write0`.
 * `osbyte81_version` utility file is another test program, which checks the behaviour of `OS_Byte &81` when reading the operating system version.
@@ -93,7 +124,7 @@ Two example files are supplied to demonstrate the disassembly:
 Disassembling the example `hello_world` example is simple:
 
 ```
-charles@laputa ~/riscos-disassemble-python $ python -m riscos_disassemble examples/hello_world,ffc
+charles@laputa ~/riscos-disassemble-python $ riscos-dumpi examples/hello_world,ffc
 00000000 : e28f001c : .... : ADR     r0, &00000024
 00000004 : ef000002 : .... : SWI     OS_Write0
 00000008 : e28f1020 :  ... : ADR     r1, &00000030
