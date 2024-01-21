@@ -23,7 +23,7 @@ with open(path.join(here, 'README.md'), encoding='utf-8') as f:
 setup(
     name = 'riscos-disassemble',
     packages = ['riscos_disassemble'],
-    version = '0.3.0',
+    version = '0.4.0',
     license='MIT',
     description = 'Disassemble ARM and Thumb files like RISC OS',
     long_description = long_description,

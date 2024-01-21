@@ -419,7 +419,7 @@ class Disassemble(object):
 
         return '%s %s %s' % (mode_name, exec_mode, ''.join(flags))
 
-    def _operand_constant(self, operand, negated=False):
+    def _operand_constant(self, operand, shift=None, negated=False):
         """
         Return a list of constant values if we can.
         """
@@ -428,6 +428,9 @@ class Disassemble(object):
             imm = operand.imm
             if negated:
                 imm = imm ^ 0xFFFFFFFF
+            if shift and shift.type == self._const.ARM_OP_IMM:
+                imm = (imm << (32 - shift.imm)) | (imm >> shift.imm)
+                imm = imm & 0xFFFFFFFF
             if imm > 10 or imm < 0:
                 values = []
                 if imm >= 0x20 and imm < 0x7f:
@@ -444,17 +447,17 @@ class Disassemble(object):
                 else:
                     imm32 = imm & 0xFFFFFFFF
                     if imm32 > 4096:
-                        for shift, mask in ((28, 0xFFFFFFF),
-                                            (24, 0xFFFFFF),
-                                            (20, 0xFFFFF),
-                                            (16, 0xFFFF),
-                                            (12, 0xFFF),
-                                            (8, 0xFF)):
+                        for bitshift, mask in ((28, 0xFFFFFFF),
+                                               (24, 0xFFFFFF),
+                                               (20, 0xFFFFF),
+                                               (16, 0xFFFF),
+                                               (12, 0xFFF),
+                                               (8, 0xFF)):
                             if (imm32 & mask) == 0:
-                                shifted = imm32 >> shift
+                                shifted = imm32 >> bitshift
                                 if shifted != 1:
                                     # Never report 1<<bit as that's covered by the 'bit #' check
-                                    values.append("%i<<%i" % (shifted, shift))
+                                    values.append("%i<<%i" % (shifted, bitshift))
                                 break
 
                 accumulator.append("#%s" % (' = '.join(values),))
@@ -462,7 +465,7 @@ class Disassemble(object):
         return accumulator
 
 
-    def _operand_multiple_registers(self, operands, maybe_presentable=False):
+    def _operand_multiple_registers(self, operands, shift=None, maybe_presentable=False):
         """
         Return a list of register values related to the list of operands supplied.
 
@@ -474,18 +477,19 @@ class Disassemble(object):
         for operand in operands:
             if operand.type == self._const.ARM_OP_REG:
                 if operand.reg not in seen:
-                    accumulator.extend(self._operand_registers(operand, maybe_presentable))
+                    accumulator.extend(self._operand_registers(operand, maybe_presentable=maybe_presentable))
                     seen.add(operand.reg)
             else:
-                accumulator.extend(self._operand_registers(operand, maybe_presentable))
+                accumulator.extend(self._operand_registers(operand, shift=shift, maybe_presentable=maybe_presentable))
 
         return accumulator
 
-    def _operand_registers(self, operand, maybe_presentable=False):
+    def _operand_registers(self, operand, shift=None, maybe_presentable=False):
         """
         Return a list of register values related to the operand supplied
 
         @param operand:             The Capstone operand to display
+        @param shift:               Operand for shifting
         @param maybe_presentable:   True to describe addresses and pointers.
         """
         accumulator = []
@@ -945,10 +949,15 @@ class Disassemble(object):
                    i.operands[2].type == self._const.ARM_OP_IMM and \
                    mnemonic[2] != 'C':
                     # ADR replacement
+                    imm = i.operands[2].imm
+                    if len(i.operands) == 4 and i.operands[3].type == self._const.ARM_OP_IMM:
+                        # Has an explicit rotate
+                        imm = (imm << (32 - i.operands[3].imm)) | (imm >> i.operands[3].imm)
+                        imm = imm & 0xFFFFFFFF
                     if mnemonic[0:3] == 'ADD':
-                        imm = address + i.operands[2].imm + 8
+                        imm = address + imm + 8
                     else:
-                        imm = address - i.operands[2].imm + 8
+                        imm = address - imm + 8
                     op_prefix, _ = op_str.split(',', 1)
                     op_suffix = '&%08x' % (imm & 0xFFFFFFFF,)
                     op_str = '%s, %s' % (op_prefix, op_suffix)
@@ -979,6 +988,12 @@ class Disassemble(object):
                         accumulator.extend(self._operand_multiple_registers([i.operands[1],
                                                                              i.operands[2]]))
 
+                    if thumb and len(i.operands) == 2:
+                        accumulator.extend(self._operand_constant(i.operands[1]))
+                    elif len(i.operands) > 2:
+                        accumulator.extend(self._operand_constant(i.operands[2],
+                                                                  shift=i.operands[3] if len(i.operands) == 4 else None))
+
                     if accumulator:
                         comment = ', '.join(accumulator)
 
@@ -987,11 +1002,12 @@ class Disassemble(object):
             elif mnemonic[0:3] in ('ORR', 'BIC', 'AND', 'EOR', 'MUL', 'MLA'):
                 accumulator = []
                 if live_registers and self.config.show_referenced_registers:
-                        accumulator.extend(self._operand_multiple_registers([i.operands[1],
-                                                                             i.operands[2]]))
+                    accumulator.extend(self._operand_multiple_registers([i.operands[1],
+                                                                         i.operands[2]]))
 
                 if len(i.operands) > 2:
-                    accumulator.extend(self._operand_constant(i.operands[2]))
+                    accumulator.extend(self._operand_constant(i.operands[2],
+                                                              shift=i.operands[3] if len(i.operands) == 4 else None))
 
                 if accumulator:
                     comment = ', '.join(accumulator)
