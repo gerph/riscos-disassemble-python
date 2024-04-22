@@ -111,8 +111,13 @@ about these things, the simplest usage can be found in the example script
 The `riscos-dumpi` tool is provided in the package and can be invoked
 with:
 
+    riscos-dumpi <options>
+
+Or the tool can be manually invoked with:
+
     python -m riscos_disassemble <options>
 
+This tool has more advanced support for the options than the simple example.
 
 ## Examples
 
@@ -120,19 +125,20 @@ Example files are supplied in the `examples` directory to demonstrate the disass
 
 * `hello_world` utility file (suffixed by `,ffc`) is a test from the RISC OS Pyromaniac project, which verifies the behaviour of the SWI `OS_Write0`.
 * `osbyte81_version` utility file is another test program, which checks the behaviour of `OS_Byte &81` when reading the operating system version.
+* `kerneldebug` utility file tests that the input and output in the kernel works, and has function signatures that are recognised.
 
 Disassembling the example `hello_world` example is simple:
 
 ```
 charles@laputa ~/riscos-disassemble-python $ riscos-dumpi examples/hello_world,ffc
-00000000 : e28f001c : .... : ADR     r0, &00000024
+00000000 : e28f001c : .... : ADR     r0, &00000024             ; -> "Hello world"
 00000004 : ef000002 : .... : SWI     OS_Write0
-00000008 : e28f1020 :  ... : ADR     r1, &00000030
+00000008 : e28f1020 :  ... : ADR     r1, &00000030             ; -> [&00000001, &6f203052, &6572206e, &6e727574]
 0000000c : e1500001 : ..P. : CMP     r0, r1
 00000010 : 1a000001 : .... : BNE     &0000001c
 00000014 : ef000003 : .... : SWI     OS_NewLine
 00000018 : e1a0f00e : .... : MOV     pc, lr
-0000001c : e28f000c : .... : ADR     r0, &00000030
+0000001c : e28f000c : .... : ADR     r0, &00000030             ; -> [&00000001, &6f203052, &6572206e, &6e727574]
 00000020 : ef00002b : +... : SWI     OS_GenerateError
 00000024 : 6c6c6548 : Hell : STCLVS  p5, c6, [r12], #-&120
 00000028 : 6f77206f : o wo : SWIVS   &77206f
@@ -147,12 +153,12 @@ charles@laputa ~/riscos-disassemble-python $ riscos-dumpi examples/hello_world,f
 0000004c : 20306574 : te0  : EORSHS  r6, r0, r4, ROR r5
 00000050 : 20736177 : was  : RSBSHS  r6, r3, r7, ROR r1
 00000054 : 20746f6e : not  : RSBSHS  r6, r4, lr, ROR #30
-00000058 : 72726f63 : corr : RSBSVC  r6, r2, #&18c
+00000058 : 72726f63 : corr : RSBSVC  r6, r2, #&18c             ; #396
 0000005c : 6c746365 : ectl : LDCLVS  p3, c6, [r4], #-&194
 00000060 : 65732079 : y se : LDRBVS  r2, [r3, #-&79]!
 00000064 : 6f742074 : t to : SWIVS   &742074
 00000068 : 65687420 :  the : STRBVS  r7, [r8, #-&420]!
-0000006c : 72657420 :  ter : RSBVC   r7, r5, #32, #8
+0000006c : 72657420 :  ter : RSBVC   r7, r5, #32, #8           ; #536870912 = bit 29
 00000070 : 616e696d : mina : Undefined instruction
 00000074 : 00726f74 : tor. : RSBSEQ  r6, r2, r4, ROR pc
 ```
