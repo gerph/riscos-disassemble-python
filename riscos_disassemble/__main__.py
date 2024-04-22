@@ -5,6 +5,7 @@ Disassembly of RISC OS code in a similar style to *DumpI.
 
 import argparse
 import errno
+import fnmatch
 import os
 import struct
 import sys
@@ -312,10 +313,20 @@ def setup_argparse():
                         help="Use 8bit colours")
     parser.add_argument('filename', nargs="?", default=None,
                         help='File to disassemble')
+    parser.add_argument('baseaddr', nargs="?", type=lambda x: int(x, 16), default=None,
+                        help='Base address to decode at (default to the default for the filetype)')
+
+    # Function specific options
+    group = parser.add_argument_group('Function specific options')
+    group.add_argument('--function-map', action='store_true',
+                        help="List the function addresses")
+    group.add_argument('--match', action='store', default=None,
+                        help="Match only the specific functions (may be wildcarded)")
+
     return parser
 
 
-def disassemble_file(filename, arch='arm', colourer=None, postprocess=None):
+def disassemble_file(filename, arch='arm', colourer=None, postprocess=None, baseaddr=0, funcmatch=None):
     """
     Disassemble a file into ARM/Thumb instructions.
 
@@ -325,10 +336,13 @@ def disassemble_file(filename, arch='arm', colourer=None, postprocess=None):
                             Or None to not apply colouring
     @param postprocess:     A post processor function which takes the instruction and text to convert to another form
                             Or None to not apply post-processing
+    @param baseaddr:        Base address of the binary
+    @param funcmatch:       Function matching string
     """
 
     config = disassemble.DisassembleConfig()
     dis = DisassembleTool(config)
+    dis.baseaddr = baseaddr
 
     if not dis.available:
         raise NoCapstoneError("The Python Capstone package must be installed. "
@@ -338,51 +352,94 @@ def disassemble_file(filename, arch='arm', colourer=None, postprocess=None):
 
     with open(filename, 'rb') as fh:
         dis.fh = fh
-        addr = 0
+        addr = baseaddr
+        enable = True if not funcmatch else False
         while True:
             dis.fh_reset()
             data = fh.read(inst_width)
             if len(data) < inst_width:
                 break
 
-            if inst_width == 2:
-                word = struct.unpack('<H', data)[0]
-            else:
-                word = struct.unpack('<L', data)[0]
+            if funcmatch:
+                funcname = dis.describe_code(addr)
+                if funcname:
+                    if fnmatch.fnmatchcase(funcname, funcmatch):
+                        enable = True
+                    else:
+                        enable = False
 
-            (consumed, disassembly) = dis.disassemble(addr, data, thumb=(arch=='thumb'), live_memory=True)
+            if enable:
+                if inst_width == 2:
+                    word = struct.unpack('<H', data)[0]
+                else:
+                    word = struct.unpack('<L', data)[0]
 
-            def char(x):
-                if x < 0x20 or x>=0x7f:
-                    return '.'
-                return chr(x)
+                (consumed, disassembly) = dis.disassemble(addr, data, thumb=(arch=='thumb'), live_memory=True)
 
-            if inst_width == 2:
-                text = ''.join((char(word & 255),
-                                char((word>>8) & 255)))
-                wordstr = "{:04x}".format(word)
-            else:
-                text = ''.join((char(word & 255),
-                                char((word>>8) & 255),
-                                char((word>>16) & 255),
-                                char((word>>24) & 255)))
-                wordstr = "{:08x}".format(word)
+                def char(x):
+                    if x < 0x20 or x>=0x7f:
+                        return '.'
+                    return chr(x)
 
-            if postprocess and disassembly:
-                disassembly = postprocess(word, disassembly)
+                if inst_width == 2:
+                    text = ''.join((char(word & 255),
+                                    char((word>>8) & 255)))
+                    wordstr = "{:04x}".format(word)
+                else:
+                    text = ''.join((char(word & 255),
+                                    char((word>>8) & 255),
+                                    char((word>>16) & 255),
+                                    char((word>>24) & 255)))
+                    wordstr = "{:08x}".format(word)
 
-            if colourer and disassembly:
-                coloured = colourer.colour(disassembly)
-                coloured = [colour + s.encode('latin-1') for colour, s in coloured]
-                try:
-                    disassembly = sum(coloured, bytearray()) + colourer.colour_reset
-                except TypeError:
-                    # Python 3
-                    disassembly = b''.join(bytes(b) for b in coloured) + colourer.colour_reset
-                    disassembly = disassembly.decode('latin-1')
+                if postprocess and disassembly:
+                    disassembly = postprocess(word, disassembly)
 
-            sys.stdout.write("{:08x} : {} : {} : {}\n".format(addr, wordstr, text,
-                                                              disassembly or '<No disassembly available>'))
+                if colourer and disassembly:
+                    coloured = colourer.colour(disassembly)
+                    coloured = [colour + s.encode('latin-1') for colour, s in coloured]
+                    try:
+                        disassembly = sum(coloured, bytearray()) + colourer.colour_reset
+                    except TypeError:
+                        # Python 3
+                        disassembly = b''.join(bytes(b) for b in coloured) + colourer.colour_reset
+                        disassembly = disassembly.decode('latin-1')
+
+                sys.stdout.write("{:08x} : {} : {} : {}\n".format(addr, wordstr, text,
+                                                                  disassembly or '<No disassembly available>'))
+
+            addr += inst_width
+
+
+def map_functions(filename, baseaddr=0, funcmatch=None):
+    """
+    Produce a map of the functions that are present in the file.
+
+    @param filename:        File to process
+    @param baseaddr:        Base address of the binary
+    @param funcmatch:       Function matching string
+    """
+
+    config = disassemble.DisassembleConfig()
+    dis = DisassembleTool(config)
+    dis.baseaddr = baseaddr
+
+    inst_width = 4
+
+    with open(filename, 'rb') as fh:
+        dis.fh = fh
+        addr = baseaddr
+        while True:
+            dis.fh_reset()
+            data = fh.read(inst_width)
+            if len(data) < inst_width:
+                break
+
+            funcname = dis.describe_code(addr)
+            if funcname:
+                if not funcmatch or fnmatch.fnmatchcase(funcname, funcmatch):
+                    print("%8X %s" % (addr, funcname))
+
             addr += inst_width
 
 
@@ -479,10 +536,24 @@ def main():
         arch = 'arm'
         if options.thumb:
             arch = 'thumb'
-        disassemble_file(options.filename,
-                         arch=arch,
-                         colourer=cdis if options.colour else None,
-                         postprocess=armflags.transform)
+
+        baseaddr = options.baseaddr
+        if baseaddr is None:
+            baseaddr = 0
+            if options.filename.endswith(',ff8'):
+                baseaddr = 0x8000
+
+        if options.function_map:
+            map_functions(options.filename,
+                          baseaddr=baseaddr,
+                          funcmatch=options.match)
+        else:
+            disassemble_file(options.filename,
+                             arch=arch,
+                             colourer=cdis if options.colour else None,
+                             postprocess=armflags.transform,
+                             baseaddr=baseaddr,
+                             funcmatch=options.match)
 
     except IOError as exc:
         if exc.errno == errno.EISDIR:
