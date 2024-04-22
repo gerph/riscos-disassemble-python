@@ -76,6 +76,7 @@ To disassemble the contents of an arbitrary file:
 """
 
 import struct
+import sys
 
 
 class DisassembleConfig(object):
@@ -293,7 +294,7 @@ class Disassemble(object):
                 # This looks like a signature, so we can report it
                 offset = (signature & 0xFF) + 4
                 function_name = self.get_memory_string(addr - offset)
-                return function_name
+                return self.decode_string(function_name)
         return None
 
     def get_swi_name(self, swi):
@@ -346,6 +347,24 @@ class Disassemble(object):
         """
         return None
 
+    def get_memory_words(self, addr, size):
+        """
+        Read the current value of block of words from memory (only used when live_memory is True).
+
+        @param addr:    Address to read the value of
+        @param size:    Size in bytes to read
+
+        @return:    List of word values from memory (unsigned 4 bytes, little endian)
+                    None if no memory is present
+        """
+        words = []
+        for i in range(0, size, 4):
+            word = self.get_memory_word(addr + i)
+            if word is None:
+                return None
+            words.append(word)
+        return words
+
     def get_memory_string(self, addr):
         """
         Read the current value of a control terminated string from memory
@@ -357,6 +376,20 @@ class Disassemble(object):
                     None if no memory is present
         """
         return None
+
+    def decode_string(self, string):
+        """
+        Decode the bytes string supplied into something that we can present.
+
+        The string supplied is in the encoding of the RISC OS system and we need
+        to convert it to a string that we can show.
+        """
+        as_unicode = string.decode('latin-1')
+        as_ascii = as_unicode.encode('ascii', 'backslashreplace')
+        if sys.version_info > (3,):
+            # Python 3 - turn back from a bytes into a str
+            return as_ascii.decode('ascii')
+        return as_ascii
 
     def psr_name(self, psr, mask):
         """
@@ -898,7 +931,7 @@ class Disassemble(object):
                         # FIXME: Truncate this string if it's long?
                         string = self.get_memory_string(address + 4)
                         if string:
-                            string = "\"%s\"" % (string.decode('latin-1').encode('ascii', 'backslashreplace'),)
+                            string = "\"%s\"" % (self.decode_string(string),)
                             comment = 'R15+4 = {}'.format(string)
 
                 # See if we can find this as a named entry point
@@ -1147,7 +1180,7 @@ class Disassemble(object):
             if live_memory:
                 # Check if this is a function entry point
                 funcname = self.describe_code(address)
-                if funcname:
+                if funcname and '+' not in funcname:
                     if comment:
                         comment = 'Function: %s  ; %s' % (funcname, comment)
                     else:
