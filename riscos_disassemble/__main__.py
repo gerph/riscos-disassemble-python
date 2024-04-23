@@ -300,7 +300,7 @@ class DisassembleTool(DisassembleSWIs, DisassembleMemory, DisassembleDescription
 
 def setup_argparse():
     parser = argparse.ArgumentParser(usage="%s [<options>] <binary-file>" % (get_tool_name(),),
-                                     description="Disassemble a file of ARM or Thumb code")
+                                     description="Disassemble a file of ARM or Thumb code.")
     parser.add_argument('--help-debuggerplus', action='store_true',
                         help="Get help on the DebuggerPlus flags")
     parser.add_argument('--debuggerplus', action='append',
@@ -563,6 +563,9 @@ def main():
         if exc.errno == errno.EACCES:
             sys.exit("'%s' is not accessible" % (options.filename,))
         raise
+
+    except KeyboardInterrupt:
+        sys.exit("Interrupted")
 
     except ToolError as exc:
         sys.exit(str(exc))
