@@ -30,6 +30,12 @@ The following switches are supported:
 * `--debuggerplus`: Specify a list of modifications to the debugger output,
   which originated in [DebuggerPlus](https://old-www.moreofthesa.me.uk/progs.utils.html).
 * `--help-debuggerplus`: More information on the flags.
+* `--function-map`: List the addresses for functions with signatures
+* `--match`: Only disassemble functions with the given siganture, which may use wildcards.
+
+The filename can be followed by a hexadecimal address to use as the base
+address for the file's disassembly. By default the file will be based at
+address 0 unless the file is suffixed by `,ff8` (an absolute file).
 
 ### DebuggerPlus
 
