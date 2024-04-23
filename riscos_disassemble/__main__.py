@@ -562,6 +562,22 @@ def main():
             sys.exit("'%s' not found" % (options.filename,))
         if exc.errno == errno.EACCES:
             sys.exit("'%s' is not accessible" % (options.filename,))
+        if exc.errno == errno.EPIPE:
+            # Broken pipe - probably means that they were more-ing the file,
+            # and cancelled, or maybe piped through head or similar.
+            # We don't want to report anything else, but just fail.
+            # Close the stdout and stderr explicitly, ignoring errors, so
+            # that the implicit close on exit doesn't report an error and
+            # fail with 'close failed in file object destructor'.
+            try:
+                sys.stdout.close()
+            except Exception:
+                pass
+            try:
+                sys.stderr.close()
+            except Exception:
+                pass
+            sys.exit(1)
         raise
 
     except KeyboardInterrupt:
