@@ -54,7 +54,7 @@ class DisassemblyState(object):
     @ivar spaces2:  Spaces between the operands and the comment, or end of line (may be '')
     @ivar comment:  The comment, including leading ';' (may be None)
     """
-    inst_re = re.compile('([A-Za-z][A-Za-z0-9]+)(\s*)')
+    inst_re = re.compile('([A-Za-z][A-Za-z0-9]+|B)(\s*)')
     comment_re = re.compile('(\s+)(;.*)$')
 
     def __init__(self, dis):
