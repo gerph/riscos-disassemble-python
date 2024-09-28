@@ -11,10 +11,11 @@ import struct
 import sys
 import textwrap
 
-from . import disassemble
-from . import colours
+from .arm import disassemble
+from .arm import colours
+from .arm64 import disassembleaarch64 as disassemble64
 from . import swis
-from . import postprocess
+from .arm import postprocess
 
 
 ENV_DEBUGGERPLUS = 'RISCOS_DUMPI_DEBUGGERPLUS'
@@ -298,6 +299,10 @@ class DisassembleTool(DisassembleSWIs, DisassembleMemory, DisassembleDescription
     pass
 
 
+class Disassemble64Tool(DisassembleSWIs, DisassembleMemory, DisassembleDescriptions, disassemble64.Disassemble):
+    pass
+
+
 def setup_argparse():
     parser = argparse.ArgumentParser(usage="%s [<options>] <binary-file>" % (get_tool_name(),),
                                      description="Disassemble a file of ARM or Thumb code.")
@@ -307,6 +312,8 @@ def setup_argparse():
                         help="Specify a list of DebuggerPlus flags to apply, prefixed by '-' to disable flags")
     parser.add_argument('--thumb', action='store_true',
                         help="Disassemble as Thumb code")
+    parser.add_argument('--arm64', action='store_true',
+                        help="Disassemble as ARM 64bit (AArch64) code")
     parser.add_argument('--colour', action='store_true',
                         help="Use colours")
     parser.add_argument('--colour-8bit', action='store_true',
@@ -328,10 +335,10 @@ def setup_argparse():
 
 def disassemble_file(filename, arch='arm', colourer=None, postprocess=None, baseaddr=0, funcmatch=None):
     """
-    Disassemble a file into ARM/Thumb instructions.
+    Disassemble a file into ARM/Thumb/ARM64 instructions.
 
     @param filename:        File to process
-    @param arch:            'arm' or 'thumb'
+    @param arch:            'arm', 'thumb', or 'arm64'
     @param colourer:        A colouring object to process the content into output colours
                             Or None to not apply colouring
     @param postprocess:     A post processor function which takes the instruction and text to convert to another form
@@ -341,7 +348,10 @@ def disassemble_file(filename, arch='arm', colourer=None, postprocess=None, base
     """
 
     config = disassemble.DisassembleConfig()
-    dis = DisassembleTool(config)
+    if arch == 'arm64':
+        dis = Disassemble64Tool(config)
+    else:
+        dis = DisassembleTool(config)
     dis.baseaddr = baseaddr
 
     if not dis.available:
@@ -374,7 +384,10 @@ def disassemble_file(filename, arch='arm', colourer=None, postprocess=None, base
                 else:
                     word = struct.unpack('<L', data)[0]
 
-                (consumed, disassembly) = dis.disassemble(addr, data, thumb=(arch=='thumb'), live_memory=True)
+                if arch == 'arm64':
+                    (consumed, disassembly) = dis.disassemble(addr, data, live_memory=True)
+                else:
+                    (consumed, disassembly) = dis.disassemble(addr, data, thumb=(arch=='thumb'), live_memory=True)
 
                 def char(x):
                     if x < 0x20 or x>=0x7f:
@@ -536,6 +549,8 @@ def main():
         arch = 'arm'
         if options.thumb:
             arch = 'thumb'
+        if options.arm64:
+            arch = 'arm64'
 
         baseaddr = options.baseaddr
         if baseaddr is None:

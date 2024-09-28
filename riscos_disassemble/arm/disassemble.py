@@ -462,6 +462,7 @@ class Disassemble(object):
             if negated:
                 imm = imm ^ 0xFFFFFFFF
             if shift and shift.type == self._const.ARM_OP_IMM:
+                # Has an explicit rotate
                 imm = (imm << (32 - shift.imm)) | (imm >> shift.imm)
                 imm = imm & 0xFFFFFFFF
             if imm > 10 or imm < 0:
@@ -496,7 +497,6 @@ class Disassemble(object):
                 accumulator.append("#%s" % (' = '.join(values),))
 
         return accumulator
-
 
     def _operand_multiple_registers(self, operands, shift=None, maybe_presentable=False):
         """
@@ -558,7 +558,7 @@ class Disassemble(object):
                                       self._const.ARM_SFT_LSR_REG,
                                       self._const.ARM_SFT_ASR_REG,
                                       self._const.ARM_SFT_ROR_REG):
-                # This is a shift by a register, so we can include its valid in the result
+                # This is a shift by a register, so we can include its value in the result
                 regnum = self.inv_reg_map.get(operand.shift.value, None)
                 if regnum is not None:
                     accumulator.append('R%i = &%08x' % (regnum, self.get_reg(regnum)))
