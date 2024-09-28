@@ -310,6 +310,8 @@ def setup_argparse():
                         help="Get help on the DebuggerPlus flags")
     parser.add_argument('--debuggerplus', action='append',
                         help="Specify a list of DebuggerPlus flags to apply, prefixed by '-' to disable flags")
+    parser.add_argument('--arm', action='store_true',
+                        help="Disassemble as ARM 32bit (AArch32) code")
     parser.add_argument('--thumb', action='store_true',
                         help="Disassemble as Thumb code")
     parser.add_argument('--arm64', action='store_true',
@@ -515,6 +517,81 @@ variable %s.""" % (ENV_DEBUGGERPLUS,)
         print(line)
 
 
+def guess_architecture(filename):
+    """
+    Read the file header to check what the architecture is.
+    """
+
+    filetype = None
+    if filename.endswith(',ffa'):
+        filetype = 'module'
+    elif filename.endswith(',ff8'):
+        filetype = 'absolute'
+    elif filename.endswith(',ffc'):
+        filetype = 'utility'
+
+    if not filetype:
+        # Don't recognise it, so it's ARM.
+        return 'arm'
+
+    def word_at(offset):
+        fh.seek(offset, 0)
+        data = fh.read(4)
+        if len(data) < 4:
+            return 0
+        w = struct.unpack("<L", data)[0]
+        return w
+
+    with open(filename, 'rb') as fh:
+        # Seek to end to get the length
+        fh.seek(0, 2)
+        length = fh.tell()
+
+        if filetype == 'absolute':
+            # Offset 0x10 should be SWI OS_Exit
+            if word_at(0x10) == 0xEF000011:
+                # This is an AIF file.
+                # FIXME: We could be more careful in our checks.
+                flags = word_at(0x30)
+                if flags & 0xFF == 0x40:
+                    return 'arm64'
+
+            # All other cases are ARM (might be 26bit or 32bit, but it's irrelevant)
+            return 'arm'
+
+        elif filetype == 'utility':
+            if word_at(0x4) == 0x79766748 and \
+               word_at(0x8) == 0x216c6776:
+                # This is a headered utility, so we can check it.
+                flags = word_at(0x14)
+                if flags & 0xFF == 0x40:
+                    return 'arm64'
+
+            # All other cases are ARM (might be 26bit or 32bit, but it's irrelevant)
+            return 'arm'
+
+        elif filetype == 'module':
+            for offset in range(0, 0x34, 4):
+                word = word_at(offset)
+                if offset == 0x4:
+                    word = word & ~0xC0000000   # Knock out the flag bits (squeezed, not ARM)
+                if offset == 0x8:
+                    word = word & ~0x80000000   # Knock out the flag bits
+                if offset == 0x1c:
+                    continue                    # Skip the SWI base
+                if offset >= length:
+                    break
+                if offset == 0x30:
+                    # This is the flags offset, which is the one that matters.
+                    word = word_at(word)
+                    arch_type = (word >> 4) & 15
+                    if arch_type == 1:
+                        return 'arm64'
+
+        # All unrecognised file formats are ARM
+        return 'arm'
+
+
 def main():
     parser = setup_argparse()
     options = parser.parse_args()
@@ -546,11 +623,16 @@ def main():
         cdis.use_8bit()
 
     try:
-        arch = 'arm'
+        arch = 'guess'
+        if options.arm:
+            arch = 'arm'
         if options.thumb:
             arch = 'thumb'
         if options.arm64:
             arch = 'arm64'
+
+        if arch == 'guess':
+            arch = guess_architecture(options.filename)
 
         baseaddr = options.baseaddr
         if baseaddr is None:
