@@ -24,7 +24,8 @@ Once installed, the tool can be invoked as `riscos-dumpi`. For example:
 
 The following switches are supported:
 
-* `--arm64`: Disassembles AArch64 (ARM 64) code, rather than ARM code.
+* `--arm`: Disassembles AArch32 (ARM 32 bit) code (the default)
+* `--arm64`: Disassembles AArch64 (ARM 64 bit) code, rather than ARM code.
 * `--thumb`: Disassembles Thumb code, rather than ARM code.
 * `--colour`: Uses the original primary and secondary ANSI colours.
 * `--colour-8bit`: Use the more featureful 8bit colour palette.

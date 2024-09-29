@@ -17,6 +17,10 @@ from .arm64 import disassembleaarch64 as disassemble64
 from . import swis
 from .arm import postprocess
 
+from .access import DisassembleAccess
+from .access_helpers import DisassembleAccessDescriptions, DisassembleAccessSWIs
+from .access_memory import DisassembleAccessFile
+from . import get_disassembler
 
 ENV_DEBUGGERPLUS = 'RISCOS_DUMPI_DEBUGGERPLUS'
 
@@ -35,271 +39,18 @@ class NoCapstoneError(ToolError):
     pass
 
 
+class BadArchitectureError(ToolError):
+    pass
+
+
 class BadARMFlagError(ToolError):
     pass
 
 
-class DisassembleSWIs(object):
-    """
-    Mixin for the Disassemble classes, which adds in SWI decoding.
-    """
-
-    swi_cache = None
-
-    def get_swi_name(self, swi):
-        """
-        Decode a SWI number into a SWI name.
-
-        @param swi: SWI number to decode
-
-        @return:    SWI name, eg "OS_WriteC", "OS_WriteI+'B'", "XIIC_Control", or &XXXXX
-        """
-        if self.swi_cache is None:
-            swi_cache = {}
-            for name in dir(swis):
-                if name[0] != '_' and '_' in name:
-                    number = getattr(swis, name)
-                    swi_cache[number] = name
-            # Populate OS_WriteI
-            for vdu in range(256):
-                swi_cache[0x100 + vdu] = 'OS_WriteI+' + ('"%c"' % (vdu,) if 0x20 <= vdu < 0x7f else str(vdu))
-            self.swi_cache = swi_cache
-
-        xbit = swi & 0x20000
-        name = self.swi_cache.get(swi & ~0x20000, None)
-        if name:
-            if xbit:
-                name = 'X' + name
-            return name
-        return '&{:x}'.format(swi)
-
-
-class DisassembleMemory(object):
-    """
-    Mixin for the Disassemble classes, which adds in memory decoding by seeking.
-    """
-
-    # Initialise with the base address of the file
-    baseaddr = 0
-
-    # Initialise with the file handle for the file
-    fh = None
-
-    # Set to True when seek is needed to reset the file pointer
-    fh_seek_needed = False
-    fh_seek_pos = None
-
-    # File extent, or None if not known
-    _fh_extent = None
-
-    # How close to the end we'll do the fast get_memory_string call
-    fast_memory_string = 128
-
-    @property
-    def fh_extent(self):
-        if self._fh_extent is None:
-            if not self.fh_seek_needed:
-                self.fh_seek_pos = self.fh.tell()
-                self.fh_seek_needed = True
-            self.fh.seek(0, 2)  # Seek to end
-            self._fh_extent = self.fh.tell()
-        return self._fh_extent
-
-    def fh_reset(self):
-        """
-        Seek back to where the caller might have expected us to be.
-        """
-        if self.fh_seek_needed:
-            self.fh.seek(self.fh_seek_pos)
-            self.fh_seek_needed = False
-
-    def get_memory_byte(self, addr):
-        """
-        Read the current value of a byte from memory (only used when live_memory is True).
-
-        @param addr:    Address to read the value of
-
-        @return:    Byte value from memory (unsigned)
-                    None if no memory is present
-        """
-        if addr < self.baseaddr:
-            return None
-        if addr + 1 > self.baseaddr + self.fh_extent:
-            return None
-
-        if not self.fh_seek_needed:
-            self.fh_seek_pos = self.fh.tell()
-            self.fh_seek_needed = True
-        self.fh.seek(addr - self.baseaddr)
-        b = bytearray(self.fh.read(1))[0]
-        return b
-
-    def get_memory_word(self, addr):
-        """
-        Read the current value of a word from memory (only used when live_memory is True).
-
-        @param addr:    Address to read the value of
-
-        @return:    Word value from memory (unsigned 4 bytes, little endian)
-                    None if no memory is present
-        """
-        if addr < self.baseaddr:
-            return None
-        if addr + 4 > self.baseaddr + self.fh_extent:
-            return None
-
-        if not self.fh_seek_needed:
-            self.fh_seek_pos = self.fh.tell()
-            self.fh_seek_needed = True
-        self.fh.seek(addr - self.baseaddr)
-        w = struct.unpack("<L", self.fh.read(4))[0]
-        return w
-
-    def get_memory_string(self, addr):
-        """
-        Read the current value of a control terminated string from memory
-        (only used when live_memory is True).
-
-        @param addr:    Address to read the value of
-
-        @return:    String read (as a bytes sequence)
-                    None if no memory is present
-        """
-
-        # Whether it can even be a string
-        if addr < self.baseaddr:
-            return None
-        if addr + 1 > self.baseaddr + self.fh_extent:
-            return None
-
-        blist = []
-
-        if addr + self.fast_memory_string < self.baseaddr + self.fh_extent:
-            # There's at least 128 bytes, so we'll just try reading them
-            if not self.fh_seek_needed:
-                self.fh_seek_pos = self.fh.tell()
-                self.fh_seek_needed = True
-            self.fh.seek(addr - self.baseaddr)
-
-            data = bytearray(self.fh.read(self.fast_memory_string))
-            for b in data:
-                if b < 32:
-                    break
-                blist.append(b)
-            addr += len(blist)
-
-        # This is near to the end of the file or we didn't find a terminator, so we'll try reading individual bytes
-        while True:
-            b = self.get_memory_byte(addr)
-            if b is None:
-                return None
-            if b < 32:
-                break
-            blist.append(b)
-            addr += 1
-        bstr = bytes(bytearray(blist))
-        return bstr.decode('latin-1').encode('ascii', 'backslashreplace')
-
-
-class DisassembleDescriptions(object):
-
-    def describe_address(self, addr, description=None):
-        """
-        Return a list of descriptions about the contents of an address.
-
-        @param addr:        Address to describe the content of.
-        @param description: Any additional information which is known, such as:
-                                'pointer to string'
-                                'pointer to code'
-                                'pointer to error'
-                                'corrupted'
-
-        @return:    list of strings describing what's at that address
-                    None if nothing known
-        """
-        if addr in (0, 0xFFFFFFFF):
-            return []
-        is_string = False
-        not_string = False
-        value_str = None
-        words = None
-
-        if description:
-            if description.startswith('pointer to string'):
-                # We know it's a string, so we try to fetch it
-                value_str = self.get_memory_string(addr)
-                if value_str is not None:
-                    is_string = True
-
-            if not value_str and (addr & 3) == 0:
-                if description.startswith('pointer to code'):
-                    # We know it's code, so we try to describe that
-                    region = self.describe_code(addr)
-                    if region:
-                        return ['Function: %s' % (function,)]
-
-                if description.startswith('pointer to error'):
-                    errnum = self.get_memory_word(addr)
-                    value_str = self.get_memory_string(addr + 1)
-                    if value_str is not None and errnum is not None:
-                        return ["Error &{:x}: \"{}\"".format(errnum,
-                                                             value_str.decode('latin-1').encode('ascii', 'backslashreplace'))]
-
-        if not value_str:
-            # Let's have a guess at the string
-            if not description or description.startswith('pointer to '):
-                value_str = self.get_memory_string(addr)
-                limit = 6
-                if value_str and len(value_str) >= limit:
-                    is_string = True
-                else:
-                    not_string = True
-
-        if not not_string and not is_string:
-            # We don't know if it's a string yet, so let's have a see whether
-            # it looks like a string
-            words = self.get_memory_words(addr, 4 * 4)
-            word = words[0] if words else None
-            if word is None:
-                # It's not in mapped memory, so give up now.
-                return []
-            if 32 <= (word & 255) < 127 and \
-               32 <= ((word>>8) & 255) < 127 and \
-               32 <= ((word>>16) & 255) < 127 and \
-               32 <= ((word>>24) & 255) < 127:
-                # Looks like a plausible string; let's use it
-                value_str = self.get_memory_string(addr)
-                if len(value_str) < 250:
-                    # So long as it's not too long, we'll say it's a string
-                    is_string = True
-                    not_string = False
-
-        if is_string:
-            return ["\"%s\"" % (self.decode_string(value_str),)]
-
-        if (addr & 3) == 0:
-            # It's aligned, so it might be a pointer to some words
-            if not words:
-                # If we've not already read the words, try now.
-                words = self.get_memory_words(addr, 4 * 4)
-            if words:
-                words_str = ", ".join("&%08x" % (word,) for word in words)
-                desc = ["[%s]" % (words_str,)]
-                if not description or description.startswith('pointer to code'):
-                    function = self.describe_code(addr)
-                    if function:
-                        #desc.insert(0, function)
-                        desc = ['Function: %s' % (function,)]
-                return desc
-
-        return []
-
-
-class DisassembleTool(DisassembleSWIs, DisassembleMemory, DisassembleDescriptions, disassemble.Disassemble):
-    pass
-
-
-class Disassemble64Tool(DisassembleSWIs, DisassembleMemory, DisassembleDescriptions, disassemble64.Disassemble):
+class OurAccess(DisassembleAccessSWIs,
+                DisassembleAccessFile,
+                DisassembleAccessDescriptions,
+                DisassembleAccess):
     pass
 
 
@@ -349,12 +100,14 @@ def disassemble_file(filename, arch='arm', colourer=None, postprocess=None, base
     @param funcmatch:       Function matching string
     """
 
-    config = disassemble.DisassembleConfig()
-    if arch == 'arm64':
-        dis = Disassemble64Tool(config)
+    access = OurAccess()
+    access.baseaddr = baseaddr
+
+    dis_cls = get_disassembler(arch)
+    if dis_cls:
+        dis = dis_cls(access=access)
     else:
-        dis = DisassembleTool(config)
-    dis.baseaddr = baseaddr
+        raise BadArchitectureError("Could not find disassembler for architecture '{}'".format(arch))
 
     if not dis.available:
         raise NoCapstoneError("The Python Capstone package must be installed. "
@@ -363,11 +116,11 @@ def disassemble_file(filename, arch='arm', colourer=None, postprocess=None, base
     inst_width = 2 if arch == 'thumb' else 4
 
     with open(filename, 'rb') as fh:
-        dis.fh = fh
+        access.fh = fh
         addr = baseaddr
         enable = True if not funcmatch else False
         while True:
-            dis.fh_reset()
+            access.fh_reset()
             data = fh.read(inst_width)
             if len(data) < inst_width:
                 break

@@ -17,23 +17,11 @@ The disassembly can be configured to have different functionality through the
 The `disassemble_instruction` method can be told whether the register and/or
 memory interfaces will contain valid information. When they are enabled (and
 the corresponding configuration for showing referenced registers or pointers)
-the `get_reg` and `get_memory_*` methods will be called to read register
-and memory values.
+the accessor object will be called to obtain more information.
 
-To use the `Disassemble` class most effectively it should be subclassed and
-alternative implementations provided for some of the methods. See the actual
-method docstrings for more details:
-
-* `describe_address`:   More information about a specific address
-* `describe_region`:    More information about the region an address lies in
-* `describe_code`:      Read the name of the function at an address
-* `get_swi_name`:       Decode a SWI number into a SWI name
-* `get_reg`:            Read the current value of a register
-* `get_cpsr`:           Read the current value of the CPSR
-* `get_memory_byte`:    Read a byte from memory
-* `get_memory_word`:    Read a word from memory
-* `get_memory_string`:  Read a string from memory
-
+The accessor object is initialised on class initialisation, and contains
+functions which can read the memory, registers, and descriptions of the
+state of the system. See the access.py file for more details.
 
 Simple usage of the `Disassemble` class for ARM code might be something like:
 
@@ -78,23 +66,12 @@ To disassemble the contents of an arbitrary file:
 import struct
 import sys
 
+from .. import base
 
-class DisassembleConfig(object):
+
+class DisassembleARM64Config(object):
     """
     Configuration for how the disassembly should be performed by the Disassemble class.
-    """
-
-    format = 'riscos'
-    """
-    Configures how the disassembly will be formatted. By default a RISC OS-like
-    layout will be used for the disassembly. This takes more processing from the
-    Capstone library's output, but will be more familiar. It is possible to use
-    the raw Capstone format to save processing time.
-
-    Formats supported:
-
-        * `capstone` - Raw capstone disassembly.
-        * `riscos` - Processed disassembly to be more like RISC OS forms.
     """
 
     show_referenced_registers = True
@@ -114,13 +91,25 @@ class DisassembleConfig(object):
     """
 
 
-class Disassemble(object):
+@base.register_disassembler
+class DisassembleARM64(base.DisassembleBase):
+    # Architecture name
+    arch = "arm64"
 
-    def __init__(self, config):
+    # Minimum width in bytes of instructions
+    inst_width_min = 4
+
+    # Maximum width in bytes of instructions
+    inst_width_max = 4
+
+    # The default class to use if no configuration is supplied
+    default_config = DisassembleARM64Config
+
+    def __init__(self, *args, **kwargs):
+        super(DisassembleARM64, self).__init__(*args, **kwargs)
         self._capstone = None
         self._capstone_version = None
         self._const = None
-        self.config = config
         self.md = None
 
         self.bit_numbers = dict((1<<bit, "bit %s" % (bit,)) for bit in range(32))
@@ -220,145 +209,6 @@ class Disassemble(object):
     @property
     def available(self):
         return bool(self.capstone)
-
-    def describe_address(self, addr, description=None):
-        """
-        Return a list of descriptions about the contents of an address.
-
-        @param addr:        Address to describe the content of.
-        @param description: Any additional information which is known, such as:
-                                'pointer to string'
-                                'pointer to code'
-                                'pointer to error'
-                                'corrupted'
-
-        @return:    list of strings describing what's at that address
-                    None if nothing known
-        """
-        return None
-
-    def describe_region(self, addr, relative=False):
-        """
-        Describe the region that the given address is within.
-
-        @param addr:    Address to describe (which might not be mapped)
-
-        @return: tuple of (low, high, description) if the address is in a known region
-                 None if the address cannot be described
-        """
-        return None
-
-    def describe_code(self, addr):
-        """
-        Describe the code at a given address.
-
-        @param addr:    Address to describe (which might not be mapped)
-
-        @return: Name of the function (or function + offset)
-                 None if code is not known
-        """
-        signature = self.get_memory_word(addr - 4)
-        if signature is not None:
-            if signature & 0xFFFFFF03 == 0xFF000000:
-                # This looks like a signature, so we can report it
-                offset = (signature & 0xFF) + 4
-                function_name = self.get_memory_string(addr - offset)
-                return function_name
-        return None
-
-    def get_swi_name(self, swi):
-        """
-        Decode a SWI number into a SWI name.
-
-        @param swi: SWI number to decode
-
-        @return:    SWI name, eg "OS_WriteC", "OS_WriteI+'B'", "XIIC_Control", or &XXXXX
-        """
-        return '&{:x}'.format(swi)
-
-    def get_reg(self, regnum):
-        """
-        Return the current value of a register (only used when live_registers is True).
-
-        @param regnum:  Register number to read (0-31)
-
-        @return: Value of the register
-        """
-        return 0
-
-    def get_cpsr(self):
-        """
-        Return the current value of CPSR (only used when live_registers is True).
-
-        @return: Value of the CPSR
-        """
-        return 0
-
-    def get_memory_byte(self, addr):
-        """
-        Read the current value of a byte from memory (only used when live_memory is True).
-
-        @param addr:    Address to read the value of
-
-        @return:    Byte value from memory (unsigned)
-                    None if no memory is present
-        """
-        return None
-
-    def get_memory_word(self, addr):
-        """
-        Read the current value of a word from memory (only used when live_memory is True).
-
-        @param addr:    Address to read the value of
-
-        @return:    Word value from memory (unsigned 4 bytes, little endian)
-                    None if no memory is present
-        """
-        return None
-
-    def get_memory_words(self, addr, size):
-        """
-        Read the current value of block of words from memory (only used when live_memory is True).
-
-        @param addr:    Address to read the value of
-        @param size:    Size in bytes to read
-
-        @return:    List of word values from memory (unsigned 4 bytes, little endian)
-                    None if no memory is present
-        """
-        words = []
-        for i in range(0, size, 4):
-            word = self.get_memory_word(addr + i)
-            if word is None:
-                return None
-            words.append(word)
-        return words
-
-    def get_memory_string(self, addr):
-        """
-        Read the current value of a control terminated string from memory
-        (only used when live_memory is True).
-
-        @param addr:    Address to read the value of
-
-        @return:    String read (as a bytes sequence)
-                    None if no memory is present
-        """
-        return None
-
-    def decode_string(self, string):
-        """
-        Decode the bytes string supplied into something that we can present.
-
-        The string supplied is in the encoding of the RISC OS system and we need
-        to convert it to a string that we can show.
-        """
-        as_unicode = string.decode('latin-1')
-        as_ascii = as_unicode.encode('ascii', 'backslashreplace')
-        if sys.version_info > (3,):
-            # Python 3 - turn back from a bytes into a str
-            return as_ascii.decode('ascii')
-        return as_ascii
 
     def psr_name(self, psr, mask):
         """
@@ -491,7 +341,7 @@ class Disassemble(object):
             else:
                 # There's no index, so we'll check if there's a presentable value string at that position
                 if base is not None and maybe_presentable and self.config.show_referenced_pointers:
-                    desc = self.describe_address(base)
+                    desc = self.access.describe_address(base)
                     if desc:
                         # The description may have multiple elements, so comma separate them
                         desc = ', '.join(desc)
@@ -556,7 +406,7 @@ class Disassemble(object):
                             if live_memory:
                                 # FIXME: Maybe this should be just safe_string, and we replace control characters with escapes?
                                 # FIXME: Truncate this string if it's long?
-                                string = self.get_memory_string(address + 4)
+                                string = self.access.get_memory_string(address + 4)
                                 if string:
                                     string = "\"%s\"" % (string.decode('latin-1').encode('ascii', 'backslashreplace'),)
                                     comment = ' (PC+4 = {})'.format(string)
@@ -565,14 +415,14 @@ class Disassemble(object):
                             # OS_Write0
                             if live_memory and live_registers:
                                 r0 = self.get_reg(0)
-                                string = self.get_memory_string(r0)
+                                string = self.access.get_memory_string(r0)
                                 if string:
                                     string = "\"%s\"" % (string.decode('latin-1').encode('ascii', 'backslashreplace'),)
                                     comment = ' ({})'.format(string)
                 elif live_memory:
                     # If we have live memory, we may be able to decode the SWI number
                     # If the sequence is MOVZ x10, #<value>
-                    before_1 = self.get_memory_word(address - 4)
+                    before_1 = self.access.get_memory_word(address - 4)
                     masked = before_1 & ~0x1fffe0
                     swi =  None
                     if masked == 0xd280000a:
@@ -581,14 +431,14 @@ class Disassemble(object):
                     elif masked == 0xf2a0000a:
                         # MOVK instruction
                         # The preceding instruction should be MOVZ
-                        before_2 = self.get_memory_word(address - 8)
+                        before_2 = self.access.get_memory_word(address - 8)
                         masked = before_2 & ~0x1fffe0
                         if masked == 0xd280000a:
                             swi = ((before_2 >> 5) & 65535)
                             swi |= ((before_1 >> 5) & 65535) << 16
 
                 if swi is not None:
-                    swi_name = self.get_swi_name(swi)
+                    swi_name = self.access.decode_swi(swi)
                     if swi_name is None:
                         comment = 'SWI &%06X' % (swi,)
                     else:
@@ -601,7 +451,7 @@ class Disassemble(object):
                     # We can allow this to be omitted in cases if the memory that's being debugged
                     # is not actually live memory (could be relocated, synthetic, etc).
                     addr = i.operands[0].imm
-                    func = self.describe_code(addr)
+                    func = self.access.describe_code(addr)
                     if func:
                         comment = '-> Function: %s' % (func,)
 
@@ -613,7 +463,7 @@ class Disassemble(object):
                 op_str = '%s, %s' % (op_prefix, op_suffix)
 
                 if live_memory:
-                    desc = self.describe_address(imm)
+                    desc = self.access.describe_address(imm)
                     if desc:
                         comment = '-> %s' % ('; '.join(desc),)
 
@@ -684,7 +534,7 @@ class Disassemble(object):
                     # We can allow this to be omitted in cases if the memory that's being debugged
                     # is not actually live memory (could be relocated, synthetic, etc).
                     addr = i.operands[1].imm
-                    func = self.describe_code(addr)
+                    func = self.access.describe_code(addr)
                     if func:
                         accumulator.append('-> Function: %s' % (func,))
 
@@ -702,7 +552,7 @@ class Disassemble(object):
 
             if live_memory:
                 # Check if this is a function entry point
-                funcname = self.describe_code(address)
+                funcname = self.access.describe_code(address)
                 if funcname and '+' not in funcname:
                     if comment:
                         comment = 'Function: %s  ; %s' % (funcname, comment)

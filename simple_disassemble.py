@@ -7,7 +7,7 @@ import os
 import struct
 import sys
 
-import riscos_disassemble.arm.disassemble as disassemble
+import riscos_disassemble
 
 
 if len(sys.argv) < 2:
@@ -16,8 +16,12 @@ if len(sys.argv) < 2:
 
 filename = sys.argv[1]
 
-config = disassemble.DisassembleConfig()
-dis = disassemble.Disassemble(config)
+dis_cls = riscos_disassemble.get_disassembler('arm')
+if dis_cls:
+    dis = dis_cls()
+else:
+    exit("Could not find disassembler for ARM")
+
 
 with open(filename, 'rb') as fh:
     addr = 0
