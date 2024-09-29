@@ -1,0 +1,45 @@
+00000000 : ea000005 : .... : [37mANDS[37m    [mx[33m5[37m,[37m [mx[33m0[37m,[37m [mx[33m0[m
+00000004 : 79766748 : Hgvy : [37mLDRH[37m    [mw[33m8[37m,[37m [37m[[mx[33m26[37m,[37m [37m#[33m&1b32[37m][m
+00000008 : 216c6776 : vgl! : [31mUndefined instruction[m
+0000000c : 000000b0 : .... : [31mUndefined instruction[m
+00000010 : 00000004 : .... : [31mUndefined instruction[m
+00000014 : 00000040 : @... : [31mUndefined instruction[m
+00000018 : 0000005c : \... : [31mUndefined instruction[m
+0000001c : e28f0004 : .... : [31mUndefined instruction[m
+00000020 : e3500102 : ..P. : [31mUndefined instruction[m
+00000024 : e1a0f00e : .... : [31mUndefined instruction[m
+00000028 : 00000000 : .... : [31mUndefined instruction[m
+0000002c : 63724141 : AArc : [31mUndefined instruction[m
+00000030 : 20343668 : h64  : [31mUndefined instruction[m
+00000034 : 616e6962 : bina : [31mUndefined instruction[m
+00000038 : 73656972 : ries : [31mUndefined instruction[m
+0000003c : 6e616320 :  can : [37mRSUBHN2[37m [mv[33m0[37m.[33m8[mh[37m,[37m [mv[33m25[37m.[33m4[ms[37m,[37m [mv[33m1[37m.[33m4[ms[m
+00000040 : 20746f6e : not  : [31mUndefined instruction[m
+00000044 : 72206562 : be r : [37mANDS[37m    [mw[33m2[37m,[37m [mw[33m11[37m,[37m [37m#[33m&3ffffff[37m        [32m; #67108863[m
+00000048 : 6f206e75 : un o : [31mUndefined instruction[m
+0000004c : 3233206e : n 32 : [37mORR[37m     [mw[33m14[37m,[37m [mw[33m3[37m,[37m [37m#[33m&3fe000[37m         [32m; #4186112[m
+00000050 : 20746962 : bit  : [31mUndefined instruction[m
+00000054 : 43534952 : RISC : [31mUndefined instruction[m
+00000058 : 00534f20 :  OS. : [31mUndefined instruction[m
+0000005c : a9bf7bfd : .{.. : [37mSTP[37m     [mx[33m29[37m,[37m [mx[33m30[37m,[37m [37m[[37msp[37m,[37m [37m#[37m-[33m&10[37m][37m![m
+00000060 : aa0103e3 : .... : [37mMOV[37m     [mx[33m3[37m,[37m [mx[33m1[m
+00000064 : d280002a : *... : [37mMOVZ[37m    [mx[33m10[37m,[37m [37m#[33m&1[m
+00000068 : d4000001 : .... : [32mSWI[37m     [36m#0[37m                        [32m; SWI OS_WriteS[m
+0000006c : 6c6c6548 : Hell : [37mLDNP[37m    [md[33m8[37m,[37m [md[33m25[37m,[37m [37m[[mx[33m10[37m,[37m [37m#[37m-[33m&140[37m][m
+00000070 : 0000206f : o .. : [31mUndefined instruction[m
+00000074 : 39400061 : a.@9 : [37mLDRB[37m    [mw[33m1[37m,[37m [37m[[mx[33m3[37m][m
+00000078 : 10000142 : B... : [37mADR[37m     [mx[33m2[37m,[37m [33m&000000A0[37m             [32m; -> [&6c726f77, &00000064, &00000000, &00000000][m
+0000007c : 7100003f : ?..q : [37mCMP[37m     [mw[33m1[37m,[37m [37m#[33m0[m
+00000080 : 9a830040 : @... : [37mCSEL[37m    [mx[33m0[37m,[37m [mx[33m2[37m,[37m [mx[33m3[37m,[37m [me[mq[m
+00000084 : d280004a : J... : [37mMOVZ[37m    [mx[33m10[37m,[37m [37m#[33m&2[m
+00000088 : d4000001 : .... : [32mSWI[37m     [36m#0[37m                        [32m; SWI OS_Write0[m
+0000008c : d280006a : j... : [37mMOVZ[37m    [mx[33m10[37m,[37m [37m#[33m&3[m
+00000090 : d4000001 : .... : [32mSWI[37m     [36m#0[37m                        [32m; SWI OS_NewLine[m
+00000094 : d2800000 : .... : [37mMOVZ[37m    [mx[33m0[37m,[37m [37m#[33m0[m
+00000098 : a8c17bfd : .{.. : [37mLDP[37m     [mx[33m29[37m,[37m [mx[33m30[37m,[37m [37m[[37msp[37m][37m,[37m [37m#[33m&10[m
+0000009c : d65f03c0 : .._. : [37mRET[m
+000000a0 : 6c726f77 : worl : [37mLDNP[37m    [md[33m23[37m,[37m [md[33m27[37m,[37m [37m[[mx[33m27[37m,[37m [37m#[37m-[33m&e0[37m][m
+000000a4 : 00000064 : d... : [31mUndefined instruction[m
+000000a8 : 00000000 : .... : [31mUndefined instruction[m
+000000ac : 00000000 : .... : [31mUndefined instruction[m
+000000b0 : 00000000 : .... : [31mUndefined instruction[m

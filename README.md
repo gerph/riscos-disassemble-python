@@ -56,7 +56,7 @@ Supported flags:
 * `APCS`: Use APCS-R register set.
 * `Lower`: Force all register names to lower case.
 * `QuoteSWIs`: Put quotes around SWI names.
-* `UseDCD`: Use DCD instead of 'Undefined instruction', and BRK where DCD &x6000010 would be used.
+* `UseDCD`: Use DCD instead of 'Undefined instruction', and `BRK` where `DCD &x6000010` would be used.
 * `UseNOP`: Use NOP instead of MOV R0,R0.
 * `UseVDU`: Use VDU x instead of SWI OS_WriteI+x.
 

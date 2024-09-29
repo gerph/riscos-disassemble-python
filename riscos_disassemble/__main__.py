@@ -11,10 +11,7 @@ import struct
 import sys
 import textwrap
 
-from .arm import disassemble
 from .arm import colours
-from .arm64 import disassembleaarch64 as disassemble64
-from . import swis
 from .arm import postprocess
 
 from .access import DisassembleAccess
@@ -126,7 +123,7 @@ def disassemble_file(filename, arch='arm', colourer=None, postprocess=None, base
                 break
 
             if funcmatch:
-                funcname = dis.describe_code(addr)
+                funcname = access.describe_code(addr)
                 if funcname:
                     if fnmatch.fnmatchcase(funcname, funcmatch):
                         enable = True
@@ -188,27 +185,24 @@ def map_functions(filename, baseaddr=0, funcmatch=None):
     @param funcmatch:       Function matching string
     """
 
-    config = disassemble.DisassembleConfig()
-    dis = DisassembleTool(config)
-    dis.baseaddr = baseaddr
-
-    inst_width = 4
+    access = OurAccess()
+    access.baseaddr = baseaddr
 
     with open(filename, 'rb') as fh:
-        dis.fh = fh
+        access.fh = fh
         addr = baseaddr
         while True:
-            dis.fh_reset()
-            data = fh.read(inst_width)
-            if len(data) < inst_width:
+            access.fh_reset()
+            data = fh.read(4)
+            if len(data) < 4:
                 break
 
-            funcname = dis.describe_code(addr)
+            funcname = access.describe_code(addr)
             if funcname:
                 if not funcmatch or fnmatch.fnmatchcase(funcname, funcmatch):
                     print("%8X %s" % (addr, funcname))
 
-            addr += inst_width
+            addr += 4
 
 
 def update_arm_flags(armflags, flags):

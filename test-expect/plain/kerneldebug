@@ -1,0 +1,79 @@
+00000000 : e4d10001 : .... : LDRB    r0, [r1], #1
+00000004 : e330006f : o.0. : TEQ     r0, #&6f                  ; #111 = 'o'
+00000008 : 0a000018 : .... : BEQ     &00000070                 ; -> Function: test_output
+0000000c : e3300069 : i.0. : TEQ     r0, #&69                  ; #105 = 'i'
+00000010 : 0a000029 : )... : BEQ     &000000bc                 ; -> Function: test_input
+00000014 : ef000001 : .... : SWI     OS_WriteS                 ; R15+4 = "Syntax: kerneldebug {o|i}"
+00000018 : 746e7953 : Synt : STRBTVC r7, [lr], #-&953
+0000001c : 203a7861 : ax:  : EORSHS  r7, r10, r1, ROR #16
+00000020 : 6e72656b : kern : CDPVS   p5, #7, c6, c2, c11, #3
+00000024 : 65646c65 : elde : STRBVS  r6, [r4, #-&c65]!
+00000028 : 20677562 : bug  : RSBHS   r7, r7, r2, ROR #10
+0000002c : 697c6f7b : {o|i : LDMDBVS r12!, {r0, r1, r3, r4, r5, r6, r8, r9, r10, r11, sp, lr} ^
+00000030 : 0000007d : }... : ANDEQ   r0, r0, sp, ROR r0
+00000034 : ef000003 : .... : SWI     OS_NewLine
+00000038 : e1a0f00e : .... : MOV     pc, lr
+0000003c : 75746573 : setu : LDRBVC  r6, [r4, #-&573]!
+00000040 : 00000070 : p... : ANDEQ   r0, r0, r0, ROR r0
+00000044 : ff000008 : .... : Undefined instruction
+00000048 : e92d4000 : .@-. : STMDB   sp!, {lr}                 ; Function: setup
+0000004c : e3a0000b : .... : MOV     r0, #&b                   ; #11
+00000050 : ef000058 : X... : SWI     OS_ReadSysInfo
+00000054 : e1a08000 : .... : MOV     r8, r0
+00000058 : e1a09001 : .... : MOV     r9, r1
+0000005c : e8bd8000 : .... : LDMIA   sp!, {pc}
+00000060 : 74736574 : test : LDRBTVC r6, [r3], #-&574
+00000064 : 74756f5f : _out : LDRBTVC r6, [r5], #-&f5f
+00000068 : 00747570 : put. : RSBSEQ  r7, r4, r0, ROR r5
+0000006c : ff00000c : .... : Undefined instruction
+00000070 : e92d4000 : .@-. : STMDB   sp!, {lr}                 ; Function: test_output
+00000074 : ebfffff3 : .... : BL      &00000048                 ; -> Function: setup
+00000078 : e3a00044 : D... : MOV     r0, #&44                  ; #68  = 'D'
+0000007c : eb000022 : "... : BL      &0000010c                 ; -> Function: do_output
+00000080 : e3a00065 : e... : MOV     r0, #&65                  ; #101 = 'e'
+00000084 : eb000020 :  ... : BL      &0000010c                 ; -> Function: do_output
+00000088 : e3a00062 : b... : MOV     r0, #&62                  ; #98  = 'b'
+0000008c : eb00001e : .... : BL      &0000010c                 ; -> Function: do_output
+00000090 : e3a00075 : u... : MOV     r0, #&75                  ; #117 = 'u'
+00000094 : eb00001c : .... : BL      &0000010c                 ; -> Function: do_output
+00000098 : e3a00067 : g... : MOV     r0, #&67                  ; #103 = 'g'
+0000009c : eb00001a : .... : BL      &0000010c                 ; -> Function: do_output
+000000a0 : e3a0000a : .... : MOV     r0, #&a
+000000a4 : eb000018 : .... : BL      &0000010c                 ; -> Function: do_output
+000000a8 : e8bd8000 : .... : LDMIA   sp!, {pc}
+000000ac : 74736574 : test : LDRBTVC r6, [r3], #-&574
+000000b0 : 706e695f : _inp : RSBVC   r6, lr, pc, ASR r9
+000000b4 : 00007475 : ut.. : ANDEQ   r7, r0, r5, ROR r4
+000000b8 : ff00000c : .... : Undefined instruction
+000000bc : e92d4000 : .@-. : STMDB   sp!, {lr}                 ; Function: test_input
+000000c0 : ebffffe0 : .... : BL      &00000048                 ; -> Function: setup
+000000c4 : eb000018 : .... : BL      &0000012c                 ; -> Function: do_input
+000000c8 : ef000001 : .... : SWI     OS_WriteS                 ; R15+4 = "Read character "
+000000cc : 64616552 : Read : STRBTVS r6, [r1], #-&552
+000000d0 : 61686320 :  cha : Undefined instruction
+000000d4 : 74636172 : ract : STRBTVC r6, [r3], #-&172
+000000d8 : 00207265 : er . : EOREQ   r7, r0, r5, ROR #4
+000000dc : e92d0007 : ..-. : PUSH    {r0, r1, r2}
+000000e0 : e1a0100c : .... : MOV     r1, r12
+000000e4 : e3a02014 : . .. : MOV     r2, #&14                  ; #20
+000000e8 : ef0000dc : .... : SWI     OS_ConvertInteger4
+000000ec : ef000002 : .... : SWI     OS_Write0
+000000f0 : e8bd0007 : .... : POP     {r0, r1, r2}
+000000f4 : ef000003 : .... : SWI     OS_NewLine
+000000f8 : e8bd8000 : .... : LDMIA   sp!, {pc}
+000000fc : 6f5f6f64 : do_o : SWIVS   &5f6f64
+00000100 : 75707475 : utpu : LDRBVC  r7, [r0, #-&475]!
+00000104 : 00000074 : t... : ANDEQ   r0, r0, r4, ROR r0
+00000108 : ff00000c : .... : Undefined instruction
+0000010c : e92d400f : .@-. : PUSH    {r0, r1, r2, r3, lr}      ; Function: do_output
+00000110 : e1a0e00f : .... : MOV     lr, pc
+00000114 : e1a0f008 : .... : MOV     pc, r8
+00000118 : e8bd800f : .... : POP     {r0, r1, r2, r3, pc}
+0000011c : 695f6f64 : do_i : LDMDBVS pc, {r2, r5, r6, r8, r9, r10, r11, sp, lr} ^
+00000120 : 7475706e : nput : LDRBTVC r7, [r5], #-&6e
+00000124 : 00000000 : .... : ANDEQ   r0, r0, r0
+00000128 : ff00000c : .... : Undefined instruction
+0000012c : e92d400e : .@-. : PUSH    {r1, r2, r3, lr}          ; Function: do_input
+00000130 : e1a0e00f : .... : MOV     lr, pc
+00000134 : e1a0f009 : .... : MOV     pc, r9
+00000138 : e8bd800e : .... : POP     {r1, r2, r3, pc}

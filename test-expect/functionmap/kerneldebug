@@ -1,0 +1,5 @@
+      48 setup
+      70 test_output
+      BC test_input
+     10C do_output
+     12C do_input

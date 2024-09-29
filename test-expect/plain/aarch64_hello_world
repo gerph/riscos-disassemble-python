@@ -1,0 +1,3064 @@
+00008000 : e1a00000 : .... : Undefined instruction
+00008004 : e1a00000 : .... : Undefined instruction
+00008008 : e1a00000 : .... : Undefined instruction
+0000800c : eb00000b : .... : SUBS    x11, x0, x0
+00008010 : ef000011 : .... : Undefined instruction
+00008014 : 00002ec0 : .... : Undefined instruction
+00008018 : 00000120 :  ... : Undefined instruction
+0000801c : 00000000 : .... : Undefined instruction
+00008020 : 000000b0 : .... : Undefined instruction
+00008024 : 00000000 : .... : Undefined instruction
+00008028 : 00008000 : .... : Undefined instruction
+0000802c : 00000000 : .... : Undefined instruction
+00008030 : 00000040 : @... : Undefined instruction
+00008034 : 00000000 : .... : Undefined instruction
+00008038 : 00000000 : .... : Undefined instruction
+0000803c : 00000000 : .... : Undefined instruction
+00008040 : e28f0000 : .... : Undefined instruction
+00008044 : ef00002b : +... : Undefined instruction
+00008048 : 00000000 : .... : Undefined instruction
+0000804c : 63724141 : AArc : Undefined instruction
+00008050 : 20343668 : h64  : Undefined instruction
+00008054 : 616e6962 : bina : Undefined instruction
+00008058 : 73656972 : ries : Undefined instruction
+0000805c : 6e616320 :  can : RSUBHN2 v0.8h, v25.4s, v1.4s
+00008060 : 20746f6e : not  : Undefined instruction
+00008064 : 72206562 : be r : ANDS    w2, w11, #&3ffffff        ; #67108863
+00008068 : 6f206e75 : un o : Undefined instruction
+0000806c : 3233206e : n 32 : ORR     w14, w3, #&3fe000         ; #4186112
+00008070 : 20746962 : bit  : Undefined instruction
+00008074 : 43534952 : RISC : Undefined instruction
+00008078 : 00534f20 :  OS. : Undefined instruction
+0000807c : 00000000 : .... : Undefined instruction
+00008080 : 00000000 : .... : Undefined instruction
+00008084 : 00000000 : .... : Undefined instruction
+00008088 : 00000000 : .... : Undefined instruction
+0000808c : 00000000 : .... : Undefined instruction
+00008090 : 00000000 : .... : Undefined instruction
+00008094 : 00000000 : .... : Undefined instruction
+00008098 : 00000000 : .... : Undefined instruction
+0000809c : 00000000 : .... : Undefined instruction
+000080a0 : 00000000 : .... : Undefined instruction
+000080a4 : 00000000 : .... : Undefined instruction
+000080a8 : 00000000 : .... : Undefined instruction
+000080ac : 00000000 : .... : Undefined instruction
+000080b0 : 00000000 : .... : Undefined instruction
+000080b4 : 00000000 : .... : Undefined instruction
+000080b8 : 00000000 : .... : Undefined instruction
+000080bc : 00000000 : .... : Undefined instruction
+000080c0 : 00000000 : .... : Undefined instruction
+000080c4 : 00000000 : .... : Undefined instruction
+000080c8 : 00000000 : .... : Undefined instruction
+000080cc : 00000000 : .... : Undefined instruction
+000080d0 : 00000000 : .... : Undefined instruction
+000080d4 : 00000000 : .... : Undefined instruction
+000080d8 : 00000000 : .... : Undefined instruction
+000080dc : 00000000 : .... : Undefined instruction
+000080e0 : 00000000 : .... : Undefined instruction
+000080e4 : 00000000 : .... : Undefined instruction
+000080e8 : 00000000 : .... : Undefined instruction
+000080ec : 00000000 : .... : Undefined instruction
+000080f0 : 00000000 : .... : Undefined instruction
+000080f4 : 00000000 : .... : Undefined instruction
+000080f8 : 00000000 : .... : Undefined instruction
+000080fc : 00000000 : .... : Undefined instruction
+00008100 : d503201f : . .. : NOP
+00008104 : 94000004 : .... : BL      &00008114
+00008108 : 9400001f : .... : BL      &00008184
+0000810c : d280022a : *... : MOVZ    x10, #&11                 ; #17
+00008110 : d4000001 : .... : SWI     #0                        ; SWI OS_Exit
+00008114 : d10423c0 : .#.. : SUB     x0, x30, #&108            ; #264
+00008118 : b9401403 : ..@. : LDR     w3, [x0, #&14]
+0000811c : b9401804 : ..@. : LDR     w4, [x0, #&18]
+00008120 : 8b030001 : .... : ADD     x1, x0, x3
+00008124 : 8b040021 : !... : ADD     x1, x1, x4
+00008128 : b9402004 : . @. : LDR     w4, [x0, #&20]
+0000812c : d2800005 : .... : MOVZ    x5, #0
+00008130 : d2800006 : .... : MOVZ    x6, #0
+00008134 : f102009f : .... : CMP     x4, #&80                  ; #128 = bit 7
+00008138 : 54000183 : ...T : B.LO    &00008168
+0000813c : a8811825 : %... : STP     x5, x6, [x1], #&10
+00008140 : a8811825 : %... : STP     x5, x6, [x1], #&10
+00008144 : a8811825 : %... : STP     x5, x6, [x1], #&10
+00008148 : a8811825 : %... : STP     x5, x6, [x1], #&10
+0000814c : a8811825 : %... : STP     x5, x6, [x1], #&10
+00008150 : a8811825 : %... : STP     x5, x6, [x1], #&10
+00008154 : a8811825 : %... : STP     x5, x6, [x1], #&10
+00008158 : a8811825 : %... : STP     x5, x6, [x1], #&10
+0000815c : d1020084 : .... : SUB     x4, x4, #&80              ; #128 = bit 7
+00008160 : f102009f : .... : CMP     x4, #&80                  ; #128 = bit 7
+00008164 : 54fffec2 : ...T : B.HS    &0000813c
+00008168 : f100109f : .... : CMP     x4, #4
+0000816c : 540000a3 : ...T : B.LO    &00008180
+00008170 : b8004425 : %D.. : STR     w5, [x1], #4
+00008174 : d1001084 : .... : SUB     x4, x4, #4
+00008178 : f100109f : .... : CMP     x4, #4
+0000817c : 54ffffa2 : ...T : B.HS    &00008170
+00008180 : d65f03c0 : .._. : RET
+00008184 : d280020a : .... : MOVZ    x10, #&10                 ; #16 = bit 4
+00008188 : d4000001 : .... : SWI     #0                        ; SWI OS_GetEnv
+0000818c : d280001d : .... : MOVZ    x29, #0
+00008190 : 9100003f : ?... : MOV     sp, x1
+00008194 : aa0103e3 : .... : MOV     x3, x1
+00008198 : d10433c1 : .3.. : SUB     x1, x30, #&10c            ; #268
+0000819c : b9401422 : ".@. : LDR     w2, [x1, #&14]
+000081a0 : b9401824 : $.@. : LDR     w4, [x1, #&18]
+000081a4 : 8b020022 : "... : ADD     x2, x1, x2
+000081a8 : 8b040042 : B... : ADD     x2, x2, x4
+000081ac : b9402024 : $ @. : LDR     w4, [x1, #&20]
+000081b0 : 8b040042 : B... : ADD     x2, x2, x4
+000081b4 : 940000c1 : .... : BL      &000084b8                 ; -> Function: __main
+000081b8 : 1400009e : .... : B       &00008430
+000081bc : d503201f : . .. : NOP
+000081c0 : d503201f : . .. : NOP
+000081c4 : d503201f : . .. : NOP
+000081c8 : d503201f : . .. : NOP
+000081cc : d503201f : . .. : NOP
+000081d0 : d503201f : . .. : NOP
+000081d4 : d503201f : . .. : NOP
+000081d8 : 7270796d : mypr : Undefined instruction
+000081dc : 00746e69 : int. : Undefined instruction
+000081e0 : ff000008 : .... : Undefined instruction
+000081e4 : a9bd7bfd : .{.. : STP     x29, x30, [sp, #-&30]!    ; Function: myprint
+000081e8 : 910003fd : .... : MOV     x29, sp
+000081ec : f90013f5 : .... : STR     x21, [sp, #&20]
+000081f0 : aa0003e1 : .... : MOV     x1, x0
+000081f4 : 39400000 : ..@9 : LDRB    w0, [x0]
+000081f8 : 340001e0 : ...4 : CBZ     w0, &00008234
+000081fc : a90153f3 : .S.. : STP     x19, x20, [sp, #&10]
+00008200 : aa0103f3 : .... : MOV     x19, x1
+00008204 : 52800034 : 4..R : MOVZ    w20, #&1
+00008208 : 4b010294 : ...K : SUB     w20, w20, w1
+0000820c : 9400001d : .... : BL      &00008280
+00008210 : 0b130295 : .... : ADD     w21, w20, w19
+00008214 : 38401e60 : `.@8 : LDRB    w0, [x19, #1]!
+00008218 : 35ffffa0 : ...5 : CBNZ    w0, &0000820c
+0000821c : a94153f3 : .SA. : LDP     x19, x20, [sp, #&10]
+00008220 : 9400004f : O... : BL      &0000835c
+00008224 : 2a1503e0 : ...* : MOV     w0, w21
+00008228 : f94013f5 : ..@. : LDR     x21, [sp, #&20]
+0000822c : a8c37bfd : .{.. : LDP     x29, x30, [sp], #&30
+00008230 : d65f03c0 : .._. : RET
+00008234 : 52800015 : ...R : MOVZ    w21, #0
+00008238 : 17fffffa : .... : B       &00008220
+0000823c : d503201f : . .. : NOP
+00008240 : d503201f : . .. : NOP
+00008244 : d503201f : . .. : NOP
+00008248 : d503201f : . .. : NOP
+0000824c : d503201f : . .. : NOP
+00008250 : d503201f : . .. : NOP
+00008254 : d503201f : . .. : NOP
+00008258 : 6e69616d : main : RSUBHN2 v13.8h, v11.4s, v9.4s
+0000825c : 00000000 : .... : Undefined instruction
+00008260 : ff000008 : .... : Undefined instruction
+00008264 : a9bf7bfd : .{.. : STP     x29, x30, [sp, #-&10]!    ; Function: main
+00008268 : 910003fd : .... : MOV     x29, sp
+0000826c : d0000000 : .... : ADRP    x0, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00008270 : 9117a000 : .... : ADD     x0, x0, #&5e8             ; #1512
+00008274 : 97ffffdc : .... : BL      &000081e4                 ; -> Function: myprint
+00008278 : a8c17bfd : .{.. : LDP     x29, x30, [sp], #&10
+0000827c : d65f03c0 : .._. : RET
+00008280 : a9bf7bfd : .{.. : STP     x29, x30, [sp, #-&10]!
+00008284 : 910003fd : .... : MOV     x29, sp
+00008288 : d280000a : .... : MOVZ    x10, #0
+0000828c : b26f014a : J.o. : ORR     x10, x10, #&20000         ; #131072 = bit 17
+00008290 : d4000001 : .... : SWI     #0
+00008294 : a8c17bfd : .{.. : LDP     x29, x30, [sp], #&10
+00008298 : d65f03c0 : .._. : RET
+0000829c : a9bf7bfd : .{.. : STP     x29, x30, [sp, #-&10]!
+000082a0 : 910003fd : .... : MOV     x29, sp
+000082a4 : d280008a : .... : MOVZ    x10, #&4
+000082a8 : b26f014a : J.o. : ORR     x10, x10, #&20000         ; #131072 = bit 17
+000082ac : d4000001 : .... : SWI     #0
+000082b0 : da9f6000 : .`.. : CSINV   x0, x0, xzr, vs
+000082b4 : a8c17bfd : .{.. : LDP     x29, x30, [sp], #&10
+000082b8 : d65f03c0 : .._. : RET
+000082bc : a9bf7bfd : .{.. : STP     x29, x30, [sp, #-&10]!
+000082c0 : 910003fd : .... : MOV     x29, sp
+000082c4 : 39000041 : A..9 : STRB    w1, [x2]
+000082c8 : aa0203e1 : .... : MOV     x1, x2
+000082cc : d28000ea : .... : MOVZ    x10, #&7
+000082d0 : b26f014a : J.o. : ORR     x10, x10, #&20000         ; #131072 = bit 17
+000082d4 : d4000001 : .... : SWI     #0
+000082d8 : 9a9f6000 : .`.. : CSEL    x0, x0, xzr, vs
+000082dc : a8c17bfd : .{.. : LDP     x29, x30, [sp], #&10
+000082e0 : d65f03c0 : .._. : RET
+000082e4 : a9bf7bfd : .{.. : STP     x29, x30, [sp, #-&10]!
+000082e8 : 910003fd : .... : MOV     x29, sp
+000082ec : 92401c01 : ..@. : AND     x1, x0, #&ff              ; #255
+000082f0 : d348fc02 : ..H. : LSR     x2, x0, #8
+000082f4 : d2801020 :  ... : MOVZ    x0, #&81                  ; #129
+000082f8 : d28000ca : .... : MOVZ    x10, #&6
+000082fc : b26f014a : J.o. : ORR     x10, x10, #&20000         ; #131072 = bit 17
+00008300 : d4000001 : .... : SWI     #0
+00008304 : f1006c5f : _l.. : CMP     x2, #&1b                  ; #27
+00008308 : 540000a0 : ...T : B.EQ    &0000831c
+0000830c : f103fc5f : _... : CMP     x2, #&ff                  ; #255
+00008310 : da9f1020 :  ... : CSINV   x0, x1, xzr, ne
+00008314 : a8c17bfd : .{.. : LDP     x29, x30, [sp], #&10
+00008318 : d65f03c0 : .._. : RET
+0000831c : 92800020 :  ... : MOVN    x0, #&1
+00008320 : 17fffffd : .... : B       &00008314
+00008324 : a9bf7bfd : .{.. : STP     x29, x30, [sp, #-&10]!
+00008328 : 910003fd : .... : MOV     x29, sp
+0000832c : d280004a : J... : MOVZ    x10, #&2
+00008330 : b26f014a : J.o. : ORR     x10, x10, #&20000         ; #131072 = bit 17
+00008334 : d4000001 : .... : SWI     #0
+00008338 : a8c17bfd : .{.. : LDP     x29, x30, [sp], #&10
+0000833c : d65f03c0 : .._. : RET
+00008340 : a9bf7bfd : .{.. : STP     x29, x30, [sp, #-&10]!
+00008344 : 910003fd : .... : MOV     x29, sp
+00008348 : d28008ca : .... : MOVZ    x10, #&46                 ; #70  = 'F'
+0000834c : b26f014a : J.o. : ORR     x10, x10, #&20000         ; #131072 = bit 17
+00008350 : d4000001 : .... : SWI     #0
+00008354 : a8c17bfd : .{.. : LDP     x29, x30, [sp], #&10
+00008358 : d65f03c0 : .._. : RET
+0000835c : a9bf7bfd : .{.. : STP     x29, x30, [sp, #-&10]!
+00008360 : 910003fd : .... : MOV     x29, sp
+00008364 : d280006a : j... : MOVZ    x10, #&3
+00008368 : b26f014a : J.o. : ORR     x10, x10, #&20000         ; #131072 = bit 17
+0000836c : d4000001 : .... : SWI     #0
+00008370 : a8c17bfd : .{.. : LDP     x29, x30, [sp], #&10
+00008374 : d65f03c0 : .._. : RET
+00008378 : a9bf7bfd : .{.. : STP     x29, x30, [sp, #-&10]!
+0000837c : 910003fd : .... : MOV     x29, sp
+00008380 : d280058a : .... : MOVZ    x10, #&2c                 ; #44  = ','
+00008384 : b26f014a : J.o. : ORR     x10, x10, #&20000         ; #131072 = bit 17
+00008388 : d4000001 : .... : SWI     #0
+0000838c : a8c17bfd : .{.. : LDP     x29, x30, [sp], #&10
+00008390 : d65f03c0 : .._. : RET
+00008394 : a9bf7bfd : .{.. : STP     x29, x30, [sp, #-&10]!
+00008398 : 910003fd : .... : MOV     x29, sp
+0000839c : d280056a : j... : MOVZ    x10, #&2b                 ; #43  = '+'
+000083a0 : d4000001 : .... : SWI     #0                        ; SWI OS_GenerateError
+000083a4 : a8c17bfd : .{.. : LDP     x29, x30, [sp], #&10
+000083a8 : d2800020 :  ... : MOVZ    x0, #&1
+000083ac : 140000db : .... : B       &00008718                 ; -> Function: exit
+000083b0 : a9bf7bfd : .{.. : STP     x29, x30, [sp, #-&10]!
+000083b4 : 910003fd : .... : MOV     x29, sp
+000083b8 : d280012a : *... : MOVZ    x10, #&9
+000083bc : b26f014a : J.o. : ORR     x10, x10, #&20000         ; #131072 = bit 17
+000083c0 : d4000001 : .... : SWI     #0
+000083c4 : a8c17bfd : .{.. : LDP     x29, x30, [sp], #&10
+000083c8 : d65f03c0 : .._. : RET
+000083cc : a9bf7bfd : .{.. : STP     x29, x30, [sp, #-&10]!
+000083d0 : 910003fd : .... : MOV     x29, sp
+000083d4 : aa0303e6 : .... : MOV     x6, x3
+000083d8 : f10000df : .... : CMP     x6, #0
+000083dc : 54000020 :  ..T : B.EQ    &000083e0
+000083e0 : 294114c4 : ..A) : LDP     w4, w5, [x6, #8]
+000083e4 : 29400cc2 : ..@) : LDP     w2, w3, [x6]
+000083e8 : d280012a : *... : MOVZ    x10, #&9
+000083ec : b26f014a : J.o. : ORR     x10, x10, #&20000         ; #131072 = bit 17
+000083f0 : d4000001 : .... : SWI     #0
+000083f4 : f10000df : .... : CMP     x6, #0
+000083f8 : 54000060 : `..T : B.EQ    &00008404
+000083fc : 290114c4 : ...) : STP     w4, w5, [x6, #8]
+00008400 : 29000cc2 : ...) : STP     w2, w3, [x6]
+00008404 : 92800026 : &... : MOVN    x6, #&1
+00008408 : 9a866000 : .`.. : CSEL    x0, x0, x6, vs
+0000840c : a8c17bfd : .{.. : LDP     x29, x30, [sp], #&10
+00008410 : d65f03c0 : .._. : RET
+00008414 : a9bf7bfd : .{.. : STP     x29, x30, [sp, #-&10]!
+00008418 : 910003fd : .... : MOV     x29, sp
+0000841c : d280052a : *... : MOVZ    x10, #&29                 ; #41  = ')'
+00008420 : b26f014a : J.o. : ORR     x10, x10, #&20000         ; #131072 = bit 17
+00008424 : d4000001 : .... : SWI     #0
+00008428 : a8c17bfd : .{.. : LDP     x29, x30, [sp], #&10
+0000842c : d65f03c0 : .._. : RET
+00008430 : aa0003e2 : .... : MOV     x2, x0
+00008434 : 100000a0 : .... : ADR     x0, &00008448             ; -> [&00000000, &20646142, &74697865, &646f6320]
+00008438 : 58000061 : a..X : LDR     x1, &00008444
+0000843c : d280022a : *... : MOVZ    x10, #&11                 ; #17
+00008440 : d4000001 : .... : SWI     #0                        ; SWI OS_Exit
+00008444 : 58454241 : ABEX : LDR     x1, &00092c8c
+00008448 : 00000000 : .... : Undefined instruction
+0000844c : 20646142 : Bad  : Undefined instruction
+00008450 : 74697865 : exit : Undefined instruction
+00008454 : 646f6320 :  cod : Undefined instruction
+00008458 : 00000065 : e... : Undefined instruction
+0000845c : d503201f : . .. : NOP
+00008460 : d503201f : . .. : NOP
+00008464 : d503201f : . .. : NOP
+00008468 : d503201f : . .. : NOP
+0000846c : d503201f : . .. : NOP
+00008470 : d503201f : . .. : NOP
+00008474 : d503201f : . .. : NOP
+00008478 : d503201f : . .. : NOP
+0000847c : d503201f : . .. : NOP
+00008480 : a9bf7bfd : .{.. : STP     x29, x30, [sp, #-&10]!
+00008484 : 910003fd : .... : MOV     x29, sp
+00008488 : 97ffffa7 : .... : BL      &00008324
+0000848c : 97ffffb4 : .... : BL      &0000835c
+00008490 : 52800020 :  ..R : MOVZ    w0, #&1
+00008494 : 940000a1 : .... : BL      &00008718                 ; -> Function: exit
+00008498 : d503201f : . .. : NOP
+0000849c : d503201f : . .. : NOP
+000084a0 : d503201f : . .. : NOP
+000084a4 : d503201f : . .. : NOP
+000084a8 : d503201f : . .. : NOP
+000084ac : 616d5f5f : __ma : Undefined instruction
+000084b0 : 00006e69 : in.. : Undefined instruction
+000084b4 : ff000008 : .... : Undefined instruction
+000084b8 : a9bd7bfd : .{.. : STP     x29, x30, [sp, #-&30]!    ; Function: __main
+000084bc : 910003fd : .... : MOV     x29, sp
+000084c0 : a90153f3 : .S.. : STP     x19, x20, [sp, #&10]
+000084c4 : eb02007f : .... : CMP     x3, x2
+000084c8 : 540002a3 : ...T : B.LO    &0000851c
+000084cc : aa0003f4 : .... : MOV     x20, x0
+000084d0 : d0000000 : .... : ADRP    x0, &0000A000             ; -> Function: __o1heapGetDiagnostics
+000084d4 : b94fe400 : ..O. : LDR     w0, [x0, #&fe4]
+000084d8 : 7100001f : ...q : CMP     w0, #0
+000084dc : 52a00021 : !..R : MOVZ    w1, #&10000               ; #65536 = bit 16
+000084e0 : 1a811000 : .... : CSEL    w0, w0, w1, ne
+000084e4 : cb000061 : a... : SUB     x1, x3, x0
+000084e8 : eb01005f : _... : CMP     x2, x1
+000084ec : 540001e8 : ...T : B.HI    &00008528
+000084f0 : d0000000 : .... : ADRP    x0, &0000A000             ; -> Function: __o1heapGetDiagnostics
+000084f4 : b94fe000 : ..O. : LDR     w0, [x0, #&fe0]
+000084f8 : 7100001f : ...q : CMP     w0, #0
+000084fc : 52820003 : ...R : MOVZ    w3, #&1000                ; #4096 = bit 12
+00008500 : 1a831000 : .... : CSEL    w0, w0, w3, ne
+00008504 : 8b000040 : @... : ADD     x0, x2, x0
+00008508 : eb01001f : .... : CMP     x0, x1
+0000850c : 54000149 : I..T : B.LS    &00008534
+00008510 : d0000000 : .... : ADRP    x0, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00008514 : 91190000 : .... : ADD     x0, x0, #&640             ; #1600
+00008518 : 97ffffda : .... : BL      &00008480
+0000851c : d0000000 : .... : ADRP    x0, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00008520 : 9117e000 : .... : ADD     x0, x0, #&5f8             ; #1528
+00008524 : 97ffffd7 : .... : BL      &00008480
+00008528 : d0000000 : .... : ADRP    x0, &0000A000             ; -> Function: __o1heapGetDiagnostics
+0000852c : 91188000 : .... : ADD     x0, x0, #&620             ; #1568
+00008530 : 97ffffd4 : .... : BL      &00008480
+00008534 : aa0203e0 : .... : MOV     x0, x2
+00008538 : 940000e3 : .... : BL      &000088c4                 ; -> Function: __heap_init
+0000853c : 940000d0 : .... : BL      &0000887c                 ; -> Function: __clock_init
+00008540 : aa1403e0 : .... : MOV     x0, x20
+00008544 : 94000092 : .... : BL      &0000878c                 ; -> Function: strlen
+00008548 : 91004000 : .@.. : ADD     x0, x0, #&10              ; #16 = bit 4
+0000854c : 927cec00 : ..|. : AND     x0, x0, #&fffffffffffffff0  ; #-16
+00008550 : cb2063ff : .c . : SUB     sp, sp, x0
+00008554 : 910003f3 : .... : MOV     x19, sp
+00008558 : aa1403e1 : .... : MOV     x1, x20
+0000855c : 910003e0 : .... : MOV     x0, sp
+00008560 : 9400007d : }... : BL      &00008754                 ; -> Function: strcpy
+00008564 : 394003e2 : ..@9 : LDRB    w2, [sp]
+00008568 : 340003e2 : ...4 : CBZ     w2, &000085e4
+0000856c : aa1303e1 : .... : MOV     x1, x19
+00008570 : 2a0203e0 : ...* : MOV     w0, w2
+00008574 : 52800023 : #..R : MOVZ    w3, #&1
+00008578 : 52800004 : ...R : MOVZ    w4, #0
+0000857c : 52800005 : ...R : MOVZ    w5, #0
+00008580 : 14000005 : .... : B       &00008594
+00008584 : 7100801f : ...q : CMP     w0, #&20                  ; #32  = ' ' = bit 5
+00008588 : 1a9f17e3 : .... : CSET    w3, eq
+0000858c : 38401c20 :  .@8 : LDRB    w0, [x1, #1]!
+00008590 : 34000340 : @..4 : CBZ     w0, &000085f8
+00008594 : 34ffff83 : ...4 : CBZ     w3, &00008584
+00008598 : 7100801f : ...q : CMP     w0, #&20                  ; #32  = ' ' = bit 5
+0000859c : 54ffff80 : ...T : B.EQ    &0000858c
+000085a0 : 11000484 : .... : ADD     w4, w4, #1
+000085a4 : 2a0503e3 : ...* : MOV     w3, w5
+000085a8 : 17fffff9 : .... : B       &0000858c
+000085ac : 7100805f : _..q : CMP     w2, #&20                  ; #32  = ' ' = bit 5
+000085b0 : 54000140 : @..T : B.EQ    &000085d8
+000085b4 : 38401e62 : b.@8 : LDRB    w2, [x19, #1]!
+000085b8 : 340001a2 : ...4 : CBZ     w2, &000085ec
+000085bc : 34ffff83 : ...4 : CBZ     w3, &000085ac
+000085c0 : 7100805f : _..q : CMP     w2, #&20                  ; #32  = ' ' = bit 5
+000085c4 : 54ffff80 : ...T : B.EQ    &000085b4
+000085c8 : f820d833 : 3. . : STR     x19, [x1, w0, sxtw #3]
+000085cc : 11000400 : .... : ADD     w0, w0, #1
+000085d0 : 2a0403e3 : ...* : MOV     w3, w4
+000085d4 : 17fffff8 : .... : B       &000085b4
+000085d8 : 3900027f : ...9 : STRB    wzr, [x19]
+000085dc : 2a0503e3 : ...* : MOV     w3, w5
+000085e0 : 17fffff5 : .... : B       &000085b4
+000085e4 : 9100a3a1 : .... : ADD     x1, x29, #&28             ; #40  = '('
+000085e8 : 52800000 : ...R : MOVZ    w0, #0
+000085ec : f820d83f : ?. . : STR     xzr, [x1, w0, sxtw #3]
+000085f0 : 97ffff1d : .... : BL      &00008264                 ; -> Function: main
+000085f4 : 94000049 : I... : BL      &00008718                 ; -> Function: exit
+000085f8 : 11000480 : .... : ADD     w0, w4, #1
+000085fc : 937d7c00 : .|}. : SBFIZ   x0, x0, #3, #&20
+00008600 : 91003c00 : .<.. : ADD     x0, x0, #&f               ; #15
+00008604 : 927cec00 : ..|. : AND     x0, x0, #&fffffffffffffff0  ; #-16
+00008608 : cb2063ff : .c . : SUB     sp, sp, x0
+0000860c : 910003e1 : .... : MOV     x1, sp
+00008610 : 52800023 : #..R : MOVZ    w3, #&1
+00008614 : 52800000 : ...R : MOVZ    w0, #0
+00008618 : 2a0303e5 : ...* : MOV     w5, w3
+0000861c : 52800004 : ...R : MOVZ    w4, #0
+00008620 : 17ffffe7 : .... : B       &000085bc
+00008624 : d503201f : . .. : NOP
+00008628 : d503201f : . .. : NOP
+0000862c : d503201f : . .. : NOP
+00008630 : d503201f : . .. : NOP
+00008634 : d503201f : . .. : NOP
+00008638 : 78657461 : atex : Undefined instruction
+0000863c : 00007469 : it.. : Undefined instruction
+00008640 : ff000008 : .... : Undefined instruction
+00008644 : d2800001 : .... : MOVZ    x1, #0                    ; Function: atexit
+00008648 : f0000003 : .... : ADRP    x3, &0000B000
+0000864c : 91000063 : c... : ADD     x3, x3, #0
+00008650 : 2a0103e4 : ...* : MOV     w4, w1
+00008654 : f8617862 : bxa. : LDR     x2, [x3, x1, lsl #3]
+00008658 : b40000c2 : .... : CBZ     x2, &00008670
+0000865c : 91000421 : !... : ADD     x1, x1, #1
+00008660 : f100203f : ? .. : CMP     x1, #8
+00008664 : 54ffff61 : a..T : B.NE    &00008650
+00008668 : 12800000 : .... : MOVN    w0, #0
+0000866c : d65f03c0 : .._. : RET
+00008670 : f0000001 : .... : ADRP    x1, &0000B000
+00008674 : 91000021 : !... : ADD     x1, x1, #0
+00008678 : f824d820 :  .$. : STR     x0, [x1, w4, sxtw #3]
+0000867c : 52800000 : ...R : MOVZ    w0, #0
+00008680 : 17fffffb : .... : B       &0000866c
+00008684 : d503201f : . .. : NOP
+00008688 : d503201f : . .. : NOP
+0000868c : d503201f : . .. : NOP
+00008690 : 696c635f : _cli : LDPSW   xzr, x24, [x26, #-&a0]
+00008694 : 69665f62 : b_fi : LDPSW   x2, x23, [x27, #-&d0]
+00008698 : 696c616e : nali : LDPSW   x14, x24, [x11, #-&a0]
+0000869c : 00006573 : se.. : Undefined instruction
+000086a0 : ff000010 : .... : Undefined instruction
+000086a4 : a9be7bfd : .{.. : STP     x29, x30, [sp, #-&20]!    ; Function: _clib_finalise
+000086a8 : 910003fd : .... : MOV     x29, sp
+000086ac : a90153f3 : .S.. : STP     x19, x20, [sp, #&10]
+000086b0 : f0000014 : .... : ADRP    x20, &0000B000
+000086b4 : 91000294 : .... : ADD     x20, x20, #0
+000086b8 : 9100e293 : .... : ADD     x19, x20, #&38            ; #56  = '8'
+000086bc : 14000005 : .... : B       &000086d0
+000086c0 : d1002260 : `".. : SUB     x0, x19, #8
+000086c4 : eb14027f : .... : CMP     x19, x20
+000086c8 : 540000e0 : ...T : B.EQ    &000086e4
+000086cc : aa0003f3 : .... : MOV     x19, x0
+000086d0 : f9400260 : `.@. : LDR     x0, [x19]
+000086d4 : b4ffff60 : `... : CBZ     x0, &000086c0
+000086d8 : f900027f : .... : STR     xzr, [x19]
+000086dc : d63f0000 : ..?. : BLR     x0
+000086e0 : 17fffff8 : .... : B       &000086c0
+000086e4 : 94000038 : 8... : BL      &000087c4                 ; -> Function: __getenv_final
+000086e8 : 9400008e : .... : BL      &00008920                 ; -> Function: __io_final
+000086ec : a94153f3 : .SA. : LDP     x19, x20, [sp, #&10]
+000086f0 : a8c27bfd : .{.. : LDP     x29, x30, [sp], #&20
+000086f4 : d65f03c0 : .._. : RET
+000086f8 : d503201f : . .. : NOP
+000086fc : d503201f : . .. : NOP
+00008700 : d503201f : . .. : NOP
+00008704 : d503201f : . .. : NOP
+00008708 : d503201f : . .. : NOP
+0000870c : 74697865 : exit : Undefined instruction
+00008710 : 00000000 : .... : Undefined instruction
+00008714 : ff000008 : .... : Undefined instruction
+00008718 : a9be7bfd : .{.. : STP     x29, x30, [sp, #-&20]!    ; Function: exit
+0000871c : 910003fd : .... : MOV     x29, sp
+00008720 : f9000bf3 : .... : STR     x19, [sp, #&10]
+00008724 : 2a0003f3 : ...* : MOV     w19, w0
+00008728 : 97ffffdf : .... : BL      &000086a4                 ; -> Function: _clib_finalise
+0000872c : 2a1303e0 : ...* : MOV     w0, w19
+00008730 : 97ffff40 : @... : BL      &00008430
+00008734 : d503201f : . .. : NOP
+00008738 : d503201f : . .. : NOP
+0000873c : d503201f : . .. : NOP
+00008740 : d503201f : . .. : NOP
+00008744 : d503201f : . .. : NOP
+00008748 : 63727473 : strc : Undefined instruction
+0000874c : 00007970 : py.. : Undefined instruction
+00008750 : ff000008 : .... : Undefined instruction
+00008754 : d2800002 : .... : MOVZ    x2, #0                    ; Function: strcpy
+00008758 : 38626823 : #hb8 : LDRB    w3, [x1, x2]
+0000875c : 38226803 : .h"8 : STRB    w3, [x0, x2]
+00008760 : 91000442 : B... : ADD     x2, x2, #1
+00008764 : 35ffffa3 : ...5 : CBNZ    w3, &00008758
+00008768 : d65f03c0 : .._. : RET
+0000876c : d503201f : . .. : NOP
+00008770 : d503201f : . .. : NOP
+00008774 : d503201f : . .. : NOP
+00008778 : d503201f : . .. : NOP
+0000877c : d503201f : . .. : NOP
+00008780 : 6c727473 : strl : LDNP    d19, d29, [x3, #-&e0]
+00008784 : 00006e65 : en.. : Undefined instruction
+00008788 : ff000008 : .... : Undefined instruction
+0000878c : aa0003e1 : .... : MOV     x1, x0                    ; Function: strlen
+00008790 : 38401422 : ".@8 : LDRB    w2, [x1], #1
+00008794 : 35ffffe2 : ...5 : CBNZ    w2, &00008790
+00008798 : cb000020 :  ... : SUB     x0, x1, x0
+0000879c : d1000400 : .... : SUB     x0, x0, #1
+000087a0 : d65f03c0 : .._. : RET
+000087a4 : d503201f : . .. : NOP
+000087a8 : d503201f : . .. : NOP
+000087ac : d503201f : . .. : NOP
+000087b0 : 65675f5f : __ge : Undefined instruction
+000087b4 : 766e6574 : tenv : Undefined instruction
+000087b8 : 6e69665f : _fin : UMAX    v31.8h, v18.8h, v9.8h
+000087bc : 00006c61 : al.. : Undefined instruction
+000087c0 : ff000010 : .... : Undefined instruction
+000087c4 : f0000000 : .... : ADRP    x0, &0000B000             ; Function: __getenv_final
+000087c8 : f9402000 : . @. : LDR     x0, [x0, #&40]
+000087cc : b40001c0 : .... : CBZ     x0, &00008804
+000087d0 : d0000001 : .... : ADRP    x1, &0000A000             ; -> Function: __o1heapGetDiagnostics
+000087d4 : f9433021 : !0C. : LDR     x1, [x1, #&660]
+000087d8 : b4000101 : .... : CBZ     x1, &000087f8
+000087dc : a9bf7bfd : .{.. : STP     x29, x30, [sp, #-&10]!
+000087e0 : 910003fd : .... : MOV     x29, sp
+000087e4 : 9400014a : J... : BL      &00008d0c                 ; -> Function: free
+000087e8 : f0000000 : .... : ADRP    x0, &0000B000
+000087ec : f900201f : . .. : STR     xzr, [x0, #&40]
+000087f0 : a8c17bfd : .{.. : LDP     x29, x30, [sp], #&10
+000087f4 : d65f03c0 : .._. : RET
+000087f8 : f0000000 : .... : ADRP    x0, &0000B000
+000087fc : f900201f : . .. : STR     xzr, [x0, #&40]
+00008800 : d65f03c0 : .._. : RET
+00008804 : d65f03c0 : .._. : RET
+00008808 : d503201f : . .. : NOP
+0000880c : d503201f : . .. : NOP
+00008810 : d503201f : . .. : NOP
+00008814 : d503201f : . .. : NOP
+00008818 : d503201f : . .. : NOP
+0000881c : 636f6c63 : cloc : Undefined instruction
+00008820 : 0000006b : k... : Undefined instruction
+00008824 : ff000008 : .... : Undefined instruction
+00008828 : a9bc7bfd : .{.. : STP     x29, x30, [sp, #-&40]!    ; Function: clock
+0000882c : 910003fd : .... : MOV     x29, sp
+00008830 : 910063e2 : .c.. : ADD     x2, sp, #&18              ; #24
+00008834 : d2800001 : .... : MOVZ    x1, #0
+00008838 : 52800840 : @..R : MOVZ    w0, #&42                  ; #66  = 'B'
+0000883c : 9400004a : J... : BL      &00008964
+00008840 : f0000000 : .... : ADRP    x0, &0000B000
+00008844 : b9404c01 : .L@. : LDR     w1, [x0, #&4c]
+00008848 : b9401be0 : ..@. : LDR     w0, [sp, #&18]
+0000884c : 4b010000 : ...K : SUB     w0, w0, w1
+00008850 : 93407c00 : .|@. : SXTW    x0, w0
+00008854 : a8c47bfd : .{.. : LDP     x29, x30, [sp], #&40
+00008858 : d65f03c0 : .._. : RET
+0000885c : d503201f : . .. : NOP
+00008860 : d503201f : . .. : NOP
+00008864 : d503201f : . .. : NOP
+00008868 : 6c635f5f : __cl : LDNP    d31, d23, [x26, #-&1d0]
+0000886c : 5f6b636f : ock_ : Undefined instruction
+00008870 : 74696e69 : init : Undefined instruction
+00008874 : 00000000 : .... : Undefined instruction
+00008878 : ff000010 : .... : Undefined instruction
+0000887c : a9be7bfd : .{.. : STP     x29, x30, [sp, #-&20]!    ; Function: __clock_init
+00008880 : 910003fd : .... : MOV     x29, sp
+00008884 : f9000bf3 : .... : STR     x19, [sp, #&10]
+00008888 : f0000013 : .... : ADRP    x19, &0000B000
+0000888c : b9004e7f : .N.. : STR     wzr, [x19, #&4c]
+00008890 : 97ffffe6 : .... : BL      &00008828                 ; -> Function: clock
+00008894 : b9004e60 : `N.. : STR     w0, [x19, #&4c]
+00008898 : f9400bf3 : ..@. : LDR     x19, [sp, #&10]
+0000889c : a8c27bfd : .{.. : LDP     x29, x30, [sp], #&20
+000088a0 : d65f03c0 : .._. : RET
+000088a4 : d503201f : . .. : NOP
+000088a8 : d503201f : . .. : NOP
+000088ac : d503201f : . .. : NOP
+000088b0 : d503201f : . .. : NOP
+000088b4 : 65685f5f : __he : Undefined instruction
+000088b8 : 695f7061 : ap_i : LDPSW   x1, x28, [x3, #&f8]
+000088bc : 0074696e : nit. : Undefined instruction
+000088c0 : ff00000c : .... : Undefined instruction
+000088c4 : f0000003 : .... : ADRP    x3, &0000B000             ; Function: __heap_init
+000088c8 : 91014062 : b@.. : ADD     x2, x3, #&50              ; #80  = 'P'
+000088cc : f9002860 : `(.. : STR     x0, [x3, #&50]
+000088d0 : 3900001f : ...9 : STRB    wzr, [x0]
+000088d4 : f9000441 : A... : STR     x1, [x2, #8]
+000088d8 : b900105f : _... : STR     wzr, [x2, #&10]
+000088dc : f0000000 : .... : ADRP    x0, &0000B000
+000088e0 : f9403400 : .4@. : LDR     x0, [x0, #&68]
+000088e4 : b4000040 : @... : CBZ     x0, &000088ec
+000088e8 : d65f03c0 : .._. : RET
+000088ec : f0000001 : .... : ADRP    x1, &0000B000
+000088f0 : d0000000 : .... : ADRP    x0, &0000A000             ; -> Function: __o1heapGetDiagnostics
+000088f4 : 913b0000 : ..;. : ADD     x0, x0, #&ec0             ; #3776
+000088f8 : f9003420 :  4.. : STR     x0, [x1, #&68]
+000088fc : 17fffffb : .... : B       &000088e8
+00008900 : d503201f : . .. : NOP
+00008904 : d503201f : . .. : NOP
+00008908 : d503201f : . .. : NOP
+0000890c : d503201f : . .. : NOP
+00008910 : 6f695f5f : __io : Undefined instruction
+00008914 : 6e69665f : _fin : UMAX    v31.8h, v18.8h, v9.8h
+00008918 : 00006c61 : al.. : Undefined instruction
+0000891c : ff00000c : .... : Undefined instruction
+00008920 : a9be7bfd : .{.. : STP     x29, x30, [sp, #-&20]!    ; Function: __io_final
+00008924 : 910003fd : .... : MOV     x29, sp
+00008928 : f9000bf3 : .... : STR     x19, [sp, #&10]
+0000892c : f0000000 : .... : ADRP    x0, &0000B000
+00008930 : f9403813 : .8@. : LDR     x19, [x0, #&70]
+00008934 : f900381f : .8.. : STR     xzr, [x0, #&70]
+00008938 : d0000000 : .... : ADRP    x0, &0000A000             ; -> Function: __o1heapGetDiagnostics
+0000893c : f9433400 : .4C. : LDR     x0, [x0, #&668]
+00008940 : b40000c0 : .... : CBZ     x0, &00008958
+00008944 : b40000b3 : .... : CBZ     x19, &00008958
+00008948 : aa1303e0 : .... : MOV     x0, x19
+0000894c : f9403673 : s6@. : LDR     x19, [x19, #&68]
+00008950 : 940000ef : .... : BL      &00008d0c                 ; -> Function: free
+00008954 : b5ffffb3 : .... : CBNZ    x19, &00008948
+00008958 : f9400bf3 : ..@. : LDR     x19, [sp, #&10]
+0000895c : a8c27bfd : .{.. : LDP     x29, x30, [sp], #&20
+00008960 : d65f03c0 : .._. : RET
+00008964 : a9bf7bfd : .{.. : STP     x29, x30, [sp, #-&10]!
+00008968 : 910003fd : .... : MOV     x29, sp
+0000896c : b26f000a : ..o. : ORR     x10, x0, #&20000          ; #131072 = bit 17
+00008970 : aa0203eb : .... : MOV     x11, x2
+00008974 : f100003f : ?... : CMP     x1, #0
+00008978 : 54000181 : ...T : B.NE    &000089a8
+0000897c : d2800000 : .... : MOVZ    x0, #0
+00008980 : d2800001 : .... : MOVZ    x1, #0
+00008984 : d2800002 : .... : MOVZ    x2, #0
+00008988 : d2800003 : .... : MOVZ    x3, #0
+0000898c : d2800004 : .... : MOVZ    x4, #0
+00008990 : d2800005 : .... : MOVZ    x5, #0
+00008994 : d2800006 : .... : MOVZ    x6, #0
+00008998 : d2800007 : .... : MOVZ    x7, #0
+0000899c : d2800008 : .... : MOVZ    x8, #0
+000089a0 : d2800009 : .... : MOVZ    x9, #0
+000089a4 : 14000007 : .... : B       &000089c0
+000089a8 : aa0103ec : .... : MOV     x12, x1
+000089ac : 28c10580 : ...( : LDP     w0, w1, [x12], #8
+000089b0 : 28c10d82 : ...( : LDP     w2, w3, [x12], #8
+000089b4 : 28c11584 : ...( : LDP     w4, w5, [x12], #8
+000089b8 : 28c11d86 : ...( : LDP     w6, w7, [x12], #8
+000089bc : 28c12588 : .%.( : LDP     w8, w9, [x12], #8
+000089c0 : d4000001 : .... : SWI     #0
+000089c4 : d280000c : .... : MOVZ    x12, #0
+000089c8 : 54000047 : G..T : B.VC    &000089d0
+000089cc : aa0003ec : .... : MOV     x12, x0
+000089d0 : f100017f : .... : CMP     x11, #0
+000089d4 : 540000c0 : ...T : B.EQ    &000089ec
+000089d8 : 28810560 : `..( : STP     w0, w1, [x11], #8
+000089dc : 28810d62 : b..( : STP     w2, w3, [x11], #8
+000089e0 : 28811564 : d..( : STP     w4, w5, [x11], #8
+000089e4 : 28811d66 : f..( : STP     w6, w7, [x11], #8
+000089e8 : 28812568 : h%.( : STP     w8, w9, [x11], #8
+000089ec : aa0c03e0 : .... : MOV     x0, x12
+000089f0 : a8c17bfd : .{.. : LDP     x29, x30, [sp], #&10
+000089f4 : d65f03c0 : .._. : RET
+000089f8 : d503201f : . .. : NOP
+000089fc : d503201f : . .. : NOP
+00008a00 : 65685f5f : __he : Undefined instruction
+00008a04 : 4f5f7061 : ap_O : SQDMLSL2v1.4s, v3.8h, v15.h[1]
+00008a08 : 61656831 : 1hea : Undefined instruction
+00008a0c : 6e695f70 : p_in : UQRSHL  v16.8h, v27.8h, v9.8h
+00008a10 : 00007469 : it.. : Undefined instruction
+00008a14 : ff000014 : .... : Undefined instruction
+00008a18 : a9bf7bfd : .{.. : STP     x29, x30, [sp, #-&10]!    ; Function: __heap_O1heap_init
+00008a1c : 910003fd : .... : MOV     x29, sp
+00008a20 : f2401002 : ..@. : ANDS    x2, x0, #&1f              ; #31
+00008a24 : d2800403 : .... : MOVZ    x3, #&20                  ; #32  = ' ' = bit 5
+00008a28 : cb020063 : c... : SUB     x3, x3, x2
+00008a2c : 9a821062 : b... : CSEL    x2, x3, x2, ne
+00008a30 : cb020021 : !... : SUB     x1, x1, x2
+00008a34 : 8b020000 : .... : ADD     x0, x0, x2
+00008a38 : 940001b5 : .... : BL      &0000910c                 ; -> Function: __o1heapInit
+00008a3c : f0000001 : .... : ADRP    x1, &0000B000
+00008a40 : f9003c20 :  <.. : STR     x0, [x1, #&78]
+00008a44 : b4000060 : `... : CBZ     x0, &00008a50
+00008a48 : a8c17bfd : .{.. : LDP     x29, x30, [sp], #&10
+00008a4c : d65f03c0 : .._. : RET
+00008a50 : d0000000 : .... : ADRP    x0, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00008a54 : 91190000 : .... : ADD     x0, x0, #&640             ; #1600
+00008a58 : 94000047 : G... : BL      &00008b74                 ; -> Function: __heap_fatal
+00008a5c : 17fffffb : .... : B       &00008a48
+00008a60 : d503201f : . .. : NOP
+00008a64 : d503201f : . .. : NOP
+00008a68 : 65685f5f : __he : Undefined instruction
+00008a6c : 4f5f7061 : ap_O : SQDMLSL2v1.4s, v3.8h, v15.h[1]
+00008a70 : 61656831 : 1hea : Undefined instruction
+00008a74 : 6c615f70 : p_al : LDNP    d16, d23, [x27, #-&1f0]
+00008a78 : 00636f6c : loc. : Undefined instruction
+00008a7c : ff000014 : .... : Undefined instruction
+00008a80 : a9bf7bfd : .{.. : STP     x29, x30, [sp, #-&10]!    ; Function: __heap_O1heap_alloc
+00008a84 : 910003fd : .... : MOV     x29, sp
+00008a88 : aa0003e1 : .... : MOV     x1, x0
+00008a8c : f0000000 : .... : ADRP    x0, &0000B000
+00008a90 : f9403c00 : .<@. : LDR     x0, [x0, #&78]
+00008a94 : 940001ff : .... : BL      &00009290                 ; -> Function: __o1heapAllocate
+00008a98 : a8c17bfd : .{.. : LDP     x29, x30, [sp], #&10
+00008a9c : d65f03c0 : .._. : RET
+00008aa0 : d503201f : . .. : NOP
+00008aa4 : d503201f : . .. : NOP
+00008aa8 : 65685f5f : __he : Undefined instruction
+00008aac : 4f5f7061 : ap_O : SQDMLSL2v1.4s, v3.8h, v15.h[1]
+00008ab0 : 61656831 : 1hea : Undefined instruction
+00008ab4 : 72665f70 : p_fr : Undefined instruction
+00008ab8 : 00006565 : ee.. : Undefined instruction
+00008abc : ff000014 : .... : Undefined instruction
+00008ac0 : a9bf7bfd : .{.. : STP     x29, x30, [sp, #-&10]!    ; Function: __heap_O1heap_free
+00008ac4 : 910003fd : .... : MOV     x29, sp
+00008ac8 : aa0003e1 : .... : MOV     x1, x0
+00008acc : f0000000 : .... : ADRP    x0, &0000B000
+00008ad0 : f9403c00 : .<@. : LDR     x0, [x0, #&78]
+00008ad4 : 94000345 : E... : BL      &000097e8                 ; -> Function: __o1heapFree
+00008ad8 : a8c17bfd : .{.. : LDP     x29, x30, [sp], #&10
+00008adc : d65f03c0 : .._. : RET
+00008ae0 : d503201f : . .. : NOP
+00008ae4 : 65685f5f : __he : Undefined instruction
+00008ae8 : 4f5f7061 : ap_O : SQDMLSL2v1.4s, v3.8h, v15.h[1]
+00008aec : 61656831 : 1hea : Undefined instruction
+00008af0 : 65725f70 : p_re : Undefined instruction
+00008af4 : 6f6c6c61 : allo : Undefined instruction
+00008af8 : 00000063 : c... : Undefined instruction
+00008afc : ff000018 : .... : Undefined instruction
+00008b00 : a9bd7bfd : .{.. : STP     x29, x30, [sp, #-&30]!    ; Function: __heap_O1heap_realloc
+00008b04 : 910003fd : .... : MOV     x29, sp
+00008b08 : a90153f3 : .S.. : STP     x19, x20, [sp, #&10]
+00008b0c : f90013f5 : .... : STR     x21, [sp, #&20]
+00008b10 : aa0003f4 : .... : MOV     x20, x0
+00008b14 : aa0103e0 : .... : MOV     x0, x1
+00008b18 : aa0203f5 : .... : MOV     x21, x2
+00008b1c : 97ffffd9 : .... : BL      &00008a80                 ; -> Function: __heap_O1heap_alloc
+00008b20 : aa0003f3 : .... : MOV     x19, x0
+00008b24 : b40000e0 : .... : CBZ     x0, &00008b40
+00008b28 : aa1503e2 : .... : MOV     x2, x21
+00008b2c : aa1403e1 : .... : MOV     x1, x20
+00008b30 : 940000d5 : .... : BL      &00008e84                 ; -> Function: memcpy
+00008b34 : aa1503e1 : .... : MOV     x1, x21
+00008b38 : aa1403e0 : .... : MOV     x0, x20
+00008b3c : 97ffffe1 : .... : BL      &00008ac0                 ; -> Function: __heap_O1heap_free
+00008b40 : aa1303e0 : .... : MOV     x0, x19
+00008b44 : a94153f3 : .SA. : LDP     x19, x20, [sp, #&10]
+00008b48 : f94013f5 : ..@. : LDR     x21, [sp, #&20]
+00008b4c : a8c37bfd : .{.. : LDP     x29, x30, [sp], #&30
+00008b50 : d65f03c0 : .._. : RET
+00008b54 : d503201f : . .. : NOP
+00008b58 : d503201f : . .. : NOP
+00008b5c : d503201f : . .. : NOP
+00008b60 : 65685f5f : __he : Undefined instruction
+00008b64 : 665f7061 : ap_f : Undefined instruction
+00008b68 : 6c617461 : atal : LDNP    d1, d29, [x3, #-&1f0]
+00008b6c : 00000000 : .... : Undefined instruction
+00008b70 : ff000010 : .... : Undefined instruction
+00008b74 : a9bf7bfd : .{.. : STP     x29, x30, [sp, #-&10]!    ; Function: __heap_fatal
+00008b78 : 910003fd : .... : MOV     x29, sp
+00008b7c : 97fffdea : .... : BL      &00008324
+00008b80 : 97fffdf7 : .... : BL      &0000835c
+00008b84 : 52800020 :  ..R : MOVZ    w0, #&1
+00008b88 : 97fffee4 : .... : BL      &00008718                 ; -> Function: exit
+00008b8c : d503201f : . .. : NOP
+00008b90 : d503201f : . .. : NOP
+00008b94 : d503201f : . .. : NOP
+00008b98 : d503201f : . .. : NOP
+00008b9c : d503201f : . .. : NOP
+00008ba0 : 6c6c616d : mall : LDNP    d13, d24, [x11, #-&140]
+00008ba4 : 0000636f : oc.. : Undefined instruction
+00008ba8 : ff000008 : .... : Undefined instruction
+00008bac : a9bd7bfd : .{.. : STP     x29, x30, [sp, #-&30]!    ; Function: malloc
+00008bb0 : 910003fd : .... : MOV     x29, sp
+00008bb4 : f90017ff : .... : STR     xzr, [sp, #&28]
+00008bb8 : b4000620 :  ... : CBZ     x0, &00008c7c
+00008bbc : f9000bf3 : .... : STR     x19, [sp, #&10]
+00008bc0 : aa0003f3 : .... : MOV     x19, x0
+00008bc4 : f0000000 : .... : ADRP    x0, &0000B000
+00008bc8 : 39420000 : ..B9 : LDRB    w0, [x0, #&80]
+00008bcc : 350003e0 : ...5 : CBNZ    w0, &00008c48
+00008bd0 : f0000000 : .... : ADRP    x0, &0000B000
+00008bd4 : f9402800 : .(@. : LDR     x0, [x0, #&50]
+00008bd8 : b40004c0 : .... : CBZ     x0, &00008c70
+00008bdc : f0000001 : .... : ADRP    x1, &0000B000
+00008be0 : b9406021 : !`@. : LDR     w1, [x1, #&60]
+00008be4 : 35000181 : ...5 : CBNZ    w1, &00008c14
+00008be8 : f0000001 : .... : ADRP    x1, &0000B000
+00008bec : f9402c21 : !,@. : LDR     x1, [x1, #&58]
+00008bf0 : d0000002 : .... : ADRP    x2, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00008bf4 : f9434042 : B@C. : LDR     x2, [x2, #&680]
+00008bf8 : f9400042 : B.@. : LDR     x2, [x2]
+00008bfc : f9400042 : B.@. : LDR     x2, [x2]
+00008c00 : cb000021 : !... : SUB     x1, x1, x0
+00008c04 : d63f0040 : @.?. : BLR     x2
+00008c08 : f0000000 : .... : ADRP    x0, &0000B000
+00008c0c : 52800021 : !..R : MOVZ    w1, #&1
+00008c10 : b9006001 : .`.. : STR     w1, [x0, #&60]
+00008c14 : 91003e73 : s>.. : ADD     x19, x19, #&f             ; #15
+00008c18 : 927df273 : s.}. : AND     x19, x19, #&fffffffffffffff8  ; #-8
+00008c1c : d0000000 : .... : ADRP    x0, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00008c20 : f9434000 : .@C. : LDR     x0, [x0, #&680]
+00008c24 : f9400000 : ..@. : LDR     x0, [x0]
+00008c28 : f9400401 : ..@. : LDR     x1, [x0, #8]
+00008c2c : aa1303e0 : .... : MOV     x0, x19
+00008c30 : d63f0020 :  .?. : BLR     x1
+00008c34 : b4000280 : .... : CBZ     x0, &00008c84
+00008c38 : f8008413 : .... : STR     x19, [x0], #8
+00008c3c : f9400bf3 : ..@. : LDR     x19, [sp, #&10]
+00008c40 : a8c37bfd : .{.. : LDP     x29, x30, [sp], #&30
+00008c44 : d65f03c0 : .._. : RET
+00008c48 : 9100a3e3 : .... : ADD     x3, sp, #&28              ; #40  = '('
+00008c4c : 2a1303e2 : ...* : MOV     w2, w19
+00008c50 : d2800001 : .... : MOVZ    x1, #0
+00008c54 : 528000c0 : ...R : MOVZ    w0, #&6
+00008c58 : 940000bc : .... : BL      &00008f48
+00008c5c : b4000040 : @... : CBZ     x0, &00008c64
+00008c60 : f90017ff : .... : STR     xzr, [sp, #&28]
+00008c64 : f94017e0 : ..@. : LDR     x0, [sp, #&28]
+00008c68 : f9400bf3 : ..@. : LDR     x19, [sp, #&10]
+00008c6c : 17fffff5 : .... : B       &00008c40
+00008c70 : d0000000 : .... : ADRP    x0, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00008c74 : 9119c000 : .... : ADD     x0, x0, #&670             ; #1648
+00008c78 : 97ffffbf : .... : BL      &00008b74                 ; -> Function: __heap_fatal
+00008c7c : d2800000 : .... : MOVZ    x0, #0
+00008c80 : 17fffff0 : .... : B       &00008c40
+00008c84 : f9400bf3 : ..@. : LDR     x19, [sp, #&10]
+00008c88 : 17ffffee : .... : B       &00008c40
+00008c8c : d503201f : . .. : NOP
+00008c90 : d503201f : . .. : NOP
+00008c94 : d503201f : . .. : NOP
+00008c98 : d503201f : . .. : NOP
+00008c9c : d503201f : . .. : NOP
+00008ca0 : 6c6c6163 : call : LDNP    d3, d24, [x11, #-&140]
+00008ca4 : 0000636f : oc.. : Undefined instruction
+00008ca8 : ff000008 : .... : Undefined instruction
+00008cac : a9be7bfd : .{.. : STP     x29, x30, [sp, #-&20]!    ; Function: calloc
+00008cb0 : 910003fd : .... : MOV     x29, sp
+00008cb4 : a90153f3 : .S.. : STP     x19, x20, [sp, #&10]
+00008cb8 : aa0103f4 : .... : MOV     x20, x1
+00008cbc : 1b017c00 : .|.. : MUL     w0, w0, w1
+00008cc0 : 93407c00 : .|@. : SXTW    x0, w0
+00008cc4 : 97ffffba : .... : BL      &00008bac                 ; -> Function: malloc
+00008cc8 : aa0003f3 : .... : MOV     x19, x0
+00008ccc : b4000080 : .... : CBZ     x0, &00008cdc
+00008cd0 : aa1403e2 : .... : MOV     x2, x20
+00008cd4 : 52800001 : ...R : MOVZ    w1, #0
+00008cd8 : 94000095 : .... : BL      &00008f2c                 ; -> Function: memset
+00008cdc : aa1303e0 : .... : MOV     x0, x19
+00008ce0 : a94153f3 : .SA. : LDP     x19, x20, [sp, #&10]
+00008ce4 : a8c27bfd : .{.. : LDP     x29, x30, [sp], #&20
+00008ce8 : d65f03c0 : .._. : RET
+00008cec : d503201f : . .. : NOP
+00008cf0 : d503201f : . .. : NOP
+00008cf4 : d503201f : . .. : NOP
+00008cf8 : d503201f : . .. : NOP
+00008cfc : d503201f : . .. : NOP
+00008d00 : 65657266 : free : Undefined instruction
+00008d04 : 00000000 : .... : Undefined instruction
+00008d08 : ff000008 : .... : Undefined instruction
+00008d0c : b4000340 : @... : CBZ     x0, &00008d74             ; Function: free
+00008d10 : a9bf7bfd : .{.. : STP     x29, x30, [sp, #-&10]!
+00008d14 : 910003fd : .... : MOV     x29, sp
+00008d18 : f0000001 : .... : ADRP    x1, &0000B000
+00008d1c : 39420021 : !.B9 : LDRB    w1, [x1, #&80]
+00008d20 : 35000181 : ...5 : CBNZ    w1, &00008d50
+00008d24 : f0000001 : .... : ADRP    x1, &0000B000
+00008d28 : f9402821 : !(@. : LDR     x1, [x1, #&50]
+00008d2c : b40001e1 : .... : CBZ     x1, &00008d68
+00008d30 : d0000001 : .... : ADRP    x1, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00008d34 : f9434021 : !@C. : LDR     x1, [x1, #&680]
+00008d38 : f9400021 : !.@. : LDR     x1, [x1]
+00008d3c : f9400822 : ".@. : LDR     x2, [x1, #&10]
+00008d40 : f85f8c01 : .._. : LDR     x1, [x0, #-8]!
+00008d44 : d63f0040 : @.?. : BLR     x2
+00008d48 : a8c17bfd : .{.. : LDP     x29, x30, [sp], #&10
+00008d4c : d65f03c0 : .._. : RET
+00008d50 : d2800003 : .... : MOVZ    x3, #0
+00008d54 : 52800002 : ...R : MOVZ    w2, #0
+00008d58 : aa0003e1 : .... : MOV     x1, x0
+00008d5c : 528000e0 : ...R : MOVZ    w0, #&7
+00008d60 : 9400007a : z... : BL      &00008f48
+00008d64 : 17fffff9 : .... : B       &00008d48
+00008d68 : d0000000 : .... : ADRP    x0, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00008d6c : 9119c000 : .... : ADD     x0, x0, #&670             ; #1648
+00008d70 : 97ffff81 : .... : BL      &00008b74                 ; -> Function: __heap_fatal
+00008d74 : d65f03c0 : .._. : RET
+00008d78 : d503201f : . .. : NOP
+00008d7c : d503201f : . .. : NOP
+00008d80 : d503201f : . .. : NOP
+00008d84 : d503201f : . .. : NOP
+00008d88 : d503201f : . .. : NOP
+00008d8c : 6c616572 : real : LDNP    d18, d25, [x11, #-&1f0]
+00008d90 : 00636f6c : loc. : Undefined instruction
+00008d94 : ff000008 : .... : Undefined instruction
+00008d98 : aa010002 : .... : ORR     x2, x0, x1                ; Function: realloc
+00008d9c : b40005c2 : .... : CBZ     x2, &00008e54
+00008da0 : a9bd7bfd : .{.. : STP     x29, x30, [sp, #-&30]!
+00008da4 : 910003fd : .... : MOV     x29, sp
+00008da8 : b40002e1 : .... : CBZ     x1, &00008e04
+00008dac : b4000320 :  ... : CBZ     x0, &00008e10
+00008db0 : f0000002 : .... : ADRP    x2, &0000B000
+00008db4 : 39420042 : B.B9 : LDRB    w2, [x2, #&80]
+00008db8 : 35000322 : "..5 : CBNZ    w2, &00008e1c
+00008dbc : f9000bf3 : .... : STR     x19, [sp, #&10]
+00008dc0 : f0000002 : .... : ADRP    x2, &0000B000
+00008dc4 : f9402842 : B(@. : LDR     x2, [x2, #&50]
+00008dc8 : b4000402 : .... : CBZ     x2, &00008e48
+00008dcc : 91003c21 : !<.. : ADD     x1, x1, #&f               ; #15
+00008dd0 : 927df033 : 3.}. : AND     x19, x1, #&fffffffffffffff8  ; #-8
+00008dd4 : d0000001 : .... : ADRP    x1, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00008dd8 : f9434021 : !@C. : LDR     x1, [x1, #&680]
+00008ddc : f9400021 : !.@. : LDR     x1, [x1]
+00008de0 : f9400c23 : #.@. : LDR     x3, [x1, #&18]
+00008de4 : f85f8c02 : .._. : LDR     x2, [x0, #-8]!
+00008de8 : aa1303e1 : .... : MOV     x1, x19
+00008dec : d63f0060 : `.?. : BLR     x3
+00008df0 : b4000360 : `... : CBZ     x0, &00008e5c
+00008df4 : f8008413 : .... : STR     x19, [x0], #8
+00008df8 : f9400bf3 : ..@. : LDR     x19, [sp, #&10]
+00008dfc : a8c37bfd : .{.. : LDP     x29, x30, [sp], #&30
+00008e00 : d65f03c0 : .._. : RET
+00008e04 : 97ffffc2 : .... : BL      &00008d0c                 ; -> Function: free
+00008e08 : d2800000 : .... : MOVZ    x0, #0
+00008e0c : 17fffffc : .... : B       &00008dfc
+00008e10 : aa0103e0 : .... : MOV     x0, x1
+00008e14 : 97ffff66 : f... : BL      &00008bac                 ; -> Function: malloc
+00008e18 : 17fffff9 : .... : B       &00008dfc
+00008e1c : b85fc002 : .._. : LDUR    w2, [x0, #-4]
+00008e20 : 4b020022 : "..K : SUB     w2, w1, w2
+00008e24 : 9100a3e3 : .... : ADD     x3, sp, #&28              ; #40  = '('
+00008e28 : 11001042 : B... : ADD     w2, w2, #4
+00008e2c : aa0003e1 : .... : MOV     x1, x0
+00008e30 : 528001a0 : ...R : MOVZ    w0, #&d                   ; #13
+00008e34 : 94000045 : E... : BL      &00008f48
+00008e38 : f100001f : .... : CMP     x0, #0
+00008e3c : f94017e0 : ..@. : LDR     x0, [sp, #&28]
+00008e40 : 9a9f0000 : .... : CSEL    x0, x0, xzr, eq
+00008e44 : 17ffffee : .... : B       &00008dfc
+00008e48 : d0000000 : .... : ADRP    x0, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00008e4c : 9119c000 : .... : ADD     x0, x0, #&670             ; #1648
+00008e50 : 97ffff49 : I... : BL      &00008b74                 ; -> Function: __heap_fatal
+00008e54 : d2800000 : .... : MOVZ    x0, #0
+00008e58 : d65f03c0 : .._. : RET
+00008e5c : f9400bf3 : ..@. : LDR     x19, [sp, #&10]
+00008e60 : 17ffffe7 : .... : B       &00008dfc
+00008e64 : d503201f : . .. : NOP
+00008e68 : d503201f : . .. : NOP
+00008e6c : d503201f : . .. : NOP
+00008e70 : d503201f : . .. : NOP
+00008e74 : d503201f : . .. : NOP
+00008e78 : 636d656d : memc : Undefined instruction
+00008e7c : 00007970 : py.. : Undefined instruction
+00008e80 : ff000008 : .... : Undefined instruction
+00008e84 : b40000e2 : .... : CBZ     x2, &00008ea0             ; Function: memcpy
+00008e88 : d2800003 : .... : MOVZ    x3, #0
+00008e8c : 38636824 : $hc8 : LDRB    w4, [x1, x3]
+00008e90 : 38236804 : .h#8 : STRB    w4, [x0, x3]
+00008e94 : 91000463 : c... : ADD     x3, x3, #1
+00008e98 : eb02007f : .... : CMP     x3, x2
+00008e9c : 54ffff81 : ...T : B.NE    &00008e8c
+00008ea0 : d65f03c0 : .._. : RET
+00008ea4 : d503201f : . .. : NOP
+00008ea8 : d503201f : . .. : NOP
+00008eac : d503201f : . .. : NOP
+00008eb0 : d503201f : . .. : NOP
+00008eb4 : d503201f : . .. : NOP
+00008eb8 : 6d6d656d : memm : LDP     d13, d25, [x11, #-&130]
+00008ebc : 0065766f : ove. : Undefined instruction
+00008ec0 : ff000008 : .... : Undefined instruction
+00008ec4 : eb01001f : .... : CMP     x0, x1                    ; Function: memmove
+00008ec8 : 54000122 : "..T : B.HS    &00008eec
+00008ecc : b40000e2 : .... : CBZ     x2, &00008ee8
+00008ed0 : d2800003 : .... : MOVZ    x3, #0
+00008ed4 : 38636824 : $hc8 : LDRB    w4, [x1, x3]
+00008ed8 : 38236804 : .h#8 : STRB    w4, [x0, x3]
+00008edc : 91000463 : c... : ADD     x3, x3, #1
+00008ee0 : eb02007f : .... : CMP     x3, x2
+00008ee4 : 54ffff81 : ...T : B.NE    &00008ed4
+00008ee8 : d65f03c0 : .._. : RET
+00008eec : d1000443 : C... : SUB     x3, x2, #1
+00008ef0 : b4ffffc2 : .... : CBZ     x2, &00008ee8
+00008ef4 : 38636822 : "hc8 : LDRB    w2, [x1, x3]
+00008ef8 : 38236802 : .h#8 : STRB    w2, [x0, x3]
+00008efc : d1000463 : c... : SUB     x3, x3, #1
+00008f00 : b100047f : .... : CMN     x3, #1
+00008f04 : 54ffff81 : ...T : B.NE    &00008ef4
+00008f08 : 17fffff8 : .... : B       &00008ee8
+00008f0c : d503201f : . .. : NOP
+00008f10 : d503201f : . .. : NOP
+00008f14 : d503201f : . .. : NOP
+00008f18 : d503201f : . .. : NOP
+00008f1c : d503201f : . .. : NOP
+00008f20 : 736d656d : mems : Undefined instruction
+00008f24 : 00007465 : et.. : Undefined instruction
+00008f28 : ff000008 : .... : Undefined instruction
+00008f2c : b40000c2 : .... : CBZ     x2, &00008f44             ; Function: memset
+00008f30 : 8b020003 : .... : ADD     x3, x0, x2
+00008f34 : aa0003e2 : .... : MOV     x2, x0
+00008f38 : 38001441 : A..8 : STRB    w1, [x2], #1
+00008f3c : eb02007f : .... : CMP     x3, x2
+00008f40 : 54ffffc1 : ...T : B.NE    &00008f38
+00008f44 : d65f03c0 : .._. : RET
+00008f48 : a9bf7bfd : .{.. : STP     x29, x30, [sp, #-&10]!
+00008f4c : 910003fd : .... : MOV     x29, sp
+00008f50 : aa0303e4 : .... : MOV     x4, x3
+00008f54 : aa0203e3 : .... : MOV     x3, x2
+00008f58 : aa0103e2 : .... : MOV     x2, x1
+00008f5c : d28003ca : .... : MOVZ    x10, #&1e                 ; #30
+00008f60 : d4000001 : .... : SWI     #0                        ; SWI OS_Module
+00008f64 : 540000a6 : ...T : B.VS    &00008f78
+00008f68 : d2800000 : .... : MOVZ    x0, #0
+00008f6c : f100009f : .... : CMP     x4, #0
+00008f70 : 54000040 : @..T : B.EQ    &00008f78
+00008f74 : f9000082 : .... : STR     x2, [x4]
+00008f78 : a8c17bfd : .{.. : LDP     x29, x30, [sp], #&10
+00008f7c : d65f03c0 : .._. : RET
+00008f80 : d503201f : . .. : NOP
+00008f84 : d503201f : . .. : NOP
+00008f88 : d503201f : . .. : NOP
+00008f8c : d503201f : . .. : NOP
+00008f90 : d503201f : . .. : NOP
+00008f94 : d503201f : . .. : NOP
+00008f98 : d503201f : . .. : NOP
+00008f9c : d503201f : . .. : NOP
+00008fa0 : a9bf7bfd : .{.. : STP     x29, x30, [sp, #-&10]!
+00008fa4 : 910003fd : .... : MOV     x29, sp
+00008fa8 : b4000480 : .... : CBZ     x0, &00009038
+00008fac : b4000561 : a... : CBZ     x1, &00009058
+00008fb0 : f9400822 : ".@. : LDR     x2, [x1, #&10]
+00008fb4 : f100fc5f : _... : CMP     x2, #&3f                  ; #63  = '?'
+00008fb8 : 54000609 : ...T : B.LS    &00009078
+00008fbc : f240145f : _.@. : TST     x2, #&3f
+00008fc0 : 540006c1 : ...T : B.NE    &00009098
+00008fc4 : d346fc42 : B.F. : LSR     x2, x2, #6
+00008fc8 : dac01042 : B... : CLZ     x2, x2
+00008fcc : 528007e3 : ...R : MOVZ    w3, #&3f                  ; #63  = '?'
+00008fd0 : 4b020062 : b..K : SUB     w2, w3, w2
+00008fd4 : 12001c42 : B... : AND     w2, w2, #&ff              ; #255
+00008fd8 : f9401023 : #.@. : LDR     x3, [x1, #&20]
+00008fdc : b4000063 : c... : CBZ     x3, &00008fe8
+00008fe0 : f9401424 : $.@. : LDR     x4, [x1, #&28]
+00008fe4 : f9001464 : d... : STR     x4, [x3, #&28]
+00008fe8 : f9401423 : #.@. : LDR     x3, [x1, #&28]
+00008fec : b4000763 : c... : CBZ     x3, &000090d8
+00008ff0 : f9401024 : $.@. : LDR     x4, [x1, #&20]
+00008ff4 : f9001064 : d... : STR     x4, [x3, #&20]
+00008ff8 : 2a0203e3 : ...* : MOV     w3, w2
+00008ffc : f862d802 : ..b. : LDR     x2, [x0, w2, sxtw #3]
+00009000 : eb01005f : _... : CMP     x2, x1
+00009004 : 54000161 : a..T : B.NE    &00009030
+00009008 : f9401422 : ".@. : LDR     x2, [x1, #&28]
+0000900c : b5000562 : b... : CBNZ    x2, &000090b8
+00009010 : f9401021 : !.@. : LDR     x1, [x1, #&20]
+00009014 : f823d801 : ..#. : STR     x1, [x0, w3, sxtw #3]
+00009018 : b50000c1 : .... : CBNZ    x1, &00009030
+0000901c : d2800021 : !... : MOVZ    x1, #&1
+00009020 : 9ac32021 : ! .. : LSL     x1, x1, x3
+00009024 : f9410002 : ..A. : LDR     x2, [x0, #&200]
+00009028 : 8a210041 : A.!. : BIC     x1, x2, x1
+0000902c : f9010001 : .... : STR     x1, [x0, #&200]
+00009030 : a8c17bfd : .{.. : LDP     x29, x30, [sp], #&10
+00009034 : d65f03c0 : .._. : RET
+00009038 : b0000003 : .... : ADRP    x3, &0000A000             ; -> Function: __o1heapGetDiagnostics
+0000903c : 9112c063 : c... : ADD     x3, x3, #&4b0             ; #1200
+00009040 : 52801b42 : B..R : MOVZ    w2, #&da                  ; #218
+00009044 : b0000001 : .... : ADRP    x1, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009048 : 911a2021 : ! .. : ADD     x1, x1, #&688             ; #1672
+0000904c : b0000000 : .... : ADRP    x0, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009050 : 911a6000 : .`.. : ADD     x0, x0, #&698             ; #1688
+00009054 : 94000405 : .... : BL      &0000a068                 ; -> Function: __assert_fail
+00009058 : b0000003 : .... : ADRP    x3, &0000A000             ; -> Function: __o1heapGetDiagnostics
+0000905c : 9112c063 : c... : ADD     x3, x3, #&4b0             ; #1200
+00009060 : 52801b62 : b..R : MOVZ    w2, #&db                  ; #219
+00009064 : b0000001 : .... : ADRP    x1, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009068 : 911a2021 : ! .. : ADD     x1, x1, #&688             ; #1672
+0000906c : b0000000 : .... : ADRP    x0, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009070 : 911ac000 : .... : ADD     x0, x0, #&6b0             ; #1712
+00009074 : 940003fd : .... : BL      &0000a068                 ; -> Function: __assert_fail
+00009078 : b0000003 : .... : ADRP    x3, &0000A000             ; -> Function: __o1heapGetDiagnostics
+0000907c : 9112c063 : c... : ADD     x3, x3, #&4b0             ; #1200
+00009080 : 52801b82 : ...R : MOVZ    w2, #&dc                  ; #220
+00009084 : b0000001 : .... : ADRP    x1, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009088 : 911a2021 : ! .. : ADD     x1, x1, #&688             ; #1672
+0000908c : b0000000 : .... : ADRP    x0, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009090 : 911b2000 : . .. : ADD     x0, x0, #&6c8             ; #1736
+00009094 : 940003f5 : .... : BL      &0000a068                 ; -> Function: __assert_fail
+00009098 : b0000003 : .... : ADRP    x3, &0000A000             ; -> Function: __o1heapGetDiagnostics
+0000909c : 9112c063 : c... : ADD     x3, x3, #&4b0             ; #1200
+000090a0 : 52801ba2 : ...R : MOVZ    w2, #&dd                  ; #221
+000090a4 : b0000001 : .... : ADRP    x1, &0000A000             ; -> Function: __o1heapGetDiagnostics
+000090a8 : 911a2021 : ! .. : ADD     x1, x1, #&688             ; #1672
+000090ac : b0000000 : .... : ADRP    x0, &0000A000             ; -> Function: __o1heapGetDiagnostics
+000090b0 : 911c0000 : .... : ADD     x0, x0, #&700             ; #1792
+000090b4 : 940003ed : .... : BL      &0000a068                 ; -> Function: __assert_fail
+000090b8 : b0000003 : .... : ADRP    x3, &0000A000             ; -> Function: __o1heapGetDiagnostics
+000090bc : 9112c063 : c... : ADD     x3, x3, #&4b0             ; #1200
+000090c0 : 52801d82 : ...R : MOVZ    w2, #&ec                  ; #236
+000090c4 : b0000001 : .... : ADRP    x1, &0000A000             ; -> Function: __o1heapGetDiagnostics
+000090c8 : 911a2021 : ! .. : ADD     x1, x1, #&688             ; #1672
+000090cc : b0000000 : .... : ADRP    x0, &0000A000             ; -> Function: __o1heapGetDiagnostics
+000090d0 : 911d0000 : .... : ADD     x0, x0, #&740             ; #1856
+000090d4 : 940003e5 : .... : BL      &0000a068                 ; -> Function: __assert_fail
+000090d8 : 2a0203e3 : ...* : MOV     w3, w2
+000090dc : f862d802 : ..b. : LDR     x2, [x0, w2, sxtw #3]
+000090e0 : eb01005f : _... : CMP     x2, x1
+000090e4 : 54fff960 : `..T : B.EQ    &00009010
+000090e8 : 17ffffd2 : .... : B       &00009030
+000090ec : d503201f : . .. : NOP
+000090f0 : d503201f : . .. : NOP
+000090f4 : d503201f : . .. : NOP
+000090f8 : 316f5f5f : __o1 : CMN     w26, #&bd7, lsl #12
+000090fc : 70616568 : heap : ADR     x8, &000CBDAB
+00009100 : 74696e49 : Init : Undefined instruction
+00009104 : 00000000 : .... : Undefined instruction
+00009108 : ff000010 : .... : Undefined instruction
+0000910c : b4000b00 : .... : CBZ     x0, &0000926c             ; Function: __o1heapInit
+00009110 : 92401002 : ..@. : AND     x2, x0, #&1f              ; #31
+00009114 : f109fc3f : ?... : CMP     x1, #&27f                 ; #639
+00009118 : fa408840 : @.@. : CCMP    x2, #0, #0, hi
+0000911c : 54000a41 : A..T : B.NE    &00009264
+00009120 : a9bf7bfd : .{.. : STP     x29, x30, [sp, #-&10]!
+00009124 : 910003fd : .... : MOV     x29, sp
+00009128 : f2400802 : ..@. : ANDS    x2, x0, #7
+0000912c : 54000661 : a..T : B.NE    &000091f8
+00009130 : f901001f : .... : STR     xzr, [x0, #&200]
+00009134 : f822781f : .x". : STR     xzr, [x0, x2, lsl #3]
+00009138 : 91000442 : B... : ADD     x2, x2, #1
+0000913c : f101005f : _... : CMP     x2, #&40                  ; #64  = '@' = bit 6
+00009140 : 54ffffa1 : ...T : B.NE    &00009134
+00009144 : d1090021 : !... : SUB     x1, x1, #&240             ; #576
+00009148 : d2f00002 : .... : MOVZ    x2, #&8000000000000000    ; #9223372036854775808
+0000914c : eb02003f : ?... : CMP     x1, x2
+00009150 : 9a829021 : !... : CSEL    x1, x1, x2, ls
+00009154 : f240143f : ?.@. : TST     x1, #&3f
+00009158 : 54000120 :  ..T : B.EQ    &0000917c
+0000915c : aa0103e2 : .... : MOV     x2, x1
+00009160 : d1000421 : !... : SUB     x1, x1, #1
+00009164 : f240143f : ?.@. : TST     x1, #&3f
+00009168 : 54ffffa1 : ...T : B.NE    &0000915c
+0000916c : d1010442 : B... : SUB     x2, x2, #&41              ; #65  = 'A'
+00009170 : b27ae3e3 : ..z. : ORR     x3, xzr, #&7fffffffffffffc0  ; #9223372036854775744
+00009174 : eb03005f : _... : CMP     x2, x3
+00009178 : 54000528 : (..T : B.HI    &0000921c
+0000917c : 91090005 : .... : ADD     x5, x0, #&240             ; #576
+00009180 : f240101f : ..@. : TST     x0, #&1f
+00009184 : 540005e1 : ...T : B.NE    &00009240
+00009188 : f901201f : . .. : STR     xzr, [x0, #&240]
+0000918c : f901241f : .$.. : STR     xzr, [x0, #&248]
+00009190 : f9012801 : .(.. : STR     x1, [x0, #&250]
+00009194 : 3909601f : .`.9 : STRB    wzr, [x0, #&258]
+00009198 : f901341f : .4.. : STR     xzr, [x0, #&268]
+0000919c : d346fc24 : $.F. : LSR     x4, x1, #6
+000091a0 : dac01084 : .... : CLZ     x4, x4
+000091a4 : 528007e3 : ...R : MOVZ    w3, #&3f                  ; #63  = '?'
+000091a8 : 4b040063 : c..K : SUB     w3, w3, w4
+000091ac : 12001c64 : d... : AND     w4, w3, #&ff              ; #255
+000091b0 : 92401c63 : c.@. : AND     x3, x3, #&ff              ; #255
+000091b4 : f8637803 : .xc. : LDR     x3, [x0, x3, lsl #3]
+000091b8 : f9013003 : .0.. : STR     x3, [x0, #&260]
+000091bc : b4000043 : C... : CBZ     x3, &000091c4
+000091c0 : f9001465 : e... : STR     x5, [x3, #&28]
+000091c4 : f824d805 : ..$. : STR     x5, [x0, w4, sxtw #3]
+000091c8 : d2800023 : #... : MOVZ    x3, #&1
+000091cc : 9ac42063 : c .. : LSL     x3, x3, x4
+000091d0 : f9410002 : ..A. : LDR     x2, [x0, #&200]
+000091d4 : aa030042 : B... : ORR     x2, x2, x3
+000091d8 : f9010002 : .... : STR     x2, [x0, #&200]
+000091dc : f9010401 : .... : STR     x1, [x0, #&208]
+000091e0 : f901081f : .... : STR     xzr, [x0, #&210]
+000091e4 : f9010c1f : .... : STR     xzr, [x0, #&218]
+000091e8 : f901101f : .... : STR     xzr, [x0, #&220]
+000091ec : f901141f : .... : STR     xzr, [x0, #&228]
+000091f0 : a8c17bfd : .{.. : LDP     x29, x30, [sp], #&10
+000091f4 : d65f03c0 : .._. : RET
+000091f8 : b0000003 : .... : ADRP    x3, &0000A000             ; -> Function: __o1heapGetDiagnostics
+000091fc : 9112c063 : c... : ADD     x3, x3, #&4b0             ; #1200
+00009200 : 91002063 : c .. : ADD     x3, x3, #8
+00009204 : 52801fc2 : ...R : MOVZ    w2, #&fe                  ; #254
+00009208 : b0000001 : .... : ADRP    x1, &0000A000             ; -> Function: __o1heapGetDiagnostics
+0000920c : 911a2021 : ! .. : ADD     x1, x1, #&688             ; #1672
+00009210 : b0000000 : .... : ADRP    x0, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009214 : 911da000 : .... : ADD     x0, x0, #&768             ; #1896
+00009218 : 94000394 : .... : BL      &0000a068                 ; -> Function: __assert_fail
+0000921c : b0000003 : .... : ADRP    x3, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009220 : 9112c063 : c... : ADD     x3, x3, #&4b0             ; #1200
+00009224 : 91002063 : c .. : ADD     x3, x3, #8
+00009228 : 52802242 : B".R : MOVZ    w2, #&112                 ; #274
+0000922c : b0000001 : .... : ADRP    x1, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009230 : 911a2021 : ! .. : ADD     x1, x1, #&688             ; #1672
+00009234 : b0000000 : .... : ADRP    x0, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009238 : 911e6000 : .`.. : ADD     x0, x0, #&798             ; #1944
+0000923c : 9400038b : .... : BL      &0000a068                 ; -> Function: __assert_fail
+00009240 : b0000003 : .... : ADRP    x3, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009244 : 9112c063 : c... : ADD     x3, x3, #&4b0             ; #1200
+00009248 : 91002063 : c .. : ADD     x3, x3, #8
+0000924c : 528022c2 : .".R : MOVZ    w2, #&116                 ; #278
+00009250 : b0000001 : .... : ADRP    x1, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009254 : 911a2021 : ! .. : ADD     x1, x1, #&688             ; #1672
+00009258 : b0000000 : .... : ADRP    x0, &0000A000             ; -> Function: __o1heapGetDiagnostics
+0000925c : 911fe000 : .... : ADD     x0, x0, #&7f8             ; #2040
+00009260 : 94000382 : .... : BL      &0000a068                 ; -> Function: __assert_fail
+00009264 : d2800000 : .... : MOVZ    x0, #0
+00009268 : d65f03c0 : .._. : RET
+0000926c : d65f03c0 : .._. : RET
+00009270 : d503201f : . .. : NOP
+00009274 : d503201f : . .. : NOP
+00009278 : 316f5f5f : __o1 : CMN     w26, #&bd7, lsl #12
+0000927c : 70616568 : heap : ADR     x8, &000CBF2B
+00009280 : 6f6c6c41 : Allo : Undefined instruction
+00009284 : 65746163 : cate : Undefined instruction
+00009288 : 00000000 : .... : Undefined instruction
+0000928c : ff000014 : .... : Undefined instruction
+00009290 : a9bc7bfd : .{.. : STP     x29, x30, [sp, #-&40]!    ; Function: __o1heapAllocate
+00009294 : 910003fd : .... : MOV     x29, sp
+00009298 : a90153f3 : .S.. : STP     x19, x20, [sp, #&10]
+0000929c : a9025bf5 : .[.. : STP     x21, x22, [sp, #&20]
+000092a0 : a90363f7 : .c.. : STP     x23, x24, [sp, #&30]
+000092a4 : b40011c0 : .... : CBZ     x0, &000094dc
+000092a8 : aa0003f3 : .... : MOV     x19, x0
+000092ac : aa0103f6 : .... : MOV     x22, x1
+000092b0 : f9410400 : ..A. : LDR     x0, [x0, #&208]
+000092b4 : d2f00001 : .... : MOVZ    x1, #&8000000000000000    ; #9223372036854775808
+000092b8 : eb01001f : .... : CMP     x0, x1
+000092bc : 54001228 : (..T : B.HI    &00009500
+000092c0 : f10002df : .... : CMP     x22, #0
+000092c4 : 1a9f07f7 : .... : CSET    w23, ne
+000092c8 : 54002720 :  '.T : B.EQ    &000097ac
+000092cc : d1008000 : .... : SUB     x0, x0, #&20              ; #32  = ' ' = bit 5
+000092d0 : eb16001f : .... : CMP     x0, x22
+000092d4 : 54002703 : .'.T : B.LO    &000097b4
+000092d8 : 910082d8 : .... : ADD     x24, x22, #&20            ; #32  = ' ' = bit 5
+000092dc : f100071f : .... : CMP     x24, #1
+000092e0 : 54001229 : )..T : B.LS    &00009524
+000092e4 : 91007ec0 : .~.. : ADD     x0, x22, #&1f             ; #31
+000092e8 : dac01000 : .... : CLZ     x0, x0
+000092ec : 4b0003e0 : ...K : NEG     w0, w0
+000092f0 : d2800035 : 5... : MOVZ    x21, #&1
+000092f4 : 9ac022b5 : .".. : LSL     x21, x21, x0
+000092f8 : f100febf : .... : CMP     x21, #&3f                 ; #63  = '?'
+000092fc : 54001269 : i..T : B.LS    &00009548
+00009300 : eb15031f : .... : CMP     x24, x21
+00009304 : 54001348 : H..T : B.HI    &0000956c
+00009308 : d10006a0 : .... : SUB     x0, x21, #1
+0000930c : ea15001f : .... : TST     x0, x21
+00009310 : 54001401 : ...T : B.NE    &00009590
+00009314 : d346fea1 : ..F. : LSR     x1, x21, #6
+00009318 : d1000421 : !... : SUB     x1, x1, #1
+0000931c : dac01021 : !... : CLZ     x1, x1
+00009320 : 52800800 : ...R : MOVZ    w0, #&40                  ; #64  = '@' = bit 6
+00009324 : 4b010000 : ...K : SUB     w0, w0, w1
+00009328 : 12001c00 : .... : AND     w0, w0, #&ff              ; #255
+0000932c : f101febf : .... : CMP     x21, #&7f                 ; #127
+00009330 : 1a9f8000 : .... : CSEL    w0, w0, wzr, hi
+00009334 : 92800002 : .... : MOVN    x2, #0
+00009338 : 9ac02042 : B .. : LSL     x2, x2, x0
+0000933c : f9410261 : a.A. : LDR     x1, [x19, #&200]
+00009340 : 8a010042 : B... : AND     x2, x2, x1
+00009344 : cb0203e1 : .... : NEG     x1, x2
+00009348 : ea020021 : !... : ANDS    x1, x1, x2
+0000934c : 54002340 : @#.T : B.EQ    &000097b4
+00009350 : d1000422 : "... : SUB     x2, x1, #1
+00009354 : ea01005f : _... : TST     x2, x1
+00009358 : 540012e1 : ...T : B.NE    &000095b4
+0000935c : dac01021 : !... : CLZ     x1, x1
+00009360 : 528007e2 : ...R : MOVZ    w2, #&3f                  ; #63  = '?'
+00009364 : 4b010041 : A..K : SUB     w1, w2, w1
+00009368 : 12001c22 : "... : AND     w2, w1, #&ff              ; #255
+0000936c : 6b21001f : ..!k : CMP     w0, w1, uxtb
+00009370 : 54001348 : H..T : B.HI    &000095d8
+00009374 : f862da74 : t.b. : LDR     x20, [x19, w2, sxtw #3]
+00009378 : b4001434 : 4... : CBZ     x20, &000095fc
+0000937c : f9400a80 : ..@. : LDR     x0, [x20, #&10]
+00009380 : eb15001f : .... : CMP     x0, x21
+00009384 : 540014e3 : ...T : B.LO    &00009620
+00009388 : f240141f : ..@. : TST     x0, #&3f
+0000938c : 540015c1 : ...T : B.NE    &00009644
+00009390 : 39406280 : .b@9 : LDRB    w0, [x20, #&18]
+00009394 : 350016a0 : ...5 : CBNZ    w0, &00009668
+00009398 : aa1403e1 : .... : MOV     x1, x20
+0000939c : aa1303e0 : .... : MOV     x0, x19
+000093a0 : 97ffff00 : .... : BL      &00008fa0
+000093a4 : f9400a81 : ..@. : LDR     x1, [x20, #&10]
+000093a8 : cb150021 : !... : SUB     x1, x1, x21
+000093ac : f9000a95 : .... : STR     x21, [x20, #&10]
+000093b0 : f9410660 : `.A. : LDR     x0, [x19, #&208]
+000093b4 : eb01001f : .... : CMP     x0, x1
+000093b8 : 540016a9 : ...T : B.LS    &0000968c
+000093bc : f240143f : ?.@. : TST     x1, #&3f
+000093c0 : 54001781 : ...T : B.NE    &000096b0
+000093c4 : f100fc3f : ?... : CMP     x1, #&3f                  ; #63  = '?'
+000093c8 : 54000469 : i..T : B.LS    &00009454
+000093cc : 8b150280 : .... : ADD     x0, x20, x21
+000093d0 : f240101f : ..@. : TST     x0, #&1f
+000093d4 : 54001801 : ...T : B.NE    &000096d4
+000093d8 : f9000801 : .... : STR     x1, [x0, #&10]
+000093dc : 3900601f : .`.9 : STRB    wzr, [x0, #&18]
+000093e0 : f9400281 : ..@. : LDR     x1, [x20]
+000093e4 : f8356a81 : .j5. : STR     x1, [x20, x21]
+000093e8 : b4000041 : A... : CBZ     x1, &000093f0
+000093ec : f9000420 :  ... : STR     x0, [x1, #8]
+000093f0 : f9000280 : .... : STR     x0, [x20]
+000093f4 : f9000414 : .... : STR     x20, [x0, #8]
+000093f8 : f9400801 : ..@. : LDR     x1, [x0, #&10]
+000093fc : f100fc3f : ?... : CMP     x1, #&3f                  ; #63  = '?'
+00009400 : 540017c9 : ...T : B.LS    &000096f8
+00009404 : f240143f : ?.@. : TST     x1, #&3f
+00009408 : 540018a1 : ...T : B.NE    &0000971c
+0000940c : d346fc21 : !.F. : LSR     x1, x1, #6
+00009410 : dac01022 : "... : CLZ     x2, x1
+00009414 : 528007e1 : ...R : MOVZ    w1, #&3f                  ; #63  = '?'
+00009418 : 4b020021 : !..K : SUB     w1, w1, w2
+0000941c : 12001c23 : #... : AND     w3, w1, #&ff              ; #255
+00009420 : 92401c21 : !.@. : AND     x1, x1, #&ff              ; #255
+00009424 : f8617a62 : bza. : LDR     x2, [x19, x1, lsl #3]
+00009428 : f9001002 : .... : STR     x2, [x0, #&20]
+0000942c : f900141f : .... : STR     xzr, [x0, #&28]
+00009430 : f8617a62 : bza. : LDR     x2, [x19, x1, lsl #3]
+00009434 : b4000042 : B... : CBZ     x2, &0000943c
+00009438 : f9001440 : @... : STR     x0, [x2, #&28]
+0000943c : f8217a60 : `z!. : STR     x0, [x19, x1, lsl #3]
+00009440 : d2800021 : !... : MOVZ    x1, #&1
+00009444 : 9ac32021 : ! .. : LSL     x1, x1, x3
+00009448 : f9410260 : `.A. : LDR     x0, [x19, #&200]
+0000944c : aa010000 : .... : ORR     x0, x0, x1
+00009450 : f9010260 : `... : STR     x0, [x19, #&200]
+00009454 : f9410a60 : `.A. : LDR     x0, [x19, #&210]
+00009458 : f240141f : ..@. : TST     x0, #&3f
+0000945c : 54001721 : !..T : B.NE    &00009740
+00009460 : 8b150000 : .... : ADD     x0, x0, x21
+00009464 : f9010a60 : `... : STR     x0, [x19, #&210]
+00009468 : f9410661 : a.A. : LDR     x1, [x19, #&208]
+0000946c : eb01001f : .... : CMP     x0, x1
+00009470 : 540017a8 : ...T : B.HI    &00009764
+00009474 : f9410e61 : a.A. : LDR     x1, [x19, #&218]
+00009478 : eb01001f : .... : CMP     x0, x1
+0000947c : 54000049 : I..T : B.LS    &00009484
+00009480 : f9010e60 : `... : STR     x0, [x19, #&218]
+00009484 : f9400a80 : ..@. : LDR     x0, [x20, #&10]
+00009488 : eb00031f : .... : CMP     x24, x0
+0000948c : 540017e8 : ...T : B.HI    &00009788
+00009490 : 52800020 :  ..R : MOVZ    w0, #&1
+00009494 : 39006280 : .b.9 : STRB    w0, [x20, #&18]
+00009498 : 91008280 : .... : ADD     x0, x20, #&20             ; #32  = ' ' = bit 5
+0000949c : f9411261 : a.A. : LDR     x1, [x19, #&220]
+000094a0 : eb0102df : .... : CMP     x22, x1
+000094a4 : 54000129 : )..T : B.LS    &000094c8
+000094a8 : f9011276 : v... : STR     x22, [x19, #&220]
+000094ac : f100001f : .... : CMP     x0, #0
+000094b0 : 7a400ae4 : ..@z : CCMP    w23, #0, #4, eq
+000094b4 : 540000a0 : ...T : B.EQ    &000094c8
+000094b8 : f9411660 : `.A. : LDR     x0, [x19, #&228]
+000094bc : 91000400 : .... : ADD     x0, x0, #1
+000094c0 : f9011660 : `... : STR     x0, [x19, #&228]
+000094c4 : d2800000 : .... : MOVZ    x0, #0
+000094c8 : a94153f3 : .SA. : LDP     x19, x20, [sp, #&10]
+000094cc : a9425bf5 : .[B. : LDP     x21, x22, [sp, #&20]
+000094d0 : a94363f7 : .cC. : LDP     x23, x24, [sp, #&30]
+000094d4 : a8c47bfd : .{.. : LDP     x29, x30, [sp], #&40
+000094d8 : d65f03c0 : .._. : RET
+000094dc : b0000003 : .... : ADRP    x3, &0000A000             ; -> Function: __o1heapGetDiagnostics
+000094e0 : 9112c063 : c... : ADD     x3, x3, #&4b0             ; #1200
+000094e4 : 91006063 : c`.. : ADD     x3, x3, #&18              ; #24
+000094e8 : 528025a2 : .%.R : MOVZ    w2, #&12d                 ; #301
+000094ec : b0000001 : .... : ADRP    x1, &0000A000             ; -> Function: __o1heapGetDiagnostics
+000094f0 : 911a2021 : ! .. : ADD     x1, x1, #&688             ; #1672
+000094f4 : b0000000 : .... : ADRP    x0, &0000A000             ; -> Function: __o1heapGetDiagnostics
+000094f8 : 911a6000 : .`.. : ADD     x0, x0, #&698             ; #1688
+000094fc : 940002db : .... : BL      &0000a068                 ; -> Function: __assert_fail
+00009500 : b0000003 : .... : ADRP    x3, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009504 : 9112c063 : c... : ADD     x3, x3, #&4b0             ; #1200
+00009508 : 91006063 : c`.. : ADD     x3, x3, #&18              ; #24
+0000950c : 528025c2 : .%.R : MOVZ    w2, #&12e                 ; #302
+00009510 : b0000001 : .... : ADRP    x1, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009514 : 911a2021 : ! .. : ADD     x1, x1, #&688             ; #1672
+00009518 : b0000000 : .... : ADRP    x0, &0000A000             ; -> Function: __o1heapGetDiagnostics
+0000951c : 9120a000 : .. . : ADD     x0, x0, #&828             ; #2088
+00009520 : 940002d2 : .... : BL      &0000a068                 ; -> Function: __assert_fail
+00009524 : b0000003 : .... : ADRP    x3, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009528 : 9112c063 : c... : ADD     x3, x3, #&4b0             ; #1200
+0000952c : 9100c063 : c... : ADD     x3, x3, #&30              ; #48  = '0'
+00009530 : 52801602 : ...R : MOVZ    w2, #&b0                  ; #176
+00009534 : b0000001 : .... : ADRP    x1, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009538 : 911a2021 : ! .. : ADD     x1, x1, #&688             ; #1672
+0000953c : b0000000 : .... : ADRP    x0, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009540 : 9121c000 : ..!. : ADD     x0, x0, #&870             ; #2160
+00009544 : 940002c9 : .... : BL      &0000a068                 ; -> Function: __assert_fail
+00009548 : b0000003 : .... : ADRP    x3, &0000A000             ; -> Function: __o1heapGetDiagnostics
+0000954c : 9112c063 : c... : ADD     x3, x3, #&4b0             ; #1200
+00009550 : 91006063 : c`.. : ADD     x3, x3, #&18              ; #24
+00009554 : 52802742 : B'.R : MOVZ    w2, #&13a                 ; #314
+00009558 : b0000001 : .... : ADRP    x1, &0000A000             ; -> Function: __o1heapGetDiagnostics
+0000955c : 911a2021 : ! .. : ADD     x1, x1, #&688             ; #1672
+00009560 : b0000000 : .... : ADRP    x0, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009564 : 9121e000 : ..!. : ADD     x0, x0, #&878             ; #2168
+00009568 : 940002c0 : .... : BL      &0000a068                 ; -> Function: __assert_fail
+0000956c : b0000003 : .... : ADRP    x3, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009570 : 9112c063 : c... : ADD     x3, x3, #&4b0             ; #1200
+00009574 : 91006063 : c`.. : ADD     x3, x3, #&18              ; #24
+00009578 : 52802762 : b'.R : MOVZ    w2, #&13b                 ; #315
+0000957c : b0000001 : .... : ADRP    x1, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009580 : 911a2021 : ! .. : ADD     x1, x1, #&688             ; #1672
+00009584 : b0000000 : .... : ADRP    x0, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009588 : 9122a000 : ..". : ADD     x0, x0, #&8a8             ; #2216
+0000958c : 940002b7 : .... : BL      &0000a068                 ; -> Function: __assert_fail
+00009590 : b0000003 : .... : ADRP    x3, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009594 : 9112c063 : c... : ADD     x3, x3, #&4b0             ; #1200
+00009598 : 91006063 : c`.. : ADD     x3, x3, #&18              ; #24
+0000959c : 52802782 : .'.R : MOVZ    w2, #&13c                 ; #316
+000095a0 : b0000001 : .... : ADRP    x1, &0000A000             ; -> Function: __o1heapGetDiagnostics
+000095a4 : 911a2021 : ! .. : ADD     x1, x1, #&688             ; #1672
+000095a8 : b0000000 : .... : ADRP    x0, &0000A000             ; -> Function: __o1heapGetDiagnostics
+000095ac : 91236000 : .`#. : ADD     x0, x0, #&8d8             ; #2264
+000095b0 : 940002ae : .... : BL      &0000a068                 ; -> Function: __assert_fail
+000095b4 : b0000003 : .... : ADRP    x3, &0000A000             ; -> Function: __o1heapGetDiagnostics
+000095b8 : 9112c063 : c... : ADD     x3, x3, #&4b0             ; #1200
+000095bc : 91006063 : c`.. : ADD     x3, x3, #&18              ; #24
+000095c0 : 528028e2 : .(.R : MOVZ    w2, #&147                 ; #327
+000095c4 : b0000001 : .... : ADRP    x1, &0000A000             ; -> Function: __o1heapGetDiagnostics
+000095c8 : 911a2021 : ! .. : ADD     x1, x1, #&688             ; #1672
+000095cc : b0000000 : .... : ADRP    x0, &0000A000             ; -> Function: __o1heapGetDiagnostics
+000095d0 : 91242000 : . $. : ADD     x0, x0, #&908             ; #2312
+000095d4 : 940002a5 : .... : BL      &0000a068                 ; -> Function: __assert_fail
+000095d8 : b0000003 : .... : ADRP    x3, &0000A000             ; -> Function: __o1heapGetDiagnostics
+000095dc : 9112c063 : c... : ADD     x3, x3, #&4b0             ; #1200
+000095e0 : 91006063 : c`.. : ADD     x3, x3, #&18              ; #24
+000095e4 : 52802922 : ").R : MOVZ    w2, #&149                 ; #329
+000095e8 : b0000001 : .... : ADRP    x1, &0000A000             ; -> Function: __o1heapGetDiagnostics
+000095ec : 911a2021 : ! .. : ADD     x1, x1, #&688             ; #1672
+000095f0 : b0000000 : .... : ADRP    x0, &0000A000             ; -> Function: __o1heapGetDiagnostics
+000095f4 : 91250000 : ..%. : ADD     x0, x0, #&940             ; #2368
+000095f8 : 9400029c : .... : BL      &0000a068                 ; -> Function: __assert_fail
+000095fc : b0000003 : .... : ADRP    x3, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009600 : 9112c063 : c... : ADD     x3, x3, #&4b0             ; #1200
+00009604 : 91006063 : c`.. : ADD     x3, x3, #&18              ; #24
+00009608 : 528029c2 : .).R : MOVZ    w2, #&14e                 ; #334
+0000960c : b0000001 : .... : ADRP    x1, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009610 : 911a2021 : ! .. : ADD     x1, x1, #&688             ; #1672
+00009614 : b0000000 : .... : ADRP    x0, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009618 : 91258000 : ..%. : ADD     x0, x0, #&960             ; #2400
+0000961c : 94000293 : .... : BL      &0000a068                 ; -> Function: __assert_fail
+00009620 : b0000003 : .... : ADRP    x3, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009624 : 9112c063 : c... : ADD     x3, x3, #&4b0             ; #1200
+00009628 : 91006063 : c`.. : ADD     x3, x3, #&18              ; #24
+0000962c : 528029e2 : .).R : MOVZ    w2, #&14f                 ; #335
+00009630 : b0000001 : .... : ADRP    x1, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009634 : 911a2021 : ! .. : ADD     x1, x1, #&688             ; #1672
+00009638 : b0000000 : .... : ADRP    x0, &0000A000             ; -> Function: __o1heapGetDiagnostics
+0000963c : 9125e000 : ..%. : ADD     x0, x0, #&978             ; #2424
+00009640 : 9400028a : .... : BL      &0000a068                 ; -> Function: __assert_fail
+00009644 : b0000003 : .... : ADRP    x3, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009648 : 9112c063 : c... : ADD     x3, x3, #&4b0             ; #1200
+0000964c : 91006063 : c`.. : ADD     x3, x3, #&18              ; #24
+00009650 : 52802a02 : .*.R : MOVZ    w2, #&150                 ; #336
+00009654 : b0000001 : .... : ADRP    x1, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009658 : 911a2021 : ! .. : ADD     x1, x1, #&688             ; #1672
+0000965c : b0000000 : .... : ADRP    x0, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009660 : 91268000 : ..&. : ADD     x0, x0, #&9a0             ; #2464
+00009664 : 94000281 : .... : BL      &0000a068                 ; -> Function: __assert_fail
+00009668 : b0000003 : .... : ADRP    x3, &0000A000             ; -> Function: __o1heapGetDiagnostics
+0000966c : 9112c063 : c... : ADD     x3, x3, #&4b0             ; #1200
+00009670 : 91006063 : c`.. : ADD     x3, x3, #&18              ; #24
+00009674 : 52802a22 : "*.R : MOVZ    w2, #&151                 ; #337
+00009678 : b0000001 : .... : ADRP    x1, &0000A000             ; -> Function: __o1heapGetDiagnostics
+0000967c : 911a2021 : ! .. : ADD     x1, x1, #&688             ; #1672
+00009680 : b0000000 : .... : ADRP    x0, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009684 : 91276000 : .`'. : ADD     x0, x0, #&9d8             ; #2520
+00009688 : 94000278 : x... : BL      &0000a068                 ; -> Function: __assert_fail
+0000968c : b0000003 : .... : ADRP    x3, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009690 : 9112c063 : c... : ADD     x3, x3, #&4b0             ; #1200
+00009694 : 91006063 : c`.. : ADD     x3, x3, #&18              ; #24
+00009698 : 52802ae2 : .*.R : MOVZ    w2, #&157                 ; #343
+0000969c : b0000001 : .... : ADRP    x1, &0000A000             ; -> Function: __o1heapGetDiagnostics
+000096a0 : 911a2021 : ! .. : ADD     x1, x1, #&688             ; #1672
+000096a4 : b0000000 : .... : ADRP    x0, &0000A000             ; -> Function: __o1heapGetDiagnostics
+000096a8 : 9127c000 : ..'. : ADD     x0, x0, #&9f0             ; #2544
+000096ac : 9400026f : o... : BL      &0000a068                 ; -> Function: __assert_fail
+000096b0 : b0000003 : .... : ADRP    x3, &0000A000             ; -> Function: __o1heapGetDiagnostics
+000096b4 : 9112c063 : c... : ADD     x3, x3, #&4b0             ; #1200
+000096b8 : 91006063 : c`.. : ADD     x3, x3, #&18              ; #24
+000096bc : 52802b02 : .+.R : MOVZ    w2, #&158                 ; #344
+000096c0 : b0000001 : .... : ADRP    x1, &0000A000             ; -> Function: __o1heapGetDiagnostics
+000096c4 : 911a2021 : ! .. : ADD     x1, x1, #&688             ; #1672
+000096c8 : b0000000 : .... : ADRP    x0, &0000A000             ; -> Function: __o1heapGetDiagnostics
+000096cc : 91286000 : .`(. : ADD     x0, x0, #&a18             ; #2584
+000096d0 : 94000266 : f... : BL      &0000a068                 ; -> Function: __assert_fail
+000096d4 : b0000003 : .... : ADRP    x3, &0000A000             ; -> Function: __o1heapGetDiagnostics
+000096d8 : 9112c063 : c... : ADD     x3, x3, #&4b0             ; #1200
+000096dc : 91006063 : c`.. : ADD     x3, x3, #&18              ; #24
+000096e0 : 52802b82 : .+.R : MOVZ    w2, #&15c                 ; #348
+000096e4 : b0000001 : .... : ADRP    x1, &0000A000             ; -> Function: __o1heapGetDiagnostics
+000096e8 : 911a2021 : ! .. : ADD     x1, x1, #&688             ; #1672
+000096ec : b0000000 : .... : ADRP    x0, &0000A000             ; -> Function: __o1heapGetDiagnostics
+000096f0 : 91292000 : . ). : ADD     x0, x0, #&a48             ; #2632
+000096f4 : 9400025d : ]... : BL      &0000a068                 ; -> Function: __assert_fail
+000096f8 : b0000003 : .... : ADRP    x3, &0000A000             ; -> Function: __o1heapGetDiagnostics
+000096fc : 9112c063 : c... : ADD     x3, x3, #&4b0             ; #1200
+00009700 : 91012063 : c .. : ADD     x3, x3, #&48              ; #72  = 'H'
+00009704 : 528018e2 : ...R : MOVZ    w2, #&c7                  ; #199
+00009708 : b0000001 : .... : ADRP    x1, &0000A000             ; -> Function: __o1heapGetDiagnostics
+0000970c : 911a2021 : ! .. : ADD     x1, x1, #&688             ; #1672
+00009710 : b0000000 : .... : ADRP    x0, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009714 : 911b2000 : . .. : ADD     x0, x0, #&6c8             ; #1736
+00009718 : 94000254 : T... : BL      &0000a068                 ; -> Function: __assert_fail
+0000971c : b0000003 : .... : ADRP    x3, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009720 : 9112c063 : c... : ADD     x3, x3, #&4b0             ; #1200
+00009724 : 91012063 : c .. : ADD     x3, x3, #&48              ; #72  = 'H'
+00009728 : 52801902 : ...R : MOVZ    w2, #&c8                  ; #200
+0000972c : b0000001 : .... : ADRP    x1, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009730 : 911a2021 : ! .. : ADD     x1, x1, #&688             ; #1672
+00009734 : b0000000 : .... : ADRP    x0, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009738 : 911c0000 : .... : ADD     x0, x0, #&700             ; #1792
+0000973c : 9400024b : K... : BL      &0000a068                 ; -> Function: __assert_fail
+00009740 : b0000003 : .... : ADRP    x3, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009744 : 9112c063 : c... : ADD     x3, x3, #&4b0             ; #1200
+00009748 : 91006063 : c`.. : ADD     x3, x3, #&18              ; #24
+0000974c : 52802ca2 : .,.R : MOVZ    w2, #&165                 ; #357
+00009750 : b0000001 : .... : ADRP    x1, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009754 : 911a2021 : ! .. : ADD     x1, x1, #&688             ; #1672
+00009758 : b0000000 : .... : ADRP    x0, &0000A000             ; -> Function: __o1heapGetDiagnostics
+0000975c : 912a0000 : ..*. : ADD     x0, x0, #&a80             ; #2688
+00009760 : 94000242 : B... : BL      &0000a068                 ; -> Function: __assert_fail
+00009764 : b0000003 : .... : ADRP    x3, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009768 : 9112c063 : c... : ADD     x3, x3, #&4b0             ; #1200
+0000976c : 91006063 : c`.. : ADD     x3, x3, #&18              ; #24
+00009770 : 52802ce2 : .,.R : MOVZ    w2, #&167                 ; #359
+00009774 : b0000001 : .... : ADRP    x1, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009778 : 911a2021 : ! .. : ADD     x1, x1, #&688             ; #1672
+0000977c : b0000000 : .... : ADRP    x0, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009780 : 912b2000 : . +. : ADD     x0, x0, #&ac8             ; #2760
+00009784 : 94000239 : 9... : BL      &0000a068                 ; -> Function: __assert_fail
+00009788 : b0000003 : .... : ADRP    x3, &0000A000             ; -> Function: __o1heapGetDiagnostics
+0000978c : 9112c063 : c... : ADD     x3, x3, #&4b0             ; #1200
+00009790 : 91006063 : c`.. : ADD     x3, x3, #&18              ; #24
+00009794 : 52802dc2 : .-.R : MOVZ    w2, #&16e                 ; #366
+00009798 : b0000001 : .... : ADRP    x1, &0000A000             ; -> Function: __o1heapGetDiagnostics
+0000979c : 911a2021 : ! .. : ADD     x1, x1, #&688             ; #1672
+000097a0 : b0000000 : .... : ADRP    x0, &0000A000             ; -> Function: __o1heapGetDiagnostics
+000097a4 : 912c2000 : . ,. : ADD     x0, x0, #&b08             ; #2824
+000097a8 : 94000230 : 0... : BL      &0000a068                 ; -> Function: __assert_fail
+000097ac : d2800000 : .... : MOVZ    x0, #0
+000097b0 : 17ffff46 : F... : B       &000094c8
+000097b4 : f9411261 : a.A. : LDR     x1, [x19, #&220]
+000097b8 : d2800000 : .... : MOVZ    x0, #0
+000097bc : eb16003f : ?... : CMP     x1, x22
+000097c0 : 54ffe743 : C..T : B.LO    &000094a8
+000097c4 : 17ffff3d : =... : B       &000094b8
+000097c8 : d503201f : . .. : NOP
+000097cc : d503201f : . .. : NOP
+000097d0 : d503201f : . .. : NOP
+000097d4 : 316f5f5f : __o1 : CMN     w26, #&bd7, lsl #12
+000097d8 : 70616568 : heap : ADR     x8, &000CC487
+000097dc : 65657246 : Free : Undefined instruction
+000097e0 : 00000000 : .... : Undefined instruction
+000097e4 : ff000010 : .... : Undefined instruction
+000097e8 : a9bc7bfd : .{.. : STP     x29, x30, [sp, #-&40]!    ; Function: __o1heapFree
+000097ec : 910003fd : .... : MOV     x29, sp
+000097f0 : b4000cc0 : .... : CBZ     x0, &00009988
+000097f4 : a90153f3 : .S.. : STP     x19, x20, [sp, #&10]
+000097f8 : aa0003f4 : .... : MOV     x20, x0
+000097fc : aa0103f3 : .... : MOV     x19, x1
+00009800 : f9410401 : ..A. : LDR     x1, [x0, #&208]
+00009804 : d2f00000 : .... : MOVZ    x0, #&8000000000000000    ; #9223372036854775808
+00009808 : eb00003f : ?... : CMP     x1, x0
+0000980c : 54000d68 : h..T : B.HI    &000099b8
+00009810 : b4000b73 : s... : CBZ     x19, &0000997c
+00009814 : a9025bf5 : .[.. : STP     x21, x22, [sp, #&20]
+00009818 : f9001bf7 : .... : STR     x23, [sp, #&30]
+0000981c : d1008277 : w... : SUB     x23, x19, #&20            ; #32  = ' ' = bit 5
+00009820 : f2400a7f : ..@. : TST     x19, #7
+00009824 : 54000e01 : ...T : B.NE    &000099e4
+00009828 : 91090280 : .... : ADD     x0, x20, #&240            ; #576
+0000982c : eb0002ff : .... : CMP     x23, x0
+00009830 : 54000ec3 : ...T : B.LO    &00009a08
+00009834 : 8b010280 : .... : ADD     x0, x20, x1
+00009838 : 91080000 : .... : ADD     x0, x0, #&200             ; #512 = bit 9
+0000983c : eb0002ff : .... : CMP     x23, x0
+00009840 : 54000f68 : h..T : B.HI    &00009a2c
+00009844 : 385f8260 : `._8 : LDURB   w0, [x19, #-8]
+00009848 : 34001040 : @..4 : CBZ     w0, &00009a50
+0000984c : f85e0260 : `.^. : LDUR    x0, [x19, #-&20]
+00009850 : f240081f : ..@. : TST     x0, #7
+00009854 : 54001101 : ...T : B.NE    &00009a74
+00009858 : f85e8260 : `.^. : LDUR    x0, [x19, #-&18]
+0000985c : f240081f : ..@. : TST     x0, #7
+00009860 : 540011c1 : ...T : B.NE    &00009a98
+00009864 : f85f0260 : `._. : LDUR    x0, [x19, #-&10]
+00009868 : f100fc1f : .... : CMP     x0, #&3f                  ; #63  = '?'
+0000986c : 54001289 : ...T : B.LS    &00009abc
+00009870 : eb00003f : ?... : CMP     x1, x0
+00009874 : 54001363 : c..T : B.LO    &00009ae0
+00009878 : f240141f : ..@. : TST     x0, #&3f
+0000987c : 54001441 : A..T : B.NE    &00009b04
+00009880 : 381f827f : ...8 : STURB   wzr, [x19, #-8]
+00009884 : f9410a81 : ..A. : LDR     x1, [x20, #&210]
+00009888 : eb01001f : .... : CMP     x0, x1
+0000988c : 540014e8 : ...T : B.HI    &00009b28
+00009890 : cb000021 : !... : SUB     x1, x1, x0
+00009894 : f9010a81 : .... : STR     x1, [x20, #&210]
+00009898 : f85e8275 : u.^. : LDUR    x21, [x19, #-&18]
+0000989c : f85e0276 : v.^. : LDUR    x22, [x19, #-&20]
+000098a0 : 52800000 : ...R : MOVZ    w0, #0
+000098a4 : b4000075 : u... : CBZ     x21, &000098b0
+000098a8 : 394062a0 : .b@9 : LDRB    w0, [x21, #&18]
+000098ac : 52000000 : ...R : EOR     w0, w0, #1
+000098b0 : b4002ad6 : .*.. : CBZ     x22, &00009e08
+000098b4 : 394062c1 : .b@9 : LDRB    w1, [x22, #&18]
+000098b8 : 35002a81 : .*.5 : CBNZ    w1, &00009e08
+000098bc : 36002540 : @%.6 : TBZ     w0, #0, #&9d64
+000098c0 : aa1503e1 : .... : MOV     x1, x21
+000098c4 : aa1403e0 : .... : MOV     x0, x20
+000098c8 : 97fffdb6 : .... : BL      &00008fa0
+000098cc : aa1603e1 : .... : MOV     x1, x22
+000098d0 : aa1403e0 : .... : MOV     x0, x20
+000098d4 : 97fffdb3 : .... : BL      &00008fa0
+000098d8 : f9400aa0 : ..@. : LDR     x0, [x21, #&10]
+000098dc : f9400ac1 : ..@. : LDR     x1, [x22, #&10]
+000098e0 : 8b010000 : .... : ADD     x0, x0, x1
+000098e4 : d1008273 : s... : SUB     x19, x19, #&20            ; #32  = ' ' = bit 5
+000098e8 : f9400a61 : a.@. : LDR     x1, [x19, #&10]
+000098ec : 8b010000 : .... : ADD     x0, x0, x1
+000098f0 : f9000aa0 : .... : STR     x0, [x21, #&10]
+000098f4 : f9000a7f : .... : STR     xzr, [x19, #&10]
+000098f8 : f9000adf : .... : STR     xzr, [x22, #&10]
+000098fc : f9400aa0 : ..@. : LDR     x0, [x21, #&10]
+00009900 : f240141f : ..@. : TST     x0, #&3f
+00009904 : 54001241 : A..T : B.NE    &00009b4c
+00009908 : f94002c0 : ..@. : LDR     x0, [x22]
+0000990c : f90002a0 : .... : STR     x0, [x21]
+00009910 : b4001e20 :  ... : CBZ     x0, &00009cd4
+00009914 : f9000415 : .... : STR     x21, [x0, #8]
+00009918 : f9400aa0 : ..@. : LDR     x0, [x21, #&10]
+0000991c : f100fc1f : .... : CMP     x0, #&3f                  ; #63  = '?'
+00009920 : 54001e09 : ...T : B.LS    &00009ce0
+00009924 : f240141f : ..@. : TST     x0, #&3f
+00009928 : 54001241 : A..T : B.NE    &00009b70
+0000992c : d346fc00 : ..F. : LSR     x0, x0, #6
+00009930 : dac01001 : .... : CLZ     x1, x0
+00009934 : 528007e0 : ...R : MOVZ    w0, #&3f                  ; #63  = '?'
+00009938 : 4b010000 : ...K : SUB     w0, w0, w1
+0000993c : 12001c02 : .... : AND     w2, w0, #&ff              ; #255
+00009940 : 92401c00 : ..@. : AND     x0, x0, #&ff              ; #255
+00009944 : f8607a81 : .z`. : LDR     x1, [x20, x0, lsl #3]
+00009948 : f90012a1 : .... : STR     x1, [x21, #&20]
+0000994c : f90016bf : .... : STR     xzr, [x21, #&28]
+00009950 : f8607a81 : .z`. : LDR     x1, [x20, x0, lsl #3]
+00009954 : b4000041 : A... : CBZ     x1, &0000995c
+00009958 : f9001435 : 5... : STR     x21, [x1, #&28]
+0000995c : f8207a95 : .z . : STR     x21, [x20, x0, lsl #3]
+00009960 : d2800021 : !... : MOVZ    x1, #&1
+00009964 : 9ac22021 : ! .. : LSL     x1, x1, x2
+00009968 : f9410280 : ..A. : LDR     x0, [x20, #&200]
+0000996c : aa010000 : .... : ORR     x0, x0, x1
+00009970 : f9010280 : .... : STR     x0, [x20, #&200]
+00009974 : a9425bf5 : .[B. : LDP     x21, x22, [sp, #&20]
+00009978 : f9401bf7 : ..@. : LDR     x23, [sp, #&30]
+0000997c : a94153f3 : .SA. : LDP     x19, x20, [sp, #&10]
+00009980 : a8c47bfd : .{.. : LDP     x29, x30, [sp], #&40
+00009984 : d65f03c0 : .._. : RET
+00009988 : a90153f3 : .S.. : STP     x19, x20, [sp, #&10]
+0000998c : a9025bf5 : .[.. : STP     x21, x22, [sp, #&20]
+00009990 : f9001bf7 : .... : STR     x23, [sp, #&30]
+00009994 : b0000003 : .... : ADRP    x3, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009998 : 9112c063 : c... : ADD     x3, x3, #&4b0             ; #1200
+0000999c : 91014063 : c@.. : ADD     x3, x3, #&50              ; #80  = 'P'
+000099a0 : 52803082 : .0.R : MOVZ    w2, #&184                 ; #388
+000099a4 : b0000001 : .... : ADRP    x1, &0000A000             ; -> Function: __o1heapGetDiagnostics
+000099a8 : 911a2021 : ! .. : ADD     x1, x1, #&688             ; #1672
+000099ac : b0000000 : .... : ADRP    x0, &0000A000             ; -> Function: __o1heapGetDiagnostics
+000099b0 : 911a6000 : .`.. : ADD     x0, x0, #&698             ; #1688
+000099b4 : 940001ad : .... : BL      &0000a068                 ; -> Function: __assert_fail
+000099b8 : a9025bf5 : .[.. : STP     x21, x22, [sp, #&20]
+000099bc : f9001bf7 : .... : STR     x23, [sp, #&30]
+000099c0 : b0000003 : .... : ADRP    x3, &0000A000             ; -> Function: __o1heapGetDiagnostics
+000099c4 : 9112c063 : c... : ADD     x3, x3, #&4b0             ; #1200
+000099c8 : 91014063 : c@.. : ADD     x3, x3, #&50              ; #80  = 'P'
+000099cc : 528030a2 : .0.R : MOVZ    w2, #&185                 ; #389
+000099d0 : b0000001 : .... : ADRP    x1, &0000A000             ; -> Function: __o1heapGetDiagnostics
+000099d4 : 911a2021 : ! .. : ADD     x1, x1, #&688             ; #1672
+000099d8 : b0000000 : .... : ADRP    x0, &0000A000             ; -> Function: __o1heapGetDiagnostics
+000099dc : 9120a000 : .. . : ADD     x0, x0, #&828             ; #2088
+000099e0 : 940001a2 : .... : BL      &0000a068                 ; -> Function: __assert_fail
+000099e4 : b0000003 : .... : ADRP    x3, &0000A000             ; -> Function: __o1heapGetDiagnostics
+000099e8 : 9112c063 : c... : ADD     x3, x3, #&4b0             ; #1200
+000099ec : 91014063 : c@.. : ADD     x3, x3, #&50              ; #80  = 'P'
+000099f0 : 52803162 : b1.R : MOVZ    w2, #&18b                 ; #395
+000099f4 : b0000001 : .... : ADRP    x1, &0000A000             ; -> Function: __o1heapGetDiagnostics
+000099f8 : 911a2021 : ! .. : ADD     x1, x1, #&688             ; #1672
+000099fc : b0000000 : .... : ADRP    x0, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009a00 : 912d0000 : ..-. : ADD     x0, x0, #&b40             ; #2880
+00009a04 : 94000199 : .... : BL      &0000a068                 ; -> Function: __assert_fail
+00009a08 : b0000003 : .... : ADRP    x3, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009a0c : 9112c063 : c... : ADD     x3, x3, #&4b0             ; #1200
+00009a10 : 91014063 : c@.. : ADD     x3, x3, #&50              ; #80  = 'P'
+00009a14 : 52803182 : .1.R : MOVZ    w2, #&18c                 ; #396
+00009a18 : b0000001 : .... : ADRP    x1, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009a1c : 911a2021 : ! .. : ADD     x1, x1, #&688             ; #1672
+00009a20 : b0000000 : .... : ADRP    x0, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009a24 : 912dc000 : ..-. : ADD     x0, x0, #&b70             ; #2928
+00009a28 : 94000190 : .... : BL      &0000a068                 ; -> Function: __assert_fail
+00009a2c : b0000003 : .... : ADRP    x3, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009a30 : 9112c063 : c... : ADD     x3, x3, #&4b0             ; #1200
+00009a34 : 91014063 : c@.. : ADD     x3, x3, #&50              ; #80  = 'P'
+00009a38 : 528031a2 : .1.R : MOVZ    w2, #&18d                 ; #397
+00009a3c : b0000001 : .... : ADRP    x1, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009a40 : 911a2021 : ! .. : ADD     x1, x1, #&688             ; #1672
+00009a44 : b0000000 : .... : ADRP    x0, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009a48 : 912fc000 : ../. : ADD     x0, x0, #&bf0             ; #3056
+00009a4c : 94000187 : .... : BL      &0000a068                 ; -> Function: __assert_fail
+00009a50 : b0000003 : .... : ADRP    x3, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009a54 : 9112c063 : c... : ADD     x3, x3, #&4b0             ; #1200
+00009a58 : 91014063 : c@.. : ADD     x3, x3, #&50              ; #80  = 'P'
+00009a5c : 528031e2 : .1.R : MOVZ    w2, #&18f                 ; #399
+00009a60 : b0000001 : .... : ADRP    x1, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009a64 : 911a2021 : ! .. : ADD     x1, x1, #&688             ; #1672
+00009a68 : b0000000 : .... : ADRP    x0, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009a6c : 9132c000 : ..2. : ADD     x0, x0, #&cb0             ; #3248
+00009a70 : 9400017e : ~... : BL      &0000a068                 ; -> Function: __assert_fail
+00009a74 : b0000003 : .... : ADRP    x3, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009a78 : 9112c063 : c... : ADD     x3, x3, #&4b0             ; #1200
+00009a7c : 91014063 : c@.. : ADD     x3, x3, #&50              ; #80  = 'P'
+00009a80 : 52803202 : .2.R : MOVZ    w2, #&190                 ; #400
+00009a84 : b0000001 : .... : ADRP    x1, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009a88 : 911a2021 : ! .. : ADD     x1, x1, #&688             ; #1672
+00009a8c : b0000000 : .... : ADRP    x0, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009a90 : 91332000 : . 3. : ADD     x0, x0, #&cc8             ; #3272
+00009a94 : 94000175 : u... : BL      &0000a068                 ; -> Function: __assert_fail
+00009a98 : b0000003 : .... : ADRP    x3, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009a9c : 9112c063 : c... : ADD     x3, x3, #&4b0             ; #1200
+00009aa0 : 91014063 : c@.. : ADD     x3, x3, #&50              ; #80  = 'P'
+00009aa4 : 52803222 : "2.R : MOVZ    w2, #&191                 ; #401
+00009aa8 : b0000001 : .... : ADRP    x1, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009aac : 911a2021 : ! .. : ADD     x1, x1, #&688             ; #1672
+00009ab0 : b0000000 : .... : ADRP    x0, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009ab4 : 91340000 : ..4. : ADD     x0, x0, #&d00             ; #3328
+00009ab8 : 9400016c : l... : BL      &0000a068                 ; -> Function: __assert_fail
+00009abc : b0000003 : .... : ADRP    x3, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009ac0 : 9112c063 : c... : ADD     x3, x3, #&4b0             ; #1200
+00009ac4 : 91014063 : c@.. : ADD     x3, x3, #&50              ; #80  = 'P'
+00009ac8 : 52803242 : B2.R : MOVZ    w2, #&192                 ; #402
+00009acc : b0000001 : .... : ADRP    x1, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009ad0 : 911a2021 : ! .. : ADD     x1, x1, #&688             ; #1672
+00009ad4 : b0000000 : .... : ADRP    x0, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009ad8 : 9134e000 : ..4. : ADD     x0, x0, #&d38             ; #3384
+00009adc : 94000163 : c... : BL      &0000a068                 ; -> Function: __assert_fail
+00009ae0 : b0000003 : .... : ADRP    x3, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009ae4 : 9112c063 : c... : ADD     x3, x3, #&4b0             ; #1200
+00009ae8 : 91014063 : c@.. : ADD     x3, x3, #&50              ; #80  = 'P'
+00009aec : 52803262 : b2.R : MOVZ    w2, #&193                 ; #403
+00009af0 : b0000001 : .... : ADRP    x1, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009af4 : 911a2021 : ! .. : ADD     x1, x1, #&688             ; #1672
+00009af8 : b0000000 : .... : ADRP    x0, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009afc : 9135c000 : ..5. : ADD     x0, x0, #&d70             ; #3440
+00009b00 : 9400015a : Z... : BL      &0000a068                 ; -> Function: __assert_fail
+00009b04 : b0000003 : .... : ADRP    x3, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009b08 : 9112c063 : c... : ADD     x3, x3, #&4b0             ; #1200
+00009b0c : 91014063 : c@.. : ADD     x3, x3, #&50              ; #80  = 'P'
+00009b10 : 52803282 : .2.R : MOVZ    w2, #&194                 ; #404
+00009b14 : b0000001 : .... : ADRP    x1, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009b18 : 911a2021 : ! .. : ADD     x1, x1, #&688             ; #1672
+00009b1c : b0000000 : .... : ADRP    x0, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009b20 : 91268000 : ..&. : ADD     x0, x0, #&9a0             ; #2464
+00009b24 : 94000151 : Q... : BL      &0000a068                 ; -> Function: __assert_fail
+00009b28 : b0000003 : .... : ADRP    x3, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009b2c : 9112c063 : c... : ADD     x3, x3, #&4b0             ; #1200
+00009b30 : 91014063 : c@.. : ADD     x3, x3, #&50              ; #80  = 'P'
+00009b34 : 52803342 : B3.R : MOVZ    w2, #&19a                 ; #410
+00009b38 : b0000001 : .... : ADRP    x1, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009b3c : 911a2021 : ! .. : ADD     x1, x1, #&688             ; #1672
+00009b40 : b0000000 : .... : ADRP    x0, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009b44 : 9136a000 : ..6. : ADD     x0, x0, #&da8             ; #3496
+00009b48 : 94000148 : H... : BL      &0000a068                 ; -> Function: __assert_fail
+00009b4c : b0000003 : .... : ADRP    x3, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009b50 : 9112c063 : c... : ADD     x3, x3, #&4b0             ; #1200
+00009b54 : 91014063 : c@.. : ADD     x3, x3, #&50              ; #80  = 'P'
+00009b58 : 52803522 : "5.R : MOVZ    w2, #&1a9                 ; #425
+00009b5c : b0000001 : .... : ADRP    x1, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009b60 : 911a2021 : ! .. : ADD     x1, x1, #&688             ; #1672
+00009b64 : b0000000 : .... : ADRP    x0, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009b68 : 91378000 : ..7. : ADD     x0, x0, #&de0             ; #3552
+00009b6c : 9400013f : ?... : BL      &0000a068                 ; -> Function: __assert_fail
+00009b70 : b0000003 : .... : ADRP    x3, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009b74 : 9112c063 : c... : ADD     x3, x3, #&4b0             ; #1200
+00009b78 : 91012063 : c .. : ADD     x3, x3, #&48              ; #72  = 'H'
+00009b7c : 52801902 : ...R : MOVZ    w2, #&c8                  ; #200
+00009b80 : b0000001 : .... : ADRP    x1, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009b84 : 911a2021 : ! .. : ADD     x1, x1, #&688             ; #1672
+00009b88 : b0000000 : .... : ADRP    x0, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009b8c : 911c0000 : .... : ADD     x0, x0, #&700             ; #1792
+00009b90 : 94000136 : 6... : BL      &0000a068                 ; -> Function: __assert_fail
+00009b94 : b0000003 : .... : ADRP    x3, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009b98 : 9112c063 : c... : ADD     x3, x3, #&4b0             ; #1200
+00009b9c : 91014063 : c@.. : ADD     x3, x3, #&50              ; #80  = 'P'
+00009ba0 : 52803642 : B6.R : MOVZ    w2, #&1b2                 ; #434
+00009ba4 : b0000001 : .... : ADRP    x1, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009ba8 : 911a2021 : ! .. : ADD     x1, x1, #&688             ; #1672
+00009bac : b0000000 : .... : ADRP    x0, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009bb0 : 91378000 : ..7. : ADD     x0, x0, #&de0             ; #3552
+00009bb4 : 9400012d : -... : BL      &0000a068                 ; -> Function: __assert_fail
+00009bb8 : b0000003 : .... : ADRP    x3, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009bbc : 9112c063 : c... : ADD     x3, x3, #&4b0             ; #1200
+00009bc0 : 91012063 : c .. : ADD     x3, x3, #&48              ; #72  = 'H'
+00009bc4 : 52801902 : ...R : MOVZ    w2, #&c8                  ; #200
+00009bc8 : b0000001 : .... : ADRP    x1, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009bcc : 911a2021 : ! .. : ADD     x1, x1, #&688             ; #1672
+00009bd0 : b0000000 : .... : ADRP    x0, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009bd4 : 911c0000 : .... : ADD     x0, x0, #&700             ; #1792
+00009bd8 : 94000124 : $... : BL      &0000a068                 ; -> Function: __assert_fail
+00009bdc : b0000003 : .... : ADRP    x3, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009be0 : 9112c063 : c... : ADD     x3, x3, #&4b0             ; #1200
+00009be4 : 91014063 : c@.. : ADD     x3, x3, #&50              ; #80  = 'P'
+00009be8 : 52803762 : b7.R : MOVZ    w2, #&1bb                 ; #443
+00009bec : b0000001 : .... : ADRP    x1, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009bf0 : 911a2021 : ! .. : ADD     x1, x1, #&688             ; #1672
+00009bf4 : b0000000 : .... : ADRP    x0, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009bf8 : 91268000 : ..&. : ADD     x0, x0, #&9a0             ; #2464
+00009bfc : 9400011b : .... : BL      &0000a068                 ; -> Function: __assert_fail
+00009c00 : b0000003 : .... : ADRP    x3, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009c04 : 9112c063 : c... : ADD     x3, x3, #&4b0             ; #1200
+00009c08 : 91012063 : c .. : ADD     x3, x3, #&48              ; #72  = 'H'
+00009c0c : 52801902 : ...R : MOVZ    w2, #&c8                  ; #200
+00009c10 : b0000001 : .... : ADRP    x1, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009c14 : 911a2021 : ! .. : ADD     x1, x1, #&688             ; #1672
+00009c18 : b0000000 : .... : ADRP    x0, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009c1c : 911c0000 : .... : ADD     x0, x0, #&700             ; #1792
+00009c20 : 94000112 : .... : BL      &0000a068                 ; -> Function: __assert_fail
+00009c24 : f85f0260 : `._. : LDUR    x0, [x19, #-&10]
+00009c28 : f100fc1f : .... : CMP     x0, #&3f                  ; #63  = '?'
+00009c2c : 54000309 : ...T : B.LS    &00009c8c
+00009c30 : f240141f : ..@. : TST     x0, #&3f
+00009c34 : 540003e1 : ...T : B.NE    &00009cb0
+00009c38 : d346fc00 : ..F. : LSR     x0, x0, #6
+00009c3c : dac01001 : .... : CLZ     x1, x0
+00009c40 : 528007e0 : ...R : MOVZ    w0, #&3f                  ; #63  = '?'
+00009c44 : 4b010000 : ...K : SUB     w0, w0, w1
+00009c48 : 12001c02 : .... : AND     w2, w0, #&ff              ; #255
+00009c4c : 92401c00 : ..@. : AND     x0, x0, #&ff              ; #255
+00009c50 : f8607a81 : .z`. : LDR     x1, [x20, x0, lsl #3]
+00009c54 : f81e0661 : a... : STR     x1, [x19], #&ffffffffffffffe0
+00009c58 : f900167f : .... : STR     xzr, [x19, #&28]
+00009c5c : f8607a81 : .z`. : LDR     x1, [x20, x0, lsl #3]
+00009c60 : b4000041 : A... : CBZ     x1, &00009c68
+00009c64 : f9001437 : 7... : STR     x23, [x1, #&28]
+00009c68 : f8207a97 : .z . : STR     x23, [x20, x0, lsl #3]
+00009c6c : d2800021 : !... : MOVZ    x1, #&1
+00009c70 : 9ac22021 : ! .. : LSL     x1, x1, x2
+00009c74 : f9410280 : ..A. : LDR     x0, [x20, #&200]
+00009c78 : aa010000 : .... : ORR     x0, x0, x1
+00009c7c : f9010280 : .... : STR     x0, [x20, #&200]
+00009c80 : a9425bf5 : .[B. : LDP     x21, x22, [sp, #&20]
+00009c84 : f9401bf7 : ..@. : LDR     x23, [sp, #&30]
+00009c88 : 17ffff3d : =... : B       &0000997c
+00009c8c : b0000003 : .... : ADRP    x3, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009c90 : 9112c063 : c... : ADD     x3, x3, #&4b0             ; #1200
+00009c94 : 91012063 : c .. : ADD     x3, x3, #&48              ; #72  = 'H'
+00009c98 : 528018e2 : ...R : MOVZ    w2, #&c7                  ; #199
+00009c9c : b0000001 : .... : ADRP    x1, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009ca0 : 911a2021 : ! .. : ADD     x1, x1, #&688             ; #1672
+00009ca4 : b0000000 : .... : ADRP    x0, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009ca8 : 911b2000 : . .. : ADD     x0, x0, #&6c8             ; #1736
+00009cac : 940000ef : .... : BL      &0000a068                 ; -> Function: __assert_fail
+00009cb0 : b0000003 : .... : ADRP    x3, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009cb4 : 9112c063 : c... : ADD     x3, x3, #&4b0             ; #1200
+00009cb8 : 91012063 : c .. : ADD     x3, x3, #&48              ; #72  = 'H'
+00009cbc : 52801902 : ...R : MOVZ    w2, #&c8                  ; #200
+00009cc0 : b0000001 : .... : ADRP    x1, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009cc4 : 911a2021 : ! .. : ADD     x1, x1, #&688             ; #1672
+00009cc8 : b0000000 : .... : ADRP    x0, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009ccc : 911c0000 : .... : ADD     x0, x0, #&700             ; #1792
+00009cd0 : 940000e6 : .... : BL      &0000a068                 ; -> Function: __assert_fail
+00009cd4 : f9400aa0 : ..@. : LDR     x0, [x21, #&10]
+00009cd8 : f100fc1f : .... : CMP     x0, #&3f                  ; #63  = '?'
+00009cdc : 54ffe288 : ...T : B.HI    &0000992c
+00009ce0 : b0000003 : .... : ADRP    x3, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009ce4 : 9112c063 : c... : ADD     x3, x3, #&4b0             ; #1200
+00009ce8 : 91012063 : c .. : ADD     x3, x3, #&48              ; #72  = 'H'
+00009cec : 528018e2 : ...R : MOVZ    w2, #&c7                  ; #199
+00009cf0 : b0000001 : .... : ADRP    x1, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009cf4 : 911a2021 : ! .. : ADD     x1, x1, #&688             ; #1672
+00009cf8 : b0000000 : .... : ADRP    x0, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009cfc : 911b2000 : . .. : ADD     x0, x0, #&6c8             ; #1736
+00009d00 : 940000da : .... : BL      &0000a068                 ; -> Function: __assert_fail
+00009d04 : f9400aa0 : ..@. : LDR     x0, [x21, #&10]
+00009d08 : f100fc1f : .... : CMP     x0, #&3f                  ; #63  = '?'
+00009d0c : 54000a88 : ...T : B.HI    &00009e5c
+00009d10 : b0000003 : .... : ADRP    x3, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009d14 : 9112c063 : c... : ADD     x3, x3, #&4b0             ; #1200
+00009d18 : 91012063 : c .. : ADD     x3, x3, #&48              ; #72  = 'H'
+00009d1c : 528018e2 : ...R : MOVZ    w2, #&c7                  ; #199
+00009d20 : b0000001 : .... : ADRP    x1, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009d24 : 911a2021 : ! .. : ADD     x1, x1, #&688             ; #1672
+00009d28 : b0000000 : .... : ADRP    x0, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009d2c : 911b2000 : . .. : ADD     x0, x0, #&6c8             ; #1736
+00009d30 : 940000ce : .... : BL      &0000a068                 ; -> Function: __assert_fail
+00009d34 : f85f0260 : `._. : LDUR    x0, [x19, #-&10]
+00009d38 : f100fc1f : .... : CMP     x0, #&3f                  ; #63  = '?'
+00009d3c : 540003c8 : ...T : B.HI    &00009db4
+00009d40 : b0000003 : .... : ADRP    x3, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009d44 : 9112c063 : c... : ADD     x3, x3, #&4b0             ; #1200
+00009d48 : 91012063 : c .. : ADD     x3, x3, #&48              ; #72  = 'H'
+00009d4c : 528018e2 : ...R : MOVZ    w2, #&c7                  ; #199
+00009d50 : b0000001 : .... : ADRP    x1, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009d54 : 911a2021 : ! .. : ADD     x1, x1, #&688             ; #1672
+00009d58 : b0000000 : .... : ADRP    x0, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009d5c : 911b2000 : . .. : ADD     x0, x0, #&6c8             ; #1736
+00009d60 : 940000c2 : .... : BL      &0000a068                 ; -> Function: __assert_fail
+00009d64 : aa1603e1 : .... : MOV     x1, x22
+00009d68 : aa1403e0 : .... : MOV     x0, x20
+00009d6c : 97fffc8d : .... : BL      &00008fa0
+00009d70 : f85f0261 : a._. : LDUR    x1, [x19, #-&10]
+00009d74 : f9400ac2 : ..@. : LDR     x2, [x22, #&10]
+00009d78 : 8b020021 : !... : ADD     x1, x1, x2
+00009d7c : f81f0261 : a... : STUR    x1, [x19, #-&10]
+00009d80 : f9000adf : .... : STR     xzr, [x22, #&10]
+00009d84 : f85f0260 : `._. : LDUR    x0, [x19, #-&10]
+00009d88 : f240141f : ..@. : TST     x0, #&3f
+00009d8c : 54fff281 : ...T : B.NE    &00009bdc
+00009d90 : f94002c0 : ..@. : LDR     x0, [x22]
+00009d94 : f81e0260 : `... : STUR    x0, [x19, #-&20]
+00009d98 : b4fffce0 : .... : CBZ     x0, &00009d34
+00009d9c : f9000417 : .... : STR     x23, [x0, #8]
+00009da0 : f85f0260 : `._. : LDUR    x0, [x19, #-&10]
+00009da4 : f100fc1f : .... : CMP     x0, #&3f                  ; #63  = '?'
+00009da8 : 54fffcc9 : ...T : B.LS    &00009d40
+00009dac : f240141f : ..@. : TST     x0, #&3f
+00009db0 : 54fff281 : ...T : B.NE    &00009c00
+00009db4 : d346fc00 : ..F. : LSR     x0, x0, #6
+00009db8 : dac01001 : .... : CLZ     x1, x0
+00009dbc : 528007e0 : ...R : MOVZ    w0, #&3f                  ; #63  = '?'
+00009dc0 : 4b010000 : ...K : SUB     w0, w0, w1
+00009dc4 : 12001c02 : .... : AND     w2, w0, #&ff              ; #255
+00009dc8 : 92401c00 : ..@. : AND     x0, x0, #&ff              ; #255
+00009dcc : f8607a81 : .z`. : LDR     x1, [x20, x0, lsl #3]
+00009dd0 : f81e0661 : a... : STR     x1, [x19], #&ffffffffffffffe0
+00009dd4 : f900167f : .... : STR     xzr, [x19, #&28]
+00009dd8 : f8607a81 : .z`. : LDR     x1, [x20, x0, lsl #3]
+00009ddc : b4000041 : A... : CBZ     x1, &00009de4
+00009de0 : f9001437 : 7... : STR     x23, [x1, #&28]
+00009de4 : f8207a97 : .z . : STR     x23, [x20, x0, lsl #3]
+00009de8 : d2800021 : !... : MOVZ    x1, #&1
+00009dec : 9ac22021 : ! .. : LSL     x1, x1, x2
+00009df0 : f9410280 : ..A. : LDR     x0, [x20, #&200]
+00009df4 : aa010000 : .... : ORR     x0, x0, x1
+00009df8 : f9010280 : .... : STR     x0, [x20, #&200]
+00009dfc : a9425bf5 : .[B. : LDP     x21, x22, [sp, #&20]
+00009e00 : f9401bf7 : ..@. : LDR     x23, [sp, #&30]
+00009e04 : 17fffede : .... : B       &0000997c
+00009e08 : 3607f0e0 : ...6 : TBZ     w0, #0, #&9c24
+00009e0c : aa1503e1 : .... : MOV     x1, x21
+00009e10 : aa1403e0 : .... : MOV     x0, x20
+00009e14 : 97fffc63 : c... : BL      &00008fa0
+00009e18 : d1008273 : s... : SUB     x19, x19, #&20            ; #32  = ' ' = bit 5
+00009e1c : f9400aa0 : ..@. : LDR     x0, [x21, #&10]
+00009e20 : f9400a61 : a.@. : LDR     x1, [x19, #&10]
+00009e24 : 8b010000 : .... : ADD     x0, x0, x1
+00009e28 : f9000aa0 : .... : STR     x0, [x21, #&10]
+00009e2c : f9000a7f : .... : STR     xzr, [x19, #&10]
+00009e30 : f9400aa0 : ..@. : LDR     x0, [x21, #&10]
+00009e34 : f240141f : ..@. : TST     x0, #&3f
+00009e38 : 54ffeae1 : ...T : B.NE    &00009b94
+00009e3c : f90002b6 : .... : STR     x22, [x21]
+00009e40 : b4fff636 : 6... : CBZ     x22, &00009d04
+00009e44 : f90006d5 : .... : STR     x21, [x22, #8]
+00009e48 : f9400aa0 : ..@. : LDR     x0, [x21, #&10]
+00009e4c : f100fc1f : .... : CMP     x0, #&3f                  ; #63  = '?'
+00009e50 : 54fff609 : ...T : B.LS    &00009d10
+00009e54 : f240141f : ..@. : TST     x0, #&3f
+00009e58 : 54ffeb01 : ...T : B.NE    &00009bb8
+00009e5c : d346fc00 : ..F. : LSR     x0, x0, #6
+00009e60 : dac01001 : .... : CLZ     x1, x0
+00009e64 : 528007e0 : ...R : MOVZ    w0, #&3f                  ; #63  = '?'
+00009e68 : 4b010000 : ...K : SUB     w0, w0, w1
+00009e6c : 12001c02 : .... : AND     w2, w0, #&ff              ; #255
+00009e70 : 92401c00 : ..@. : AND     x0, x0, #&ff              ; #255
+00009e74 : f8607a81 : .z`. : LDR     x1, [x20, x0, lsl #3]
+00009e78 : f90012a1 : .... : STR     x1, [x21, #&20]
+00009e7c : f90016bf : .... : STR     xzr, [x21, #&28]
+00009e80 : f8607a81 : .z`. : LDR     x1, [x20, x0, lsl #3]
+00009e84 : b4000041 : A... : CBZ     x1, &00009e8c
+00009e88 : f9001435 : 5... : STR     x21, [x1, #&28]
+00009e8c : f8207a95 : .z . : STR     x21, [x20, x0, lsl #3]
+00009e90 : d2800021 : !... : MOVZ    x1, #&1
+00009e94 : 9ac22021 : ! .. : LSL     x1, x1, x2
+00009e98 : f9410280 : ..A. : LDR     x0, [x20, #&200]
+00009e9c : aa010000 : .... : ORR     x0, x0, x1
+00009ea0 : f9010280 : .... : STR     x0, [x20, #&200]
+00009ea4 : a9425bf5 : .[B. : LDP     x21, x22, [sp, #&20]
+00009ea8 : f9401bf7 : ..@. : LDR     x23, [sp, #&30]
+00009eac : 17fffeb4 : .... : B       &0000997c
+00009eb0 : 316f5f5f : __o1 : CMN     w26, #&bd7, lsl #12
+00009eb4 : 70616568 : heap : ADR     x8, &000CCB63
+00009eb8 : 6e496f44 : DoIn : Undefined instruction
+00009ebc : 69726176 : vari : LDPSW   x22, x24, [x11, #-&70]
+00009ec0 : 73746e61 : ants : Undefined instruction
+00009ec4 : 646c6f48 : Hold : Undefined instruction
+00009ec8 : 00000000 : .... : Undefined instruction
+00009ecc : ff00001c : .... : Undefined instruction
+00009ed0 : b4000460 : `... : CBZ     x0, &00009f5c             ; Function: __o1heapDoInvariantsHold
+00009ed4 : f9410006 : ..A. : LDR     x6, [x0, #&200]
+00009ed8 : d2800001 : .... : MOVZ    x1, #0
+00009edc : 52800022 : "..R : MOVZ    w2, #&1
+00009ee0 : d2800025 : %... : MOVZ    x5, #&1
+00009ee4 : 9ac120a3 : . .. : LSL     x3, x5, x1
+00009ee8 : ea06007f : .... : TST     x3, x6
+00009eec : 1a9f07e4 : .... : CSET    w4, ne
+00009ef0 : f8617803 : .xa. : LDR     x3, [x0, x1, lsl #3]
+00009ef4 : f100007f : .... : CMP     x3, #0
+00009ef8 : 1a9f07e3 : .... : CSET    w3, ne
+00009efc : 6b24007f : ..$k : CMP     w3, w4, uxtb
+00009f00 : 1a9f17e3 : .... : CSET    w3, eq
+00009f04 : 0a030042 : B... : AND     w2, w2, w3
+00009f08 : 91000421 : !... : ADD     x1, x1, #1
+00009f0c : f101003f : ?... : CMP     x1, #&40                  ; #64  = '@' = bit 6
+00009f10 : 54fffea1 : ...T : B.NE    &00009ee4
+00009f14 : f9410404 : ..A. : LDR     x4, [x0, #&208]
+00009f18 : f9410801 : ..A. : LDR     x1, [x0, #&210]
+00009f1c : f9410c05 : ..A. : LDR     x5, [x0, #&218]
+00009f20 : f9411003 : ..A. : LDR     x3, [x0, #&220]
+00009f24 : f9411407 : ..A. : LDR     x7, [x0, #&228]
+00009f28 : d1010086 : .... : SUB     x6, x4, #&40              ; #64  = '@' = bit 6
+00009f2c : 7100005f : _..q : CMP     w2, #0
+00009f30 : b27ae3e0 : ..z. : ORR     x0, xzr, #&7fffffffffffffc0  ; #9223372036854775744
+00009f34 : fa4010c2 : ..@. : CCMP    x6, x0, #2, ne
+00009f38 : 54000289 : ...T : B.LS    &00009f88
+00009f3c : 52800000 : ...R : MOVZ    w0, #0
+00009f40 : b50004e3 : .... : CBNZ    x3, &00009fdc
+00009f44 : aa050021 : !... : ORR     x1, x1, x5
+00009f48 : aa070021 : !... : ORR     x1, x1, x7
+00009f4c : f100003f : ?... : CMP     x1, #0
+00009f50 : 1a9f17e1 : .... : CSET    w1, eq
+00009f54 : 0a010000 : .... : AND     w0, w0, w1
+00009f58 : d65f03c0 : .._. : RET
+00009f5c : a9bf7bfd : .{.. : STP     x29, x30, [sp, #-&10]!
+00009f60 : 910003fd : .... : MOV     x29, sp
+00009f64 : b0000003 : .... : ADRP    x3, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009f68 : 9112c063 : c... : ADD     x3, x3, #&4b0             ; #1200
+00009f6c : 91018063 : c... : ADD     x3, x3, #&60              ; #96  = '`'
+00009f70 : 52803902 : .9.R : MOVZ    w2, #&1c8                 ; #456
+00009f74 : b0000001 : .... : ADRP    x1, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009f78 : 911a2021 : ! .. : ADD     x1, x1, #&688             ; #1672
+00009f7c : b0000000 : .... : ADRP    x0, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009f80 : 911a6000 : .`.. : ADD     x0, x0, #&698             ; #1688
+00009f84 : 94000039 : 9... : BL      &0000a068                 ; -> Function: __assert_fail
+00009f88 : eb04003f : ?... : CMP     x1, x4
+00009f8c : 54fffd88 : ...T : B.HI    &00009f3c
+00009f90 : eb0400bf : .... : CMP     x5, x4
+00009f94 : fa459022 : ".E. : CCMP    x1, x5, #2, ls
+00009f98 : 54fffd28 : (..T : B.HI    &00009f3c
+00009f9c : aa050020 :  ... : ORR     x0, x1, x5
+00009fa0 : aa040000 : .... : ORR     x0, x0, x4
+00009fa4 : f240141f : ..@. : TST     x0, #&3f
+00009fa8 : 54fffca1 : ...T : B.NE    &00009f3c
+00009fac : f10000ff : .... : CMP     x7, #0
+00009fb0 : 1a9f07e2 : .... : CSET    w2, ne
+00009fb4 : eb04007f : .... : CMP     x3, x4
+00009fb8 : 1a9f27e0 : .'.. : CSET    w0, lo
+00009fbc : 2a000040 : @..* : ORR     w0, w2, w0
+00009fc0 : 34fffbe0 : ...4 : CBZ     w0, &00009f3c
+00009fc4 : b4fffc03 : .... : CBZ     x3, &00009f44
+00009fc8 : 91008063 : c... : ADD     x3, x3, #&20              ; #32  = ' ' = bit 5
+00009fcc : 7100005f : _..q : CMP     w2, #0
+00009fd0 : fa4300a2 : ..C. : CCMP    x5, x3, #2, eq
+00009fd4 : 1a9f37e0 : .7.. : CSET    w0, hs
+00009fd8 : d65f03c0 : .._. : RET
+00009fdc : d65f03c0 : .._. : RET
+00009fe0 : d503201f : . .. : NOP
+00009fe4 : 316f5f5f : __o1 : CMN     w26, #&bd7, lsl #12
+00009fe8 : 70616568 : heap : ADR     x8, &000CCC97
+00009fec : 44746547 : GetD : Undefined instruction
+00009ff0 : 6e676169 : iagn : RSUBHN2 v9.8h, v11.4s, v7.4s
+00009ff4 : 6974736f : osti : LDPSW   x15, x28, [x27, #-&60]
+00009ff8 : 00007363 : cs.. : Undefined instruction
+00009ffc : ff000018 : .... : Undefined instruction
+0000a000 : b40000e0 : .... : CBZ     x0, &0000a01c             ; Function: __o1heapGetDiagnostics
+0000a004 : 91082000 : . .. : ADD     x0, x0, #&208             ; #520
+0000a008 : ad400400 : ..@. : LDP     q0, q1, [x0]
+0000a00c : ad000500 : .... : STP     q0, q1, [x8]
+0000a010 : f9401000 : ..@. : LDR     x0, [x0, #&20]
+0000a014 : f9001100 : .... : STR     x0, [x8, #&20]
+0000a018 : d65f03c0 : .._. : RET
+0000a01c : a9bf7bfd : .{.. : STP     x29, x30, [sp, #-&10]!
+0000a020 : 910003fd : .... : MOV     x29, sp
+0000a024 : 90000003 : .... : ADRP    x3, &0000A000             ; -> Function: __o1heapGetDiagnostics
+0000a028 : 9112c063 : c... : ADD     x3, x3, #&4b0             ; #1200
+0000a02c : 91020063 : c... : ADD     x3, x3, #&80              ; #128 = bit 7
+0000a030 : 52803e02 : .>.R : MOVZ    w2, #&1f0                 ; #496
+0000a034 : 90000001 : .... : ADRP    x1, &0000A000             ; -> Function: __o1heapGetDiagnostics
+0000a038 : 911a2021 : ! .. : ADD     x1, x1, #&688             ; #1672
+0000a03c : 90000000 : .... : ADRP    x0, &0000A000             ; -> Function: __o1heapGetDiagnostics
+0000a040 : 911a6000 : .`.. : ADD     x0, x0, #&698             ; #1688
+0000a044 : 94000009 : .... : BL      &0000a068                 ; -> Function: __assert_fail
+0000a048 : d503201f : . .. : NOP
+0000a04c : d503201f : . .. : NOP
+0000a050 : d503201f : . .. : NOP
+0000a054 : 73615f5f : __as : Undefined instruction
+0000a058 : 74726573 : sert : Undefined instruction
+0000a05c : 6961665f : _fai : LDPSW   xzr, x25, [x18, #-&f8]
+0000a060 : 0000006c : l... : Undefined instruction
+0000a064 : ff000010 : .... : Undefined instruction
+0000a068 : a9bb7bfd : .{.. : STP     x29, x30, [sp, #-&50]!    ; Function: __assert_fail
+0000a06c : 910003fd : .... : MOV     x29, sp
+0000a070 : a90153f3 : .S.. : STP     x19, x20, [sp, #&10]
+0000a074 : a9025bf5 : .[.. : STP     x21, x22, [sp, #&20]
+0000a078 : aa0003f6 : .... : MOV     x22, x0
+0000a07c : aa0103f5 : .... : MOV     x21, x1
+0000a080 : 2a0203f4 : ...* : MOV     w20, w2
+0000a084 : aa0303f3 : .... : MOV     x19, x3
+0000a088 : 90000000 : .... : ADRP    x0, &0000A000             ; -> Function: __o1heapGetDiagnostics
+0000a08c : 91386000 : .`8. : ADD     x0, x0, #&e18             ; #3608
+0000a090 : 97fff8a5 : .... : BL      &00008324
+0000a094 : aa1603e0 : .... : MOV     x0, x22
+0000a098 : 97fff8a3 : .... : BL      &00008324
+0000a09c : 97fff8b0 : .... : BL      &0000835c
+0000a0a0 : 90000000 : .... : ADRP    x0, &0000A000             ; -> Function: __o1heapGetDiagnostics
+0000a0a4 : 9138c000 : ..8. : ADD     x0, x0, #&e30             ; #3632
+0000a0a8 : 97fff89f : .... : BL      &00008324
+0000a0ac : b40000d3 : .... : CBZ     x19, &0000a0c4
+0000a0b0 : aa1303e0 : .... : MOV     x0, x19
+0000a0b4 : 97fff89c : .... : BL      &00008324
+0000a0b8 : 90000000 : .... : ADRP    x0, &0000A000             ; -> Function: __o1heapGetDiagnostics
+0000a0bc : 91392000 : . 9. : ADD     x0, x0, #&e48             ; #3656
+0000a0c0 : 97fff899 : .... : BL      &00008324
+0000a0c4 : aa1503e0 : .... : MOV     x0, x21
+0000a0c8 : 97fff897 : .... : BL      &00008324
+0000a0cc : 90000000 : .... : ADRP    x0, &0000A000             ; -> Function: __o1heapGetDiagnostics
+0000a0d0 : 91394000 : .@9. : ADD     x0, x0, #&e50             ; #3664
+0000a0d4 : 97fff894 : .... : BL      &00008324
+0000a0d8 : 9100e3e1 : .... : ADD     x1, sp, #&38              ; #56  = '8'
+0000a0dc : 2a1403e0 : ...* : MOV     w0, w20
+0000a0e0 : 94000099 : .... : BL      &0000a344                 ; -> Function: __cvt_uint64_decimal
+0000a0e4 : 9100e3e0 : .... : ADD     x0, sp, #&38              ; #56  = '8'
+0000a0e8 : 97fff88f : .... : BL      &00008324
+0000a0ec : 97fff89c : .... : BL      &0000835c
+0000a0f0 : 9400000c : .... : BL      &0000a120                 ; -> Function: _kernel_backtrace
+0000a0f4 : 90000000 : .... : ADRP    x0, &0000A000             ; -> Function: __o1heapGetDiagnostics
+0000a0f8 : 913b8000 : ..;. : ADD     x0, x0, #&ee0             ; #3808
+0000a0fc : 97fff8a6 : .... : BL      &00008394
+0000a100 : d503201f : . .. : NOP
+0000a104 : d503201f : . .. : NOP
+0000a108 : 72656b5f : _ker : Undefined instruction
+0000a10c : 5f6c656e : nel_ : Undefined instruction
+0000a110 : 6b636162 : back : Undefined instruction
+0000a114 : 63617274 : trac : Undefined instruction
+0000a118 : 00000065 : e... : Undefined instruction
+0000a11c : ff000014 : .... : Undefined instruction
+0000a120 : a9b87bfd : .{.. : STP     x29, x30, [sp, #-&80]!    ; Function: _kernel_backtrace
+0000a124 : 910003fd : .... : MOV     x29, sp
+0000a128 : a9067fff : .... : STP     xzr, xzr, [sp, #&60]
+0000a12c : a9077fff : .... : STP     xzr, xzr, [sp, #&70]
+0000a130 : 90000000 : .... : ADRP    x0, &0000A000             ; -> Function: __o1heapGetDiagnostics
+0000a134 : 9139a000 : ..9. : ADD     x0, x0, #&e68             ; #3688
+0000a138 : 97fff87b : {... : BL      &00008324
+0000a13c : 97fff888 : .... : BL      &0000835c
+0000a140 : 910163e1 : .c.. : ADD     x1, sp, #&58              ; #88  = 'X'
+0000a144 : 910183e0 : .... : ADD     x0, sp, #&60              ; #96  = '`'
+0000a148 : 9400004d : M... : BL      &0000a27c                 ; -> Function: _kernel_unwind
+0000a14c : 37f80460 : `..7 : TBNZ    w0, #&1f, #&a1d8
+0000a150 : a90153f3 : .S.. : STP     x19, x20, [sp, #&10]
+0000a154 : a9025bf5 : .[.. : STP     x21, x22, [sp, #&20]
+0000a158 : f9001bf7 : .... : STR     x23, [sp, #&30]
+0000a15c : 2a0003f3 : ...* : MOV     w19, w0
+0000a160 : 52800037 : 7..R : MOVZ    w23, #&1
+0000a164 : 52800216 : ...R : MOVZ    w22, #&10                 ; #16 = bit 4
+0000a168 : 90000015 : .... : ADRP    x21, &0000A000            ; -> Function: __o1heapGetDiagnostics
+0000a16c : 9139e2b5 : ..9. : ADD     x21, x21, #&e78           ; #3704
+0000a170 : 90000014 : .... : ADRP    x20, &0000A000            ; -> Function: __o1heapGetDiagnostics
+0000a174 : 91396294 : .b9. : ADD     x20, x20, #&e58           ; #3672
+0000a178 : 2a1703e3 : ...* : MOV     w3, w23
+0000a17c : 2a1603e2 : ...* : MOV     w2, w22
+0000a180 : 910103e1 : .... : ADD     x1, sp, #&40              ; #64  = '@' = bit 6
+0000a184 : f9403fe0 : .?@. : LDR     x0, [sp, #&78]
+0000a188 : 9400009b : .... : BL      &0000a3f4                 ; -> Function: __cvt_uint64_hex
+0000a18c : 910103e0 : .... : ADD     x0, sp, #&40              ; #64  = '@' = bit 6
+0000a190 : 97fff865 : e... : BL      &00008324
+0000a194 : aa1503e0 : .... : MOV     x0, x21
+0000a198 : 97fff863 : c... : BL      &00008324
+0000a19c : f9403fe0 : .?@. : LDR     x0, [sp, #&78]
+0000a1a0 : 94000020 :  ... : BL      &0000a220                 ; -> Function: _kernel_procname
+0000a1a4 : f100001f : .... : CMP     x0, #0
+0000a1a8 : 9a800280 : .... : CSEL    x0, x20, x0, eq
+0000a1ac : 97fff85e : ^... : BL      &00008324
+0000a1b0 : 97fff86b : k... : BL      &0000835c
+0000a1b4 : 340001d3 : ...4 : CBZ     w19, &0000a1ec
+0000a1b8 : 910163e1 : .c.. : ADD     x1, sp, #&58              ; #88  = 'X'
+0000a1bc : 910183e0 : .... : ADD     x0, sp, #&60              ; #96  = '`'
+0000a1c0 : 9400002f : /... : BL      &0000a27c                 ; -> Function: _kernel_unwind
+0000a1c4 : 2a0003f3 : ...* : MOV     w19, w0
+0000a1c8 : 36fffd80 : ...6 : TBZ     w0, #&1f, #&a178
+0000a1cc : a94153f3 : .SA. : LDP     x19, x20, [sp, #&10]
+0000a1d0 : a9425bf5 : .[B. : LDP     x21, x22, [sp, #&20]
+0000a1d4 : f9401bf7 : ..@. : LDR     x23, [sp, #&30]
+0000a1d8 : 90000000 : .... : ADRP    x0, &0000A000             ; -> Function: __o1heapGetDiagnostics
+0000a1dc : 913a0000 : ..:. : ADD     x0, x0, #&e80             ; #3712
+0000a1e0 : 97fff851 : Q... : BL      &00008324
+0000a1e4 : 97fff85e : ^... : BL      &0000835c
+0000a1e8 : 14000004 : .... : B       &0000a1f8
+0000a1ec : a94153f3 : .SA. : LDP     x19, x20, [sp, #&10]
+0000a1f0 : a9425bf5 : .[B. : LDP     x21, x22, [sp, #&20]
+0000a1f4 : f9401bf7 : ..@. : LDR     x23, [sp, #&30]
+0000a1f8 : a8c87bfd : .{.. : LDP     x29, x30, [sp], #&80
+0000a1fc : d65f03c0 : .._. : RET
+0000a200 : d503201f : . .. : NOP
+0000a204 : d503201f : . .. : NOP
+0000a208 : 72656b5f : _ker : Undefined instruction
+0000a20c : 5f6c656e : nel_ : Undefined instruction
+0000a210 : 636f7270 : proc : Undefined instruction
+0000a214 : 656d616e : name : Undefined instruction
+0000a218 : 00000000 : .... : Undefined instruction
+0000a21c : ff000014 : .... : Undefined instruction
+0000a220 : 52800001 : ...R : MOVZ    w1, #0                    ; Function: _kernel_procname
+0000a224 : 52bfe004 : ...R : MOVZ    w4, #&ff000000            ; #4278190080
+0000a228 : b85fcc02 : .._. : LDR     w2, [x0, #-4]!
+0000a22c : 12104443 : CD.. : AND     w3, w2, #&ffff0003        ; #4294901763
+0000a230 : 6b04007f : ...k : CMP     w3, w4
+0000a234 : 540000c0 : ...T : B.EQ    &0000a24c
+0000a238 : 11000421 : !... : ADD     w1, w1, #1
+0000a23c : 7101903f : ?..q : CMP     w1, #&64                  ; #100 = 'd'
+0000a240 : 54ffff41 : A..T : B.NE    &0000a228
+0000a244 : d2800000 : .... : MOVZ    x0, #0
+0000a248 : 14000004 : .... : B       &0000a258
+0000a24c : cb222000 : . ". : SUB     x0, x0, w2, uxth
+0000a250 : 7101903f : ?..q : CMP     w1, #&64                  ; #100 = 'd'
+0000a254 : 9a9f1000 : .... : CSEL    x0, x0, xzr, ne
+0000a258 : d65f03c0 : .._. : RET
+0000a25c : d503201f : . .. : NOP
+0000a260 : d503201f : . .. : NOP
+0000a264 : d503201f : . .. : NOP
+0000a268 : 72656b5f : _ker : Undefined instruction
+0000a26c : 5f6c656e : nel_ : Undefined instruction
+0000a270 : 69776e75 : unwi : LDPSW   x21, x27, [x19, #-&48]
+0000a274 : 0000646e : nd.. : Undefined instruction
+0000a278 : ff000010 : .... : Undefined instruction
+0000a27c : aa0003e2 : .... : MOV     x2, x0                    ; Function: _kernel_unwind
+0000a280 : f9400003 : ..@. : LDR     x3, [x0]
+0000a284 : b40000e3 : .... : CBZ     x3, &0000a2a0
+0000a288 : f240047f : ..@. : TST     x3, #3
+0000a28c : 12800000 : .... : MOVN    w0, #0
+0000a290 : d28fffe4 : .... : MOVZ    x4, #&7fff                ; #32767
+0000a294 : fa440060 : `.D. : CCMP    x3, x4, #0, eq
+0000a298 : 54000108 : ...T : B.HI    &0000a2b8
+0000a29c : d65f03c0 : .._. : RET
+0000a2a0 : a9bf7bfd : .{.. : STP     x29, x30, [sp, #-&10]!
+0000a2a4 : 910003fd : .... : MOV     x29, sp
+0000a2a8 : 9400007a : z... : BL      &0000a490
+0000a2ac : 52800020 :  ..R : MOVZ    w0, #&1
+0000a2b0 : a8c17bfd : .{.. : LDP     x29, x30, [sp], #&10
+0000a2b4 : d65f03c0 : .._. : RET
+0000a2b8 : f9400064 : d.@. : LDR     x4, [x3]
+0000a2bc : f240049f : ..@. : TST     x4, #3
+0000a2c0 : 54fffee1 : ...T : B.NE    &0000a29c
+0000a2c4 : d1000486 : .... : SUB     x6, x4, #1
+0000a2c8 : d28fffc5 : .... : MOVZ    x5, #&7ffe                ; #32766
+0000a2cc : eb0500df : .... : CMP     x6, x5
+0000a2d0 : 54fffe69 : i..T : B.LS    &0000a29c
+0000a2d4 : f9400465 : e.@. : LDR     x5, [x3, #8]
+0000a2d8 : f24004bf : ..@. : TST     x5, #3
+0000a2dc : d28fffe6 : .... : MOVZ    x6, #&7fff                ; #32767
+0000a2e0 : fa4600a0 : ..F. : CCMP    x5, x6, #0, eq
+0000a2e4 : 54fffdc9 : ...T : B.LS    &0000a29c
+0000a2e8 : f9000044 : D... : STR     x4, [x2]
+0000a2ec : 91004063 : c@.. : ADD     x3, x3, #&10              ; #16 = bit 4
+0000a2f0 : f9000443 : C... : STR     x3, [x2, #8]
+0000a2f4 : f9000c45 : E... : STR     x5, [x2, #&18]
+0000a2f8 : b4000044 : D... : CBZ     x4, &0000a300
+0000a2fc : f9400484 : ..@. : LDR     x4, [x4, #8]
+0000a300 : f9000844 : D... : STR     x4, [x2, #&10]
+0000a304 : b4000081 : .... : CBZ     x1, &0000a314
+0000a308 : 90000000 : .... : ADRP    x0, &0000A000             ; -> Function: __o1heapGetDiagnostics
+0000a30c : 913a6000 : .`:. : ADD     x0, x0, #&e98             ; #3736
+0000a310 : f9000020 :  ... : STR     x0, [x1]
+0000a314 : f9400040 : @.@. : LDR     x0, [x2]
+0000a318 : f100001f : .... : CMP     x0, #0
+0000a31c : 1a9f07e0 : .... : CSET    w0, ne
+0000a320 : d65f03c0 : .._. : RET
+0000a324 : d503201f : . .. : NOP
+0000a328 : 76635f5f : __cv : Undefined instruction
+0000a32c : 69755f74 : t_ui : LDPSW   x20, x23, [x27, #-&58]
+0000a330 : 3436746e : nt64 : CBZ     w14, &000771bc
+0000a334 : 6365645f : _dec : Undefined instruction
+0000a338 : 6c616d69 : imal : LDNP    d9, d27, [x11, #-&1f0]
+0000a33c : 00000000 : .... : Undefined instruction
+0000a340 : ff000018 : .... : Undefined instruction
+0000a344 : d29c7fe2 : .... : MOVZ    x2, #&e3ff                ; Function: __cvt_uint64_decimal  ; #58367
+0000a348 : f2aa8162 : b... : MOVK    x2, #&540b0000            ; #1410007040
+0000a34c : f2c00042 : B... : MOVK    x2, #&200000000           ; #8589934592
+0000a350 : eb02001f : .... : CMP     x0, x2
+0000a354 : 52800263 : c..R : MOVZ    w3, #&13                  ; #19
+0000a358 : 52800162 : b..R : MOVZ    w2, #&b                   ; #11
+0000a35c : 1a828063 : c... : CSEL    w3, w3, w2, hi
+0000a360 : 93407c63 : c|@. : SXTW    x3, w3
+0000a364 : aa0103e2 : .... : MOV     x2, x1
+0000a368 : 52800025 : %..R : MOVZ    w5, #&1
+0000a36c : 90000006 : .... : ADRP    x6, &0000A000             ; -> Function: __o1heapGetDiagnostics
+0000a370 : 911520c6 : . .. : ADD     x6, x6, #&548             ; #1352
+0000a374 : 52800608 : ...R : MOVZ    w8, #&30                  ; #48  = '0'
+0000a378 : 52800007 : ...R : MOVZ    w7, #0
+0000a37c : 14000005 : .... : B       &0000a390
+0000a380 : 35000045 : E..5 : CBNZ    w5, &0000a388
+0000a384 : 38001448 : H..8 : STRB    w8, [x2], #1
+0000a388 : d1000463 : c... : SUB     x3, x3, #1
+0000a38c : 37f80143 : C..7 : TBNZ    w3, #&1f, #&a3b4
+0000a390 : f86378c4 : .xc. : LDR     x4, [x6, x3, lsl #3]
+0000a394 : eb00009f : .... : CMP     x4, x0
+0000a398 : 54ffff48 : H..T : B.HI    &0000a380
+0000a39c : 9ac40805 : .... : UDIV    x5, x0, x4
+0000a3a0 : 9b0480a0 : .... : MSUB    x0, x5, x4, x0
+0000a3a4 : 1100c0a5 : .... : ADD     w5, w5, #&30              ; #48  = '0'
+0000a3a8 : 38001445 : E..8 : STRB    w5, [x2], #1
+0000a3ac : 2a0703e5 : ...* : MOV     w5, w7
+0000a3b0 : 17fffff6 : .... : B       &0000a388
+0000a3b4 : eb01005f : _... : CMP     x2, x1
+0000a3b8 : 54000080 : ...T : B.EQ    &0000a3c8
+0000a3bc : 3800145f : _..8 : STRB    wzr, [x2], #1
+0000a3c0 : 4b010040 : @..K : SUB     w0, w2, w1
+0000a3c4 : d65f03c0 : .._. : RET
+0000a3c8 : 52800600 : ...R : MOVZ    w0, #&30                  ; #48  = '0'
+0000a3cc : 38001440 : @..8 : STRB    w0, [x2], #1
+0000a3d0 : 17fffffb : .... : B       &0000a3bc
+0000a3d4 : d503201f : . .. : NOP
+0000a3d8 : d503201f : . .. : NOP
+0000a3dc : 76635f5f : __cv : Undefined instruction
+0000a3e0 : 69755f74 : t_ui : LDPSW   x20, x23, [x27, #-&58]
+0000a3e4 : 3436746e : nt64 : CBZ     w14, &00077270
+0000a3e8 : 7865685f : _hex : LDRH    wzr, [x2, x5]
+0000a3ec : 00000000 : .... : Undefined instruction
+0000a3f0 : ff000014 : .... : Undefined instruction
+0000a3f4 : 3100047f : ...1 : CMN     w3, #1                    ; Function: __cvt_uint64_hex
+0000a3f8 : 1a9f17e6 : .... : CSET    w6, eq
+0000a3fc : 51000442 : B..Q : SUB     w2, w2, #1
+0000a400 : 531e7445 : Et.S : LSL     w5, w2, #2
+0000a404 : 37e80342 : B..7 : TBNZ    w2, #&1d, #&a46c
+0000a408 : 12800067 : g... : MOVN    w7, #&3
+0000a40c : aa0103e2 : .... : MOV     x2, x1
+0000a410 : 52800009 : ...R : MOVZ    w9, #0
+0000a414 : 5280040b : ...R : MOVZ    w11, #&20                 ; #32  = ' ' = bit 5
+0000a418 : 90000008 : .... : ADRP    x8, &0000A000             ; -> Function: __o1heapGetDiagnostics
+0000a41c : 913a8108 : ..:. : ADD     x8, x8, #&ea0             ; #3744
+0000a420 : 5280002a : *..R : MOVZ    w10, #&1
+0000a424 : 14000007 : .... : B       &0000a440
+0000a428 : 2a0903e6 : ...* : MOV     w6, w9
+0000a42c : 7100047f : ...q : CMP     w3, #1
+0000a430 : 540001a0 : ...T : B.EQ    &0000a464
+0000a434 : 510010a5 : ...Q : SUB     w5, w5, #4
+0000a438 : 6b0700bf : ...k : CMP     w5, w7
+0000a43c : 540001a0 : ...T : B.EQ    &0000a470
+0000a440 : 9ac52404 : .$.. : LSR     x4, x0, x5
+0000a444 : 12000c84 : .... : AND     w4, w4, #&f               ; #15
+0000a448 : 710000df : ...q : CMP     w6, #0
+0000a44c : 7a400880 : ..@z : CCMP    w4, #0, #0, eq
+0000a450 : 54fffecd : ...T : B.LE    &0000a428
+0000a454 : 3864c904 : ..d8 : LDRB    w4, [x8, w4, sxtw]
+0000a458 : 38001444 : D..8 : STRB    w4, [x2], #1
+0000a45c : 2a0a03e6 : ...* : MOV     w6, w10
+0000a460 : 17fffff5 : .... : B       &0000a434
+0000a464 : 3800144b : K..8 : STRB    w11, [x2], #1
+0000a468 : 17fffff3 : .... : B       &0000a434
+0000a46c : aa0103e2 : .... : MOV     x2, x1
+0000a470 : f100001f : .... : CMP     x0, #0
+0000a474 : 7a4008c0 : ..@z : CCMP    w6, #0, #0, eq
+0000a478 : 54000061 : a..T : B.NE    &0000a484
+0000a47c : 52800600 : ...R : MOVZ    w0, #&30                  ; #48  = '0'
+0000a480 : 38001440 : @..8 : STRB    w0, [x2], #1
+0000a484 : 3800145f : _..8 : STRB    wzr, [x2], #1
+0000a488 : 4b010040 : @..K : SUB     w0, w2, w1
+0000a48c : d65f03c0 : .._. : RET
+0000a490 : f900001d : .... : STR     x29, [x0]
+0000a494 : 910003e1 : .... : MOV     x1, sp
+0000a498 : f9000401 : .... : STR     x1, [x0, #8]
+0000a49c : f94007c1 : ..@. : LDR     x1, [x30, #8]
+0000a4a0 : a9017801 : .x.. : STP     x1, x30, [x0, #&10]
+0000a4a4 : d65f03c0 : .._. : RET
+0000a4a8 : 00000000 : .... : Undefined instruction
+0000a4ac : 00000000 : .... : Undefined instruction
+0000a4b0 : 69626e75 : unbi : LDPSW   x21, x27, [x19, #-&f0]
+0000a4b4 : 0000006e : n... : Undefined instruction
+0000a4b8 : 316f5f5f : __o1 : CMN     w26, #&bd7, lsl #12
+0000a4bc : 70616568 : heap : ADR     x8, &000CD16B
+0000a4c0 : 74696e49 : Init : Undefined instruction
+0000a4c4 : 00000000 : .... : Undefined instruction
+0000a4c8 : 316f5f5f : __o1 : CMN     w26, #&bd7, lsl #12
+0000a4cc : 70616568 : heap : ADR     x8, &000CD17B
+0000a4d0 : 6f6c6c41 : Allo : Undefined instruction
+0000a4d4 : 65746163 : cate : Undefined instruction
+0000a4d8 : 00000000 : .... : Undefined instruction
+0000a4dc : 00000000 : .... : Undefined instruction
+0000a4e0 : 6e756f72 : roun : UMIN    v18.8h, v27.8h, v21.8h
+0000a4e4 : 54705564 : dUpT : B.MI    &000eaf90
+0000a4e8 : 776f506f : oPow : Undefined instruction
+0000a4ec : 664f7265 : erOf : Undefined instruction
+0000a4f0 : 00000032 : 2... : Undefined instruction
+0000a4f4 : 00000000 : .... : Undefined instruction
+0000a4f8 : 69626572 : rebi : LDPSW   x18, x25, [x11, #-&f0]
+0000a4fc : 0000006e : n... : Undefined instruction
+0000a500 : 316f5f5f : __o1 : CMN     w26, #&bd7, lsl #12
+0000a504 : 70616568 : heap : ADR     x8, &000CD1B3
+0000a508 : 65657246 : Free : Undefined instruction
+0000a50c : 00000000 : .... : Undefined instruction
+0000a510 : 316f5f5f : __o1 : CMN     w26, #&bd7, lsl #12
+0000a514 : 70616568 : heap : ADR     x8, &000CD1C3
+0000a518 : 6e496f44 : DoIn : Undefined instruction
+0000a51c : 69726176 : vari : LDPSW   x22, x24, [x11, #-&70]
+0000a520 : 73746e61 : ants : Undefined instruction
+0000a524 : 646c6f48 : Hold : Undefined instruction
+0000a528 : 00000000 : .... : Undefined instruction
+0000a52c : 00000000 : .... : Undefined instruction
+0000a530 : 316f5f5f : __o1 : CMN     w26, #&bd7, lsl #12
+0000a534 : 70616568 : heap : ADR     x8, &000CD1E3
+0000a538 : 44746547 : GetD : Undefined instruction
+0000a53c : 6e676169 : iagn : RSUBHN2 v9.8h, v11.4s, v7.4s
+0000a540 : 6974736f : osti : LDPSW   x15, x28, [x27, #-&60]
+0000a544 : 00007363 : cs.. : Undefined instruction
+0000a548 : 00000001 : .... : Undefined instruction
+0000a54c : 00000000 : .... : Undefined instruction
+0000a550 : 0000000a : .... : Undefined instruction
+0000a554 : 00000000 : .... : Undefined instruction
+0000a558 : 00000064 : d... : Undefined instruction
+0000a55c : 00000000 : .... : Undefined instruction
+0000a560 : 000003e8 : .... : Undefined instruction
+0000a564 : 00000000 : .... : Undefined instruction
+0000a568 : 00002710 : .'.. : Undefined instruction
+0000a56c : 00000000 : .... : Undefined instruction
+0000a570 : 000186a0 : .... : Undefined instruction
+0000a574 : 00000000 : .... : Undefined instruction
+0000a578 : 000f4240 : @B.. : Undefined instruction
+0000a57c : 00000000 : .... : Undefined instruction
+0000a580 : 00989680 : .... : Undefined instruction
+0000a584 : 00000000 : .... : Undefined instruction
+0000a588 : 05f5e100 : .... : Undefined instruction
+0000a58c : 00000000 : .... : Undefined instruction
+0000a590 : 3b9aca00 : ...; : Undefined instruction
+0000a594 : 00000000 : .... : Undefined instruction
+0000a598 : 540be400 : ...T : B.EQ    &00022218
+0000a59c : 00000002 : .... : Undefined instruction
+0000a5a0 : 4876e800 : ..vH : Undefined instruction
+0000a5a4 : 00000017 : .... : Undefined instruction
+0000a5a8 : d4a51000 : .... : Undefined instruction
+0000a5ac : 000000e8 : .... : Undefined instruction
+0000a5b0 : 4e72a000 : ..rN : SMLSL2  v0.4s, v0.8h, v18.8h
+0000a5b4 : 00000918 : .... : Undefined instruction
+0000a5b8 : 107a4000 : .@z. : ADR     x0, &000FEDB8
+0000a5bc : 00005af3 : .Z.. : Undefined instruction
+0000a5c0 : a4c68000 : .... : Undefined instruction
+0000a5c4 : 00038d7e : ~... : Undefined instruction
+0000a5c8 : 6fc10000 : ...o : Undefined instruction
+0000a5cc : 002386f2 : ..#. : Undefined instruction
+0000a5d0 : 5d8a0000 : ...] : Undefined instruction
+0000a5d4 : 01634578 : xEc. : Undefined instruction
+0000a5d8 : a7640000 : ..d. : Undefined instruction
+0000a5dc : 0de0b6b3 : .... : Undefined instruction
+0000a5e0 : 89e80000 : .... : Undefined instruction
+0000a5e4 : 8ac72304 : .#.. : AND     x4, x24, x7, ror #8
+0000a5e8 : 6c6c6548 : Hell : LDNP    d8, d25, [x10, #-&140]
+0000a5ec : 6f77206f : o wo : UMLAL2  v15.4s, v3.8h, v7.h[3]
+0000a5f0 : 00646c72 : rld. : Undefined instruction
+0000a5f4 : 00000000 : .... : Undefined instruction
+0000a5f8 : 20746f4e : Not  : Undefined instruction
+0000a5fc : 756f6e65 : enou : Undefined instruction
+0000a600 : 6d206867 : gh m : STP     d7, d26, [x3, #-&200]
+0000a604 : 726f6d65 : emor : Undefined instruction
+0000a608 : 6f662079 : y fo : UMLAL2  v25.4s, v3.8h, v6.h[2]
+0000a60c : 70612072 : r ap : ADR     x18, &000CCA1B
+0000a610 : 63696c70 : plic : Undefined instruction
+0000a614 : 6f697461 : atio : UQSHL   v1.2d, v3.2d, #&29
+0000a618 : 0000006e : n... : Undefined instruction
+0000a61c : 00000000 : .... : Undefined instruction
+0000a620 : 20746f4e : Not  : Undefined instruction
+0000a624 : 756f6e65 : enou : Undefined instruction
+0000a628 : 6d206867 : gh m : STP     d7, d26, [x3, #-&200]
+0000a62c : 726f6d65 : emor : Undefined instruction
+0000a630 : 6f662079 : y fo : UMLAL2  v25.4s, v3.8h, v6.h[2]
+0000a634 : 74732072 : r st : Undefined instruction
+0000a638 : 006b6361 : ack. : Undefined instruction
+0000a63c : 00000000 : .... : Undefined instruction
+0000a640 : 20746f4e : Not  : Undefined instruction
+0000a644 : 756f6e65 : enou : Undefined instruction
+0000a648 : 6d206867 : gh m : STP     d7, d26, [x3, #-&200]
+0000a64c : 726f6d65 : emor : Undefined instruction
+0000a650 : 6f662079 : y fo : UMLAL2  v25.4s, v3.8h, v6.h[2]
+0000a654 : 65682072 : r he : Undefined instruction
+0000a658 : 00007061 : ap.. : Undefined instruction
+0000a65c : 00000000 : .... : Undefined instruction
+0000a660 : 00008d0c : .... : Undefined instruction
+0000a664 : 00000000 : .... : Undefined instruction
+0000a668 : 00008d0c : .... : Undefined instruction
+0000a66c : 00000000 : .... : Undefined instruction
+0000a670 : 68206f4e : No h : Undefined instruction
+0000a674 : 20706165 : eap  : Undefined instruction
+0000a678 : 6f6d656d : memo : SQSHLU  v13.2d, v11.2d, #&2d
+0000a67c : 00007972 : ry.. : Undefined instruction
+0000a680 : 0000b068 : h... : Undefined instruction
+0000a684 : 00000000 : .... : Undefined instruction
+0000a688 : 70616568 : heap : ADR     x8, &000CD337
+0000a68c : 68316f2f : /o1h : Undefined instruction
+0000a690 : 2e706165 : eap. : RSUBHN  v5.4h, v11.4s, v16.4s
+0000a694 : 00000063 : c... : Undefined instruction
+0000a698 : 646e6168 : hand : Undefined instruction
+0000a69c : 2120656c : le ! : Undefined instruction
+0000a6a0 : 2828203d : = (( : STNP    w29, w8, [x1, #-&c0]
+0000a6a4 : 64696f76 : void : Undefined instruction
+0000a6a8 : 30292a20 :  *)0 : ADR     x0, &0005CBED
+0000a6ac : 00000029 : )... : Undefined instruction
+0000a6b0 : 67617266 : frag : Undefined instruction
+0000a6b4 : 746e656d : ment : Undefined instruction
+0000a6b8 : 203d2120 :  !=  : Undefined instruction
+0000a6bc : 6f762828 : ((vo : UMLAL2  v8.4s, v1.8h, v6.h[7]
+0000a6c0 : 2a206469 : id * : ORN     w9, w3, w0, lsl #25
+0000a6c4 : 00293029 : )0). : Undefined instruction
+0000a6c8 : 67617266 : frag : Undefined instruction
+0000a6cc : 746e656d : ment : Undefined instruction
+0000a6d0 : 65683e2d : ->he : Undefined instruction
+0000a6d4 : 72656461 : ader : Undefined instruction
+0000a6d8 : 7a69732e : .siz : Undefined instruction
+0000a6dc : 3d3e2065 : e >= : STR     b5, [x3, #&f88]
+0000a6e0 : 73282820 :  ((s : Undefined instruction
+0000a6e4 : 6f657a69 : izeo : Undefined instruction
+0000a6e8 : 6f762866 : f(vo : UMLAL2  v6.4s, v3.8h, v6.h[7]
+0000a6ec : 292a6469 : id*) : STP     w9, w25, [x3, #-&b0]
+0000a6f0 : 34202a20 :  * 4 : CBZ     w0, &0004ac34
+0000a6f4 : 2a202955 : U) * : ORN     w21, w10, w0, lsl #10
+0000a6f8 : 29553220 :  2U) : LDP     w0, w12, [x17, #&a8]
+0000a6fc : 00000000 : .... : Undefined instruction
+0000a700 : 61726628 : (fra : Undefined instruction
+0000a704 : 6e656d67 : gmen : UMIN    v7.8h, v11.8h, v5.8h
+0000a708 : 683e2d74 : t->h : Undefined instruction
+0000a70c : 65646165 : eade : Undefined instruction
+0000a710 : 69732e72 : r.si : LDPSW   x18, x11, [x19, #-&68]
+0000a714 : 2520657a : ze % : Undefined instruction
+0000a718 : 73282820 :  ((s : Undefined instruction
+0000a71c : 6f657a69 : izeo : Undefined instruction
+0000a720 : 6f762866 : f(vo : UMLAL2  v6.4s, v3.8h, v6.h[7]
+0000a724 : 292a6469 : id*) : STP     w9, w25, [x3, #-&b0]
+0000a728 : 34202a20 :  * 4 : CBZ     w0, &0004ac6c
+0000a72c : 2a202955 : U) * : ORN     w21, w10, w0, lsl #10
+0000a730 : 29553220 :  2U) : LDP     w0, w12, [x17, #&a8]
+0000a734 : 3d3d2029 : ) == : STR     b9, [x1, #&f48]
+0000a738 : 00553020 :  0U. : Undefined instruction
+0000a73c : 00000000 : .... : Undefined instruction
+0000a740 : 67617266 : frag : Undefined instruction
+0000a744 : 746e656d : ment : Undefined instruction
+0000a748 : 72703e2d : ->pr : Undefined instruction
+0000a74c : 665f7665 : ev_f : Undefined instruction
+0000a750 : 20656572 : ree  : Undefined instruction
+0000a754 : 28203d3d : == ( : STNP    w29, w15, [x9, #-&100]
+0000a758 : 696f7628 : (voi : LDPSW   x8, x29, [x17, #-&88]
+0000a75c : 292a2064 : d *) : STP     w4, w8, [x3, #-&b0]
+0000a760 : 00002930 : 0).. : Undefined instruction
+0000a764 : 00000000 : .... : Undefined instruction
+0000a768 : 69732828 : ((si : LDPSW   x8, x10, [x1, #-&68]
+0000a76c : 745f657a : ze_t : Undefined instruction
+0000a770 : 61622029 : ) ba : Undefined instruction
+0000a774 : 20296573 : se)  : Undefined instruction
+0000a778 : 69732025 : % si : LDPSW   x5, x8, [x1, #-&68]
+0000a77c : 666f657a : zeof : Undefined instruction
+0000a780 : 48314f28 : (O1H : Undefined instruction
+0000a784 : 49706165 : eapI : Undefined instruction
+0000a788 : 6174736e : nsta : Undefined instruction
+0000a78c : 2a65636e : nce* : ORN     w14, w27, w5, lsr #24
+0000a790 : 3d3d2029 : ) == : STR     b9, [x1, #&f48]
+0000a794 : 00553020 :  0U. : Undefined instruction
+0000a798 : 70616328 : (cap : ADR     x8, &000CD3FF
+0000a79c : 74696361 : acit : Undefined instruction
+0000a7a0 : 3d3e2079 : y >= : STR     b25, [x3, #&f88]
+0000a7a4 : 73282820 :  ((s : Undefined instruction
+0000a7a8 : 6f657a69 : izeo : Undefined instruction
+0000a7ac : 6f762866 : f(vo : UMLAL2  v6.4s, v3.8h, v6.h[7]
+0000a7b0 : 292a6469 : id*) : STP     w9, w25, [x3, #-&b0]
+0000a7b4 : 34202a20 :  * 4 : CBZ     w0, &0004acf8
+0000a7b8 : 2a202955 : U) * : ORN     w21, w10, w0, lsl #10
+0000a7bc : 29553220 :  2U) : LDP     w0, w12, [x17, #&a8]
+0000a7c0 : 26262029 : ) && : Undefined instruction
+0000a7c4 : 61632820 :  (ca : Undefined instruction
+0000a7c8 : 69636170 : paci : LDPSW   x16, x24, [x11, #-&e8]
+0000a7cc : 3c207974 : ty < : STR     b20, [x11, x0, lsl #0]
+0000a7d0 : 2828203d : = (( : STNP    w29, w8, [x1, #-&c0]
+0000a7d4 : 66667830 : 0xff : Undefined instruction
+0000a7d8 : 66666666 : ffff : Undefined instruction
+0000a7dc : 66666666 : ffff : Undefined instruction
+0000a7e0 : 66666666 : ffff : Undefined instruction
+0000a7e4 : 4c556666 : ffUL : Undefined instruction
+0000a7e8 : 203e3e20 :  >>  : Undefined instruction
+0000a7ec : 20295531 : 1U)  : Undefined instruction
+0000a7f0 : 5531202b : + 1U : Undefined instruction
+0000a7f4 : 00002929 : )).. : Undefined instruction
+0000a7f8 : 73282828 : (((s : Undefined instruction
+0000a7fc : 5f657a69 : ize_ : SQDMLSL s9, h19, v5.h[6]
+0000a800 : 66202974 : t) f : Undefined instruction
+0000a804 : 29676172 : rag) : LDP     w18, w24, [x11, #-&c8]
+0000a808 : 28202520 :  % ( : STNP    w0, w9, [x9, #-&100]
+0000a80c : 657a6973 : size : Undefined instruction
+0000a810 : 7628666f : of(v : Undefined instruction
+0000a814 : 2a64696f : oid* : ORN     w15, w11, w4, lsr #26
+0000a818 : 202a2029 : ) *  : Undefined instruction
+0000a81c : 29295534 : 4U)) : STP     w20, w21, [x9, #-&b8]
+0000a820 : 203d3d20 :  ==  : Undefined instruction
+0000a824 : 00005530 : 0U.. : Undefined instruction
+0000a828 : 646e6168 : hand : Undefined instruction
+0000a82c : 3e2d656c : le-> : Undefined instruction
+0000a830 : 67616964 : diag : Undefined instruction
+0000a834 : 74736f6e : nost : Undefined instruction
+0000a838 : 2e736369 : ics. : RSUBHN  v9.4h, v27.4s, v19.4s
+0000a83c : 61706163 : capa : Undefined instruction
+0000a840 : 79746963 : city : LDRH    w3, [x11, #&1a34]
+0000a844 : 203d3c20 :  <=  : Undefined instruction
+0000a848 : 78302828 : ((0x : Undefined instruction
+0000a84c : 66666666 : ffff : Undefined instruction
+0000a850 : 66666666 : ffff : Undefined instruction
+0000a854 : 66666666 : ffff : Undefined instruction
+0000a858 : 66666666 : ffff : Undefined instruction
+0000a85c : 3e204c55 : UL > : Undefined instruction
+0000a860 : 5531203e : > 1U : Undefined instruction
+0000a864 : 202b2029 : ) +  : Undefined instruction
+0000a868 : 00295531 : 1U). : Undefined instruction
+0000a86c : 00000000 : .... : Undefined instruction
+0000a870 : 3d3e2078 : x >= : STR     b24, [x3, #&f88]
+0000a874 : 00553220 :  2U. : Undefined instruction
+0000a878 : 67617266 : frag : Undefined instruction
+0000a87c : 746e656d : ment : Undefined instruction
+0000a880 : 7a69735f : _siz : Undefined instruction
+0000a884 : 3d3e2065 : e >= : STR     b5, [x3, #&f88]
+0000a888 : 73282820 :  ((s : Undefined instruction
+0000a88c : 6f657a69 : izeo : Undefined instruction
+0000a890 : 6f762866 : f(vo : UMLAL2  v6.4s, v3.8h, v6.h[7]
+0000a894 : 292a6469 : id*) : STP     w9, w25, [x3, #-&b0]
+0000a898 : 34202a20 :  * 4 : CBZ     w0, &0004addc
+0000a89c : 2a202955 : U) * : ORN     w21, w10, w0, lsl #10
+0000a8a0 : 29553220 :  2U) : LDP     w0, w12, [x17, #&a8]
+0000a8a4 : 00000000 : .... : Undefined instruction
+0000a8a8 : 67617266 : frag : Undefined instruction
+0000a8ac : 746e656d : ment : Undefined instruction
+0000a8b0 : 7a69735f : _siz : Undefined instruction
+0000a8b4 : 3d3e2065 : e >= : STR     b5, [x3, #&f88]
+0000a8b8 : 6f6d6120 :  amo : UMLSL2  v0.4s, v9.8h, v13.h[2]
+0000a8bc : 20746e75 : unt  : Undefined instruction
+0000a8c0 : 7328202b : + (s : Undefined instruction
+0000a8c4 : 6f657a69 : izeo : Undefined instruction
+0000a8c8 : 6f762866 : f(vo : UMLAL2  v6.4s, v3.8h, v6.h[7]
+0000a8cc : 292a6469 : id*) : STP     w9, w25, [x3, #-&b0]
+0000a8d0 : 34202a20 :  * 4 : CBZ     w0, &0004ae14
+0000a8d4 : 00002955 : U).. : Undefined instruction
+0000a8d8 : 61726628 : (fra : Undefined instruction
+0000a8dc : 6e656d67 : gmen : UMIN    v7.8h, v11.8h, v5.8h
+0000a8e0 : 69735f74 : t_si : LDPSW   x20, x23, [x27, #-&68]
+0000a8e4 : 2620657a : ze & : Undefined instruction
+0000a8e8 : 72662820 :  (fr : Undefined instruction
+0000a8ec : 656d6761 : agme : Undefined instruction
+0000a8f0 : 735f746e : nt_s : Undefined instruction
+0000a8f4 : 20657a69 : ize  : Undefined instruction
+0000a8f8 : 5531202d : - 1U : Undefined instruction
+0000a8fc : 3d202929 : )) = : STR     b9, [x9, #&80a]
+0000a900 : 5530203d : = 0U : Undefined instruction
+0000a904 : 00000000 : .... : Undefined instruction
+0000a908 : 616d7328 : (sma : Undefined instruction
+0000a90c : 73656c6c : lles : Undefined instruction
+0000a910 : 69625f74 : t_bi : LDPSW   x20, x23, [x27, #-&f0]
+0000a914 : 616d5f6e : n_ma : Undefined instruction
+0000a918 : 26206b73 : sk & : Undefined instruction
+0000a91c : 6d732820 :  (sm : LDP     d0, d10, [x1, #-&d0]
+0000a920 : 656c6c61 : alle : Undefined instruction
+0000a924 : 625f7473 : st_b : Undefined instruction
+0000a928 : 6d5f6e69 : in_m : LDP     d9, d27, [x19, #&1f0]
+0000a92c : 206b7361 : ask  : Undefined instruction
+0000a930 : 5531202d : - 1U : Undefined instruction
+0000a934 : 3d202929 : )) = : STR     b9, [x9, #&80a]
+0000a938 : 5530203d : = 0U : Undefined instruction
+0000a93c : 00000000 : .... : Undefined instruction
+0000a940 : 5f6e6962 : bin_ : Undefined instruction
+0000a944 : 65646e69 : inde : Undefined instruction
+0000a948 : 3d3e2078 : x >= : STR     b24, [x3, #&f88]
+0000a94c : 74706f20 :  opt : Undefined instruction
+0000a950 : 6c616d69 : imal : LDNP    d9, d27, [x11, #-&1f0]
+0000a954 : 6e69625f : _bin : RSUBHN2 v31.8h, v18.4s, v9.4s
+0000a958 : 646e695f : _ind : Undefined instruction
+0000a95c : 00007865 : ex.. : Undefined instruction
+0000a960 : 67617266 : frag : Undefined instruction
+0000a964 : 203d2120 :  !=  : Undefined instruction
+0000a968 : 6f762828 : ((vo : UMLAL2  v8.4s, v1.8h, v6.h[7]
+0000a96c : 2a206469 : id * : ORN     w9, w3, w0, lsl #25
+0000a970 : 00293029 : )0). : Undefined instruction
+0000a974 : 00000000 : .... : Undefined instruction
+0000a978 : 67617266 : frag : Undefined instruction
+0000a97c : 65683e2d : ->he : Undefined instruction
+0000a980 : 72656461 : ader : Undefined instruction
+0000a984 : 7a69732e : .siz : Undefined instruction
+0000a988 : 3d3e2065 : e >= : STR     b5, [x3, #&f88]
+0000a98c : 61726620 :  fra : Undefined instruction
+0000a990 : 6e656d67 : gmen : UMIN    v7.8h, v11.8h, v5.8h
+0000a994 : 69735f74 : t_si : LDPSW   x20, x23, [x27, #-&68]
+0000a998 : 0000657a : ze.. : Undefined instruction
+0000a99c : 00000000 : .... : Undefined instruction
+0000a9a0 : 61726628 : (fra : Undefined instruction
+0000a9a4 : 683e2d67 : g->h : Undefined instruction
+0000a9a8 : 65646165 : eade : Undefined instruction
+0000a9ac : 69732e72 : r.si : LDPSW   x18, x11, [x19, #-&68]
+0000a9b0 : 2520657a : ze % : Undefined instruction
+0000a9b4 : 73282820 :  ((s : Undefined instruction
+0000a9b8 : 6f657a69 : izeo : Undefined instruction
+0000a9bc : 6f762866 : f(vo : UMLAL2  v6.4s, v3.8h, v6.h[7]
+0000a9c0 : 292a6469 : id*) : STP     w9, w25, [x3, #-&b0]
+0000a9c4 : 34202a20 :  * 4 : CBZ     w0, &0004af08
+0000a9c8 : 2a202955 : U) * : ORN     w21, w10, w0, lsl #10
+0000a9cc : 29553220 :  2U) : LDP     w0, w12, [x17, #&a8]
+0000a9d0 : 3d3d2029 : ) == : STR     b9, [x1, #&f48]
+0000a9d4 : 00553020 :  0U. : Undefined instruction
+0000a9d8 : 61726621 : !fra : Undefined instruction
+0000a9dc : 683e2d67 : g->h : Undefined instruction
+0000a9e0 : 65646165 : eade : Undefined instruction
+0000a9e4 : 73752e72 : r.us : Undefined instruction
+0000a9e8 : 00006465 : ed.. : Undefined instruction
+0000a9ec : 00000000 : .... : Undefined instruction
+0000a9f0 : 7466656c : left : Undefined instruction
+0000a9f4 : 7265766f : over : Undefined instruction
+0000a9f8 : 68203c20 :  < h : Undefined instruction
+0000a9fc : 6c646e61 : andl : LDNP    d1, d27, [x19, #-&1c0]
+0000aa00 : 643e2d65 : e->d : Undefined instruction
+0000aa04 : 6e676169 : iagn : RSUBHN2 v9.8h, v11.4s, v7.4s
+0000aa08 : 6974736f : osti : LDPSW   x15, x28, [x27, #-&60]
+0000aa0c : 632e7363 : cs.c : Undefined instruction
+0000aa10 : 63617061 : apac : Undefined instruction
+0000aa14 : 00797469 : ity. : Undefined instruction
+0000aa18 : 7466656c : left : Undefined instruction
+0000aa1c : 7265766f : over : Undefined instruction
+0000aa20 : 28202520 :  % ( : STNP    w0, w9, [x9, #-&100]
+0000aa24 : 7a697328 : (siz : Undefined instruction
+0000aa28 : 28666f65 : eof( : LDNP    w5, w27, [x27, #-&d0]
+0000aa2c : 64696f76 : void : Undefined instruction
+0000aa30 : 2a20292a : *) * : ORN     w10, w9, w0, lsl #10
+0000aa34 : 29553420 :  4U) : LDP     w0, w13, [x1, #&a8]
+0000aa38 : 32202a20 :  * 2 : ORR     w0, w17, #&7ff            ; #2047
+0000aa3c : 3d202955 : U) = : STR     b21, [x10, #&80a]
+0000aa40 : 5530203d : = 0U : Undefined instruction
+0000aa44 : 00000000 : .... : Undefined instruction
+0000aa48 : 69732828 : ((si : LDPSW   x8, x10, [x1, #-&68]
+0000aa4c : 745f657a : ze_t : Undefined instruction
+0000aa50 : 656e2029 : ) ne : Undefined instruction
+0000aa54 : 72665f77 : w_fr : Undefined instruction
+0000aa58 : 20296761 : ag)  : Undefined instruction
+0000aa5c : 73282025 : % (s : Undefined instruction
+0000aa60 : 6f657a69 : izeo : Undefined instruction
+0000aa64 : 6f762866 : f(vo : UMLAL2  v6.4s, v3.8h, v6.h[7]
+0000aa68 : 292a6469 : id*) : STP     w9, w25, [x3, #-&b0]
+0000aa6c : 34202a20 :  * 4 : CBZ     w0, &0004afb0
+0000aa70 : 3d202955 : U) = : STR     b21, [x10, #&80a]
+0000aa74 : 5530203d : = 0U : Undefined instruction
+0000aa78 : 00000000 : .... : Undefined instruction
+0000aa7c : 00000000 : .... : Undefined instruction
+0000aa80 : 6e616828 : (han : FCVTXN2 v8.4s, v1.2d
+0000aa84 : 2d656c64 : dle- : LDP     s4, s27, [x3, #-&d8]
+0000aa88 : 6169643e : >dia : Undefined instruction
+0000aa8c : 736f6e67 : gnos : Undefined instruction
+0000aa90 : 73636974 : tics : Undefined instruction
+0000aa94 : 6c6c612e : .all : LDNP    d14, d24, [x9, #-&140]
+0000aa98 : 7461636f : ocat : Undefined instruction
+0000aa9c : 25206465 : ed % : Undefined instruction
+0000aaa0 : 73282820 :  ((s : Undefined instruction
+0000aaa4 : 6f657a69 : izeo : Undefined instruction
+0000aaa8 : 6f762866 : f(vo : UMLAL2  v6.4s, v3.8h, v6.h[7]
+0000aaac : 292a6469 : id*) : STP     w9, w25, [x3, #-&b0]
+0000aab0 : 34202a20 :  * 4 : CBZ     w0, &0004aff4
+0000aab4 : 2a202955 : U) * : ORN     w21, w10, w0, lsl #10
+0000aab8 : 29553220 :  2U) : LDP     w0, w12, [x17, #&a8]
+0000aabc : 3d3d2029 : ) == : STR     b9, [x1, #&f48]
+0000aac0 : 00553020 :  0U. : Undefined instruction
+0000aac4 : 00000000 : .... : Undefined instruction
+0000aac8 : 646e6168 : hand : Undefined instruction
+0000aacc : 3e2d656c : le-> : Undefined instruction
+0000aad0 : 67616964 : diag : Undefined instruction
+0000aad4 : 74736f6e : nost : Undefined instruction
+0000aad8 : 2e736369 : ics. : RSUBHN  v9.4h, v27.4s, v19.4s
+0000aadc : 6f6c6c61 : allo : Undefined instruction
+0000aae0 : 65746163 : cate : Undefined instruction
+0000aae4 : 3d3c2064 : d <= : STR     b4, [x3, #&f08]
+0000aae8 : 6e616820 :  han : FCVTXN2 v0.4s, v1.2d
+0000aaec : 2d656c64 : dle- : LDP     s4, s27, [x3, #-&d8]
+0000aaf0 : 6169643e : >dia : Undefined instruction
+0000aaf4 : 736f6e67 : gnos : Undefined instruction
+0000aaf8 : 73636974 : tics : Undefined instruction
+0000aafc : 7061632e : .cap : ADR     x14, &000CD763
+0000ab00 : 74696361 : acit : Undefined instruction
+0000ab04 : 00000079 : y... : Undefined instruction
+0000ab08 : 67617266 : frag : Undefined instruction
+0000ab0c : 65683e2d : ->he : Undefined instruction
+0000ab10 : 72656461 : ader : Undefined instruction
+0000ab14 : 7a69732e : .siz : Undefined instruction
+0000ab18 : 3d3e2065 : e >= : STR     b5, [x3, #&f88]
+0000ab1c : 6f6d6120 :  amo : UMLSL2  v0.4s, v9.8h, v13.h[2]
+0000ab20 : 20746e75 : unt  : Undefined instruction
+0000ab24 : 7328202b : + (s : Undefined instruction
+0000ab28 : 6f657a69 : izeo : Undefined instruction
+0000ab2c : 6f762866 : f(vo : UMLAL2  v6.4s, v3.8h, v6.h[7]
+0000ab30 : 292a6469 : id*) : STP     w9, w25, [x3, #-&b0]
+0000ab34 : 34202a20 :  * 4 : CBZ     w0, &0004b078
+0000ab38 : 00002955 : U).. : Undefined instruction
+0000ab3c : 00000000 : .... : Undefined instruction
+0000ab40 : 69732828 : ((si : LDPSW   x8, x10, [x1, #-&68]
+0000ab44 : 745f657a : ze_t : Undefined instruction
+0000ab48 : 72662029 : ) fr : Undefined instruction
+0000ab4c : 20296761 : ag)  : Undefined instruction
+0000ab50 : 69732025 : % si : LDPSW   x5, x8, [x1, #-&68]
+0000ab54 : 666f657a : zeof : Undefined instruction
+0000ab58 : 61724628 : (Fra : Undefined instruction
+0000ab5c : 6e656d67 : gmen : UMIN    v7.8h, v11.8h, v5.8h
+0000ab60 : 20292a74 : t*)  : Undefined instruction
+0000ab64 : 30203d3d : == 0 : ADR     x29, &0004B309
+0000ab68 : 00000055 : U... : Undefined instruction
+0000ab6c : 00000000 : .... : Undefined instruction
+0000ab70 : 69732828 : ((si : LDPSW   x8, x10, [x1, #-&68]
+0000ab74 : 745f657a : ze_t : Undefined instruction
+0000ab78 : 72662029 : ) fr : Undefined instruction
+0000ab7c : 20296761 : ag)  : Undefined instruction
+0000ab80 : 28203d3e : >= ( : STNP    w30, w15, [x9, #-&100]
+0000ab84 : 69732828 : ((si : LDPSW   x8, x10, [x1, #-&68]
+0000ab88 : 745f657a : ze_t : Undefined instruction
+0000ab8c : 61682029 : ) ha : Undefined instruction
+0000ab90 : 656c646e : ndle : Undefined instruction
+0000ab94 : 202b2029 : ) +  : Undefined instruction
+0000ab98 : 69732828 : ((si : LDPSW   x8, x10, [x1, #-&68]
+0000ab9c : 666f657a : zeof : Undefined instruction
+0000aba0 : 48314f28 : (O1H : Undefined instruction
+0000aba4 : 49706165 : eapI : Undefined instruction
+0000aba8 : 6174736e : nsta : Undefined instruction
+0000abac : 2965636e : nce) : LDP     w14, w24, [x27, #-&d8]
+0000abb0 : 28202b20 :  + ( : STNP    w0, w10, [x25, #-&100]
+0000abb4 : 657a6973 : size : Undefined instruction
+0000abb8 : 7628666f : of(v : Undefined instruction
+0000abbc : 2a64696f : oid* : ORN     w15, w11, w4, lsr #26
+0000abc0 : 202a2029 : ) *  : Undefined instruction
+0000abc4 : 20295534 : 4U)  : Undefined instruction
+0000abc8 : 5531202d : - 1U : Undefined instruction
+0000abcc : 20262029 : ) &  : Undefined instruction
+0000abd0 : 7328287e : ~((s : Undefined instruction
+0000abd4 : 6f657a69 : izeo : Undefined instruction
+0000abd8 : 6f762866 : f(vo : UMLAL2  v6.4s, v3.8h, v6.h[7]
+0000abdc : 292a6469 : id*) : STP     w9, w25, [x3, #-&b0]
+0000abe0 : 34202a20 :  * 4 : CBZ     w0, &0004b124
+0000abe4 : 2d202955 : U) - : STP     s21, s10, [x10, #-&100]
+0000abe8 : 29553120 :  1U) : LDP     w0, w12, [x9, #&a8]
+0000abec : 00002929 : )).. : Undefined instruction
+0000abf0 : 69732828 : ((si : LDPSW   x8, x10, [x1, #-&68]
+0000abf4 : 745f657a : ze_t : Undefined instruction
+0000abf8 : 72662029 : ) fr : Undefined instruction
+0000abfc : 20296761 : ag)  : Undefined instruction
+0000ac00 : 28203d3c : <= ( : STNP    w28, w15, [x9, #-&100]
+0000ac04 : 69732828 : ((si : LDPSW   x8, x10, [x1, #-&68]
+0000ac08 : 745f657a : ze_t : Undefined instruction
+0000ac0c : 61682029 : ) ha : Undefined instruction
+0000ac10 : 656c646e : ndle : Undefined instruction
+0000ac14 : 202b2029 : ) +  : Undefined instruction
+0000ac18 : 69732828 : ((si : LDPSW   x8, x10, [x1, #-&68]
+0000ac1c : 666f657a : zeof : Undefined instruction
+0000ac20 : 48314f28 : (O1H : Undefined instruction
+0000ac24 : 49706165 : eapI : Undefined instruction
+0000ac28 : 6174736e : nsta : Undefined instruction
+0000ac2c : 2965636e : nce) : LDP     w14, w24, [x27, #-&d8]
+0000ac30 : 28202b20 :  + ( : STNP    w0, w10, [x25, #-&100]
+0000ac34 : 657a6973 : size : Undefined instruction
+0000ac38 : 7628666f : of(v : Undefined instruction
+0000ac3c : 2a64696f : oid* : ORN     w15, w11, w4, lsr #26
+0000ac40 : 202a2029 : ) *  : Undefined instruction
+0000ac44 : 20295534 : 4U)  : Undefined instruction
+0000ac48 : 5531202d : - 1U : Undefined instruction
+0000ac4c : 20262029 : ) &  : Undefined instruction
+0000ac50 : 7328287e : ~((s : Undefined instruction
+0000ac54 : 6f657a69 : izeo : Undefined instruction
+0000ac58 : 6f762866 : f(vo : UMLAL2  v6.4s, v3.8h, v6.h[7]
+0000ac5c : 292a6469 : id*) : STP     w9, w25, [x3, #-&b0]
+0000ac60 : 34202a20 :  * 4 : CBZ     w0, &0004b1a4
+0000ac64 : 2d202955 : U) - : STP     s21, s10, [x10, #-&100]
+0000ac68 : 29553120 :  1U) : LDP     w0, w12, [x9, #&a8]
+0000ac6c : 202b2029 : ) +  : Undefined instruction
+0000ac70 : 646e6168 : hand : Undefined instruction
+0000ac74 : 3e2d656c : le-> : Undefined instruction
+0000ac78 : 67616964 : diag : Undefined instruction
+0000ac7c : 74736f6e : nost : Undefined instruction
+0000ac80 : 2e736369 : ics. : RSUBHN  v9.4h, v27.4s, v19.4s
+0000ac84 : 61706163 : capa : Undefined instruction
+0000ac88 : 79746963 : city : LDRH    w3, [x11, #&1a34]
+0000ac8c : 28202d20 :  - ( : STNP    w0, w11, [x9, #-&100]
+0000ac90 : 7a697328 : (siz : Undefined instruction
+0000ac94 : 28666f65 : eof( : LDNP    w5, w27, [x27, #-&d0]
+0000ac98 : 64696f76 : void : Undefined instruction
+0000ac9c : 2a20292a : *) * : ORN     w10, w9, w0, lsl #10
+0000aca0 : 29553420 :  4U) : LDP     w0, w13, [x1, #&a8]
+0000aca4 : 32202a20 :  * 2 : ORR     w0, w17, #&7ff            ; #2047
+0000aca8 : 00292955 : U)). : Undefined instruction
+0000acac : 00000000 : .... : Undefined instruction
+0000acb0 : 67617266 : frag : Undefined instruction
+0000acb4 : 65683e2d : ->he : Undefined instruction
+0000acb8 : 72656461 : ader : Undefined instruction
+0000acbc : 6573752e : .use : Undefined instruction
+0000acc0 : 00000064 : d... : Undefined instruction
+0000acc4 : 00000000 : .... : Undefined instruction
+0000acc8 : 69732828 : ((si : LDPSW   x8, x10, [x1, #-&68]
+0000accc : 745f657a : ze_t : Undefined instruction
+0000acd0 : 72662029 : ) fr : Undefined instruction
+0000acd4 : 3e2d6761 : ag-> : Undefined instruction
+0000acd8 : 64616568 : head : Undefined instruction
+0000acdc : 6e2e7265 : er.n : UABDL2  v5.8h, v19.16b, v14.16b
+0000ace0 : 29747865 : ext) : LDP     w5, w30, [x3, #-&60]
+0000ace4 : 73202520 :  % s : Undefined instruction
+0000ace8 : 6f657a69 : izeo : Undefined instruction
+0000acec : 72462866 : f(Fr : Undefined instruction
+0000acf0 : 656d6761 : agme : Undefined instruction
+0000acf4 : 292a746e : nt*) : STP     w14, w29, [x3, #-&b0]
+0000acf8 : 203d3d20 :  ==  : Undefined instruction
+0000acfc : 00005530 : 0U.. : Undefined instruction
+0000ad00 : 69732828 : ((si : LDPSW   x8, x10, [x1, #-&68]
+0000ad04 : 745f657a : ze_t : Undefined instruction
+0000ad08 : 72662029 : ) fr : Undefined instruction
+0000ad0c : 3e2d6761 : ag-> : Undefined instruction
+0000ad10 : 64616568 : head : Undefined instruction
+0000ad14 : 702e7265 : er.p : ADR     x5, &00067B63
+0000ad18 : 29766572 : rev) : LDP     w18, w25, [x11, #-&50]
+0000ad1c : 73202520 :  % s : Undefined instruction
+0000ad20 : 6f657a69 : izeo : Undefined instruction
+0000ad24 : 72462866 : f(Fr : Undefined instruction
+0000ad28 : 656d6761 : agme : Undefined instruction
+0000ad2c : 292a746e : nt*) : STP     w14, w29, [x3, #-&b0]
+0000ad30 : 203d3d20 :  ==  : Undefined instruction
+0000ad34 : 00005530 : 0U.. : Undefined instruction
+0000ad38 : 67617266 : frag : Undefined instruction
+0000ad3c : 65683e2d : ->he : Undefined instruction
+0000ad40 : 72656461 : ader : Undefined instruction
+0000ad44 : 7a69732e : .siz : Undefined instruction
+0000ad48 : 3d3e2065 : e >= : STR     b5, [x3, #&f88]
+0000ad4c : 73282820 :  ((s : Undefined instruction
+0000ad50 : 6f657a69 : izeo : Undefined instruction
+0000ad54 : 6f762866 : f(vo : UMLAL2  v6.4s, v3.8h, v6.h[7]
+0000ad58 : 292a6469 : id*) : STP     w9, w25, [x3, #-&b0]
+0000ad5c : 34202a20 :  * 4 : CBZ     w0, &0004b2a0
+0000ad60 : 2a202955 : U) * : ORN     w21, w10, w0, lsl #10
+0000ad64 : 29553220 :  2U) : LDP     w0, w12, [x17, #&a8]
+0000ad68 : 00000000 : .... : Undefined instruction
+0000ad6c : 00000000 : .... : Undefined instruction
+0000ad70 : 67617266 : frag : Undefined instruction
+0000ad74 : 65683e2d : ->he : Undefined instruction
+0000ad78 : 72656461 : ader : Undefined instruction
+0000ad7c : 7a69732e : .siz : Undefined instruction
+0000ad80 : 3d3c2065 : e <= : STR     b5, [x3, #&f08]
+0000ad84 : 6e616820 :  han : FCVTXN2 v0.4s, v1.2d
+0000ad88 : 2d656c64 : dle- : LDP     s4, s27, [x3, #-&d8]
+0000ad8c : 6169643e : >dia : Undefined instruction
+0000ad90 : 736f6e67 : gnos : Undefined instruction
+0000ad94 : 73636974 : tics : Undefined instruction
+0000ad98 : 7061632e : .cap : ADR     x14, &000CD9FF
+0000ad9c : 74696361 : acit : Undefined instruction
+0000ada0 : 00000079 : y... : Undefined instruction
+0000ada4 : 00000000 : .... : Undefined instruction
+0000ada8 : 646e6168 : hand : Undefined instruction
+0000adac : 3e2d656c : le-> : Undefined instruction
+0000adb0 : 67616964 : diag : Undefined instruction
+0000adb4 : 74736f6e : nost : Undefined instruction
+0000adb8 : 2e736369 : ics. : RSUBHN  v9.4h, v27.4s, v19.4s
+0000adbc : 6f6c6c61 : allo : Undefined instruction
+0000adc0 : 65746163 : cate : Undefined instruction
+0000adc4 : 3d3e2064 : d >= : STR     b4, [x3, #&f88]
+0000adc8 : 61726620 :  fra : Undefined instruction
+0000adcc : 683e2d67 : g->h : Undefined instruction
+0000add0 : 65646165 : eade : Undefined instruction
+0000add4 : 69732e72 : r.si : LDPSW   x18, x11, [x19, #-&68]
+0000add8 : 0000657a : ze.. : Undefined instruction
+0000addc : 00000000 : .... : Undefined instruction
+0000ade0 : 65727028 : (pre : Undefined instruction
+0000ade4 : 683e2d76 : v->h : Undefined instruction
+0000ade8 : 65646165 : eade : Undefined instruction
+0000adec : 69732e72 : r.si : LDPSW   x18, x11, [x19, #-&68]
+0000adf0 : 2520657a : ze % : Undefined instruction
+0000adf4 : 73282820 :  ((s : Undefined instruction
+0000adf8 : 6f657a69 : izeo : Undefined instruction
+0000adfc : 6f762866 : f(vo : UMLAL2  v6.4s, v3.8h, v6.h[7]
+0000ae00 : 292a6469 : id*) : STP     w9, w25, [x3, #-&b0]
+0000ae04 : 34202a20 :  * 4 : CBZ     w0, &0004b348
+0000ae08 : 2a202955 : U) * : ORN     w21, w10, w0, lsl #10
+0000ae0c : 29553220 :  2U) : LDP     w0, w12, [x17, #&a8]
+0000ae10 : 3d3d2029 : ) == : STR     b9, [x1, #&f48]
+0000ae14 : 00553020 :  0U. : Undefined instruction
+0000ae18 : 65737341 : Asse : Undefined instruction
+0000ae1c : 6f697472 : rtio : UQSHL   v18.2d, v3.2d, #&29
+0000ae20 : 6166206e : n fa : Undefined instruction
+0000ae24 : 64656c69 : iled : Undefined instruction
+0000ae28 : 0000203a : : .. : Undefined instruction
+0000ae2c : 00000000 : .... : Undefined instruction
+0000ae30 : 20202020 :      : Undefined instruction
+0000ae34 : 20202020 :      : Undefined instruction
+0000ae38 : 20202020 :      : Undefined instruction
+0000ae3c : 74612020 :   at : Undefined instruction
+0000ae40 : 0000203a : : .. : Undefined instruction
+0000ae44 : 00000000 : .... : Undefined instruction
+0000ae48 : 206e6920 :  in  : Undefined instruction
+0000ae4c : 00000000 : .... : Undefined instruction
+0000ae50 : 696c202c : , li : LDPSW   x12, x8, [x1, #-&a0]
+0000ae54 : 0020656e : ne . : Undefined instruction
+0000ae58 : 6b6e753c : <unk : Undefined instruction
+0000ae5c : 6e776f6e : nown : UMIN    v14.8h, v27.8h, v23.8h
+0000ae60 : 0000003e : >... : Undefined instruction
+0000ae64 : 00000000 : .... : Undefined instruction
+0000ae68 : 6b636142 : Back : Undefined instruction
+0000ae6c : 63617274 : trac : Undefined instruction
+0000ae70 : 00003a65 : e:.. : Undefined instruction
+0000ae74 : 00000000 : .... : Undefined instruction
+0000ae78 : 00203a20 :  : . : Undefined instruction
+0000ae7c : 00000000 : .... : Undefined instruction
+0000ae80 : 63617453 : Stac : Undefined instruction
+0000ae84 : 7266206b : k fr : Undefined instruction
+0000ae88 : 73656d61 : ames : Undefined instruction
+0000ae8c : 726f6320 :  cor : Undefined instruction
+0000ae90 : 74707572 : rupt : Undefined instruction
+0000ae94 : 00000000 : .... : Undefined instruction
+0000ae98 : 6e6b6e55 : Unkn : UMIN    v21.8h, v18.8h, v11.8h
+0000ae9c : 006e776f : own. : Undefined instruction
+0000aea0 : 33323130 : 0123 : Undefined instruction
+0000aea4 : 37363534 : 4567 : TBNZ    w20, #6, #&7548
+0000aea8 : 42413938 : 89AB : Undefined instruction
+0000aeac : 46454443 : CDEF : Undefined instruction
+0000aeb0 : 00000000 : .... : Undefined instruction
+0000aeb4 : 00000000 : .... : Undefined instruction
+0000aeb8 : 00000000 : .... : Undefined instruction
+0000aebc : 00000000 : .... : Undefined instruction
+0000aec0 : 00008a18 : .... : Undefined instruction
+0000aec4 : 00000000 : .... : Undefined instruction
+0000aec8 : 00008a80 : .... : Undefined instruction
+0000aecc : 00000000 : .... : Undefined instruction
+0000aed0 : 00008ac0 : .... : Undefined instruction
+0000aed4 : 00000000 : .... : Undefined instruction
+0000aed8 : 00008b00 : .... : Undefined instruction
+0000aedc : 00000000 : .... : Undefined instruction
+0000aee0 : 00000000 : .... : Undefined instruction
+0000aee4 : 65737341 : Asse : Undefined instruction
+0000aee8 : 6f697472 : rtio : UQSHL   v18.2d, v3.2d, #&29
+0000aeec : 6166206e : n fa : Undefined instruction
+0000aef0 : 64656c69 : iled : Undefined instruction
+0000aef4 : 00000000 : .... : Undefined instruction
+0000aef8 : 00000000 : .... : Undefined instruction
+0000aefc : 00000000 : .... : Undefined instruction
+0000af00 : 00000000 : .... : Undefined instruction
+0000af04 : 00000000 : .... : Undefined instruction
+0000af08 : 00000000 : .... : Undefined instruction
+0000af0c : 00000000 : .... : Undefined instruction
+0000af10 : 00000000 : .... : Undefined instruction
+0000af14 : 00000000 : .... : Undefined instruction
+0000af18 : 00000000 : .... : Undefined instruction
+0000af1c : 00000000 : .... : Undefined instruction
+0000af20 : 00000000 : .... : Undefined instruction
+0000af24 : 00000000 : .... : Undefined instruction
+0000af28 : 00000000 : .... : Undefined instruction
+0000af2c : 00000000 : .... : Undefined instruction
+0000af30 : 00000000 : .... : Undefined instruction
+0000af34 : 00000000 : .... : Undefined instruction
+0000af38 : 00000000 : .... : Undefined instruction
+0000af3c : 00000000 : .... : Undefined instruction
+0000af40 : 00000000 : .... : Undefined instruction
+0000af44 : 00000000 : .... : Undefined instruction
+0000af48 : 00000000 : .... : Undefined instruction
+0000af4c : 00000000 : .... : Undefined instruction
+0000af50 : 00000000 : .... : Undefined instruction
+0000af54 : 00000000 : .... : Undefined instruction
+0000af58 : 00000000 : .... : Undefined instruction
+0000af5c : 00000000 : .... : Undefined instruction
+0000af60 : 00000000 : .... : Undefined instruction
+0000af64 : 00000000 : .... : Undefined instruction
+0000af68 : 00000000 : .... : Undefined instruction
+0000af6c : 00000000 : .... : Undefined instruction
+0000af70 : 00000000 : .... : Undefined instruction
+0000af74 : 00000000 : .... : Undefined instruction
+0000af78 : 00000000 : .... : Undefined instruction
+0000af7c : 00000000 : .... : Undefined instruction
+0000af80 : 00000000 : .... : Undefined instruction
+0000af84 : 00000000 : .... : Undefined instruction
+0000af88 : 00000000 : .... : Undefined instruction
+0000af8c : 00000000 : .... : Undefined instruction
+0000af90 : 00000000 : .... : Undefined instruction
+0000af94 : 00000000 : .... : Undefined instruction
+0000af98 : 00000000 : .... : Undefined instruction
+0000af9c : 00000000 : .... : Undefined instruction
+0000afa0 : 00000000 : .... : Undefined instruction
+0000afa4 : 00000000 : .... : Undefined instruction
+0000afa8 : 00000000 : .... : Undefined instruction
+0000afac : 00000000 : .... : Undefined instruction
+0000afb0 : 00000000 : .... : Undefined instruction
+0000afb4 : 00000000 : .... : Undefined instruction
+0000afb8 : 00000000 : .... : Undefined instruction
+0000afbc : 00000000 : .... : Undefined instruction
+0000afc0 : 00000000 : .... : Undefined instruction
+0000afc4 : 00000000 : .... : Undefined instruction
+0000afc8 : 00000000 : .... : Undefined instruction
+0000afcc : 00000000 : .... : Undefined instruction
+0000afd0 : 00000000 : .... : Undefined instruction
+0000afd4 : 00000000 : .... : Undefined instruction
+0000afd8 : 00000000 : .... : Undefined instruction
+0000afdc : 00000000 : .... : Undefined instruction

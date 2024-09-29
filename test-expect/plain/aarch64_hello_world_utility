@@ -1,0 +1,45 @@
+00000000 : ea000005 : .... : ANDS    x5, x0, x0
+00000004 : 79766748 : Hgvy : LDRH    w8, [x26, #&1b32]
+00000008 : 216c6776 : vgl! : Undefined instruction
+0000000c : 000000b0 : .... : Undefined instruction
+00000010 : 00000004 : .... : Undefined instruction
+00000014 : 00000040 : @... : Undefined instruction
+00000018 : 0000005c : \... : Undefined instruction
+0000001c : e28f0004 : .... : Undefined instruction
+00000020 : e3500102 : ..P. : Undefined instruction
+00000024 : e1a0f00e : .... : Undefined instruction
+00000028 : 00000000 : .... : Undefined instruction
+0000002c : 63724141 : AArc : Undefined instruction
+00000030 : 20343668 : h64  : Undefined instruction
+00000034 : 616e6962 : bina : Undefined instruction
+00000038 : 73656972 : ries : Undefined instruction
+0000003c : 6e616320 :  can : RSUBHN2 v0.8h, v25.4s, v1.4s
+00000040 : 20746f6e : not  : Undefined instruction
+00000044 : 72206562 : be r : ANDS    w2, w11, #&3ffffff        ; #67108863
+00000048 : 6f206e75 : un o : Undefined instruction
+0000004c : 3233206e : n 32 : ORR     w14, w3, #&3fe000         ; #4186112
+00000050 : 20746962 : bit  : Undefined instruction
+00000054 : 43534952 : RISC : Undefined instruction
+00000058 : 00534f20 :  OS. : Undefined instruction
+0000005c : a9bf7bfd : .{.. : STP     x29, x30, [sp, #-&10]!
+00000060 : aa0103e3 : .... : MOV     x3, x1
+00000064 : d280002a : *... : MOVZ    x10, #&1
+00000068 : d4000001 : .... : SWI     #0                        ; SWI OS_WriteS
+0000006c : 6c6c6548 : Hell : LDNP    d8, d25, [x10, #-&140]
+00000070 : 0000206f : o .. : Undefined instruction
+00000074 : 39400061 : a.@9 : LDRB    w1, [x3]
+00000078 : 10000142 : B... : ADR     x2, &000000A0             ; -> [&6c726f77, &00000064, &00000000, &00000000]
+0000007c : 7100003f : ?..q : CMP     w1, #0
+00000080 : 9a830040 : @... : CSEL    x0, x2, x3, eq
+00000084 : d280004a : J... : MOVZ    x10, #&2
+00000088 : d4000001 : .... : SWI     #0                        ; SWI OS_Write0
+0000008c : d280006a : j... : MOVZ    x10, #&3
+00000090 : d4000001 : .... : SWI     #0                        ; SWI OS_NewLine
+00000094 : d2800000 : .... : MOVZ    x0, #0
+00000098 : a8c17bfd : .{.. : LDP     x29, x30, [sp], #&10
+0000009c : d65f03c0 : .._. : RET
+000000a0 : 6c726f77 : worl : LDNP    d23, d27, [x27, #-&e0]
+000000a4 : 00000064 : d... : Undefined instruction
+000000a8 : 00000000 : .... : Undefined instruction
+000000ac : 00000000 : .... : Undefined instruction
+000000b0 : 00000000 : .... : Undefined instruction
