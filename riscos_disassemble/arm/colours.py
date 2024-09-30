@@ -216,7 +216,12 @@ class ColourDisassembly(object):
                  None if no colouring is recognised for the whole string
         """
         if state.dis.startswith(('Undefined', '<')):
-            return [(self.disassembly_colours['invalid'], state.dis)]
+            if ';' in state.dis:
+                (undef, comment) = state.dis.split(';', 1)
+                return [(self.disassembly_colours['invalid'], undef),
+                        (self.disassembly_colours['comment'], ';' + comment)]
+            else:
+                return [(self.disassembly_colours['invalid'], state.dis)]
 
         return None
 

@@ -27,7 +27,7 @@ setup(
                 'riscos_disassemble.arm64'],
     version = "0.6.0",
     license='MIT',
-    description = 'Disassemble ARM and Thumb files like RISC OS',
+    description = 'Disassemble ARM 32, ARM 64 and Thumb files like RISC OS',
     long_description = long_description,
     long_description_content_type = 'text/markdown',
     author = 'Charles Ferguson',

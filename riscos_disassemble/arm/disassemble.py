@@ -1042,6 +1042,14 @@ class DisassembleARM(base.DisassembleBase):
                 (mnemonic, op_str, comment) = self.disassemble_fpa_instruction(i, mnemonic, op_str)
 
             if live_memory:
+                # Check if this is has a data description
+                content = self.access.describe_content(address)
+                if content:
+                    if comment:
+                        comment = '%s  ; %s' % (content, comment)
+                    else:
+                        comment = content
+
                 # Check if this is a function entry point
                 funcname = self.access.describe_code(address)
                 if funcname and '+' not in funcname:

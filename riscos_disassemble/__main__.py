@@ -17,6 +17,7 @@ from .arm import postprocess
 from .access import DisassembleAccess
 from .access_helpers import DisassembleAccessDescriptions, DisassembleAccessSWIs
 from .access_memory import DisassembleAccessFile
+from .access_annotate import DisassembleAccessAnnotate
 from . import get_disassembler
 
 ENV_DEBUGGERPLUS = 'RISCOS_DUMPI_DEBUGGERPLUS'
@@ -47,6 +48,7 @@ class BadARMFlagError(ToolError):
 class OurAccess(DisassembleAccessSWIs,
                 DisassembleAccessFile,
                 DisassembleAccessDescriptions,
+                DisassembleAccessAnnotate,
                 DisassembleAccess):
     pass
 
@@ -115,6 +117,10 @@ def disassemble_file(filename, arch='arm', colourer=None, postprocess=None, base
     with open(filename, 'rb') as fh:
         access.fh = fh
         addr = baseaddr
+
+        if guess_filetype(filename, access) == 'absolute':
+            access.annotate_aif(access)
+
         enable = True if not funcmatch else False
         while True:
             access.fh_reset()
@@ -264,11 +270,7 @@ variable %s.""" % (ENV_DEBUGGERPLUS,)
         print(line)
 
 
-def guess_architecture(filename):
-    """
-    Read the file header to check what the architecture is.
-    """
-
+def guess_filetype(filename, access):
     filetype = None
     if filename.endswith(',ffa'):
         filetype = 'module'
@@ -276,7 +278,15 @@ def guess_architecture(filename):
         filetype = 'absolute'
     elif filename.endswith(',ffc'):
         filetype = 'utility'
+    return filetype
 
+
+def guess_architecture(filename):
+    """
+    Read the file header to check what the architecture is.
+    """
+
+    filetype = guess_filetype(filename, None)
     if not filetype:
         # Don't recognise it, so it's ARM.
         return 'arm'

@@ -551,6 +551,14 @@ class DisassembleARM64(base.DisassembleBase):
                     comment = ', '.join(accumulator)
 
             if live_memory:
+                # Check if this is has a data description
+                content = self.access.describe_content(address)
+                if content:
+                    if comment:
+                        comment = '%s  ; %s' % (content, comment)
+                    else:
+                        comment = content
+
                 # Check if this is a function entry point
                 funcname = self.access.describe_code(address)
                 if funcname and '+' not in funcname:
@@ -561,7 +569,18 @@ class DisassembleARM64(base.DisassembleBase):
 
             return (4, mnemonic, op_str, comment)
 
-        return (4, 'Undefined instruction', None, None)
+        # Undefined instructions can still have comments
+        comment = None
+        if live_memory:
+            # Check if this is has a data description
+            content = self.access.describe_content(address)
+            if content:
+                if comment:
+                    comment = '%s  ; %s' % (content, comment)
+                else:
+                    comment = content
+
+        return (4, 'Undefined instruction', None, comment)
 
     def disassemble(self, address, inst,
                     live_registers=False, live_memory=False):
@@ -580,7 +599,15 @@ class DisassembleARM64(base.DisassembleBase):
                                                                              live_memory=live_memory)
         if mnemonic:
             if comment:
-                op_str = op_str + (' ' * (24 - len(op_str))) + "  ; " + comment
+                if op_str:
+                    op_str = op_str + (' ' * (24 - len(op_str))) + "  ; " + comment
+                else:
+                    lmnem = len(mnemonic)
+                    if lmnem < 8:
+                        lmnem = 0
+                    else:
+                        lmnem -= 8
+                    op_str = (' ' * (24 - lmnem)) + "  ; " + comment
             if op_str:
                 text = "%-8s%s" % (mnemonic, op_str)
             else:
