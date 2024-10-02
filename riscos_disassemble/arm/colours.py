@@ -76,6 +76,7 @@ class DisassemblyState(object):
                     self.operands = ''
                     self.spaces2 = self.spaces1
                     self.spaces1 = ''
+                    self.comment = dis
                 else:
                     match = self.comment_re.search(dis)
                     if match:

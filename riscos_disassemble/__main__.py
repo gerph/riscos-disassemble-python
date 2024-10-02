@@ -119,7 +119,7 @@ def disassemble_file(filename, arch='arm', colourer=None, postprocess=None, base
         addr = baseaddr
 
         if guess_filetype(filename, access) == 'absolute':
-            access.annotate_aif(access)
+            access.annotate_aif()
 
         enable = True if not funcmatch else False
         while True:

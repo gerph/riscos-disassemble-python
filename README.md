@@ -139,6 +139,7 @@ Example files are supplied in the `examples` directory to demonstrate the disass
 * `osbyte81_version` utility file is another test program, which checks the behaviour of `OS_Byte &81` when reading the operating system version.
 * `kerneldebug` utility file tests that the input and output in the kernel works, and has function signatures that are recognised.
 * `SystemBell` module file (suffixed by `,ffa`), provides the implementation of the system bell on RISC OS Select.
+* `simple_aif` absolute file (suffixed by `,ff8`), is a 32bit AIF file.
 * `aarch64_hello_world` absolute file (suffixed by `,ff8`) is an AArch64 RISC OS executable from the [RISC OS 64 Simple Binaries](https://github.com/gerph/riscos64-simple-binaries/) project.
 * `aarch64_hello_world_utility` utility file (suffixed by `,ffc`) is an AArch64 RISC OS executable from the [RISC OS 64 Simple Binaries](https://github.com/gerph/riscos64-simple-binaries/) project.
 

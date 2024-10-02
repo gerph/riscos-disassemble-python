@@ -1,8 +1,8 @@
-00008000 : e1a00000 : .... : Undefined instruction             ; AIF: Decompression branch
-00008004 : e1a00000 : .... : Undefined instruction             ; AIF: Self relocation branch
-00008008 : e1a00000 : .... : Undefined instruction             ; AIF: Zero init branch
-0000800c : eb00000b : .... : SUBS    x11, x0, x0               ; AIF: Entry point
-00008010 : ef000011 : .... : Undefined instruction             ; AIF: OS_Exit
+00008000 : e1a00000 : .... : Undefined instruction             ; AIF: Decompression branch (ARM32)
+00008004 : e1a00000 : .... : Undefined instruction             ; AIF: Self relocation branch (ARM32)
+00008008 : e1a00000 : .... : Undefined instruction             ; AIF: Zero init branch (ARM32)
+0000800c : eb00000b : .... : SUBS    x11, x0, x0               ; AIF: Entry point branch (ARM32)
+00008010 : ef000011 : .... : Undefined instruction             ; AIF: OS_Exit (ARM32)
 00008014 : 00002ec0 : .... : Undefined instruction             ; AIF: Size of read only data
 00008018 : 00000120 :  ... : Undefined instruction             ; AIF: Size of read-write data
 0000801c : 00000000 : .... : Undefined instruction             ; AIF: Size of debug data
@@ -10,11 +10,11 @@
 00008024 : 00000000 : .... : Undefined instruction             ; AIF: Debug type
 00008028 : 00008000 : .... : Undefined instruction             ; AIF: Linkage base
 0000802c : 00000000 : .... : Undefined instruction             ; AIF: Workspace size
-00008030 : 00000040 : @... : Undefined instruction             ; AIF: Flags (and bitness)
+00008030 : 00000040 : @... : Undefined instruction             ; AIF: Flags and bitness (64 bit)
 00008034 : 00000000 : .... : Undefined instruction             ; AIF: Data base
 00008038 : 00000000 : .... : Undefined instruction             ; AIF: Reserved (1)
 0000803c : 00000000 : .... : Undefined instruction             ; AIF: Reserved (2)
-00008040 : e28f0000 : .... : Undefined instruction
+00008040 : e28f0000 : .... : Undefined instruction             ; Entry point code (ARM32)
 00008044 : ef00002b : +... : Undefined instruction
 00008048 : 00000000 : .... : Undefined instruction
 0000804c : 63724141 : AArc : Undefined instruction
@@ -62,12 +62,12 @@
 000080f4 : 00000000 : .... : Undefined instruction
 000080f8 : 00000000 : .... : Undefined instruction
 000080fc : 00000000 : .... : Undefined instruction
-00008100 : d503201f : . .. : NOP
-00008104 : 94000004 : .... : BL      &00008114
-00008108 : 9400001f : .... : BL      &00008184
+00008100 : d503201f : . .. : NOP                               ; AIF: Decompression branch
+00008104 : 94000004 : .... : BL      &00008114                 ; AIF: Zero init branch
+00008108 : 9400001f : .... : BL      &00008184                 ; AIF: Entry point branch
 0000810c : d280022a : *... : MOVZ    x10, #&11                 ; #17
 00008110 : d4000001 : .... : SWI     #0                        ; SWI OS_Exit
-00008114 : d10423c0 : .#.. : SUB     x0, x30, #&108            ; #264
+00008114 : d10423c0 : .#.. : SUB     x0, x30, #&108            ; Zero init code  ; #264
 00008118 : b9401403 : ..@. : LDR     w3, [x0, #&14]
 0000811c : b9401804 : ..@. : LDR     w4, [x0, #&18]
 00008120 : 8b030001 : .... : ADD     x1, x0, x3
@@ -95,7 +95,7 @@
 00008178 : f100109f : .... : CMP     x4, #4
 0000817c : 54ffffa2 : ...T : B.HS    &00008170
 00008180 : d65f03c0 : .._. : RET
-00008184 : d280020a : .... : MOVZ    x10, #&10                 ; #16 = bit 4
+00008184 : d280020a : .... : MOVZ    x10, #&10                 ; Entry point code  ; #16 = bit 4
 00008188 : d4000001 : .... : SWI     #0                        ; SWI OS_GetEnv
 0000818c : d280001d : .... : MOVZ    x29, #0
 00008190 : 9100003f : ?... : MOV     sp, x1
