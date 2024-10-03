@@ -26,57 +26,57 @@ class DisassembleAccessAnnotate(object):
     annotations = {}
 
     def annotate_aif(self):
-        if self.get_memory_word(0x8010) != 0xef000011:
+        if self.get_memory_word(self.baseaddr + 0x10) != 0xef000011:
             # No SWI OS_Exit, so it's not an AIF file
             return
         self.annotations = {
-                0x8000 + 0: "AIF: Decompression branch",
-                0x8000 + 4: "AIF: Self relocation branch",
-                0x8000 + 8: "AIF: Zero init branch",
-                0x8000 + 12: "AIF: Entry point branch",
-                0x8000 + 16: "AIF: OS_Exit",
-                0x8000 + 20: "AIF: Size of read only data",
-                0x8000 + 24: "AIF: Size of read-write data",
-                0x8000 + 28: "AIF: Size of debug data",
-                0x8000 + 32: "AIF: Size of zero-init data",
-                0x8000 + 36: "AIF: Debug type",
-                0x8000 + 40: "AIF: Linkage base",
-                0x8000 + 44: "AIF: Workspace size",
-                0x8000 + 48: "AIF: Flags and bitness",
-                0x8000 + 52: "AIF: Data base",
-                0x8000 + 56: "AIF: Reserved (1)",
-                0x8000 + 60: "AIF: Reserved (2)",
+                0: "AIF: Decompression branch",
+                4: "AIF: Self relocation branch",
+                8: "AIF: Zero init branch",
+                12: "AIF: Entry point branch",
+                16: "AIF: OS_Exit",
+                20: "AIF: Size of read only data",
+                24: "AIF: Size of read-write data",
+                28: "AIF: Size of debug data",
+                32: "AIF: Size of zero-init data",
+                36: "AIF: Debug type",
+                40: "AIF: Linkage base",
+                44: "AIF: Workspace size",
+                48: "AIF: Flags and bitness",
+                52: "AIF: Data base",
+                56: "AIF: Reserved (1)",
+                60: "AIF: Reserved (2)",
             }
 
-        bitness = self.get_memory_word(0x8000 + 48) & 0xFF
+        bitness = self.get_memory_word(self.baseaddr + 48) & 0xFF
         if bitness in (0, 26):
-            self.annotations[0x8000 + 48] += ' (26 bit)'
+            self.annotations[48] += ' (26 bit)'
         elif bitness == 32:
-            self.annotations[0x8000 + 48] += ' (32 bit)'
+            self.annotations[48] += ' (32 bit)'
         elif bitness == 64:
-            self.annotations[0x8000 + 48] += ' (64 bit)'
+            self.annotations[48] += ' (64 bit)'
             # If it's 64bit, then we need to annotate the code as being 32bit
             for bl_offset in (0, 4, 8, 12, 16):
-                self.annotations[0x8000 + bl_offset] += ' (ARM32)'
+                self.annotations[bl_offset] += ' (ARM32)'
 
         for bl_offset in (0, 4, 8, 12):
-            bl = self.get_memory_word(0x8000 + bl_offset)
+            bl = self.get_memory_word(self.baseaddr + bl_offset)
             if (bl & 0xFF000000) == 0xeb000000:
                 # This is a BL instruction
-                dest = 0x8000 + bl_offset + (bl & 0x00FFFFFF) * 4 + 8
-                self.annotations[dest] = self.annotations[0x8000 + bl_offset][5:].replace('branch', 'code')
+                dest = bl_offset + (bl & 0x00FFFFFF) * 4 + 8
+                self.annotations[dest] = self.annotations[bl_offset][5:].replace('branch', 'code')
 
         if bitness == 64:
-            self.annotations[0x8100 + 0] = "AIF: Decompression branch"
-            self.annotations[0x8100 + 4] = "AIF: Zero init branch"
-            self.annotations[0x8100 + 8] = "AIF: Entry point branch"
+            self.annotations[0x100 + 0] = "AIF: Decompression branch"
+            self.annotations[0x100 + 4] = "AIF: Zero init branch"
+            self.annotations[0x100 + 8] = "AIF: Entry point branch"
 
             for bl_offset in (0, 4, 8):
-                bl = self.get_memory_word(0x8100 + bl_offset)
+                bl = self.get_memory_word(self.baseaddr + 0x100 + bl_offset)
                 if (bl & 0xFF000000) == 0x94000000:
                     # This is a BL instruction (in AArch64)
-                    dest = 0x8100 + bl_offset + (bl & 0x00FFFFFF) * 4
-                    self.annotations[dest] = self.annotations[0x8100 + bl_offset][5:].replace('branch', 'code')
+                    dest = 0x100 + bl_offset + (bl & 0x00FFFFFF) * 4
+                    self.annotations[dest] = self.annotations[0x100 + bl_offset][5:].replace('branch', 'code')
 
     def annotate_module(self):
         self.annotations = {
@@ -97,14 +97,14 @@ class DisassembleAccessAnnotate(object):
 
         for mod_offset in range(0, Module_Extension + 4, 4):
             if mod_offset == Module_SWIChunk:
-                value = self.get_memory_word(mod_offset)
+                value = self.get_memory_word(self.baseaddr + mod_offset)
                 # Check if it's value
                 if value & 0x3F != 0:
                     break
                 if value & 0xFFF00000 != 0:
                     break
                 continue
-            code_offset = self.get_memory_word(mod_offset)
+            code_offset = self.get_memory_word(self.baseaddr + mod_offset)
             if code_offset != 0:
                 if mod_offset > Module_SWIChunk:
                     # Need to check if it's valid before using it
@@ -120,12 +120,12 @@ class DisassembleAccessAnnotate(object):
                 self.annotations[code_offset] = self.annotations[mod_offset][8:].replace(' offset', '')
 
                 if mod_offset == Module_Service:
-                    code_data = self.get_memory_word(code_offset)
+                    code_data = self.get_memory_word(self.baseaddr + code_offset)
                     if code_data == Module_ServiceMagic:
                         # Ursula service block exists
-                        table_offset = self.get_memory_word(code_offset - 4)
+                        table_offset = self.get_memory_word(self.baseaddr + code_offset - 4)
                         self.annotations[table_offset] = "Fast service call table"
-                        fast_offset = self.get_memory_word(table_offset + 4)
+                        fast_offset = self.get_memory_word(self.baseaddr + table_offset + 4)
                         if fast_offset != 0:
                             self.annotations[fast_offset] = "Fast service call entry"
 
@@ -138,5 +138,5 @@ class DisassembleAccessAnnotate(object):
         @return: Description of the content (eg 'header offset')
                  None if code is not known
         """
-        content = self.annotations.get(addr)
+        content = self.annotations.get(addr - self.baseaddr)
         return content
