@@ -12,6 +12,7 @@ Memory access functions:
 
 Decoding of the data in the system:
 
+* `describe_content`:   Annotations that appear as comments on the address
 * `describe_address`:   More information about a specific address
 * `describe_region`:    More information about the region an address lies in
 * `describe_code`:      Read the name of the function at an address

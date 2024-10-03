@@ -120,6 +120,8 @@ def disassemble_file(filename, arch='arm', colourer=None, postprocess=None, base
 
         if guess_filetype(filename, access) == 'absolute':
             access.annotate_aif()
+        elif guess_filetype(filename, access) == 'module':
+            access.annotate_module()
 
         enable = True if not funcmatch else False
         while True:

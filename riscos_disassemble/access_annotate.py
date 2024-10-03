@@ -2,6 +2,21 @@
 File offset annotations.
 """
 
+Module_Start = 0x0
+Module_Init = 0x4
+Module_Die = 0x8
+Module_Service = 0xc
+Module_Title = 0x10
+Module_HelpStr = 0x14
+Module_HC_Table = 0x18    #  help and command table.
+Module_SWIChunk = 0x1c
+Module_SWIEntry = 0x20
+Module_NameTable = 0x24
+Module_NameCode = 0x28
+Module_MsgFile = 0x2c
+Module_Extension = 0x30
+Module_ServiceMagic = 0xe1a00000
+
 
 class DisassembleAccessAnnotate(object):
     """
@@ -62,6 +77,57 @@ class DisassembleAccessAnnotate(object):
                     # This is a BL instruction (in AArch64)
                     dest = 0x8100 + bl_offset + (bl & 0x00FFFFFF) * 4
                     self.annotations[dest] = self.annotations[0x8100 + bl_offset][5:].replace('branch', 'code')
+
+    def annotate_module(self):
+        self.annotations = {
+                Module_Start: "Module: Start offset",
+                Module_Init: "Module: Initialisation code offset",
+                Module_Die: "Module: Finalisation code offset",
+                Module_Service: "Module: Service handler offset",
+                Module_Title: "Module: Title string offset",
+                Module_HelpStr: "Module: Help string offset",
+                Module_HC_Table: "Module: Command table offset",
+                Module_SWIChunk: "Module: SWI chunk",
+                Module_SWIEntry: "Module: SWI handler code offset",
+                Module_NameTable: "Module: SWI names table offset",
+                Module_NameCode: "Module: SWI decoding code offset",
+                Module_MsgFile: "Module: Messages filename offset",
+                Module_Extension: "Module: Extension flags offset",
+            }
+
+        for mod_offset in range(0, Module_Extension + 4, 4):
+            if mod_offset == Module_SWIChunk:
+                value = self.get_memory_word(mod_offset)
+                # Check if it's value
+                if value & 0x3F != 0:
+                    break
+                if value & 0xFFF00000 != 0:
+                    break
+                continue
+            code_offset = self.get_memory_word(mod_offset)
+            if code_offset != 0:
+                if mod_offset > Module_SWIChunk:
+                    # Need to check if it's valid before using it
+                    if mod_offset not in (Module_NameTable, Module_MsgFile):
+                        # Code entry points
+                        if code_offset & 3:
+                            # Not a word, so not valid
+                            break
+                    if code_offset & 0xFFF00000:
+                        # Far too big to be sensible
+                        break
+
+                self.annotations[code_offset] = self.annotations[mod_offset][8:].replace(' offset', '')
+
+                if mod_offset == Module_Service:
+                    code_data = self.get_memory_word(code_offset)
+                    if code_data == Module_ServiceMagic:
+                        # Ursula service block exists
+                        table_offset = self.get_memory_word(code_offset - 4)
+                        self.annotations[table_offset] = "Fast service call table"
+                        fast_offset = self.get_memory_word(table_offset + 4)
+                        if fast_offset != 0:
+                            self.annotations[fast_offset] = "Fast service call entry"
 
     def describe_content(self, addr):
         """
