@@ -1,11 +1,11 @@
-00000000 : ea000005 : .... : [37mANDS[37m    [mx[33m5[37m,[37m [mx[33m0[37m,[37m [mx[33m0[m
-00000004 : 79766748 : Hgvy : [37mLDRH[37m    [mw[33m8[37m,[37m [37m[[mx[33m26[37m,[37m [37m#[33m&1b32[37m][m
-00000008 : 216c6776 : vgl! : [31mUndefined instruction[m
-0000000c : 000000b0 : .... : [31mUndefined instruction[m
-00000010 : 00000004 : .... : [31mUndefined instruction[m
-00000014 : 00000040 : @... : [31mUndefined instruction[m
-00000018 : 0000005c : \... : [31mUndefined instruction[m
-0000001c : e28f0004 : .... : [31mUndefined instruction[m
+00000000 : ea000005 : .... : [37mANDS[37m    [mx[33m5[37m,[37m [mx[33m0[37m,[37m [mx[33m0[37m                [32m; Util: Entry branch (ARM32)[m
+00000004 : 79766748 : Hgvy : [37mLDRH[37m    [mw[33m8[37m,[37m [37m[[mx[33m26[37m,[37m [37m#[33m&1b32[37m][37m         [32m; Util: Magic signature 1[m
+00000008 : 216c6776 : vgl! : [31mUndefined instruction             [32m; Util: Magic signature 2[m
+0000000c : 000000b0 : .... : [31mUndefined instruction             [32m; Util: Read only size[m
+00000010 : 00000004 : .... : [31mUndefined instruction             [32m; Util: Read-write size[m
+00000014 : 00000040 : @... : [31mUndefined instruction             [32m; Util: Flags and bitness (64 bit)[m
+00000018 : 0000005c : \... : [31mUndefined instruction             [32m; Util: Entry point offset (64 bit)[m
+0000001c : e28f0004 : .... : [31mUndefined instruction             [32m; Entry code (ARM32)[m
 00000020 : e3500102 : ..P. : [31mUndefined instruction[m
 00000024 : e1a0f00e : .... : [31mUndefined instruction[m
 00000028 : 00000000 : .... : [31mUndefined instruction[m
@@ -21,7 +21,7 @@
 00000050 : 20746962 : bit  : [31mUndefined instruction[m
 00000054 : 43534952 : RISC : [31mUndefined instruction[m
 00000058 : 00534f20 :  OS. : [31mUndefined instruction[m
-0000005c : a9bf7bfd : .{.. : [37mSTP[37m     [mx[33m29[37m,[37m [mx[33m30[37m,[37m [37m[[37msp[37m,[37m [37m#[37m-[33m&10[37m][37m![m
+0000005c : a9bf7bfd : .{.. : [37mSTP[37m     [mx[33m29[37m,[37m [mx[33m30[37m,[37m [37m[[37msp[37m,[37m [37m#[37m-[33m&10[37m][37m![37m    [32m; Entry point code[m
 00000060 : aa0103e3 : .... : [37mMOV[37m     [mx[33m3[37m,[37m [mx[33m1[m
 00000064 : d280002a : *... : [37mMOVZ[37m    [mx[33m10[37m,[37m [37m#[33m&1[m
 00000068 : d4000001 : .... : [32mSWI[37m     [36m#0[37m                        [32m; SWI OS_WriteS[m

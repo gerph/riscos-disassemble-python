@@ -118,10 +118,13 @@ def disassemble_file(filename, arch='arm', colourer=None, postprocess=None, base
         access.fh = fh
         addr = baseaddr
 
-        if guess_filetype(filename, access) == 'absolute':
+        filetype = guess_filetype(filename, access)
+        if filetype == 'absolute':
             access.annotate_aif()
-        elif guess_filetype(filename, access) == 'module':
+        elif filetype == 'module':
             access.annotate_module()
+        elif filetype == 'utility':
+            access.annotate_utility()
 
         enable = True if not funcmatch else False
         while True:

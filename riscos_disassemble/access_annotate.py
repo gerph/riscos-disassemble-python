@@ -17,6 +17,9 @@ Module_MsgFile = 0x2c
 Module_Extension = 0x30
 Module_ServiceMagic = 0xe1a00000
 
+Util_Magic1 = 0x79766748
+Util_Magic2 = 0x216c6776
+
 
 class DisassembleAccessAnnotate(object):
     """
@@ -128,6 +131,44 @@ class DisassembleAccessAnnotate(object):
                         fast_offset = self.get_memory_word(self.baseaddr + table_offset + 4)
                         if fast_offset != 0:
                             self.annotations[fast_offset] = "Fast service call entry"
+
+    def annotate_utility(self):
+        if self.get_memory_word(self.baseaddr + 4) != Util_Magic1 or \
+           self.get_memory_word(self.baseaddr + 8) != Util_Magic2:
+            return
+
+        self.annotations = {
+                0: "Util: Entry branch",
+                4: "Util: Magic signature 1",
+                8: "Util: Magic signature 2",
+                12: "Util: Read only size",
+                16: "Util: Read-write size",
+                20: "Util: Flags and bitness",
+            }
+
+        bitness = self.get_memory_word(self.baseaddr + 20) & 0xFF
+        if bitness in (0, 26):
+            self.annotations[20] += ' (26 bit)'
+        elif bitness == 32:
+            self.annotations[20] += ' (32 bit)'
+        elif bitness == 64:
+            self.annotations[20] += ' (64 bit)'
+            # If it's 64bit, then we need to annotate the code as being 32bit
+            for bl_offset in (0,):
+                self.annotations[bl_offset] += ' (ARM32)'
+
+        for bl_offset in (0,):
+            bl = self.get_memory_word(self.baseaddr + bl_offset)
+            if (bl & 0xFF000000) == 0xea000000:
+                # This is a B instruction
+                dest = bl_offset + (bl & 0x00FFFFFF) * 4 + 8
+                self.annotations[dest] = self.annotations[bl_offset][6:].replace('branch', 'code')
+
+        if bitness == 64:
+            self.annotations[24] = "Util: Entry point offset (64 bit)"
+
+            offset = self.get_memory_word(self.baseaddr + 24)
+            self.annotations[offset] = "Entry point code"
 
     def describe_content(self, addr):
         """

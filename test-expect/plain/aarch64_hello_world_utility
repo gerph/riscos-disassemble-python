@@ -1,11 +1,11 @@
-00000000 : ea000005 : .... : ANDS    x5, x0, x0
-00000004 : 79766748 : Hgvy : LDRH    w8, [x26, #&1b32]
-00000008 : 216c6776 : vgl! : Undefined instruction
-0000000c : 000000b0 : .... : Undefined instruction
-00000010 : 00000004 : .... : Undefined instruction
-00000014 : 00000040 : @... : Undefined instruction
-00000018 : 0000005c : \... : Undefined instruction
-0000001c : e28f0004 : .... : Undefined instruction
+00000000 : ea000005 : .... : ANDS    x5, x0, x0                ; Util: Entry branch (ARM32)
+00000004 : 79766748 : Hgvy : LDRH    w8, [x26, #&1b32]         ; Util: Magic signature 1
+00000008 : 216c6776 : vgl! : Undefined instruction             ; Util: Magic signature 2
+0000000c : 000000b0 : .... : Undefined instruction             ; Util: Read only size
+00000010 : 00000004 : .... : Undefined instruction             ; Util: Read-write size
+00000014 : 00000040 : @... : Undefined instruction             ; Util: Flags and bitness (64 bit)
+00000018 : 0000005c : \... : Undefined instruction             ; Util: Entry point offset (64 bit)
+0000001c : e28f0004 : .... : Undefined instruction             ; Entry code (ARM32)
 00000020 : e3500102 : ..P. : Undefined instruction
 00000024 : e1a0f00e : .... : Undefined instruction
 00000028 : 00000000 : .... : Undefined instruction
@@ -21,7 +21,7 @@
 00000050 : 20746962 : bit  : Undefined instruction
 00000054 : 43534952 : RISC : Undefined instruction
 00000058 : 00534f20 :  OS. : Undefined instruction
-0000005c : a9bf7bfd : .{.. : STP     x29, x30, [sp, #-&10]!
+0000005c : a9bf7bfd : .{.. : STP     x29, x30, [sp, #-&10]!    ; Entry point code
 00000060 : aa0103e3 : .... : MOV     x3, x1
 00000064 : d280002a : *... : MOVZ    x10, #&1
 00000068 : d4000001 : .... : SWI     #0                        ; SWI OS_WriteS
