@@ -63,6 +63,7 @@ To disassemble the contents of an arbitrary file:
             addr += 4
 """
 
+import re
 import struct
 import sys
 
@@ -180,6 +181,77 @@ class DisassembleARM(base.DisassembleBase):
             (30, 'f', 'z'),
             (31, 'f', 'n'),
         ]
+
+    # Colouring parameters
+    operand_categories = base.DisassembleBase.operand_categories + [
+            (re.compile(r'R1[0-5]|R[0-9]|[ca]psr|spsr(_[a-z]+)?|sp|lr|pc', re.IGNORECASE), 'register'),
+            (re.compile(r'F[0-7]', re.IGNORECASE), 'register-fp'),
+            (re.compile(r'p1[0-5]|p[0-9]|c[0-7]', re.IGNORECASE), 'register-control'),
+            (re.compile(r'[+-]?([0-9]{1,9}|&[0-9A-F]{1,8})', re.IGNORECASE), 'number'),
+            (re.compile(r'LSR|LSL|ROL|ROR|RRX|ASR', re.IGNORECASE), 'shift'),
+        ]
+
+    inst_category = {
+            'PUSH': 'inst-stack',  # PUSH
+            'POP': 'inst-stack',
+        }
+
+    inst_category_prefix3 = {
+            'SWI': 'inst-swi',
+            'LDR': 'inst-mem',
+            'STR': 'inst-mem',
+            'LDM': 'inst-memmultiple',
+            'STM': 'inst-memmultiple',
+            'BIC': 'inst',
+
+            # FP instructions:
+            'LDF': 'inst-fp',
+            'STF': 'inst-fp',
+            'LFM': 'inst-fp',
+            'SFM': 'inst-fp',
+
+            'ADF': 'inst-fp',   #... binary ops
+            'MUF': 'inst-fp',
+            'SUF': 'inst-fp',
+            'RSF': 'inst-fp',
+            'DVF': 'inst-fp',
+            'RDF': 'inst-fp',
+            'POW': 'inst-fp',
+            'RPW': 'inst-fp',
+            'RMF': 'inst-fp',
+            'FML': 'inst-fp',
+            'FDV': 'inst-fp',
+            'FRD': 'inst-fp',
+            'POL': 'inst-fp',
+            'F0D': 'inst-fp',  # ... undefined binary ops
+            'F0E': 'inst-fp',
+            'F0F': 'inst-fp',
+            'MVF': 'inst-fp',  # ... unary ops
+            'MNF': 'inst-fp',
+            'ABS': 'inst-fp',
+            'RND': 'inst-fp',
+            'SQT': 'inst-fp',
+            'LOG': 'inst-fp',
+            'LGN': 'inst-fp',
+            'EXP': 'inst-fp',
+            'SIN': 'inst-fp',
+            'COS': 'inst-fp',
+            'TAN': 'inst-fp',
+            'ASN': 'inst-fp',
+            'ACS': 'inst-fp',
+            'ATN': 'inst-fp',
+            'URD': 'inst-fp',
+            'NRM': 'inst-fp',
+
+            'CMF': 'inst-fp',
+            'CNF': 'inst-fp',
+            'FLT': 'inst-fp',
+            'FIX': 'inst-fp',
+            'WFS': 'inst-fp',
+            'RFS': 'inst-fp',
+            'WFC': 'inst-fp',
+            'RFC': 'inst-fp',
+        }
 
     def __init__(self, *args, **kwargs):
         super(DisassembleARM, self).__init__(*args, **kwargs)

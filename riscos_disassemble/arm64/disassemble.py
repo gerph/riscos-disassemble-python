@@ -63,6 +63,7 @@ To disassemble the contents of an arbitrary file:
             addr += 4
 """
 
+import re
 import struct
 import sys
 
@@ -104,6 +105,35 @@ class DisassembleARM64(base.DisassembleBase):
 
     # The default class to use if no configuration is supplied
     default_config = DisassembleARM64Config
+
+    # Colouring parameters
+    inst_re = re.compile('([A-Za-z][A-Za-z0-9]+|B(?:\.[A-Z]+)?)(\s*)')
+
+    operand_categories = base.DisassembleBase.operand_categories + [
+            (re.compile(r'[XW]3[01]|[XW][12][0-9]|[XW][0-9]|xzr|wzr|sp|lr|pc', re.IGNORECASE), 'register'),
+            (re.compile(r'p1[0-5]|p[0-9]|c[0-7]', re.IGNORECASE), 'register-control'),
+            (re.compile(r'[+-]?([0-9]{1,9}|(&|0x)[0-9A-F]{1,16})', re.IGNORECASE), 'number'),
+            (re.compile(r'LSR|LSL|ROR|ASR|uxtb|sxtb|uxth|sxth|uxtw|sxtw', re.IGNORECASE), 'shift'),
+        ]
+
+    inst_category = {
+            'PUSH': 'inst-stack',  # PUSH
+            'POP': 'inst-stack',
+        }
+
+    inst_category_prefix2 = {
+            'B.': 'inst-branch',
+            'BL': 'inst-branch',
+        }
+
+    inst_category_prefix3 = {
+            'SWI': 'inst-swi',
+            'LDR': 'inst-mem',
+            'STR': 'inst-mem',
+            'LDP': 'inst-memmultiple',
+            'STP': 'inst-memmultiple',
+            'BIC': 'inst',
+        }
 
     def __init__(self, *args, **kwargs):
         super(DisassembleARM64, self).__init__(*args, **kwargs)

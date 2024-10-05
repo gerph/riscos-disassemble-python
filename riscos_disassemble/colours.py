@@ -47,45 +47,45 @@ class DisassemblyState(object):
     """
     Container class for the parts of the disassembly string.
 
-    @ivar dis:      The full disassembly string
+    @ivar dis:      The disassmebler
+    @ivar asm:      The full disassembly string
     @ivar inst:     The instruction mnemonic (may be None if no parsing would be performed)
     @ivar spaces1:  Spaces between the instruction and operands (may be '')
     @ivar operands: The operands (may be '')
     @ivar spaces2:  Spaces between the operands and the comment, or end of line (may be '')
     @ivar comment:  The comment, including leading ';' (may be None)
     """
-    inst_re = re.compile('([A-Za-z][A-Za-z0-9]+|B)(\s*)')
-    comment_re = re.compile('(\s+)(;.*)$')
 
-    def __init__(self, dis):
+    def __init__(self, dis, asm):
         self.dis = dis
+        self.asm = asm
 
-        match = self.inst_re.match(dis)
+        match = self.dis.inst_re.match(asm)
         if match:
             self.inst = match.group(1)
             self.spaces1 = match.group(2)
-            dis = dis[match.end(2):]
+            asm = asm[match.end(2):]
             if not self.spaces1:
                 # No spaces before special characters (or nothing at all), so this is something special.
-                self.operands = dis
+                self.operands = asm
                 self.spaces2 = ''
                 self.comment = None
             else:
-                if dis and dis[0] == ';':
+                if asm and asm[0] == ';':
                     # No operands present, just a comment
                     self.operands = ''
                     self.spaces2 = self.spaces1
                     self.spaces1 = ''
-                    self.comment = dis
+                    self.comment = asm
                 else:
-                    match = self.comment_re.search(dis)
+                    match = self.dis.comment_re.search(asm)
                     if match:
                         self.spaces2 = match.group(1)
                         self.comment = match.group(2)
-                        self.operands = dis[:match.start(1)]
+                        self.operands = asm[:match.start(1)]
                     else:
-                        self.operands = dis.rstrip(' \t')
-                        self.spaces2 = ' ' * (len(dis) - len(self.operands))
+                        self.operands = asm.rstrip(' \t')
+                        self.spaces2 = ' ' * (len(asm) - len(self.operands))
                         self.comment = None
         else:
             self.inst = None
@@ -125,92 +125,19 @@ class ColourDisassembly(object):
             # ctrlchars in text       #00bbff (handle separately?)
         }
 
-    operand_categories = [
-            (re.compile(r'\s+'), 'space'),
-            (re.compile(r'[#!\^\-,.]'), 'punctuation'),
-            (re.compile(r'[\[\]]'), 'brackets'),
-            (re.compile(r'[\{}]'), 'braces'),
-            (re.compile(r'R1[0-5]|R[0-9]|[ca]psr|spsr(_[a-z]+)?|sp|lr|pc', re.IGNORECASE), 'register'),
-            (re.compile(r'F[0-7]', re.IGNORECASE), 'register-fp'),
-            (re.compile(r'p1[0-5]|p[0-9]|c[0-7]', re.IGNORECASE), 'register-control'),
-            (re.compile(r'[+-]?([0-9]{1,9}|&[0-9A-F]{1,8})', re.IGNORECASE), 'number'),
-            (re.compile(r'LSR|LSL|ROL|ROR|RRX|ASR', re.IGNORECASE), 'shift'),
-        ]
-
-    inst_category = {
-            'PUSH': 'inst-stack',  # PUSH
-            'POP': 'inst-stack',
-        }
-
-    inst_category_prefix3 = {
-            'SWI': 'inst-swi',
-            'LDR': 'inst-mem',
-            'STR': 'inst-mem',
-            'LDM': 'inst-memmultiple',
-            'STM': 'inst-memmultiple',
-            'BIC': 'inst',
-
-            # FP instructions:
-            'LDF': 'inst-fp',
-            'STF': 'inst-fp',
-            'LFM': 'inst-fp',
-            'SFM': 'inst-fp',
-
-            'ADF': 'inst-fp',   #... binary ops
-            'MUF': 'inst-fp',
-            'SUF': 'inst-fp',
-            'RSF': 'inst-fp',
-            'DVF': 'inst-fp',
-            'RDF': 'inst-fp',
-            'POW': 'inst-fp',
-            'RPW': 'inst-fp',
-            'RMF': 'inst-fp',
-            'FML': 'inst-fp',
-            'FDV': 'inst-fp',
-            'FRD': 'inst-fp',
-            'POL': 'inst-fp',
-            'F0D': 'inst-fp',  # ... undefined binary ops
-            'F0E': 'inst-fp',
-            'F0F': 'inst-fp',
-            'MVF': 'inst-fp',  # ... unary ops
-            'MNF': 'inst-fp',
-            'ABS': 'inst-fp',
-            'RND': 'inst-fp',
-            'SQT': 'inst-fp',
-            'LOG': 'inst-fp',
-            'LGN': 'inst-fp',
-            'EXP': 'inst-fp',
-            'SIN': 'inst-fp',
-            'COS': 'inst-fp',
-            'TAN': 'inst-fp',
-            'ASN': 'inst-fp',
-            'ACS': 'inst-fp',
-            'ATN': 'inst-fp',
-            'URD': 'inst-fp',
-            'NRM': 'inst-fp',
-
-            'CMF': 'inst-fp',
-            'CNF': 'inst-fp',
-            'FLT': 'inst-fp',
-            'FIX': 'inst-fp',
-            'WFS': 'inst-fp',
-            'RFS': 'inst-fp',
-            'WFC': 'inst-fp',
-            'RFC': 'inst-fp',
-        }
-
     def __init__(self):
         pass
 
-    def parse(self, dis):
+    def parse(self, dis, asm):
         """
         Generate the disassembly state for a string.
 
-        @param dis:     The disassembled string
+        @param dis:     The disassembler object
+        @param asm:     The disassembled string
 
         @return:    state object for the disassembled instruction
         """
-        return DisassemblyState(dis)
+        return DisassemblyState(dis, asm)
 
     def colour_whole(self, state):
         """
@@ -221,13 +148,13 @@ class ColourDisassembly(object):
         @return: List of either tuples of (colour, text) or just plain text string.
                  None if no colouring is recognised for the whole string
         """
-        if state.dis.startswith(('Undefined', '<')):
-            if ';' in state.dis:
-                (undef, comment) = state.dis.split(';', 1)
+        if state.asm.startswith(('Undefined', '<')):
+            if ';' in state.asm:
+                (undef, comment) = state.asm.split(';', 1)
                 return [(self.disassembly_colours['invalid'], undef),
                         (self.disassembly_colours['comment'], ';' + comment)]
             else:
-                return [(self.disassembly_colours['invalid'], state.dis)]
+                return [(self.disassembly_colours['invalid'], state.asm)]
 
         return None
 
@@ -239,10 +166,13 @@ class ColourDisassembly(object):
 
         @return list of either tuples of (colour, text) or just plain text string.
         """
-        inst3 = state.inst[0:3]
-        col = self.inst_category.get(state.inst, None)
+        col = state.dis.inst_category.get(state.inst, None)
         if not col:
-            col = self.inst_category_prefix3.get(inst3, None)
+            inst2 = state.inst[0:2]
+            col = state.dis.inst_category_prefix2.get(inst2, None)
+            if not col:
+                inst3 = state.inst[0:3]
+                col = state.dis.inst_category_prefix3.get(inst3, None)
         if not col:
             # Not a known instruction prefix, so check for some specials
             if state.inst[0] == 'B':
@@ -279,7 +209,7 @@ class ColourDisassembly(object):
         while params:
             match = None
             col = None
-            for matches in self.operand_categories:
+            for matches in state.dis.operand_categories:
                 match = matches[0].match(params)
                 if match:
                     col = matches[1]
@@ -306,17 +236,18 @@ class ColourDisassembly(object):
             return []
         return [(self.disassembly_colours['comment'], state.comment)]
 
-    def colour(self, dis):
+    def colour(self, dis, asm):
         """
         Transform text from a disassembly into a list of sequences with colours.
 
-        @param dis: Contains the disassembled text
+        @param dis:     The disassembler object
+        @param asm:     Contains the disassembled text
 
         @return: List of either tuples of (colour, text) or just plain text string.
         """
 
         # Process the state into broken down form
-        state = self.parse(dis)
+        state = self.parse(dis, asm)
 
         # Provide a shortcut if the string can be handled as a whole without breaking
         # down to instructions and operands.
@@ -326,7 +257,7 @@ class ColourDisassembly(object):
 
         if not state.inst:
             # There was no broken down state possible, so just return the string.
-            return [state.dis]
+            return [state.asm]
 
         coloured = []
 
@@ -427,11 +358,11 @@ class ColourDisassemblyANSI(ColourDisassembly):
             seq = best
         return seq
 
-    def colour(self, dis):
+    def colour(self, dis, asm):
         """
         Same as the base colours, but colours will be transformed into ANSI sequences.
         """
-        coloured = super(ColourDisassemblyANSI, self).colour(dis)
+        coloured = super(ColourDisassemblyANSI, self).colour(dis, asm)
         ansi_coloured = []
         for part in coloured:
             if isinstance(part, tuple):

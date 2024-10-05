@@ -37,6 +37,8 @@ To look up the disassembler for a particular architecture, use code like:
         dis = dis_cls(config=config)
 """
 
+import re
+
 from .access import DisassembleAccess
 
 registrations = {}
@@ -54,6 +56,21 @@ class DisassembleBase(object):
 
     # The default class to use if no configuration is supplied
     default_config = object
+
+    # Colouring parameters
+    inst_re = re.compile('([A-Za-z][A-Za-z0-9]+|B)(\s*)')
+    comment_re = re.compile('(\s+)(;.*)$')
+
+    operand_categories = [
+            (re.compile(r'\s+'), 'space'),
+            (re.compile(r'[#!\^\-,.]'), 'punctuation'),
+            (re.compile(r'[\[\]]'), 'brackets'),
+            (re.compile(r'[\{}]'), 'braces'),
+        ]
+
+    inst_category = {}
+    inst_category_prefix2 = {}
+    inst_category_prefix3 = {}
 
     def __init__(self, config=None, access=None):
         if not config:
