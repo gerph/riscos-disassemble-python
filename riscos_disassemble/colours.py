@@ -104,10 +104,10 @@ class ColourDisassembly(object):
             'inst-memmultiple': '#999999',
             'inst-mem': '#dddddd',
             'inst-stack': '#999999',
-            'inst-swi': '#558800',
+            'inst-swi': '#228800',
             'inst-branch': '#eeeebb',
             'inst-fp': '#dddddd',
-            'comment': '#00cc00',
+            'comment': '#00dd00',
             'register': '#dddddd',
             'register-fp': '#dd8855',
             'register-control': '#dd8855',
@@ -116,7 +116,7 @@ class ColourDisassembly(object):
             'braces': '#777777',        # {}
             'punctuation': '#dddddd',   # #!^-,.
             'shift': '#bbbbbb',         # eg LSL
-            'swiname': '#00bbff',
+            'swiname': '#00acf4',
             # Hex codes               #dddddd
             # Conditions              #eeeebb
             # VFP regs                #ffbb00
@@ -351,7 +351,7 @@ class ColourDisassemblyANSI(ColourDisassembly):
                 dr = abs(triple[0] - r)
                 dg = abs(triple[1] - g)
                 db = abs(triple[2] - b)
-                score = (dr * dr) + 3 * (dg * dg) + 2 * (db * db)
+                score = 2 * (dr * dr) + 4 * (dg * dg) + (db * db)
                 if not best or score < best_score:
                     best = ansiseq
                     best_score = score
