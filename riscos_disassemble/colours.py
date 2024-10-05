@@ -101,15 +101,16 @@ class ColourDisassembly(object):
             'invalid': '#dd0000',
             'inst': '#ffffff',
             'space': '#ffffff',
-            'inst-ldmstm': '#999999',
-            'inst-ldrstr': '#dddddd',
+            'inst-memmultiple': '#999999',
+            'inst-mem': '#dddddd',
+            'inst-stack': '#999999',
             'inst-swi': '#558800',
             'inst-branch': '#eeeebb',
             'inst-fp': '#dddddd',
             'comment': '#00cc00',
             'register': '#dddddd',
             'register-fp': '#dd8855',
-            'register-cp': '#dd8855',
+            'register-control': '#dd8855',
             'number': '#ffbb00',
             'brackets': '#777777',      # []
             'braces': '#777777',        # {}
@@ -123,26 +124,30 @@ class ColourDisassembly(object):
             #
             # ctrlchars in text       #00bbff (handle separately?)
         }
-    params_re = [
+
+    operand_categories = [
             (re.compile(r'\s+'), 'space'),
             (re.compile(r'[#!\^\-,.]'), 'punctuation'),
             (re.compile(r'[\[\]]'), 'brackets'),
             (re.compile(r'[\{}]'), 'braces'),
-            (re.compile(r'R1[0-5]|R[0-9]|sp|lr|pc|[ca]psr|spsr(_[a-z]+)?', re.IGNORECASE), 'register'),
+            (re.compile(r'R1[0-5]|R[0-9]|[ca]psr|spsr(_[a-z]+)?|sp|lr|pc', re.IGNORECASE), 'register'),
             (re.compile(r'F[0-7]', re.IGNORECASE), 'register-fp'),
-            (re.compile(r'p1[0-5]|p[0-9]|c[0-7]', re.IGNORECASE), 'register-cp'),
+            (re.compile(r'p1[0-5]|p[0-9]|c[0-7]', re.IGNORECASE), 'register-control'),
             (re.compile(r'[+-]?([0-9]{1,9}|&[0-9A-F]{1,8})', re.IGNORECASE), 'number'),
             (re.compile(r'LSR|LSL|ROL|ROR|RRX|ASR', re.IGNORECASE), 'shift'),
         ]
 
-    inst3_prefixes = {
+    inst_category = {
+            'PUSH': 'inst-stack',  # PUSH
+            'POP': 'inst-stack',
+        }
+
+    inst_category_prefix3 = {
             'SWI': 'inst-swi',
-            'LDR': 'inst-ldrstr',
-            'STR': 'inst-ldrstr',
-            'LDM': 'inst-ldmstm',
-            'STM': 'inst-ldmstm',
-            'PUS': 'inst-ldmstm',  # PUSH
-            'POP': 'inst-ldmstm',
+            'LDR': 'inst-mem',
+            'STR': 'inst-mem',
+            'LDM': 'inst-memmultiple',
+            'STM': 'inst-memmultiple',
             'BIC': 'inst',
 
             # FP instructions:
@@ -235,7 +240,9 @@ class ColourDisassembly(object):
         @return list of either tuples of (colour, text) or just plain text string.
         """
         inst3 = state.inst[0:3]
-        col = self.inst3_prefixes.get(inst3, None)
+        col = self.inst_category.get(state.inst, None)
+        if not col:
+            col = self.inst_category_prefix3.get(inst3, None)
         if not col:
             # Not a known instruction prefix, so check for some specials
             if state.inst[0] == 'B':
@@ -272,7 +279,7 @@ class ColourDisassembly(object):
         while params:
             match = None
             col = None
-            for matches in self.params_re:
+            for matches in self.operand_categories:
                 match = matches[0].match(params)
                 if match:
                     col = matches[1]

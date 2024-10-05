@@ -11,7 +11,7 @@ import struct
 import sys
 import textwrap
 
-from .arm import colours
+from . import colours
 from .arm import postprocess
 
 from .access import DisassembleAccess
