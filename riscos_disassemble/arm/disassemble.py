@@ -813,6 +813,12 @@ class DisassembleARM(base.DisassembleBase):
         if not self.capstone:
             return (2 if thumb else 4, None, None, None)
 
+        if live_memory:
+            # Check if this is has a data description
+            content = self.access.describe_content(address)
+            if content:
+                return (2 if thumb else 4, None, None, content)
+
         self.md.mode = self._capstone.CS_MODE_THUMB if thumb else self._capstone.CS_MODE_ARM
         for i in self.md.disasm(inst, address):
             mnemonic = i.mnemonic.upper()
@@ -1114,14 +1120,6 @@ class DisassembleARM(base.DisassembleBase):
                 (mnemonic, op_str, comment) = self.disassemble_fpa_instruction(i, mnemonic, op_str)
 
             if live_memory:
-                # Check if this is has a data description
-                content = self.access.describe_content(address)
-                if content:
-                    if comment:
-                        comment = '%s  ; %s' % (content, comment)
-                    else:
-                        comment = content
-
                 # Check if this is a function entry point
                 funcname = self.access.describe_code(address)
                 if funcname and '+' not in funcname:
@@ -1129,6 +1127,13 @@ class DisassembleARM(base.DisassembleBase):
                         comment = 'Function: %s  ; %s' % (funcname, comment)
                     else:
                         comment = 'Function: %s' % (funcname,)
+
+                content = self.access.describe_code_comment(address)
+                if content:
+                    if comment:
+                        comment = '%s  ; %s' % (content, comment)
+                    else:
+                        comment = content
 
             # Apply any fixups for the mnemonic name which are easily translatable
             mnemonic = self.mnemonic_replacements.get(mnemonic, mnemonic)
@@ -1157,12 +1162,23 @@ class DisassembleARM(base.DisassembleBase):
                                                                              thumb=thumb)
         if mnemonic:
             if comment:
-                op_str = op_str + (' ' * (24 - len(op_str))) + "  ; " + comment
+                if op_str:
+                    op_str = op_str + (' ' * (24 - len(op_str))) + "  ; " + comment
+                else:
+                    lmnem = len(mnemonic)
+                    if lmnem < 8:
+                        lmnem = 0
+                    else:
+                        lmnem -= 8
+                    op_str = (' ' * (24 - lmnem)) + "  ; " + comment
             if op_str:
                 text = "%-8s%s" % (mnemonic, op_str)
             else:
                 text = mnemonic
             return (consumed, text)
+
+        elif comment:
+            return (consumed, "; %s" % (comment,))
 
         return (consumed, mnemonic)
 

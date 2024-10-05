@@ -408,6 +408,12 @@ class DisassembleARM64(base.DisassembleBase):
         if not self.capstone:
             return (4, None, None, None)
 
+        if live_memory:
+            # Check if this is has a data description
+            content = self.access.describe_content(address)
+            if content:
+                return (4, None, None, content)
+
         self.md.mode = self._capstone.CS_MODE_ARM
         for i in self.md.disasm(inst, address):
             mnemonic = i.mnemonic.upper()
@@ -581,14 +587,6 @@ class DisassembleARM64(base.DisassembleBase):
                     comment = ', '.join(accumulator)
 
             if live_memory:
-                # Check if this is has a data description
-                content = self.access.describe_content(address)
-                if content:
-                    if comment:
-                        comment = '%s  ; %s' % (content, comment)
-                    else:
-                        comment = content
-
                 # Check if this is a function entry point
                 funcname = self.access.describe_code(address)
                 if funcname and '+' not in funcname:
@@ -597,6 +595,13 @@ class DisassembleARM64(base.DisassembleBase):
                     else:
                         comment = 'Function: %s' % (funcname,)
 
+                content = self.access.describe_code_comment(address)
+                if content:
+                    if comment:
+                        comment = '%s  ; %s' % (content, comment)
+                    else:
+                        comment = content
+
             return (4, mnemonic, op_str, comment)
 
         # Undefined instructions can still have comments
@@ -604,6 +609,13 @@ class DisassembleARM64(base.DisassembleBase):
         if live_memory:
             # Check if this is has a data description
             content = self.access.describe_content(address)
+            if content:
+                if comment:
+                    comment = '%s  ; %s' % (content, comment)
+                else:
+                    comment = content
+
+            content = self.access.describe_code_comment(address)
             if content:
                 if comment:
                     comment = '%s  ; %s' % (content, comment)
@@ -627,6 +639,7 @@ class DisassembleARM64(base.DisassembleBase):
         (consumed, mnemonic, op_str, comment) = self.disassemble_instruction(address, inst,
                                                                              live_registers=live_registers,
                                                                              live_memory=live_memory)
+
         if mnemonic:
             if comment:
                 if op_str:
@@ -643,5 +656,8 @@ class DisassembleARM64(base.DisassembleBase):
             else:
                 text = mnemonic
             return (consumed, text)
+
+        elif comment:
+            return (consumed, "; %s" % (comment,))
 
         return (consumed, mnemonic)

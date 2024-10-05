@@ -3,17 +3,17 @@
 00008008 : eb00000c : .... : BL      &00008040                 ; AIF: Zero init branch
 0000800c : eb000020 :  ... : BL      &00008094                 ; AIF: Entry point branch  ; -> Function: ImageEntryPoint
 00008010 : ef000011 : .... : SWI     OS_Exit                   ; AIF: OS_Exit
-00008014 : 00000080 : .... : ANDEQ   r0, r0, r0, LSL #1        ; AIF: Size of read only data
-00008018 : 00000194 : .... : MULEQ   r0, r4, r1                ; AIF: Size of read-write data
-0000801c : 00000000 : .... : ANDEQ   r0, r0, r0                ; AIF: Size of debug data
-00008020 : 00000000 : .... : ANDEQ   r0, r0, r0                ; AIF: Size of zero-init data
-00008024 : 00000000 : .... : ANDEQ   r0, r0, r0                ; AIF: Debug type
-00008028 : 00008000 : .... : ANDEQ   r8, r0, r0                ; AIF: Linkage base
-0000802c : 00000000 : .... : ANDEQ   r0, r0, r0                ; AIF: Workspace size
-00008030 : 00000020 :  ... : ANDEQ   r0, r0, r0, LSR #32       ; AIF: Flags and bitness (32 bit)
-00008034 : 00000000 : .... : ANDEQ   r0, r0, r0                ; AIF: Data base
-00008038 : 00000000 : .... : ANDEQ   r0, r0, r0                ; AIF: Reserved (1)
-0000803c : 00000000 : .... : ANDEQ   r0, r0, r0                ; AIF: Reserved (2)
+00008014 : 00000080 : .... : ; AIF: Size of read only data
+00008018 : 00000194 : .... : ; AIF: Size of read-write data
+0000801c : 00000000 : .... : ; AIF: Size of debug data
+00008020 : 00000000 : .... : ; AIF: Size of zero-init data
+00008024 : 00000000 : .... : ; AIF: Debug type
+00008028 : 00008000 : .... : ; AIF: Linkage base
+0000802c : 00000000 : .... : ; AIF: Workspace size
+00008030 : 00000020 :  ... : ; AIF: Flags and bitness (32 bit)
+00008034 : 00000000 : .... : ; AIF: Data base
+00008038 : 00000000 : .... : ; AIF: Reserved (1)
+0000803c : 00000000 : .... : ; AIF: Reserved (2)
 00008040 : e3cec003 : .... : BIC     r12, lr, #3               ; Zero init code
 00008044 : e28cc008 : .... : ADD     r12, r12, #8
 00008048 : e89c000f : .... : LDMIA   r12, {r0, r1, r2, r3}
@@ -35,7 +35,7 @@
 00008088 : 6f507972 : ryPo : SWIVS   &507972
 0000808c : 00746e69 : int. : RSBSEQ  r6, r4, r9, ROR #28
 00008090 : ff000010 : .... : Undefined instruction
-00008094 : e59fd070 : p... : LDR     sp, &0000810c             ; Function: ImageEntryPoint  ; Entry point code  ; = &00000214
+00008094 : e59fd070 : p... : LDR     sp, &0000810c             ; Entry point code  ; Function: ImageEntryPoint  ; = &00000214
 00008098 : e28dd902 : .... : ADD     sp, sp, #&8000            ; #32768 = bit 15
 0000809c : e59fc06c : l... : LDR     r12, &00008110            ; = &00008000
 000080a0 : ef000001 : .... : SWI     OS_WriteS                 ; R15+4 = "Hello world"

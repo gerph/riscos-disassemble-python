@@ -94,6 +94,11 @@ class DisassemblyState(object):
             self.spaces2 = ''
             self.comment = None
 
+            match = self.dis.comment_re.search(asm)
+            if match:
+                self.spaces2 = match.group(1)
+                self.comment = match.group(2)
+
 
 class ColourDisassembly(object):
 
@@ -148,13 +153,32 @@ class ColourDisassembly(object):
         @return: List of either tuples of (colour, text) or just plain text string.
                  None if no colouring is recognised for the whole string
         """
-        if state.asm.startswith(('Undefined', '<')):
+        spaces = None
+        comment = None
+        if state.inst is None:
+            spaces = state.spaces2
+            comment = state.comment
+
+        result = []
+        if state.asm.startswith("Undefined instruction"):
             if ';' in state.asm:
-                (undef, comment) = state.asm.split(';', 1)
-                return [(self.disassembly_colours['invalid'], undef),
-                        (self.disassembly_colours['comment'], ';' + comment)]
+                (asm, undef) = state.asm.split(';', 1)
             else:
-                return [(self.disassembly_colours['invalid'], state.asm)]
+                asm = state.asm
+            if asm:
+                result = [(self.disassembly_colours['invalid'], asm.strip())]
+            if spaces:
+                result.append((self.disassembly_colours['space'], state.spaces2))
+            if comment:
+                result.append((self.disassembly_colours['comment'], state.comment))
+            return result
+
+        elif not state.inst and comment:
+            if spaces:
+                result.append((self.disassembly_colours['space'], state.spaces2))
+            if comment:
+                result.append((self.disassembly_colours['comment'], state.comment))
+            return result
 
         return None
 

@@ -3,17 +3,17 @@
 00008008 : e1a00000 : .... : Undefined instruction             ; AIF: Zero init branch (ARM32)
 0000800c : eb00000b : .... : SUBS    x11, x0, x0               ; AIF: Entry point branch (ARM32)
 00008010 : ef000011 : .... : Undefined instruction             ; AIF: OS_Exit (ARM32)
-00008014 : 00002ec0 : .... : Undefined instruction             ; AIF: Size of read only data
-00008018 : 00000120 :  ... : Undefined instruction             ; AIF: Size of read-write data
-0000801c : 00000000 : .... : Undefined instruction             ; AIF: Size of debug data
-00008020 : 000000b0 : .... : Undefined instruction             ; AIF: Size of zero-init data
-00008024 : 00000000 : .... : Undefined instruction             ; AIF: Debug type
-00008028 : 00008000 : .... : Undefined instruction             ; AIF: Linkage base
-0000802c : 00000000 : .... : Undefined instruction             ; AIF: Workspace size
-00008030 : 00000040 : @... : Undefined instruction             ; AIF: Flags and bitness (64 bit)
-00008034 : 00000000 : .... : Undefined instruction             ; AIF: Data base
-00008038 : 00000000 : .... : Undefined instruction             ; AIF: Reserved (1)
-0000803c : 00000000 : .... : Undefined instruction             ; AIF: Reserved (2)
+00008014 : 00002ec0 : .... : ; AIF: Size of read only data
+00008018 : 00000120 :  ... : ; AIF: Size of read-write data
+0000801c : 00000000 : .... : ; AIF: Size of debug data
+00008020 : 000000b0 : .... : ; AIF: Size of zero-init data
+00008024 : 00000000 : .... : ; AIF: Debug type
+00008028 : 00008000 : .... : ; AIF: Linkage base
+0000802c : 00000000 : .... : ; AIF: Workspace size
+00008030 : 00000040 : @... : ; AIF: Flags and bitness (64 bit)
+00008034 : 00000000 : .... : ; AIF: Data base
+00008038 : 00000000 : .... : ; AIF: Reserved (1)
+0000803c : 00000000 : .... : ; AIF: Reserved (2)
 00008040 : e28f0000 : .... : Undefined instruction             ; Entry point code (ARM32)
 00008044 : ef00002b : +... : Undefined instruction
 00008048 : 00000000 : .... : Undefined instruction

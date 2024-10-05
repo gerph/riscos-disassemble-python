@@ -59,7 +59,7 @@ class DisassembleBase(object):
 
     # Colouring parameters
     inst_re = re.compile('([A-Za-z][A-Za-z0-9]+|B)(\s*)')
-    comment_re = re.compile('(\s+)(;.*)$')
+    comment_re = re.compile('(^|\s+)(;.*)$')
 
     operand_categories = [
             (re.compile(r'\s+'), 'space'),

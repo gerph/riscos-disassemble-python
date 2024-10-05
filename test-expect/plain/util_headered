@@ -1,9 +1,9 @@
 00000000 : ea000004 : .... : B       &00000018                 ; Util: Entry branch
-00000004 : 79766748 : Hgvy : LDMDBVC r6!, {r3, r6, r8, r9, r10, sp, lr} ^  ; Util: Magic signature 1
-00000008 : 216c6776 : vgl! : Undefined instruction
-0000000c : 00000000 : .... : ANDEQ   r0, r0, r0                ; Util: Read only size
-00000010 : 00000370 : p... : ANDEQ   r0, r0, r0, ROR r3        ; Util: Read-write size
-00000014 : 00000020 :  ... : ANDEQ   r0, r0, r0, LSR #32       ; Util: Flags and bitness (32 bit)
+00000004 : 79766748 : Hgvy : ; Util: Magic signature 1
+00000008 : 216c6776 : vgl! : ; Util: Magic signature 2
+0000000c : 00000000 : .... : ; Util: Read only size
+00000010 : 00000370 : p... : ; Util: Read-write size
+00000014 : 00000020 :  ... : ; Util: Flags and bitness (32 bit)
 00000018 : e92d4000 : .@-. : STMDB   sp!, {lr}                 ; Entry code
 0000001c : ef000001 : .... : SWI     OS_WriteS                 ; R15+4 = "Headered utility"
 00000020 : 64616548 : Head : STRBTVS r6, [r1], #-&548

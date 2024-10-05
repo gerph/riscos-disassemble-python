@@ -1,9 +1,9 @@
 00000000 : ea000004 : .... : [37mB[37m       [33m&00000018[37m                 [32m; Util: Entry branch[m
-00000004 : 79766748 : Hgvy : [37mLDMDBVC[37m [37mr6[37m![37m,[37m [37m{[37mr3[37m,[37m [37mr6[37m,[37m [37mr8[37m,[37m [37mr9[37m,[37m [37mr10[37m,[37m [37msp[37m,[37m [37mlr[37m}[37m [37m^[37m  [32m; Util: Magic signature 1[m
-00000008 : 216c6776 : vgl! : [31mUndefined instruction[m
-0000000c : 00000000 : .... : [37mANDEQ[37m   [37mr0[37m,[37m [37mr0[37m,[37m [37mr0[37m                [32m; Util: Read only size[m
-00000010 : 00000370 : p... : [37mANDEQ[37m   [37mr0[37m,[37m [37mr0[37m,[37m [37mr0[37m,[37m [37mROR[37m [37mr3[37m        [32m; Util: Read-write size[m
-00000014 : 00000020 :  ... : [37mANDEQ[37m   [37mr0[37m,[37m [37mr0[37m,[37m [37mr0[37m,[37m [37mLSR[37m [37m#[33m32[37m       [32m; Util: Flags and bitness (32 bit)[m
+00000004 : 79766748 : Hgvy : [32m; Util: Magic signature 1[m
+00000008 : 216c6776 : vgl! : [32m; Util: Magic signature 2[m
+0000000c : 00000000 : .... : [32m; Util: Read only size[m
+00000010 : 00000370 : p... : [32m; Util: Read-write size[m
+00000014 : 00000020 :  ... : [32m; Util: Flags and bitness (32 bit)[m
 00000018 : e92d4000 : .@-. : [37mSTMDB[37m   [37msp[37m![37m,[37m [37m{[37mlr[37m}[37m                 [32m; Entry code[m
 0000001c : ef000001 : .... : [32mSWI[37m     [36mOS_WriteS[37m                 [32m; R15+4 = "Headered utility"[m
 00000020 : 64616548 : Head : [37mSTRBTVS[37m [37mr6[37m,[37m [37m[[37mr1[37m][37m,[37m [37m#[37m-[33m&548[m

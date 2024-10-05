@@ -117,7 +117,7 @@ class DisassembleAccess(object):
 
     def describe_content(self, addr):
         """
-        Describe the content at a given address (data values, or references)
+        Describe the content at a given address (data values, replacing disassembly)
 
         @param addr:    Address to describe (which might not be mapped)
 
@@ -126,9 +126,20 @@ class DisassembleAccess(object):
         """
         return None
 
+    def describe_code_comment(self, addr):
+        """
+        Describe the code at a given address (overrides anything else)
+
+        @param addr:    Address to describe (which might not be mapped)
+
+        @return: Name of the function (or function + offset)
+                 None if code is not known
+        """
+        return None
+
     def describe_code(self, addr):
         """
-        Describe the code at a given address.
+        Describe the code function name at a given address.
 
         @param addr:    Address to describe (which might not be mapped)
 

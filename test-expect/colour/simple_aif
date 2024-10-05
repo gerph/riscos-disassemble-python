@@ -3,17 +3,17 @@
 00008008 : eb00000c : .... : [37mBL[37m      [33m&00008040[37m                 [32m; AIF: Zero init branch[m
 0000800c : eb000020 :  ... : [37mBL[37m      [33m&00008094[37m                 [32m; AIF: Entry point branch  ; -> Function: ImageEntryPoint[m
 00008010 : ef000011 : .... : [32mSWI[37m     [36mOS_Exit[37m                   [32m; AIF: OS_Exit[m
-00008014 : 00000080 : .... : [37mANDEQ[37m   [37mr0[37m,[37m [37mr0[37m,[37m [37mr0[37m,[37m [37mLSL[37m [37m#[33m1[37m        [32m; AIF: Size of read only data[m
-00008018 : 00000194 : .... : [37mMULEQ[37m   [37mr0[37m,[37m [37mr4[37m,[37m [37mr1[37m                [32m; AIF: Size of read-write data[m
-0000801c : 00000000 : .... : [37mANDEQ[37m   [37mr0[37m,[37m [37mr0[37m,[37m [37mr0[37m                [32m; AIF: Size of debug data[m
-00008020 : 00000000 : .... : [37mANDEQ[37m   [37mr0[37m,[37m [37mr0[37m,[37m [37mr0[37m                [32m; AIF: Size of zero-init data[m
-00008024 : 00000000 : .... : [37mANDEQ[37m   [37mr0[37m,[37m [37mr0[37m,[37m [37mr0[37m                [32m; AIF: Debug type[m
-00008028 : 00008000 : .... : [37mANDEQ[37m   [37mr8[37m,[37m [37mr0[37m,[37m [37mr0[37m                [32m; AIF: Linkage base[m
-0000802c : 00000000 : .... : [37mANDEQ[37m   [37mr0[37m,[37m [37mr0[37m,[37m [37mr0[37m                [32m; AIF: Workspace size[m
-00008030 : 00000020 :  ... : [37mANDEQ[37m   [37mr0[37m,[37m [37mr0[37m,[37m [37mr0[37m,[37m [37mLSR[37m [37m#[33m32[37m       [32m; AIF: Flags and bitness (32 bit)[m
-00008034 : 00000000 : .... : [37mANDEQ[37m   [37mr0[37m,[37m [37mr0[37m,[37m [37mr0[37m                [32m; AIF: Data base[m
-00008038 : 00000000 : .... : [37mANDEQ[37m   [37mr0[37m,[37m [37mr0[37m,[37m [37mr0[37m                [32m; AIF: Reserved (1)[m
-0000803c : 00000000 : .... : [37mANDEQ[37m   [37mr0[37m,[37m [37mr0[37m,[37m [37mr0[37m                [32m; AIF: Reserved (2)[m
+00008014 : 00000080 : .... : [32m; AIF: Size of read only data[m
+00008018 : 00000194 : .... : [32m; AIF: Size of read-write data[m
+0000801c : 00000000 : .... : [32m; AIF: Size of debug data[m
+00008020 : 00000000 : .... : [32m; AIF: Size of zero-init data[m
+00008024 : 00000000 : .... : [32m; AIF: Debug type[m
+00008028 : 00008000 : .... : [32m; AIF: Linkage base[m
+0000802c : 00000000 : .... : [32m; AIF: Workspace size[m
+00008030 : 00000020 :  ... : [32m; AIF: Flags and bitness (32 bit)[m
+00008034 : 00000000 : .... : [32m; AIF: Data base[m
+00008038 : 00000000 : .... : [32m; AIF: Reserved (1)[m
+0000803c : 00000000 : .... : [32m; AIF: Reserved (2)[m
 00008040 : e3cec003 : .... : [37mBIC[37m     [37mr12[37m,[37m [37mlr[37m,[37m [37m#[33m3[37m               [32m; Zero init code[m
 00008044 : e28cc008 : .... : [37mADD[37m     [37mr12[37m,[37m [37mr12[37m,[37m [37m#[33m8[m
 00008048 : e89c000f : .... : [37mLDMIA[37m   [37mr12[37m,[37m [37m{[37mr0[37m,[37m [37mr1[37m,[37m [37mr2[37m,[37m [37mr3[37m}[m
@@ -35,7 +35,7 @@
 00008088 : 6f507972 : ryPo : [32mSWIVS[37m   [36m&507972[m
 0000808c : 00746e69 : int. : [37mRSBSEQ[37m  [37mr6[37m,[37m [37mr4[37m,[37m [37mr9[37m,[37m [37mROR[37m [37m#[33m28[m
 00008090 : ff000010 : .... : [31mUndefined instruction[m
-00008094 : e59fd070 : p... : [37mLDR[37m     [37msp[37m,[37m [33m&0000810c[37m             [32m; Function: ImageEntryPoint  ; Entry point code  ; = &00000214[m
+00008094 : e59fd070 : p... : [37mLDR[37m     [37msp[37m,[37m [33m&0000810c[37m             [32m; Entry point code  ; Function: ImageEntryPoint  ; = &00000214[m
 00008098 : e28dd902 : .... : [37mADD[37m     [37msp[37m,[37m [37msp[37m,[37m [37m#[33m&8000[37m            [32m; #32768 = bit 15[m
 0000809c : e59fc06c : l... : [37mLDR[37m     [37mr12[37m,[37m [33m&00008110[37m            [32m; = &00008000[m
 000080a0 : ef000001 : .... : [32mSWI[37m     [36mOS_WriteS[37m                 [32m; R15+4 = "Hello world"[m

@@ -1,10 +1,10 @@
 00000000 : ea000005 : .... : ANDS    x5, x0, x0                ; Util: Entry branch (ARM32)
-00000004 : 79766748 : Hgvy : LDRH    w8, [x26, #&1b32]         ; Util: Magic signature 1
-00000008 : 216c6776 : vgl! : Undefined instruction             ; Util: Magic signature 2
-0000000c : 000000b0 : .... : Undefined instruction             ; Util: Read only size
-00000010 : 00000004 : .... : Undefined instruction             ; Util: Read-write size
-00000014 : 00000040 : @... : Undefined instruction             ; Util: Flags and bitness (64 bit)
-00000018 : 0000005c : \... : Undefined instruction             ; Util: Entry point offset (64 bit)
+00000004 : 79766748 : Hgvy : ; Util: Magic signature 1
+00000008 : 216c6776 : vgl! : ; Util: Magic signature 2
+0000000c : 000000b0 : .... : ; Util: Read only size
+00000010 : 00000004 : .... : ; Util: Read-write size
+00000014 : 00000040 : @... : ; Util: Flags and bitness (64 bit)
+00000018 : 0000005c : \... : ; Util: Entry point offset (64 bit)
 0000001c : e28f0004 : .... : Undefined instruction             ; Entry code (ARM32)
 00000020 : e3500102 : ..P. : Undefined instruction
 00000024 : e1a0f00e : .... : Undefined instruction
