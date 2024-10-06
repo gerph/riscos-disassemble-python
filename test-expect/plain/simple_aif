@@ -1,0 +1,133 @@
+00008000 : e1a00000 : .... : MOV     r0, r0                    ; AIF: Decompression branch
+00008004 : e1a00000 : .... : MOV     r0, r0                    ; AIF: Self relocation branch
+00008008 : eb00000c : .... : BL      &00008040                 ; AIF: Zero init branch
+0000800c : eb000020 :  ... : BL      &00008094                 ; AIF: Entry point branch  ; -> Function: ImageEntryPoint
+00008010 : ef000011 : .... : SWI     OS_Exit                   ; AIF: OS_Exit
+00008014 : 00000080 : .... : ; AIF: Size of read only data
+00008018 : 00000194 : .... : ; AIF: Size of read-write data
+0000801c : 00000000 : .... : ; AIF: Size of debug data
+00008020 : 00000000 : .... : ; AIF: Size of zero-init data
+00008024 : 00000000 : .... : ; AIF: Debug type
+00008028 : 00008000 : .... : ; AIF: Linkage base
+0000802c : 00000000 : .... : ; AIF: Workspace size
+00008030 : 00000020 :  ... : ; AIF: Flags and bitness (32 bit)
+00008034 : 00000000 : .... : ; AIF: Data base
+00008038 : 00000000 : .... : ; AIF: Reserved (1)
+0000803c : 00000000 : .... : ; AIF: Reserved (2)
+00008040 : e3cec003 : .... : BIC     r12, lr, #3               ; Zero init code
+00008044 : e28cc008 : .... : ADD     r12, r12, #8
+00008048 : e89c000f : .... : LDMIA   r12, {r0, r1, r2, r3}
+0000804c : e3530000 : ..S. : CMP     r3, #0
+00008050 : d1a0f00e : .... : MOVLE   pc, lr
+00008054 : e24cc014 : ..L. : SUB     r12, r12, #&14            ; #20
+00008058 : e08cc000 : .... : ADD     r12, r12, r0
+0000805c : e08cc001 : .... : ADD     r12, r12, r1
+00008060 : e3a00000 : .... : MOV     r0, #0
+00008064 : e3a01000 : .... : MOV     r1, #0
+00008068 : e3a02000 : . .. : MOV     r2, #0
+0000806c : e3a04000 : .@.. : MOV     r4, #0
+00008070 : e8ac0017 : .... : STMIA   r12!, {r0, r1, r2, r4}
+00008074 : e2533010 : .0S. : SUBS    r3, r3, #&10              ; #16 = bit 4
+00008078 : cafffffc : .... : BGT     &00008070
+0000807c : e1a0f00e : .... : MOV     pc, lr
+00008080 : 67616d49 : Imag : STRBVS  r6, [r1, -r9, ASR #26]!
+00008084 : 746e4565 : eEnt : STRBTVC r4, [lr], #-&565
+00008088 : 6f507972 : ryPo : SWIVS   &507972
+0000808c : 00746e69 : int. : RSBSEQ  r6, r4, r9, ROR #28
+00008090 : ff000010 : .... : Undefined instruction
+00008094 : e59fd070 : p... : LDR     sp, &0000810c             ; Entry point code  ; Function: ImageEntryPoint  ; = &00000214
+00008098 : e28dd902 : .... : ADD     sp, sp, #&8000            ; #32768 = bit 15
+0000809c : e59fc06c : l... : LDR     r12, &00008110            ; = &00008000
+000080a0 : ef000001 : .... : SWI     OS_WriteS                 ; R15+4 = "Hello world"
+000080a4 : 6c6c6548 : Hell : STCLVS  p5, c6, [r12], #-&120
+000080a8 : 6f77206f : o wo : SWIVS   &77206f
+000080ac : 00646c72 : rld. : RSBEQ   r6, r4, r2, ROR r12
+000080b0 : ef000003 : .... : SWI     OS_NewLine
+000080b4 : ef000010 : .... : SWI     OS_GetEnv
+000080b8 : ef000001 : .... : SWI     OS_WriteS                 ; R15+4 = "Args: "
+000080bc : 73677241 : Args : Undefined instruction
+000080c0 : 0000203a : : .. : ANDEQ   r2, r0, r10, LSR r0
+000080c4 : e92d0001 : ..-. : STMDB   sp!, {r0}
+000080c8 : ef000002 : .... : SWI     OS_Write0
+000080cc : e8bd0001 : .... : LDMIA   sp!, {r0}
+000080d0 : ef000003 : .... : SWI     OS_NewLine
+000080d4 : ef000001 : .... : SWI     OS_WriteS                 ; R15+4 = "RAM Limit: "
+000080d8 : 204d4152 : RAM  : SUBHS   r4, sp, r2, ASR r1
+000080dc : 696d694c : Limi : STMDBVS sp!, {r2, r3, r6, r8, r11, sp, lr} ^
+000080e0 : 00203a74 : t: . : EOREQ   r3, r0, r4, ROR r10
+000080e4 : ef000126 : &... : SWI     OS_WriteI+"&"
+000080e8 : e92d0007 : ..-. : PUSH    {r0, r1, r2}
+000080ec : e1a00001 : .... : MOV     r0, r1
+000080f0 : e1a0100c : .... : MOV     r1, r12
+000080f4 : e3a02014 : . .. : MOV     r2, #&14                  ; #20
+000080f8 : ef0000d4 : .... : SWI     OS_ConvertHex8
+000080fc : ef000002 : .... : SWI     OS_Write0
+00008100 : e8bd0007 : .... : POP     {r0, r1, r2}
+00008104 : ef000003 : .... : SWI     OS_NewLine
+00008108 : ef000011 : .... : SWI     OS_Exit
+0000810c : 00000214 : .... : ANDEQ   r0, r0, r4, LSL r2
+00008110 : 00008000 : .... : ANDEQ   r8, r0, r0
+00008114 : 00000000 : .... : ANDEQ   r0, r0, r0
+00008118 : 00000000 : .... : ANDEQ   r0, r0, r0
+0000811c : 00000000 : .... : ANDEQ   r0, r0, r0
+00008120 : 00000000 : .... : ANDEQ   r0, r0, r0
+00008124 : 00000000 : .... : ANDEQ   r0, r0, r0
+00008128 : 00000000 : .... : ANDEQ   r0, r0, r0
+0000812c : 00000000 : .... : ANDEQ   r0, r0, r0
+00008130 : 00000000 : .... : ANDEQ   r0, r0, r0
+00008134 : 00000000 : .... : ANDEQ   r0, r0, r0
+00008138 : 00000000 : .... : ANDEQ   r0, r0, r0
+0000813c : 00000000 : .... : ANDEQ   r0, r0, r0
+00008140 : 00000000 : .... : ANDEQ   r0, r0, r0
+00008144 : 00000000 : .... : ANDEQ   r0, r0, r0
+00008148 : 00000000 : .... : ANDEQ   r0, r0, r0
+0000814c : 00000000 : .... : ANDEQ   r0, r0, r0
+00008150 : 00000000 : .... : ANDEQ   r0, r0, r0
+00008154 : 00000000 : .... : ANDEQ   r0, r0, r0
+00008158 : 00000000 : .... : ANDEQ   r0, r0, r0
+0000815c : 00000000 : .... : ANDEQ   r0, r0, r0
+00008160 : 00000000 : .... : ANDEQ   r0, r0, r0
+00008164 : 00000000 : .... : ANDEQ   r0, r0, r0
+00008168 : 00000000 : .... : ANDEQ   r0, r0, r0
+0000816c : 00000000 : .... : ANDEQ   r0, r0, r0
+00008170 : 00000000 : .... : ANDEQ   r0, r0, r0
+00008174 : 00000000 : .... : ANDEQ   r0, r0, r0
+00008178 : 00000000 : .... : ANDEQ   r0, r0, r0
+0000817c : 00000000 : .... : ANDEQ   r0, r0, r0
+00008180 : 00000000 : .... : ANDEQ   r0, r0, r0
+00008184 : 00000000 : .... : ANDEQ   r0, r0, r0
+00008188 : 00000000 : .... : ANDEQ   r0, r0, r0
+0000818c : 00000000 : .... : ANDEQ   r0, r0, r0
+00008190 : 00000000 : .... : ANDEQ   r0, r0, r0
+00008194 : 00000000 : .... : ANDEQ   r0, r0, r0
+00008198 : 00000000 : .... : ANDEQ   r0, r0, r0
+0000819c : 00000000 : .... : ANDEQ   r0, r0, r0
+000081a0 : 00000000 : .... : ANDEQ   r0, r0, r0
+000081a4 : 00000000 : .... : ANDEQ   r0, r0, r0
+000081a8 : 00000000 : .... : ANDEQ   r0, r0, r0
+000081ac : 00000000 : .... : ANDEQ   r0, r0, r0
+000081b0 : 00000000 : .... : ANDEQ   r0, r0, r0
+000081b4 : 00000000 : .... : ANDEQ   r0, r0, r0
+000081b8 : 00000000 : .... : ANDEQ   r0, r0, r0
+000081bc : 00000000 : .... : ANDEQ   r0, r0, r0
+000081c0 : 00000000 : .... : ANDEQ   r0, r0, r0
+000081c4 : 00000000 : .... : ANDEQ   r0, r0, r0
+000081c8 : 00000000 : .... : ANDEQ   r0, r0, r0
+000081cc : 00000000 : .... : ANDEQ   r0, r0, r0
+000081d0 : 00000000 : .... : ANDEQ   r0, r0, r0
+000081d4 : 00000000 : .... : ANDEQ   r0, r0, r0
+000081d8 : 00000000 : .... : ANDEQ   r0, r0, r0
+000081dc : 00000000 : .... : ANDEQ   r0, r0, r0
+000081e0 : 00000000 : .... : ANDEQ   r0, r0, r0
+000081e4 : 00000000 : .... : ANDEQ   r0, r0, r0
+000081e8 : 00000000 : .... : ANDEQ   r0, r0, r0
+000081ec : 00000000 : .... : ANDEQ   r0, r0, r0
+000081f0 : 00000000 : .... : ANDEQ   r0, r0, r0
+000081f4 : 00000000 : .... : ANDEQ   r0, r0, r0
+000081f8 : 00000000 : .... : ANDEQ   r0, r0, r0
+000081fc : 00000000 : .... : ANDEQ   r0, r0, r0
+00008200 : 00000000 : .... : ANDEQ   r0, r0, r0
+00008204 : 00000000 : .... : ANDEQ   r0, r0, r0
+00008208 : 00000000 : .... : ANDEQ   r0, r0, r0
+0000820c : 00000000 : .... : ANDEQ   r0, r0, r0
+00008210 : 00000000 : .... : ANDEQ   r0, r0, r0

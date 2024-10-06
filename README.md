@@ -2,10 +2,10 @@
 
 ## Introduction
 
-This repository contains the module used to disassemble ARM and Thumb code
-for RISC OS Pyromaniac. It uses the Capstone library to do so, but modifies
-the output so that the disassembly is in a form which is generally seen by
-RISC OS users.
+This repository contains the modules used to disassemble ARM (32bit and 64bit)
+and Thumb code for RISC OS Pyromaniac. It uses the Capstone library to do so,
+but modifies the output so that the disassembly is in a form which is generally
+seen by RISC OS users.
 
 
 ## Installation
@@ -24,7 +24,9 @@ Once installed, the tool can be invoked as `riscos-dumpi`. For example:
 
 The following switches are supported:
 
-* `--thumb`: Disassembles Thumb code, rather than ARM code
+* `--arm`: Disassembles AArch32 (ARM 32 bit) code (the default)
+* `--arm64`: Disassembles AArch64 (ARM 64 bit) code, rather than ARM code.
+* `--thumb`: Disassembles Thumb code, rather than ARM code.
 * `--colour`: Uses the original primary and secondary ANSI colours.
 * `--colour-8bit`: Use the more featureful 8bit colour palette.
 * `--debuggerplus`: Specify a list of modifications to the debugger output,
@@ -36,6 +38,10 @@ The following switches are supported:
 The filename can be followed by a hexadecimal address to use as the base
 address for the file's disassembly. By default the file will be based at
 address 0 unless the file is suffixed by `,ff8` (an absolute file).
+
+If the instruction set is not specified, the tool will try to guess whether
+ARM or ARM64 should be decoded from the information in the file header.
+
 
 ### DebuggerPlus
 
@@ -50,7 +56,7 @@ Supported flags:
 * `APCS`: Use APCS-R register set.
 * `Lower`: Force all register names to lower case.
 * `QuoteSWIs`: Put quotes around SWI names.
-* `UseDCD`: Use DCD instead of 'Undefined instruction', and BRK where DCD &x6000010 would be used.
+* `UseDCD`: Use DCD instead of 'Undefined instruction', and `BRK` where `DCD &x6000010` would be used.
 * `UseNOP`: Use NOP instead of MOV R0,R0.
 * `UseVDU`: Use VDU x instead of SWI OS_WriteI+x.
 
@@ -132,6 +138,10 @@ Example files are supplied in the `examples` directory to demonstrate the disass
 * `hello_world` utility file (suffixed by `,ffc`) is a test from the RISC OS Pyromaniac project, which verifies the behaviour of the SWI `OS_Write0`.
 * `osbyte81_version` utility file is another test program, which checks the behaviour of `OS_Byte &81` when reading the operating system version.
 * `kerneldebug` utility file tests that the input and output in the kernel works, and has function signatures that are recognised.
+* `SystemBell` module file (suffixed by `,ffa`), provides the implementation of the system bell on RISC OS Select.
+* `simple_aif` absolute file (suffixed by `,ff8`), is a 32bit AIF file.
+* `aarch64_hello_world` absolute file (suffixed by `,ff8`) is an AArch64 RISC OS executable from the [RISC OS 64 Simple Binaries](https://github.com/gerph/riscos64-simple-binaries/) project.
+* `aarch64_hello_world_utility` utility file (suffixed by `,ffc`) is an AArch64 RISC OS executable from the [RISC OS 64 Simple Binaries](https://github.com/gerph/riscos64-simple-binaries/) project.
 
 Disassembling the example `hello_world` example is simple:
 

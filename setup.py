@@ -22,10 +22,12 @@ with open(path.join(here, 'README.md'), encoding='utf-8') as f:
 
 setup(
     name = 'riscos-disassemble',
-    packages = ['riscos_disassemble'],
-    version = '0.5.0',
+    packages = ['riscos_disassemble',
+                'riscos_disassemble.arm',
+                'riscos_disassemble.arm64'],
+    version = "0.6.0",
     license='MIT',
-    description = 'Disassemble ARM and Thumb files like RISC OS',
+    description = 'Disassemble ARM 32, ARM 64 and Thumb files like RISC OS',
     long_description = long_description,
     long_description_content_type = 'text/markdown',
     author = 'Charles Ferguson',
