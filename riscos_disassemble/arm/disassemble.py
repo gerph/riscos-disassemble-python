@@ -1140,7 +1140,7 @@ class DisassembleARM(base.DisassembleBase):
 
             return (2 if thumb else 4, mnemonic, op_str, comment)
 
-        return (2 if thumb else 4, 'Undefined instruction', '', '')
+        return (2 if thumb else 4, self.undefined, '', '')
 
     def disassemble(self, address, inst,
                     live_registers=False, live_memory=False,

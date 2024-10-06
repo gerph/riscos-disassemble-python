@@ -1,8 +1,8 @@
-00008000 : e1a00000 : .... : [31mUndefined instruction[m
-00008004 : e1a00000 : .... : [31mUndefined instruction[m
-00008008 : e1a00000 : .... : [31mUndefined instruction[m
+00008000 : e1a00000 : .... : [31mUndefined instruction[37m             [32m; AIF: Decompression branch (ARM32)[m
+00008004 : e1a00000 : .... : [31mUndefined instruction[37m             [32m; AIF: Self relocation branch (ARM32)[m
+00008008 : e1a00000 : .... : [31mUndefined instruction[37m             [32m; AIF: Zero init branch (ARM32)[m
 0000800c : eb00000b : .... : [37mSUBS[37m    [37mx11[37m,[37m [37mx0[37m,[37m [37mx0[37m               [32m; AIF: Entry point branch (ARM32)[m
-00008010 : ef000011 : .... : [31mUndefined instruction[m
+00008010 : ef000011 : .... : [31mUndefined instruction[37m             [32m; AIF: OS_Exit (ARM32)[m
 00008014 : 00002ec0 : .... : [32m; AIF: Size of read only data[m
 00008018 : 00000120 :  ... : [32m; AIF: Size of read-write data[m
 0000801c : 00000000 : .... : [32m; AIF: Size of debug data[m
@@ -14,7 +14,7 @@
 00008034 : 00000000 : .... : [32m; AIF: Data base[m
 00008038 : 00000000 : .... : [32m; AIF: Reserved (1)[m
 0000803c : 00000000 : .... : [32m; AIF: Reserved (2)[m
-00008040 : e28f0000 : .... : [31mUndefined instruction[m
+00008040 : e28f0000 : .... : [31mUndefined instruction[37m             [32m; Entry point code (ARM32)[m
 00008044 : ef00002b : +... : [31mUndefined instruction[m
 00008048 : 00000000 : .... : [31mUndefined instruction[m
 0000804c : 63724141 : AArc : [31mUndefined instruction[m

@@ -57,6 +57,9 @@ class DisassembleBase(object):
     # The default class to use if no configuration is supplied
     default_config = object
 
+    # How we write an undefined instruction
+    undefined = 'Undefined instruction'
+
     # Colouring parameters
     inst_re = re.compile('([A-Za-z][A-Za-z0-9]+|B)(\s*)')
     comment_re = re.compile('(^|\s+)(;.*)$')

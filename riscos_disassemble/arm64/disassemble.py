@@ -622,7 +622,7 @@ class DisassembleARM64(base.DisassembleBase):
                 else:
                     comment = content
 
-        return (4, 'Undefined instruction', None, comment)
+        return (4, self.undefined, None, comment)
 
     def disassemble(self, address, inst,
                     live_registers=False, live_memory=False):

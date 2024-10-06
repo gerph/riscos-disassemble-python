@@ -60,44 +60,48 @@ class DisassemblyState(object):
         self.dis = dis
         self.asm = asm
 
-        match = self.dis.inst_re.match(asm)
-        if match:
-            self.inst = match.group(1)
-            self.spaces1 = match.group(2)
-            asm = asm[match.end(2):]
-            if not self.spaces1:
-                # No spaces before special characters (or nothing at all), so this is something special.
-                self.operands = asm
-                self.spaces2 = ''
-                self.comment = None
-            else:
-                if asm and asm[0] == ';':
-                    # No operands present, just a comment
-                    self.operands = ''
-                    self.spaces2 = self.spaces1
-                    self.spaces1 = ''
-                    self.comment = asm
-                else:
-                    match = self.dis.comment_re.search(asm)
-                    if match:
-                        self.spaces2 = match.group(1)
-                        self.comment = match.group(2)
-                        self.operands = asm[:match.start(1)]
-                    else:
-                        self.operands = asm.rstrip(' \t')
-                        self.spaces2 = ' ' * (len(asm) - len(self.operands))
-                        self.comment = None
-        else:
-            self.inst = None
-            self.spaces1 = ''
-            self.operands = ''
-            self.spaces2 = ''
-            self.comment = None
+        self.inst = None
+        self.undefined = False
+        self.spaces1 = ''
+        self.operands = None
+        self.spaces2 = ''
+        self.comment = None
 
-            match = self.dis.comment_re.search(asm)
+        # First extract off any comments that are there
+        match = self.dis.comment_re.search(asm)
+        if match:
+            self.spaces2 = match.group(1)
+            self.comment = match.group(2)
+            asm = asm[:match.start(1)]
+
+        if asm.startswith(self.dis.undefined):
+            self.inst = self.dis.undefined
+            self.undefined = True
+        else:
+            # Now match the instruction and spaces
+            match = self.dis.inst_re.match(asm)
             if match:
-                self.spaces2 = match.group(1)
-                self.comment = match.group(2)
+                self.inst = match.group(1)
+                self.spaces1 = match.group(2)
+                asm = asm[match.end(2):]
+                if not self.spaces1:
+                    # No spaces before special characters (or nothing at all), so this is something special.
+                    self.operands = asm
+                else:
+                    self.operands = asm.rstrip(' \t')
+            else:
+                self.inst = None
+                self.spaces1 = ''
+                self.operands = ''
+
+    def __repr__(self):
+        return "<%s(inst=%s, spaces=%s, operands=%s, spaces=%s, comment=%s)>" \
+                    % (self.__class__.__name__,
+                       self.inst or '-',
+                       self.spaces1 or '-',
+                       self.operands or '-',
+                       self.spaces2 or '-',
+                       self.comment or '-')
 
 
 class ColourDisassembly(object):
@@ -153,31 +157,23 @@ class ColourDisassembly(object):
         @return: List of either tuples of (colour, text) or just plain text string.
                  None if no colouring is recognised for the whole string
         """
-        spaces = None
-        comment = None
-        if state.inst is None:
-            spaces = state.spaces2
-            comment = state.comment
+        spaces = state.spaces2
+        comment = state.comment
 
         result = []
-        if state.asm.startswith("Undefined instruction"):
-            if ';' in state.asm:
-                (asm, undef) = state.asm.split(';', 1)
-            else:
-                asm = state.asm
-            if asm:
-                result = [(self.disassembly_colours['invalid'], asm.strip())]
+        if state.undefined:
+            result = [(self.disassembly_colours['invalid'], state.inst)]
             if spaces:
-                result.append((self.disassembly_colours['space'], state.spaces2))
+                result.append((self.disassembly_colours['space'], spaces))
             if comment:
-                result.append((self.disassembly_colours['comment'], state.comment))
+                result.append((self.disassembly_colours['comment'], comment))
             return result
 
         elif not state.inst and comment:
             if spaces:
-                result.append((self.disassembly_colours['space'], state.spaces2))
+                result.append((self.disassembly_colours['space'], spaces2))
             if comment:
-                result.append((self.disassembly_colours['comment'], state.comment))
+                result.append((self.disassembly_colours['comment'], comment))
             return result
 
         return None
