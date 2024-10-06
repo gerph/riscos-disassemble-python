@@ -42,6 +42,8 @@ methods generate colouring information:
 
 import re
 
+from .base import DisassembleBase
+
 
 class DisassemblyState(object):
     """
@@ -256,15 +258,18 @@ class ColourDisassembly(object):
             return []
         return [(self.disassembly_colours['comment'], state.comment)]
 
-    def colour(self, dis, asm):
+    def colour(self, asm, dis=None):
         """
         Transform text from a disassembly into a list of sequences with colours.
 
-        @param dis:     The disassembler object
+        @param dis:     The disassembler object, or None if not known
         @param asm:     Contains the disassembled text
 
         @return: List of either tuples of (colour, text) or just plain text string.
         """
+        if dis is None:
+            # If they didn't supply the disassembler object, we use the default
+            dis = DisassembleBase()
 
         # Process the state into broken down form
         state = self.parse(dis, asm)
@@ -378,11 +383,11 @@ class ColourDisassemblyANSI(ColourDisassembly):
             seq = best
         return seq
 
-    def colour(self, dis, asm):
+    def colour(self, asm, dis=None):
         """
         Same as the base colours, but colours will be transformed into ANSI sequences.
         """
-        coloured = super(ColourDisassemblyANSI, self).colour(dis, asm)
+        coloured = super(ColourDisassemblyANSI, self).colour(asm, dis=dis)
         ansi_coloured = []
         for part in coloured:
             if isinstance(part, tuple):

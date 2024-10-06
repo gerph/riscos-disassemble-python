@@ -172,7 +172,7 @@ def disassemble_file(filename, arch='arm', colourer=None, postprocess=None, base
                     disassembly = postprocess(word, disassembly)
 
                 if colourer and disassembly:
-                    coloured = colourer.colour(dis, disassembly)
+                    coloured = colourer.colour(disassembly, dis=dis)
                     coloured = [colour + s.encode('latin-1') for colour, s in coloured]
                     try:
                         disassembly = sum(coloured, bytearray()) + colourer.colour_reset
