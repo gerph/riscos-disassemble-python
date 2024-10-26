@@ -18,11 +18,11 @@ clean:
 	find . -name '*.pyc' -delete
 	find . -name '__pycache__' -delete
 
-package: tmp-setup.py
-	python tmp-setup.py sdist
+package: setup.py
+	python setup.py sdist
 
-tmp-setup.py: project.config setup.py
-	sed 's/version = ".*"/version = "${VERSION}"/' setup.py > tmp-setup.py || ( rm tmp-setup.py ; false )
+setup.py: project.config setup.py.template
+	sed 's/version = ".*"/version = "${VERSION}"/' setup.py.template > setup.py || ( rm setup.py ; false )
 
 tests: tests-plain tests-colour tests-plus tests-map tests-match tests-simple
 	@if [ -f fail ] ; then echo Failed tests ; rm fail ; false ; fi
