@@ -540,11 +540,25 @@ class DisassembleARM64(base.DisassembleBase):
                         if live_memory:
                             # Check whether we're preceeded by ADRP
                             this = self.access.get_memory_word(address)
-                            before = self.access.get_memory_word(address - 4)
+                            adrp = address - 4
+                            before = self.access.get_memory_word(adrp)
                             imm = i.operands[2].imm
+                            rn = ((this>>5) & 31)
                             if before is not None and \
-                               (before & 0x90000000) == 0x90000000 and \
-                               (before & 31) == ((this>>5) & 31):
+                               (before & 0x9F800000) == 0x91000000 and \
+                               (before & 31) == rn:
+                                # Another ADD instruction
+                                imm12 = (before >> 10) & 4095
+                                if before & (1<<22):
+                                    imm12 = imm12 << 12
+                                rn = ((before>>5) & 31)
+                                imm += imm12
+                                adrp = adrp - 4
+                                before = self.access.get_memory_word(adrp)
+
+                            if before is not None and \
+                               (before & 0x9F000000) == 0x90000000 and \
+                               (before & 31) == rn:
                                 # The instruction before is an ADRP,
                                 # and the ADRP Xd is the same as ADD Xn.
                                 # So we need to calculate the target address
@@ -554,7 +568,7 @@ class DisassembleARM64(base.DisassembleBase):
                                 if offset & (1<<23):
                                     offset -= (1<<24)
 
-                                target = ((address - 4) & ~4095) + offset + i.operands[2].imm
+                                target = (adrp & ~4095) + offset + imm
 
                                 desc = self.access.describe_address(target)
                                 if desc:
