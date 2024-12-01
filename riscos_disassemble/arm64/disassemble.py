@@ -495,7 +495,7 @@ class DisassembleARM64(base.DisassembleBase):
                  i.operands[1].type == self._const.ARM64_OP_IMM:
                 imm = i.operands[1].imm
                 op_prefix, _ = op_str.split(',', 1)
-                op_suffix = '&%08X' % (imm,)
+                op_suffix = '&%08x' % (imm,)
                 op_str = '%s, %s' % (op_prefix, op_suffix)
 
                 if live_memory:

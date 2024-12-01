@@ -153,7 +153,7 @@
 00008260 : ff000008 : .... : Undefined instruction
 00008264 : a9bf7bfd : .{.. : STP     x29, x30, [sp, #-&10]!    ; Function: main
 00008268 : 910003fd : .... : MOV     x29, sp
-0000826c : d0000000 : .... : ADRP    x0, &0000A000             ; -> Function: __o1heapGetDiagnostics
+0000826c : d0000000 : .... : ADRP    x0, &0000a000             ; -> Function: __o1heapGetDiagnostics
 00008270 : 9117a000 : .... : ADD     x0, x0, #&5e8             ; #1512, (long)-> &0000a5e8 = "Hello world"
 00008274 : 97ffffdc : .... : BL      &000081e4                 ; -> Function: myprint
 00008278 : a8c17bfd : .{.. : LDP     x29, x30, [sp], #&10
@@ -306,7 +306,7 @@
 000084c4 : eb02007f : .... : CMP     x3, x2
 000084c8 : 540002a3 : ...T : B.LO    &0000851c
 000084cc : aa0003f4 : .... : MOV     x20, x0
-000084d0 : d0000000 : .... : ADRP    x0, &0000A000             ; -> Function: __o1heapGetDiagnostics
+000084d0 : d0000000 : .... : ADRP    x0, &0000a000             ; -> Function: __o1heapGetDiagnostics
 000084d4 : b94fe400 : ..O. : LDR     w0, [x0, #&fe4]
 000084d8 : 7100001f : ...q : CMP     w0, #0
 000084dc : 52a00021 : !..R : MOVZ    w1, #&10000               ; #65536 = bit 16
@@ -314,7 +314,7 @@
 000084e4 : cb000061 : a... : SUB     x1, x3, x0
 000084e8 : eb01005f : _... : CMP     x2, x1
 000084ec : 540001e8 : ...T : B.HI    &00008528
-000084f0 : d0000000 : .... : ADRP    x0, &0000A000             ; -> Function: __o1heapGetDiagnostics
+000084f0 : d0000000 : .... : ADRP    x0, &0000a000             ; -> Function: __o1heapGetDiagnostics
 000084f4 : b94fe000 : ..O. : LDR     w0, [x0, #&fe0]
 000084f8 : 7100001f : ...q : CMP     w0, #0
 000084fc : 52820003 : ...R : MOVZ    w3, #&1000                ; #4096 = bit 12
@@ -322,13 +322,13 @@
 00008504 : 8b000040 : @... : ADD     x0, x2, x0
 00008508 : eb01001f : .... : CMP     x0, x1
 0000850c : 54000149 : I..T : B.LS    &00008534
-00008510 : d0000000 : .... : ADRP    x0, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00008510 : d0000000 : .... : ADRP    x0, &0000a000             ; -> Function: __o1heapGetDiagnostics
 00008514 : 91190000 : .... : ADD     x0, x0, #&640             ; #1600, (long)-> &0000a640 = "Not enough memory for heap"
 00008518 : 97ffffda : .... : BL      &00008480
-0000851c : d0000000 : .... : ADRP    x0, &0000A000             ; -> Function: __o1heapGetDiagnostics
+0000851c : d0000000 : .... : ADRP    x0, &0000a000             ; -> Function: __o1heapGetDiagnostics
 00008520 : 9117e000 : .... : ADD     x0, x0, #&5f8             ; #1528, (long)-> &0000a5f8 = "Not enough memory for application"
 00008524 : 97ffffd7 : .... : BL      &00008480
-00008528 : d0000000 : .... : ADRP    x0, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00008528 : d0000000 : .... : ADRP    x0, &0000a000             ; -> Function: __o1heapGetDiagnostics
 0000852c : 91188000 : .... : ADD     x0, x0, #&620             ; #1568, (long)-> &0000a620 = "Not enough memory for stack"
 00008530 : 97ffffd4 : .... : BL      &00008480
 00008534 : aa0203e0 : .... : MOV     x0, x2
@@ -400,7 +400,7 @@
 0000863c : 00007469 : it.. : Undefined instruction
 00008640 : ff000008 : .... : Undefined instruction
 00008644 : d2800001 : .... : MOVZ    x1, #0                    ; Function: atexit
-00008648 : f0000003 : .... : ADRP    x3, &0000B000
+00008648 : f0000003 : .... : ADRP    x3, &0000b000
 0000864c : 91000063 : c... : ADD     x3, x3, #0
 00008650 : 2a0103e4 : ...* : MOV     w4, w1
 00008654 : f8617862 : bxa. : LDR     x2, [x3, x1, lsl #3]
@@ -410,7 +410,7 @@
 00008664 : 54ffff61 : a..T : B.NE    &00008650
 00008668 : 12800000 : .... : MOVN    w0, #0
 0000866c : d65f03c0 : .._. : RET
-00008670 : f0000001 : .... : ADRP    x1, &0000B000
+00008670 : f0000001 : .... : ADRP    x1, &0000b000
 00008674 : 91000021 : !... : ADD     x1, x1, #0
 00008678 : f824d820 :  .$. : STR     x0, [x1, w4, sxtw #3]
 0000867c : 52800000 : ...R : MOVZ    w0, #0
@@ -426,7 +426,7 @@
 000086a4 : a9be7bfd : .{.. : STP     x29, x30, [sp, #-&20]!    ; Function: _clib_finalise
 000086a8 : 910003fd : .... : MOV     x29, sp
 000086ac : a90153f3 : .S.. : STP     x19, x20, [sp, #&10]
-000086b0 : f0000014 : .... : ADRP    x20, &0000B000
+000086b0 : f0000014 : .... : ADRP    x20, &0000b000
 000086b4 : 91000294 : .... : ADD     x20, x20, #0
 000086b8 : 9100e293 : .... : ADD     x19, x20, #&38            ; #56  = '8'
 000086bc : 14000005 : .... : B       &000086d0
@@ -495,20 +495,20 @@
 000087b8 : 6e69665f : _fin : UMAX    v31.8h, v18.8h, v9.8h
 000087bc : 00006c61 : al.. : Undefined instruction
 000087c0 : ff000010 : .... : Undefined instruction
-000087c4 : f0000000 : .... : ADRP    x0, &0000B000             ; Function: __getenv_final
+000087c4 : f0000000 : .... : ADRP    x0, &0000b000             ; Function: __getenv_final
 000087c8 : f9402000 : . @. : LDR     x0, [x0, #&40]
 000087cc : b40001c0 : .... : CBZ     x0, &00008804
-000087d0 : d0000001 : .... : ADRP    x1, &0000A000             ; -> Function: __o1heapGetDiagnostics
+000087d0 : d0000001 : .... : ADRP    x1, &0000a000             ; -> Function: __o1heapGetDiagnostics
 000087d4 : f9433021 : !0C. : LDR     x1, [x1, #&660]
 000087d8 : b4000101 : .... : CBZ     x1, &000087f8
 000087dc : a9bf7bfd : .{.. : STP     x29, x30, [sp, #-&10]!
 000087e0 : 910003fd : .... : MOV     x29, sp
 000087e4 : 9400014a : J... : BL      &00008d0c                 ; -> Function: free
-000087e8 : f0000000 : .... : ADRP    x0, &0000B000
+000087e8 : f0000000 : .... : ADRP    x0, &0000b000
 000087ec : f900201f : . .. : STR     xzr, [x0, #&40]
 000087f0 : a8c17bfd : .{.. : LDP     x29, x30, [sp], #&10
 000087f4 : d65f03c0 : .._. : RET
-000087f8 : f0000000 : .... : ADRP    x0, &0000B000
+000087f8 : f0000000 : .... : ADRP    x0, &0000b000
 000087fc : f900201f : . .. : STR     xzr, [x0, #&40]
 00008800 : d65f03c0 : .._. : RET
 00008804 : d65f03c0 : .._. : RET
@@ -526,7 +526,7 @@
 00008834 : d2800001 : .... : MOVZ    x1, #0
 00008838 : 52800840 : @..R : MOVZ    w0, #&42                  ; #66  = 'B'
 0000883c : 9400004a : J... : BL      &00008964
-00008840 : f0000000 : .... : ADRP    x0, &0000B000
+00008840 : f0000000 : .... : ADRP    x0, &0000b000
 00008844 : b9404c01 : .L@. : LDR     w1, [x0, #&4c]
 00008848 : b9401be0 : ..@. : LDR     w0, [sp, #&18]
 0000884c : 4b010000 : ...K : SUB     w0, w0, w1
@@ -544,7 +544,7 @@
 0000887c : a9be7bfd : .{.. : STP     x29, x30, [sp, #-&20]!    ; Function: __clock_init
 00008880 : 910003fd : .... : MOV     x29, sp
 00008884 : f9000bf3 : .... : STR     x19, [sp, #&10]
-00008888 : f0000013 : .... : ADRP    x19, &0000B000
+00008888 : f0000013 : .... : ADRP    x19, &0000b000
 0000888c : b9004e7f : .N.. : STR     wzr, [x19, #&4c]
 00008890 : 97ffffe6 : .... : BL      &00008828                 ; -> Function: clock
 00008894 : b9004e60 : `N.. : STR     w0, [x19, #&4c]
@@ -559,18 +559,18 @@
 000088b8 : 695f7061 : ap_i : LDPSW   x1, x28, [x3, #&f8]
 000088bc : 0074696e : nit. : Undefined instruction
 000088c0 : ff00000c : .... : Undefined instruction
-000088c4 : f0000003 : .... : ADRP    x3, &0000B000             ; Function: __heap_init
+000088c4 : f0000003 : .... : ADRP    x3, &0000b000             ; Function: __heap_init
 000088c8 : 91014062 : b@.. : ADD     x2, x3, #&50              ; #80  = 'P'
 000088cc : f9002860 : `(.. : STR     x0, [x3, #&50]
 000088d0 : 3900001f : ...9 : STRB    wzr, [x0]
 000088d4 : f9000441 : A... : STR     x1, [x2, #8]
 000088d8 : b900105f : _... : STR     wzr, [x2, #&10]
-000088dc : f0000000 : .... : ADRP    x0, &0000B000
+000088dc : f0000000 : .... : ADRP    x0, &0000b000
 000088e0 : f9403400 : .4@. : LDR     x0, [x0, #&68]
 000088e4 : b4000040 : @... : CBZ     x0, &000088ec
 000088e8 : d65f03c0 : .._. : RET
-000088ec : f0000001 : .... : ADRP    x1, &0000B000
-000088f0 : d0000000 : .... : ADRP    x0, &0000A000             ; -> Function: __o1heapGetDiagnostics
+000088ec : f0000001 : .... : ADRP    x1, &0000b000
+000088f0 : d0000000 : .... : ADRP    x0, &0000a000             ; -> Function: __o1heapGetDiagnostics
 000088f4 : 913b0000 : ..;. : ADD     x0, x0, #&ec0             ; #3776, (long)-> &0000aec0 = [&00008a18, &00000000, &00008a80, &00000000]
 000088f8 : f9003420 :  4.. : STR     x0, [x1, #&68]
 000088fc : 17fffffb : .... : B       &000088e8
@@ -585,10 +585,10 @@
 00008920 : a9be7bfd : .{.. : STP     x29, x30, [sp, #-&20]!    ; Function: __io_final
 00008924 : 910003fd : .... : MOV     x29, sp
 00008928 : f9000bf3 : .... : STR     x19, [sp, #&10]
-0000892c : f0000000 : .... : ADRP    x0, &0000B000
+0000892c : f0000000 : .... : ADRP    x0, &0000b000
 00008930 : f9403813 : .8@. : LDR     x19, [x0, #&70]
 00008934 : f900381f : .8.. : STR     xzr, [x0, #&70]
-00008938 : d0000000 : .... : ADRP    x0, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00008938 : d0000000 : .... : ADRP    x0, &0000a000             ; -> Function: __o1heapGetDiagnostics
 0000893c : f9433400 : .4C. : LDR     x0, [x0, #&668]
 00008940 : b40000c0 : .... : CBZ     x0, &00008958
 00008944 : b40000b3 : .... : CBZ     x19, &00008958
@@ -653,12 +653,12 @@
 00008a30 : cb020021 : !... : SUB     x1, x1, x2
 00008a34 : 8b020000 : .... : ADD     x0, x0, x2
 00008a38 : 940001b5 : .... : BL      &0000910c                 ; -> Function: __o1heapInit
-00008a3c : f0000001 : .... : ADRP    x1, &0000B000
+00008a3c : f0000001 : .... : ADRP    x1, &0000b000
 00008a40 : f9003c20 :  <.. : STR     x0, [x1, #&78]
 00008a44 : b4000060 : `... : CBZ     x0, &00008a50
 00008a48 : a8c17bfd : .{.. : LDP     x29, x30, [sp], #&10
 00008a4c : d65f03c0 : .._. : RET
-00008a50 : d0000000 : .... : ADRP    x0, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00008a50 : d0000000 : .... : ADRP    x0, &0000a000             ; -> Function: __o1heapGetDiagnostics
 00008a54 : 91190000 : .... : ADD     x0, x0, #&640             ; #1600, (long)-> &0000a640 = "Not enough memory for heap"
 00008a58 : 94000047 : G... : BL      &00008b74                 ; -> Function: __heap_fatal
 00008a5c : 17fffffb : .... : B       &00008a48
@@ -673,7 +673,7 @@
 00008a80 : a9bf7bfd : .{.. : STP     x29, x30, [sp, #-&10]!    ; Function: __heap_O1heap_alloc
 00008a84 : 910003fd : .... : MOV     x29, sp
 00008a88 : aa0003e1 : .... : MOV     x1, x0
-00008a8c : f0000000 : .... : ADRP    x0, &0000B000
+00008a8c : f0000000 : .... : ADRP    x0, &0000b000
 00008a90 : f9403c00 : .<@. : LDR     x0, [x0, #&78]
 00008a94 : 940001ff : .... : BL      &00009290                 ; -> Function: __o1heapAllocate
 00008a98 : a8c17bfd : .{.. : LDP     x29, x30, [sp], #&10
@@ -689,7 +689,7 @@
 00008ac0 : a9bf7bfd : .{.. : STP     x29, x30, [sp, #-&10]!    ; Function: __heap_O1heap_free
 00008ac4 : 910003fd : .... : MOV     x29, sp
 00008ac8 : aa0003e1 : .... : MOV     x1, x0
-00008acc : f0000000 : .... : ADRP    x0, &0000B000
+00008acc : f0000000 : .... : ADRP    x0, &0000b000
 00008ad0 : f9403c00 : .<@. : LDR     x0, [x0, #&78]
 00008ad4 : 94000345 : E... : BL      &000097e8                 ; -> Function: __o1heapFree
 00008ad8 : a8c17bfd : .{.. : LDP     x29, x30, [sp], #&10
@@ -751,29 +751,29 @@
 00008bb8 : b4000620 :  ... : CBZ     x0, &00008c7c
 00008bbc : f9000bf3 : .... : STR     x19, [sp, #&10]
 00008bc0 : aa0003f3 : .... : MOV     x19, x0
-00008bc4 : f0000000 : .... : ADRP    x0, &0000B000
+00008bc4 : f0000000 : .... : ADRP    x0, &0000b000
 00008bc8 : 39420000 : ..B9 : LDRB    w0, [x0, #&80]
 00008bcc : 350003e0 : ...5 : CBNZ    w0, &00008c48
-00008bd0 : f0000000 : .... : ADRP    x0, &0000B000
+00008bd0 : f0000000 : .... : ADRP    x0, &0000b000
 00008bd4 : f9402800 : .(@. : LDR     x0, [x0, #&50]
 00008bd8 : b40004c0 : .... : CBZ     x0, &00008c70
-00008bdc : f0000001 : .... : ADRP    x1, &0000B000
+00008bdc : f0000001 : .... : ADRP    x1, &0000b000
 00008be0 : b9406021 : !`@. : LDR     w1, [x1, #&60]
 00008be4 : 35000181 : ...5 : CBNZ    w1, &00008c14
-00008be8 : f0000001 : .... : ADRP    x1, &0000B000
+00008be8 : f0000001 : .... : ADRP    x1, &0000b000
 00008bec : f9402c21 : !,@. : LDR     x1, [x1, #&58]
-00008bf0 : d0000002 : .... : ADRP    x2, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00008bf0 : d0000002 : .... : ADRP    x2, &0000a000             ; -> Function: __o1heapGetDiagnostics
 00008bf4 : f9434042 : B@C. : LDR     x2, [x2, #&680]
 00008bf8 : f9400042 : B.@. : LDR     x2, [x2]
 00008bfc : f9400042 : B.@. : LDR     x2, [x2]
 00008c00 : cb000021 : !... : SUB     x1, x1, x0
 00008c04 : d63f0040 : @.?. : BLR     x2
-00008c08 : f0000000 : .... : ADRP    x0, &0000B000
+00008c08 : f0000000 : .... : ADRP    x0, &0000b000
 00008c0c : 52800021 : !..R : MOVZ    w1, #&1
 00008c10 : b9006001 : .`.. : STR     w1, [x0, #&60]
 00008c14 : 91003e73 : s>.. : ADD     x19, x19, #&f             ; #15
 00008c18 : 927df273 : s.}. : AND     x19, x19, #&fffffffffffffff8  ; #-8
-00008c1c : d0000000 : .... : ADRP    x0, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00008c1c : d0000000 : .... : ADRP    x0, &0000a000             ; -> Function: __o1heapGetDiagnostics
 00008c20 : f9434000 : .@C. : LDR     x0, [x0, #&680]
 00008c24 : f9400000 : ..@. : LDR     x0, [x0]
 00008c28 : f9400401 : ..@. : LDR     x1, [x0, #8]
@@ -794,7 +794,7 @@
 00008c64 : f94017e0 : ..@. : LDR     x0, [sp, #&28]
 00008c68 : f9400bf3 : ..@. : LDR     x19, [sp, #&10]
 00008c6c : 17fffff5 : .... : B       &00008c40
-00008c70 : d0000000 : .... : ADRP    x0, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00008c70 : d0000000 : .... : ADRP    x0, &0000a000             ; -> Function: __o1heapGetDiagnostics
 00008c74 : 9119c000 : .... : ADD     x0, x0, #&670             ; #1648, (long)-> &0000a670 = "No heap memory"
 00008c78 : 97ffffbf : .... : BL      &00008b74                 ; -> Function: __heap_fatal
 00008c7c : d2800000 : .... : MOVZ    x0, #0
@@ -836,13 +836,13 @@
 00008d0c : b4000340 : @... : CBZ     x0, &00008d74             ; Function: free
 00008d10 : a9bf7bfd : .{.. : STP     x29, x30, [sp, #-&10]!
 00008d14 : 910003fd : .... : MOV     x29, sp
-00008d18 : f0000001 : .... : ADRP    x1, &0000B000
+00008d18 : f0000001 : .... : ADRP    x1, &0000b000
 00008d1c : 39420021 : !.B9 : LDRB    w1, [x1, #&80]
 00008d20 : 35000181 : ...5 : CBNZ    w1, &00008d50
-00008d24 : f0000001 : .... : ADRP    x1, &0000B000
+00008d24 : f0000001 : .... : ADRP    x1, &0000b000
 00008d28 : f9402821 : !(@. : LDR     x1, [x1, #&50]
 00008d2c : b40001e1 : .... : CBZ     x1, &00008d68
-00008d30 : d0000001 : .... : ADRP    x1, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00008d30 : d0000001 : .... : ADRP    x1, &0000a000             ; -> Function: __o1heapGetDiagnostics
 00008d34 : f9434021 : !@C. : LDR     x1, [x1, #&680]
 00008d38 : f9400021 : !.@. : LDR     x1, [x1]
 00008d3c : f9400822 : ".@. : LDR     x2, [x1, #&10]
@@ -856,7 +856,7 @@
 00008d5c : 528000e0 : ...R : MOVZ    w0, #&7
 00008d60 : 9400007a : z... : BL      &00008f48
 00008d64 : 17fffff9 : .... : B       &00008d48
-00008d68 : d0000000 : .... : ADRP    x0, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00008d68 : d0000000 : .... : ADRP    x0, &0000a000             ; -> Function: __o1heapGetDiagnostics
 00008d6c : 9119c000 : .... : ADD     x0, x0, #&670             ; #1648, (long)-> &0000a670 = "No heap memory"
 00008d70 : 97ffff81 : .... : BL      &00008b74                 ; -> Function: __heap_fatal
 00008d74 : d65f03c0 : .._. : RET
@@ -874,16 +874,16 @@
 00008da4 : 910003fd : .... : MOV     x29, sp
 00008da8 : b40002e1 : .... : CBZ     x1, &00008e04
 00008dac : b4000320 :  ... : CBZ     x0, &00008e10
-00008db0 : f0000002 : .... : ADRP    x2, &0000B000
+00008db0 : f0000002 : .... : ADRP    x2, &0000b000
 00008db4 : 39420042 : B.B9 : LDRB    w2, [x2, #&80]
 00008db8 : 35000322 : "..5 : CBNZ    w2, &00008e1c
 00008dbc : f9000bf3 : .... : STR     x19, [sp, #&10]
-00008dc0 : f0000002 : .... : ADRP    x2, &0000B000
+00008dc0 : f0000002 : .... : ADRP    x2, &0000b000
 00008dc4 : f9402842 : B(@. : LDR     x2, [x2, #&50]
 00008dc8 : b4000402 : .... : CBZ     x2, &00008e48
 00008dcc : 91003c21 : !<.. : ADD     x1, x1, #&f               ; #15
 00008dd0 : 927df033 : 3.}. : AND     x19, x1, #&fffffffffffffff8  ; #-8
-00008dd4 : d0000001 : .... : ADRP    x1, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00008dd4 : d0000001 : .... : ADRP    x1, &0000a000             ; -> Function: __o1heapGetDiagnostics
 00008dd8 : f9434021 : !@C. : LDR     x1, [x1, #&680]
 00008ddc : f9400021 : !.@. : LDR     x1, [x1]
 00008de0 : f9400c23 : #.@. : LDR     x3, [x1, #&18]
@@ -912,7 +912,7 @@
 00008e3c : f94017e0 : ..@. : LDR     x0, [sp, #&28]
 00008e40 : 9a9f0000 : .... : CSEL    x0, x0, xzr, eq
 00008e44 : 17ffffee : .... : B       &00008dfc
-00008e48 : d0000000 : .... : ADRP    x0, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00008e48 : d0000000 : .... : ADRP    x0, &0000a000             ; -> Function: __o1heapGetDiagnostics
 00008e4c : 9119c000 : .... : ADD     x0, x0, #&670             ; #1648, (long)-> &0000a670 = "No heap memory"
 00008e50 : 97ffff49 : I... : BL      &00008b74                 ; -> Function: __heap_fatal
 00008e54 : d2800000 : .... : MOVZ    x0, #0
@@ -1036,44 +1036,44 @@
 0000902c : f9010001 : .... : STR     x1, [x0, #&200]
 00009030 : a8c17bfd : .{.. : LDP     x29, x30, [sp], #&10
 00009034 : d65f03c0 : .._. : RET
-00009038 : b0000003 : .... : ADRP    x3, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009038 : b0000003 : .... : ADRP    x3, &0000a000             ; -> Function: __o1heapGetDiagnostics
 0000903c : 9112c063 : c... : ADD     x3, x3, #&4b0             ; #1200, (long)-> &0000a4b0 = [&69626e75, &0000006e, &316f5f5f, &70616568]
 00009040 : 52801b42 : B..R : MOVZ    w2, #&da                  ; #218
-00009044 : b0000001 : .... : ADRP    x1, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009044 : b0000001 : .... : ADRP    x1, &0000a000             ; -> Function: __o1heapGetDiagnostics
 00009048 : 911a2021 : ! .. : ADD     x1, x1, #&688             ; #1672, (long)-> &0000a688 = "heap/o1heap.c"
-0000904c : b0000000 : .... : ADRP    x0, &0000A000             ; -> Function: __o1heapGetDiagnostics
+0000904c : b0000000 : .... : ADRP    x0, &0000a000             ; -> Function: __o1heapGetDiagnostics
 00009050 : 911a6000 : .`.. : ADD     x0, x0, #&698             ; #1688, (long)-> &0000a698 = "handle != ((void *)0)"
 00009054 : 94000405 : .... : BL      &0000a068                 ; -> Function: __assert_fail
-00009058 : b0000003 : .... : ADRP    x3, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009058 : b0000003 : .... : ADRP    x3, &0000a000             ; -> Function: __o1heapGetDiagnostics
 0000905c : 9112c063 : c... : ADD     x3, x3, #&4b0             ; #1200, (long)-> &0000a4b0 = [&69626e75, &0000006e, &316f5f5f, &70616568]
 00009060 : 52801b62 : b..R : MOVZ    w2, #&db                  ; #219
-00009064 : b0000001 : .... : ADRP    x1, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009064 : b0000001 : .... : ADRP    x1, &0000a000             ; -> Function: __o1heapGetDiagnostics
 00009068 : 911a2021 : ! .. : ADD     x1, x1, #&688             ; #1672, (long)-> &0000a688 = "heap/o1heap.c"
-0000906c : b0000000 : .... : ADRP    x0, &0000A000             ; -> Function: __o1heapGetDiagnostics
+0000906c : b0000000 : .... : ADRP    x0, &0000a000             ; -> Function: __o1heapGetDiagnostics
 00009070 : 911ac000 : .... : ADD     x0, x0, #&6b0             ; #1712, (long)-> &0000a6b0 = "fragment != ((void *)0)"
 00009074 : 940003fd : .... : BL      &0000a068                 ; -> Function: __assert_fail
-00009078 : b0000003 : .... : ADRP    x3, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009078 : b0000003 : .... : ADRP    x3, &0000a000             ; -> Function: __o1heapGetDiagnostics
 0000907c : 9112c063 : c... : ADD     x3, x3, #&4b0             ; #1200, (long)-> &0000a4b0 = [&69626e75, &0000006e, &316f5f5f, &70616568]
 00009080 : 52801b82 : ...R : MOVZ    w2, #&dc                  ; #220
-00009084 : b0000001 : .... : ADRP    x1, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009084 : b0000001 : .... : ADRP    x1, &0000a000             ; -> Function: __o1heapGetDiagnostics
 00009088 : 911a2021 : ! .. : ADD     x1, x1, #&688             ; #1672, (long)-> &0000a688 = "heap/o1heap.c"
-0000908c : b0000000 : .... : ADRP    x0, &0000A000             ; -> Function: __o1heapGetDiagnostics
+0000908c : b0000000 : .... : ADRP    x0, &0000a000             ; -> Function: __o1heapGetDiagnostics
 00009090 : 911b2000 : . .. : ADD     x0, x0, #&6c8             ; #1736, (long)-> &0000a6c8 = "fragment->header.size >= ((sizeof(void*) * 4U) * 2U)"
 00009094 : 940003f5 : .... : BL      &0000a068                 ; -> Function: __assert_fail
-00009098 : b0000003 : .... : ADRP    x3, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009098 : b0000003 : .... : ADRP    x3, &0000a000             ; -> Function: __o1heapGetDiagnostics
 0000909c : 9112c063 : c... : ADD     x3, x3, #&4b0             ; #1200, (long)-> &0000a4b0 = [&69626e75, &0000006e, &316f5f5f, &70616568]
 000090a0 : 52801ba2 : ...R : MOVZ    w2, #&dd                  ; #221
-000090a4 : b0000001 : .... : ADRP    x1, &0000A000             ; -> Function: __o1heapGetDiagnostics
+000090a4 : b0000001 : .... : ADRP    x1, &0000a000             ; -> Function: __o1heapGetDiagnostics
 000090a8 : 911a2021 : ! .. : ADD     x1, x1, #&688             ; #1672, (long)-> &0000a688 = "heap/o1heap.c"
-000090ac : b0000000 : .... : ADRP    x0, &0000A000             ; -> Function: __o1heapGetDiagnostics
+000090ac : b0000000 : .... : ADRP    x0, &0000a000             ; -> Function: __o1heapGetDiagnostics
 000090b0 : 911c0000 : .... : ADD     x0, x0, #&700             ; #1792, (long)-> &0000a700 = "(fragment->header.size % ((sizeof(void*) * 4U) * 2U)) == 0U"
 000090b4 : 940003ed : .... : BL      &0000a068                 ; -> Function: __assert_fail
-000090b8 : b0000003 : .... : ADRP    x3, &0000A000             ; -> Function: __o1heapGetDiagnostics
+000090b8 : b0000003 : .... : ADRP    x3, &0000a000             ; -> Function: __o1heapGetDiagnostics
 000090bc : 9112c063 : c... : ADD     x3, x3, #&4b0             ; #1200, (long)-> &0000a4b0 = [&69626e75, &0000006e, &316f5f5f, &70616568]
 000090c0 : 52801d82 : ...R : MOVZ    w2, #&ec                  ; #236
-000090c4 : b0000001 : .... : ADRP    x1, &0000A000             ; -> Function: __o1heapGetDiagnostics
+000090c4 : b0000001 : .... : ADRP    x1, &0000a000             ; -> Function: __o1heapGetDiagnostics
 000090c8 : 911a2021 : ! .. : ADD     x1, x1, #&688             ; #1672, (long)-> &0000a688 = "heap/o1heap.c"
-000090cc : b0000000 : .... : ADRP    x0, &0000A000             ; -> Function: __o1heapGetDiagnostics
+000090cc : b0000000 : .... : ADRP    x0, &0000a000             ; -> Function: __o1heapGetDiagnostics
 000090d0 : 911d0000 : .... : ADD     x0, x0, #&740             ; #1856, (long)-> &0000a740 = "fragment->prev_free == ((void *)0)"
 000090d4 : 940003e5 : .... : BL      &0000a068                 ; -> Function: __assert_fail
 000090d8 : 2a0203e3 : ...* : MOV     w3, w2
@@ -1085,7 +1085,7 @@
 000090f0 : d503201f : . .. : NOP
 000090f4 : d503201f : . .. : NOP
 000090f8 : 316f5f5f : __o1 : CMN     w26, #&bd7, lsl #12
-000090fc : 70616568 : heap : ADR     x8, &000CBDAB
+000090fc : 70616568 : heap : ADR     x8, &000cbdab
 00009100 : 74696e49 : Init : Undefined instruction
 00009104 : 00000000 : .... : Undefined instruction
 00009108 : ff000010 : .... : Undefined instruction
@@ -1148,31 +1148,31 @@
 000091ec : f901141f : .... : STR     xzr, [x0, #&228]
 000091f0 : a8c17bfd : .{.. : LDP     x29, x30, [sp], #&10
 000091f4 : d65f03c0 : .._. : RET
-000091f8 : b0000003 : .... : ADRP    x3, &0000A000             ; -> Function: __o1heapGetDiagnostics
+000091f8 : b0000003 : .... : ADRP    x3, &0000a000             ; -> Function: __o1heapGetDiagnostics
 000091fc : 9112c063 : c... : ADD     x3, x3, #&4b0             ; #1200, (long)-> &0000a4b0 = [&69626e75, &0000006e, &316f5f5f, &70616568]
 00009200 : 91002063 : c .. : ADD     x3, x3, #8
 00009204 : 52801fc2 : ...R : MOVZ    w2, #&fe                  ; #254
-00009208 : b0000001 : .... : ADRP    x1, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009208 : b0000001 : .... : ADRP    x1, &0000a000             ; -> Function: __o1heapGetDiagnostics
 0000920c : 911a2021 : ! .. : ADD     x1, x1, #&688             ; #1672, (long)-> &0000a688 = "heap/o1heap.c"
-00009210 : b0000000 : .... : ADRP    x0, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009210 : b0000000 : .... : ADRP    x0, &0000a000             ; -> Function: __o1heapGetDiagnostics
 00009214 : 911da000 : .... : ADD     x0, x0, #&768             ; #1896, (long)-> &0000a768 = "((size_t) base) % sizeof(O1HeapInstance*) == 0U"
 00009218 : 94000394 : .... : BL      &0000a068                 ; -> Function: __assert_fail
-0000921c : b0000003 : .... : ADRP    x3, &0000A000             ; -> Function: __o1heapGetDiagnostics
+0000921c : b0000003 : .... : ADRP    x3, &0000a000             ; -> Function: __o1heapGetDiagnostics
 00009220 : 9112c063 : c... : ADD     x3, x3, #&4b0             ; #1200, (long)-> &0000a4b0 = [&69626e75, &0000006e, &316f5f5f, &70616568]
 00009224 : 91002063 : c .. : ADD     x3, x3, #8
 00009228 : 52802242 : B".R : MOVZ    w2, #&112                 ; #274
-0000922c : b0000001 : .... : ADRP    x1, &0000A000             ; -> Function: __o1heapGetDiagnostics
+0000922c : b0000001 : .... : ADRP    x1, &0000a000             ; -> Function: __o1heapGetDiagnostics
 00009230 : 911a2021 : ! .. : ADD     x1, x1, #&688             ; #1672, (long)-> &0000a688 = "heap/o1heap.c"
-00009234 : b0000000 : .... : ADRP    x0, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009234 : b0000000 : .... : ADRP    x0, &0000a000             ; -> Function: __o1heapGetDiagnostics
 00009238 : 911e6000 : .`.. : ADD     x0, x0, #&798             ; #1944, (long)-> &0000a798 = "(capacity >= ((sizeof(void*) * 4U) * 2U)) && (capacity <= ((0xffffffffffffffffUL >> 1U) + 1U))"
 0000923c : 9400038b : .... : BL      &0000a068                 ; -> Function: __assert_fail
-00009240 : b0000003 : .... : ADRP    x3, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009240 : b0000003 : .... : ADRP    x3, &0000a000             ; -> Function: __o1heapGetDiagnostics
 00009244 : 9112c063 : c... : ADD     x3, x3, #&4b0             ; #1200, (long)-> &0000a4b0 = [&69626e75, &0000006e, &316f5f5f, &70616568]
 00009248 : 91002063 : c .. : ADD     x3, x3, #8
 0000924c : 528022c2 : .".R : MOVZ    w2, #&116                 ; #278
-00009250 : b0000001 : .... : ADRP    x1, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009250 : b0000001 : .... : ADRP    x1, &0000a000             ; -> Function: __o1heapGetDiagnostics
 00009254 : 911a2021 : ! .. : ADD     x1, x1, #&688             ; #1672, (long)-> &0000a688 = "heap/o1heap.c"
-00009258 : b0000000 : .... : ADRP    x0, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009258 : b0000000 : .... : ADRP    x0, &0000a000             ; -> Function: __o1heapGetDiagnostics
 0000925c : 911fe000 : .... : ADD     x0, x0, #&7f8             ; #2040, (long)-> &0000a7f8 = "(((size_t) frag) % (sizeof(void*) * 4U)) == 0U"
 00009260 : 94000382 : .... : BL      &0000a068                 ; -> Function: __assert_fail
 00009264 : d2800000 : .... : MOVZ    x0, #0
@@ -1181,7 +1181,7 @@
 00009270 : d503201f : . .. : NOP
 00009274 : d503201f : . .. : NOP
 00009278 : 316f5f5f : __o1 : CMN     w26, #&bd7, lsl #12
-0000927c : 70616568 : heap : ADR     x8, &000CBF2B
+0000927c : 70616568 : heap : ADR     x8, &000cbf2b
 00009280 : 6f6c6c41 : Allo : Undefined instruction
 00009284 : 65746163 : cate : Undefined instruction
 00009288 : 00000000 : .... : Undefined instruction
@@ -1333,184 +1333,184 @@
 000094d0 : a94363f7 : .cC. : LDP     x23, x24, [sp, #&30]
 000094d4 : a8c47bfd : .{.. : LDP     x29, x30, [sp], #&40
 000094d8 : d65f03c0 : .._. : RET
-000094dc : b0000003 : .... : ADRP    x3, &0000A000             ; -> Function: __o1heapGetDiagnostics
+000094dc : b0000003 : .... : ADRP    x3, &0000a000             ; -> Function: __o1heapGetDiagnostics
 000094e0 : 9112c063 : c... : ADD     x3, x3, #&4b0             ; #1200, (long)-> &0000a4b0 = [&69626e75, &0000006e, &316f5f5f, &70616568]
 000094e4 : 91006063 : c`.. : ADD     x3, x3, #&18              ; #24
 000094e8 : 528025a2 : .%.R : MOVZ    w2, #&12d                 ; #301
-000094ec : b0000001 : .... : ADRP    x1, &0000A000             ; -> Function: __o1heapGetDiagnostics
+000094ec : b0000001 : .... : ADRP    x1, &0000a000             ; -> Function: __o1heapGetDiagnostics
 000094f0 : 911a2021 : ! .. : ADD     x1, x1, #&688             ; #1672, (long)-> &0000a688 = "heap/o1heap.c"
-000094f4 : b0000000 : .... : ADRP    x0, &0000A000             ; -> Function: __o1heapGetDiagnostics
+000094f4 : b0000000 : .... : ADRP    x0, &0000a000             ; -> Function: __o1heapGetDiagnostics
 000094f8 : 911a6000 : .`.. : ADD     x0, x0, #&698             ; #1688, (long)-> &0000a698 = "handle != ((void *)0)"
 000094fc : 940002db : .... : BL      &0000a068                 ; -> Function: __assert_fail
-00009500 : b0000003 : .... : ADRP    x3, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009500 : b0000003 : .... : ADRP    x3, &0000a000             ; -> Function: __o1heapGetDiagnostics
 00009504 : 9112c063 : c... : ADD     x3, x3, #&4b0             ; #1200, (long)-> &0000a4b0 = [&69626e75, &0000006e, &316f5f5f, &70616568]
 00009508 : 91006063 : c`.. : ADD     x3, x3, #&18              ; #24
 0000950c : 528025c2 : .%.R : MOVZ    w2, #&12e                 ; #302
-00009510 : b0000001 : .... : ADRP    x1, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009510 : b0000001 : .... : ADRP    x1, &0000a000             ; -> Function: __o1heapGetDiagnostics
 00009514 : 911a2021 : ! .. : ADD     x1, x1, #&688             ; #1672, (long)-> &0000a688 = "heap/o1heap.c"
-00009518 : b0000000 : .... : ADRP    x0, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009518 : b0000000 : .... : ADRP    x0, &0000a000             ; -> Function: __o1heapGetDiagnostics
 0000951c : 9120a000 : .. . : ADD     x0, x0, #&828             ; #2088, (long)-> &0000a828 = "handle->diagnostics.capacity <= ((0xffffffffffffffffUL >> 1U) + 1U)"
 00009520 : 940002d2 : .... : BL      &0000a068                 ; -> Function: __assert_fail
-00009524 : b0000003 : .... : ADRP    x3, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009524 : b0000003 : .... : ADRP    x3, &0000a000             ; -> Function: __o1heapGetDiagnostics
 00009528 : 9112c063 : c... : ADD     x3, x3, #&4b0             ; #1200, (long)-> &0000a4b0 = [&69626e75, &0000006e, &316f5f5f, &70616568]
 0000952c : 9100c063 : c... : ADD     x3, x3, #&30              ; #48  = '0'
 00009530 : 52801602 : ...R : MOVZ    w2, #&b0                  ; #176
-00009534 : b0000001 : .... : ADRP    x1, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009534 : b0000001 : .... : ADRP    x1, &0000a000             ; -> Function: __o1heapGetDiagnostics
 00009538 : 911a2021 : ! .. : ADD     x1, x1, #&688             ; #1672, (long)-> &0000a688 = "heap/o1heap.c"
-0000953c : b0000000 : .... : ADRP    x0, &0000A000             ; -> Function: __o1heapGetDiagnostics
+0000953c : b0000000 : .... : ADRP    x0, &0000a000             ; -> Function: __o1heapGetDiagnostics
 00009540 : 9121c000 : ..!. : ADD     x0, x0, #&870             ; #2160, (long)-> &0000a870 = "x >= 2U"
 00009544 : 940002c9 : .... : BL      &0000a068                 ; -> Function: __assert_fail
-00009548 : b0000003 : .... : ADRP    x3, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009548 : b0000003 : .... : ADRP    x3, &0000a000             ; -> Function: __o1heapGetDiagnostics
 0000954c : 9112c063 : c... : ADD     x3, x3, #&4b0             ; #1200, (long)-> &0000a4b0 = [&69626e75, &0000006e, &316f5f5f, &70616568]
 00009550 : 91006063 : c`.. : ADD     x3, x3, #&18              ; #24
 00009554 : 52802742 : B'.R : MOVZ    w2, #&13a                 ; #314
-00009558 : b0000001 : .... : ADRP    x1, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009558 : b0000001 : .... : ADRP    x1, &0000a000             ; -> Function: __o1heapGetDiagnostics
 0000955c : 911a2021 : ! .. : ADD     x1, x1, #&688             ; #1672, (long)-> &0000a688 = "heap/o1heap.c"
-00009560 : b0000000 : .... : ADRP    x0, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009560 : b0000000 : .... : ADRP    x0, &0000a000             ; -> Function: __o1heapGetDiagnostics
 00009564 : 9121e000 : ..!. : ADD     x0, x0, #&878             ; #2168, (long)-> &0000a878 = "fragment_size >= ((sizeof(void*) * 4U) * 2U)"
 00009568 : 940002c0 : .... : BL      &0000a068                 ; -> Function: __assert_fail
-0000956c : b0000003 : .... : ADRP    x3, &0000A000             ; -> Function: __o1heapGetDiagnostics
+0000956c : b0000003 : .... : ADRP    x3, &0000a000             ; -> Function: __o1heapGetDiagnostics
 00009570 : 9112c063 : c... : ADD     x3, x3, #&4b0             ; #1200, (long)-> &0000a4b0 = [&69626e75, &0000006e, &316f5f5f, &70616568]
 00009574 : 91006063 : c`.. : ADD     x3, x3, #&18              ; #24
 00009578 : 52802762 : b'.R : MOVZ    w2, #&13b                 ; #315
-0000957c : b0000001 : .... : ADRP    x1, &0000A000             ; -> Function: __o1heapGetDiagnostics
+0000957c : b0000001 : .... : ADRP    x1, &0000a000             ; -> Function: __o1heapGetDiagnostics
 00009580 : 911a2021 : ! .. : ADD     x1, x1, #&688             ; #1672, (long)-> &0000a688 = "heap/o1heap.c"
-00009584 : b0000000 : .... : ADRP    x0, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009584 : b0000000 : .... : ADRP    x0, &0000a000             ; -> Function: __o1heapGetDiagnostics
 00009588 : 9122a000 : ..". : ADD     x0, x0, #&8a8             ; #2216, (long)-> &0000a8a8 = "fragment_size >= amount + (sizeof(void*) * 4U)"
 0000958c : 940002b7 : .... : BL      &0000a068                 ; -> Function: __assert_fail
-00009590 : b0000003 : .... : ADRP    x3, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009590 : b0000003 : .... : ADRP    x3, &0000a000             ; -> Function: __o1heapGetDiagnostics
 00009594 : 9112c063 : c... : ADD     x3, x3, #&4b0             ; #1200, (long)-> &0000a4b0 = [&69626e75, &0000006e, &316f5f5f, &70616568]
 00009598 : 91006063 : c`.. : ADD     x3, x3, #&18              ; #24
 0000959c : 52802782 : .'.R : MOVZ    w2, #&13c                 ; #316
-000095a0 : b0000001 : .... : ADRP    x1, &0000A000             ; -> Function: __o1heapGetDiagnostics
+000095a0 : b0000001 : .... : ADRP    x1, &0000a000             ; -> Function: __o1heapGetDiagnostics
 000095a4 : 911a2021 : ! .. : ADD     x1, x1, #&688             ; #1672, (long)-> &0000a688 = "heap/o1heap.c"
-000095a8 : b0000000 : .... : ADRP    x0, &0000A000             ; -> Function: __o1heapGetDiagnostics
+000095a8 : b0000000 : .... : ADRP    x0, &0000a000             ; -> Function: __o1heapGetDiagnostics
 000095ac : 91236000 : .`#. : ADD     x0, x0, #&8d8             ; #2264, (long)-> &0000a8d8 = "(fragment_size & (fragment_size - 1U)) == 0U"
 000095b0 : 940002ae : .... : BL      &0000a068                 ; -> Function: __assert_fail
-000095b4 : b0000003 : .... : ADRP    x3, &0000A000             ; -> Function: __o1heapGetDiagnostics
+000095b4 : b0000003 : .... : ADRP    x3, &0000a000             ; -> Function: __o1heapGetDiagnostics
 000095b8 : 9112c063 : c... : ADD     x3, x3, #&4b0             ; #1200, (long)-> &0000a4b0 = [&69626e75, &0000006e, &316f5f5f, &70616568]
 000095bc : 91006063 : c`.. : ADD     x3, x3, #&18              ; #24
 000095c0 : 528028e2 : .(.R : MOVZ    w2, #&147                 ; #327
-000095c4 : b0000001 : .... : ADRP    x1, &0000A000             ; -> Function: __o1heapGetDiagnostics
+000095c4 : b0000001 : .... : ADRP    x1, &0000a000             ; -> Function: __o1heapGetDiagnostics
 000095c8 : 911a2021 : ! .. : ADD     x1, x1, #&688             ; #1672, (long)-> &0000a688 = "heap/o1heap.c"
-000095cc : b0000000 : .... : ADRP    x0, &0000A000             ; -> Function: __o1heapGetDiagnostics
+000095cc : b0000000 : .... : ADRP    x0, &0000a000             ; -> Function: __o1heapGetDiagnostics
 000095d0 : 91242000 : . $. : ADD     x0, x0, #&908             ; #2312, (long)-> &0000a908 = "(smallest_bin_mask & (smallest_bin_mask - 1U)) == 0U"
 000095d4 : 940002a5 : .... : BL      &0000a068                 ; -> Function: __assert_fail
-000095d8 : b0000003 : .... : ADRP    x3, &0000A000             ; -> Function: __o1heapGetDiagnostics
+000095d8 : b0000003 : .... : ADRP    x3, &0000a000             ; -> Function: __o1heapGetDiagnostics
 000095dc : 9112c063 : c... : ADD     x3, x3, #&4b0             ; #1200, (long)-> &0000a4b0 = [&69626e75, &0000006e, &316f5f5f, &70616568]
 000095e0 : 91006063 : c`.. : ADD     x3, x3, #&18              ; #24
 000095e4 : 52802922 : ").R : MOVZ    w2, #&149                 ; #329
-000095e8 : b0000001 : .... : ADRP    x1, &0000A000             ; -> Function: __o1heapGetDiagnostics
+000095e8 : b0000001 : .... : ADRP    x1, &0000a000             ; -> Function: __o1heapGetDiagnostics
 000095ec : 911a2021 : ! .. : ADD     x1, x1, #&688             ; #1672, (long)-> &0000a688 = "heap/o1heap.c"
-000095f0 : b0000000 : .... : ADRP    x0, &0000A000             ; -> Function: __o1heapGetDiagnostics
+000095f0 : b0000000 : .... : ADRP    x0, &0000a000             ; -> Function: __o1heapGetDiagnostics
 000095f4 : 91250000 : ..%. : ADD     x0, x0, #&940             ; #2368, (long)-> &0000a940 = "bin_index >= optimal_bin_index"
 000095f8 : 9400029c : .... : BL      &0000a068                 ; -> Function: __assert_fail
-000095fc : b0000003 : .... : ADRP    x3, &0000A000             ; -> Function: __o1heapGetDiagnostics
+000095fc : b0000003 : .... : ADRP    x3, &0000a000             ; -> Function: __o1heapGetDiagnostics
 00009600 : 9112c063 : c... : ADD     x3, x3, #&4b0             ; #1200, (long)-> &0000a4b0 = [&69626e75, &0000006e, &316f5f5f, &70616568]
 00009604 : 91006063 : c`.. : ADD     x3, x3, #&18              ; #24
 00009608 : 528029c2 : .).R : MOVZ    w2, #&14e                 ; #334
-0000960c : b0000001 : .... : ADRP    x1, &0000A000             ; -> Function: __o1heapGetDiagnostics
+0000960c : b0000001 : .... : ADRP    x1, &0000a000             ; -> Function: __o1heapGetDiagnostics
 00009610 : 911a2021 : ! .. : ADD     x1, x1, #&688             ; #1672, (long)-> &0000a688 = "heap/o1heap.c"
-00009614 : b0000000 : .... : ADRP    x0, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009614 : b0000000 : .... : ADRP    x0, &0000a000             ; -> Function: __o1heapGetDiagnostics
 00009618 : 91258000 : ..%. : ADD     x0, x0, #&960             ; #2400, (long)-> &0000a960 = "frag != ((void *)0)"
 0000961c : 94000293 : .... : BL      &0000a068                 ; -> Function: __assert_fail
-00009620 : b0000003 : .... : ADRP    x3, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009620 : b0000003 : .... : ADRP    x3, &0000a000             ; -> Function: __o1heapGetDiagnostics
 00009624 : 9112c063 : c... : ADD     x3, x3, #&4b0             ; #1200, (long)-> &0000a4b0 = [&69626e75, &0000006e, &316f5f5f, &70616568]
 00009628 : 91006063 : c`.. : ADD     x3, x3, #&18              ; #24
 0000962c : 528029e2 : .).R : MOVZ    w2, #&14f                 ; #335
-00009630 : b0000001 : .... : ADRP    x1, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009630 : b0000001 : .... : ADRP    x1, &0000a000             ; -> Function: __o1heapGetDiagnostics
 00009634 : 911a2021 : ! .. : ADD     x1, x1, #&688             ; #1672, (long)-> &0000a688 = "heap/o1heap.c"
-00009638 : b0000000 : .... : ADRP    x0, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009638 : b0000000 : .... : ADRP    x0, &0000a000             ; -> Function: __o1heapGetDiagnostics
 0000963c : 9125e000 : ..%. : ADD     x0, x0, #&978             ; #2424, (long)-> &0000a978 = "frag->header.size >= fragment_size"
 00009640 : 9400028a : .... : BL      &0000a068                 ; -> Function: __assert_fail
-00009644 : b0000003 : .... : ADRP    x3, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009644 : b0000003 : .... : ADRP    x3, &0000a000             ; -> Function: __o1heapGetDiagnostics
 00009648 : 9112c063 : c... : ADD     x3, x3, #&4b0             ; #1200, (long)-> &0000a4b0 = [&69626e75, &0000006e, &316f5f5f, &70616568]
 0000964c : 91006063 : c`.. : ADD     x3, x3, #&18              ; #24
 00009650 : 52802a02 : .*.R : MOVZ    w2, #&150                 ; #336
-00009654 : b0000001 : .... : ADRP    x1, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009654 : b0000001 : .... : ADRP    x1, &0000a000             ; -> Function: __o1heapGetDiagnostics
 00009658 : 911a2021 : ! .. : ADD     x1, x1, #&688             ; #1672, (long)-> &0000a688 = "heap/o1heap.c"
-0000965c : b0000000 : .... : ADRP    x0, &0000A000             ; -> Function: __o1heapGetDiagnostics
+0000965c : b0000000 : .... : ADRP    x0, &0000a000             ; -> Function: __o1heapGetDiagnostics
 00009660 : 91268000 : ..&. : ADD     x0, x0, #&9a0             ; #2464, (long)-> &0000a9a0 = "(frag->header.size % ((sizeof(void*) * 4U) * 2U)) == 0U"
 00009664 : 94000281 : .... : BL      &0000a068                 ; -> Function: __assert_fail
-00009668 : b0000003 : .... : ADRP    x3, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009668 : b0000003 : .... : ADRP    x3, &0000a000             ; -> Function: __o1heapGetDiagnostics
 0000966c : 9112c063 : c... : ADD     x3, x3, #&4b0             ; #1200, (long)-> &0000a4b0 = [&69626e75, &0000006e, &316f5f5f, &70616568]
 00009670 : 91006063 : c`.. : ADD     x3, x3, #&18              ; #24
 00009674 : 52802a22 : "*.R : MOVZ    w2, #&151                 ; #337
-00009678 : b0000001 : .... : ADRP    x1, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009678 : b0000001 : .... : ADRP    x1, &0000a000             ; -> Function: __o1heapGetDiagnostics
 0000967c : 911a2021 : ! .. : ADD     x1, x1, #&688             ; #1672, (long)-> &0000a688 = "heap/o1heap.c"
-00009680 : b0000000 : .... : ADRP    x0, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009680 : b0000000 : .... : ADRP    x0, &0000a000             ; -> Function: __o1heapGetDiagnostics
 00009684 : 91276000 : .`'. : ADD     x0, x0, #&9d8             ; #2520, (long)-> &0000a9d8 = "!frag->header.used"
 00009688 : 94000278 : x... : BL      &0000a068                 ; -> Function: __assert_fail
-0000968c : b0000003 : .... : ADRP    x3, &0000A000             ; -> Function: __o1heapGetDiagnostics
+0000968c : b0000003 : .... : ADRP    x3, &0000a000             ; -> Function: __o1heapGetDiagnostics
 00009690 : 9112c063 : c... : ADD     x3, x3, #&4b0             ; #1200, (long)-> &0000a4b0 = [&69626e75, &0000006e, &316f5f5f, &70616568]
 00009694 : 91006063 : c`.. : ADD     x3, x3, #&18              ; #24
 00009698 : 52802ae2 : .*.R : MOVZ    w2, #&157                 ; #343
-0000969c : b0000001 : .... : ADRP    x1, &0000A000             ; -> Function: __o1heapGetDiagnostics
+0000969c : b0000001 : .... : ADRP    x1, &0000a000             ; -> Function: __o1heapGetDiagnostics
 000096a0 : 911a2021 : ! .. : ADD     x1, x1, #&688             ; #1672, (long)-> &0000a688 = "heap/o1heap.c"
-000096a4 : b0000000 : .... : ADRP    x0, &0000A000             ; -> Function: __o1heapGetDiagnostics
+000096a4 : b0000000 : .... : ADRP    x0, &0000a000             ; -> Function: __o1heapGetDiagnostics
 000096a8 : 9127c000 : ..'. : ADD     x0, x0, #&9f0             ; #2544, (long)-> &0000a9f0 = "leftover < handle->diagnostics.capacity"
 000096ac : 9400026f : o... : BL      &0000a068                 ; -> Function: __assert_fail
-000096b0 : b0000003 : .... : ADRP    x3, &0000A000             ; -> Function: __o1heapGetDiagnostics
+000096b0 : b0000003 : .... : ADRP    x3, &0000a000             ; -> Function: __o1heapGetDiagnostics
 000096b4 : 9112c063 : c... : ADD     x3, x3, #&4b0             ; #1200, (long)-> &0000a4b0 = [&69626e75, &0000006e, &316f5f5f, &70616568]
 000096b8 : 91006063 : c`.. : ADD     x3, x3, #&18              ; #24
 000096bc : 52802b02 : .+.R : MOVZ    w2, #&158                 ; #344
-000096c0 : b0000001 : .... : ADRP    x1, &0000A000             ; -> Function: __o1heapGetDiagnostics
+000096c0 : b0000001 : .... : ADRP    x1, &0000a000             ; -> Function: __o1heapGetDiagnostics
 000096c4 : 911a2021 : ! .. : ADD     x1, x1, #&688             ; #1672, (long)-> &0000a688 = "heap/o1heap.c"
-000096c8 : b0000000 : .... : ADRP    x0, &0000A000             ; -> Function: __o1heapGetDiagnostics
+000096c8 : b0000000 : .... : ADRP    x0, &0000a000             ; -> Function: __o1heapGetDiagnostics
 000096cc : 91286000 : .`(. : ADD     x0, x0, #&a18             ; #2584, (long)-> &0000aa18 = "leftover % ((sizeof(void*) * 4U) * 2U) == 0U"
 000096d0 : 94000266 : f... : BL      &0000a068                 ; -> Function: __assert_fail
-000096d4 : b0000003 : .... : ADRP    x3, &0000A000             ; -> Function: __o1heapGetDiagnostics
+000096d4 : b0000003 : .... : ADRP    x3, &0000a000             ; -> Function: __o1heapGetDiagnostics
 000096d8 : 9112c063 : c... : ADD     x3, x3, #&4b0             ; #1200, (long)-> &0000a4b0 = [&69626e75, &0000006e, &316f5f5f, &70616568]
 000096dc : 91006063 : c`.. : ADD     x3, x3, #&18              ; #24
 000096e0 : 52802b82 : .+.R : MOVZ    w2, #&15c                 ; #348
-000096e4 : b0000001 : .... : ADRP    x1, &0000A000             ; -> Function: __o1heapGetDiagnostics
+000096e4 : b0000001 : .... : ADRP    x1, &0000a000             ; -> Function: __o1heapGetDiagnostics
 000096e8 : 911a2021 : ! .. : ADD     x1, x1, #&688             ; #1672, (long)-> &0000a688 = "heap/o1heap.c"
-000096ec : b0000000 : .... : ADRP    x0, &0000A000             ; -> Function: __o1heapGetDiagnostics
+000096ec : b0000000 : .... : ADRP    x0, &0000a000             ; -> Function: __o1heapGetDiagnostics
 000096f0 : 91292000 : . ). : ADD     x0, x0, #&a48             ; #2632, (long)-> &0000aa48 = "((size_t) new_frag) % (sizeof(void*) * 4U) == 0U"
 000096f4 : 9400025d : ]... : BL      &0000a068                 ; -> Function: __assert_fail
-000096f8 : b0000003 : .... : ADRP    x3, &0000A000             ; -> Function: __o1heapGetDiagnostics
+000096f8 : b0000003 : .... : ADRP    x3, &0000a000             ; -> Function: __o1heapGetDiagnostics
 000096fc : 9112c063 : c... : ADD     x3, x3, #&4b0             ; #1200, (long)-> &0000a4b0 = [&69626e75, &0000006e, &316f5f5f, &70616568]
 00009700 : 91012063 : c .. : ADD     x3, x3, #&48              ; #72  = 'H'
 00009704 : 528018e2 : ...R : MOVZ    w2, #&c7                  ; #199
-00009708 : b0000001 : .... : ADRP    x1, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009708 : b0000001 : .... : ADRP    x1, &0000a000             ; -> Function: __o1heapGetDiagnostics
 0000970c : 911a2021 : ! .. : ADD     x1, x1, #&688             ; #1672, (long)-> &0000a688 = "heap/o1heap.c"
-00009710 : b0000000 : .... : ADRP    x0, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009710 : b0000000 : .... : ADRP    x0, &0000a000             ; -> Function: __o1heapGetDiagnostics
 00009714 : 911b2000 : . .. : ADD     x0, x0, #&6c8             ; #1736, (long)-> &0000a6c8 = "fragment->header.size >= ((sizeof(void*) * 4U) * 2U)"
 00009718 : 94000254 : T... : BL      &0000a068                 ; -> Function: __assert_fail
-0000971c : b0000003 : .... : ADRP    x3, &0000A000             ; -> Function: __o1heapGetDiagnostics
+0000971c : b0000003 : .... : ADRP    x3, &0000a000             ; -> Function: __o1heapGetDiagnostics
 00009720 : 9112c063 : c... : ADD     x3, x3, #&4b0             ; #1200, (long)-> &0000a4b0 = [&69626e75, &0000006e, &316f5f5f, &70616568]
 00009724 : 91012063 : c .. : ADD     x3, x3, #&48              ; #72  = 'H'
 00009728 : 52801902 : ...R : MOVZ    w2, #&c8                  ; #200
-0000972c : b0000001 : .... : ADRP    x1, &0000A000             ; -> Function: __o1heapGetDiagnostics
+0000972c : b0000001 : .... : ADRP    x1, &0000a000             ; -> Function: __o1heapGetDiagnostics
 00009730 : 911a2021 : ! .. : ADD     x1, x1, #&688             ; #1672, (long)-> &0000a688 = "heap/o1heap.c"
-00009734 : b0000000 : .... : ADRP    x0, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009734 : b0000000 : .... : ADRP    x0, &0000a000             ; -> Function: __o1heapGetDiagnostics
 00009738 : 911c0000 : .... : ADD     x0, x0, #&700             ; #1792, (long)-> &0000a700 = "(fragment->header.size % ((sizeof(void*) * 4U) * 2U)) == 0U"
 0000973c : 9400024b : K... : BL      &0000a068                 ; -> Function: __assert_fail
-00009740 : b0000003 : .... : ADRP    x3, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009740 : b0000003 : .... : ADRP    x3, &0000a000             ; -> Function: __o1heapGetDiagnostics
 00009744 : 9112c063 : c... : ADD     x3, x3, #&4b0             ; #1200, (long)-> &0000a4b0 = [&69626e75, &0000006e, &316f5f5f, &70616568]
 00009748 : 91006063 : c`.. : ADD     x3, x3, #&18              ; #24
 0000974c : 52802ca2 : .,.R : MOVZ    w2, #&165                 ; #357
-00009750 : b0000001 : .... : ADRP    x1, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009750 : b0000001 : .... : ADRP    x1, &0000a000             ; -> Function: __o1heapGetDiagnostics
 00009754 : 911a2021 : ! .. : ADD     x1, x1, #&688             ; #1672, (long)-> &0000a688 = "heap/o1heap.c"
-00009758 : b0000000 : .... : ADRP    x0, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009758 : b0000000 : .... : ADRP    x0, &0000a000             ; -> Function: __o1heapGetDiagnostics
 0000975c : 912a0000 : ..*. : ADD     x0, x0, #&a80             ; #2688, (long)-> &0000aa80 = "(handle->diagnostics.allocated % ((sizeof(void*) * 4U) * 2U)) == 0U"
 00009760 : 94000242 : B... : BL      &0000a068                 ; -> Function: __assert_fail
-00009764 : b0000003 : .... : ADRP    x3, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009764 : b0000003 : .... : ADRP    x3, &0000a000             ; -> Function: __o1heapGetDiagnostics
 00009768 : 9112c063 : c... : ADD     x3, x3, #&4b0             ; #1200, (long)-> &0000a4b0 = [&69626e75, &0000006e, &316f5f5f, &70616568]
 0000976c : 91006063 : c`.. : ADD     x3, x3, #&18              ; #24
 00009770 : 52802ce2 : .,.R : MOVZ    w2, #&167                 ; #359
-00009774 : b0000001 : .... : ADRP    x1, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009774 : b0000001 : .... : ADRP    x1, &0000a000             ; -> Function: __o1heapGetDiagnostics
 00009778 : 911a2021 : ! .. : ADD     x1, x1, #&688             ; #1672, (long)-> &0000a688 = "heap/o1heap.c"
-0000977c : b0000000 : .... : ADRP    x0, &0000A000             ; -> Function: __o1heapGetDiagnostics
+0000977c : b0000000 : .... : ADRP    x0, &0000a000             ; -> Function: __o1heapGetDiagnostics
 00009780 : 912b2000 : . +. : ADD     x0, x0, #&ac8             ; #2760, (long)-> &0000aac8 = "handle->diagnostics.allocated <= handle->diagnostics.capacity"
 00009784 : 94000239 : 9... : BL      &0000a068                 ; -> Function: __assert_fail
-00009788 : b0000003 : .... : ADRP    x3, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009788 : b0000003 : .... : ADRP    x3, &0000a000             ; -> Function: __o1heapGetDiagnostics
 0000978c : 9112c063 : c... : ADD     x3, x3, #&4b0             ; #1200, (long)-> &0000a4b0 = [&69626e75, &0000006e, &316f5f5f, &70616568]
 00009790 : 91006063 : c`.. : ADD     x3, x3, #&18              ; #24
 00009794 : 52802dc2 : .-.R : MOVZ    w2, #&16e                 ; #366
-00009798 : b0000001 : .... : ADRP    x1, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009798 : b0000001 : .... : ADRP    x1, &0000a000             ; -> Function: __o1heapGetDiagnostics
 0000979c : 911a2021 : ! .. : ADD     x1, x1, #&688             ; #1672, (long)-> &0000a688 = "heap/o1heap.c"
-000097a0 : b0000000 : .... : ADRP    x0, &0000A000             ; -> Function: __o1heapGetDiagnostics
+000097a0 : b0000000 : .... : ADRP    x0, &0000a000             ; -> Function: __o1heapGetDiagnostics
 000097a4 : 912c2000 : . ,. : ADD     x0, x0, #&b08             ; #2824, (long)-> &0000ab08 = "frag->header.size >= amount + (sizeof(void*) * 4U)"
 000097a8 : 94000230 : 0... : BL      &0000a068                 ; -> Function: __assert_fail
 000097ac : d2800000 : .... : MOVZ    x0, #0
@@ -1524,7 +1524,7 @@
 000097cc : d503201f : . .. : NOP
 000097d0 : d503201f : . .. : NOP
 000097d4 : 316f5f5f : __o1 : CMN     w26, #&bd7, lsl #12
-000097d8 : 70616568 : heap : ADR     x8, &000CC487
+000097d8 : 70616568 : heap : ADR     x8, &000cc487
 000097dc : 65657246 : Free : Undefined instruction
 000097e0 : 00000000 : .... : Undefined instruction
 000097e4 : ff000010 : .... : Undefined instruction
@@ -1635,168 +1635,168 @@
 00009988 : a90153f3 : .S.. : STP     x19, x20, [sp, #&10]
 0000998c : a9025bf5 : .[.. : STP     x21, x22, [sp, #&20]
 00009990 : f9001bf7 : .... : STR     x23, [sp, #&30]
-00009994 : b0000003 : .... : ADRP    x3, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009994 : b0000003 : .... : ADRP    x3, &0000a000             ; -> Function: __o1heapGetDiagnostics
 00009998 : 9112c063 : c... : ADD     x3, x3, #&4b0             ; #1200, (long)-> &0000a4b0 = [&69626e75, &0000006e, &316f5f5f, &70616568]
 0000999c : 91014063 : c@.. : ADD     x3, x3, #&50              ; #80  = 'P'
 000099a0 : 52803082 : .0.R : MOVZ    w2, #&184                 ; #388
-000099a4 : b0000001 : .... : ADRP    x1, &0000A000             ; -> Function: __o1heapGetDiagnostics
+000099a4 : b0000001 : .... : ADRP    x1, &0000a000             ; -> Function: __o1heapGetDiagnostics
 000099a8 : 911a2021 : ! .. : ADD     x1, x1, #&688             ; #1672, (long)-> &0000a688 = "heap/o1heap.c"
-000099ac : b0000000 : .... : ADRP    x0, &0000A000             ; -> Function: __o1heapGetDiagnostics
+000099ac : b0000000 : .... : ADRP    x0, &0000a000             ; -> Function: __o1heapGetDiagnostics
 000099b0 : 911a6000 : .`.. : ADD     x0, x0, #&698             ; #1688, (long)-> &0000a698 = "handle != ((void *)0)"
 000099b4 : 940001ad : .... : BL      &0000a068                 ; -> Function: __assert_fail
 000099b8 : a9025bf5 : .[.. : STP     x21, x22, [sp, #&20]
 000099bc : f9001bf7 : .... : STR     x23, [sp, #&30]
-000099c0 : b0000003 : .... : ADRP    x3, &0000A000             ; -> Function: __o1heapGetDiagnostics
+000099c0 : b0000003 : .... : ADRP    x3, &0000a000             ; -> Function: __o1heapGetDiagnostics
 000099c4 : 9112c063 : c... : ADD     x3, x3, #&4b0             ; #1200, (long)-> &0000a4b0 = [&69626e75, &0000006e, &316f5f5f, &70616568]
 000099c8 : 91014063 : c@.. : ADD     x3, x3, #&50              ; #80  = 'P'
 000099cc : 528030a2 : .0.R : MOVZ    w2, #&185                 ; #389
-000099d0 : b0000001 : .... : ADRP    x1, &0000A000             ; -> Function: __o1heapGetDiagnostics
+000099d0 : b0000001 : .... : ADRP    x1, &0000a000             ; -> Function: __o1heapGetDiagnostics
 000099d4 : 911a2021 : ! .. : ADD     x1, x1, #&688             ; #1672, (long)-> &0000a688 = "heap/o1heap.c"
-000099d8 : b0000000 : .... : ADRP    x0, &0000A000             ; -> Function: __o1heapGetDiagnostics
+000099d8 : b0000000 : .... : ADRP    x0, &0000a000             ; -> Function: __o1heapGetDiagnostics
 000099dc : 9120a000 : .. . : ADD     x0, x0, #&828             ; #2088, (long)-> &0000a828 = "handle->diagnostics.capacity <= ((0xffffffffffffffffUL >> 1U) + 1U)"
 000099e0 : 940001a2 : .... : BL      &0000a068                 ; -> Function: __assert_fail
-000099e4 : b0000003 : .... : ADRP    x3, &0000A000             ; -> Function: __o1heapGetDiagnostics
+000099e4 : b0000003 : .... : ADRP    x3, &0000a000             ; -> Function: __o1heapGetDiagnostics
 000099e8 : 9112c063 : c... : ADD     x3, x3, #&4b0             ; #1200, (long)-> &0000a4b0 = [&69626e75, &0000006e, &316f5f5f, &70616568]
 000099ec : 91014063 : c@.. : ADD     x3, x3, #&50              ; #80  = 'P'
 000099f0 : 52803162 : b1.R : MOVZ    w2, #&18b                 ; #395
-000099f4 : b0000001 : .... : ADRP    x1, &0000A000             ; -> Function: __o1heapGetDiagnostics
+000099f4 : b0000001 : .... : ADRP    x1, &0000a000             ; -> Function: __o1heapGetDiagnostics
 000099f8 : 911a2021 : ! .. : ADD     x1, x1, #&688             ; #1672, (long)-> &0000a688 = "heap/o1heap.c"
-000099fc : b0000000 : .... : ADRP    x0, &0000A000             ; -> Function: __o1heapGetDiagnostics
+000099fc : b0000000 : .... : ADRP    x0, &0000a000             ; -> Function: __o1heapGetDiagnostics
 00009a00 : 912d0000 : ..-. : ADD     x0, x0, #&b40             ; #2880, (long)-> &0000ab40 = "((size_t) frag) % sizeof(Fragment*) == 0U"
 00009a04 : 94000199 : .... : BL      &0000a068                 ; -> Function: __assert_fail
-00009a08 : b0000003 : .... : ADRP    x3, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009a08 : b0000003 : .... : ADRP    x3, &0000a000             ; -> Function: __o1heapGetDiagnostics
 00009a0c : 9112c063 : c... : ADD     x3, x3, #&4b0             ; #1200, (long)-> &0000a4b0 = [&69626e75, &0000006e, &316f5f5f, &70616568]
 00009a10 : 91014063 : c@.. : ADD     x3, x3, #&50              ; #80  = 'P'
 00009a14 : 52803182 : .1.R : MOVZ    w2, #&18c                 ; #396
-00009a18 : b0000001 : .... : ADRP    x1, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009a18 : b0000001 : .... : ADRP    x1, &0000a000             ; -> Function: __o1heapGetDiagnostics
 00009a1c : 911a2021 : ! .. : ADD     x1, x1, #&688             ; #1672, (long)-> &0000a688 = "heap/o1heap.c"
-00009a20 : b0000000 : .... : ADRP    x0, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009a20 : b0000000 : .... : ADRP    x0, &0000a000             ; -> Function: __o1heapGetDiagnostics
 00009a24 : 912dc000 : ..-. : ADD     x0, x0, #&b70             ; #2928, (long)-> &0000ab70 = "((size_t) frag) >= (((size_t) handle) + ((sizeof(O1HeapInstance) + (sizeof(void*) * 4U) - 1U) & ~((sizeof(void*) * 4U) - 1U)))"
 00009a28 : 94000190 : .... : BL      &0000a068                 ; -> Function: __assert_fail
-00009a2c : b0000003 : .... : ADRP    x3, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009a2c : b0000003 : .... : ADRP    x3, &0000a000             ; -> Function: __o1heapGetDiagnostics
 00009a30 : 9112c063 : c... : ADD     x3, x3, #&4b0             ; #1200, (long)-> &0000a4b0 = [&69626e75, &0000006e, &316f5f5f, &70616568]
 00009a34 : 91014063 : c@.. : ADD     x3, x3, #&50              ; #80  = 'P'
 00009a38 : 528031a2 : .1.R : MOVZ    w2, #&18d                 ; #397
-00009a3c : b0000001 : .... : ADRP    x1, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009a3c : b0000001 : .... : ADRP    x1, &0000a000             ; -> Function: __o1heapGetDiagnostics
 00009a40 : 911a2021 : ! .. : ADD     x1, x1, #&688             ; #1672, (long)-> &0000a688 = "heap/o1heap.c"
-00009a44 : b0000000 : .... : ADRP    x0, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009a44 : b0000000 : .... : ADRP    x0, &0000a000             ; -> Function: __o1heapGetDiagnostics
 00009a48 : 912fc000 : ../. : ADD     x0, x0, #&bf0             ; #3056, (long)-> &0000abf0 = "((size_t) frag) <= (((size_t) handle) + ((sizeof(O1HeapInstance) + (sizeof(void*) * 4U) - 1U) & ~((sizeof(void*) * 4U) - 1U)) + handle->diagnostics.capacity - ((sizeof(void*) * 4U) * 2U))"
 00009a4c : 94000187 : .... : BL      &0000a068                 ; -> Function: __assert_fail
-00009a50 : b0000003 : .... : ADRP    x3, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009a50 : b0000003 : .... : ADRP    x3, &0000a000             ; -> Function: __o1heapGetDiagnostics
 00009a54 : 9112c063 : c... : ADD     x3, x3, #&4b0             ; #1200, (long)-> &0000a4b0 = [&69626e75, &0000006e, &316f5f5f, &70616568]
 00009a58 : 91014063 : c@.. : ADD     x3, x3, #&50              ; #80  = 'P'
 00009a5c : 528031e2 : .1.R : MOVZ    w2, #&18f                 ; #399
-00009a60 : b0000001 : .... : ADRP    x1, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009a60 : b0000001 : .... : ADRP    x1, &0000a000             ; -> Function: __o1heapGetDiagnostics
 00009a64 : 911a2021 : ! .. : ADD     x1, x1, #&688             ; #1672, (long)-> &0000a688 = "heap/o1heap.c"
-00009a68 : b0000000 : .... : ADRP    x0, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009a68 : b0000000 : .... : ADRP    x0, &0000a000             ; -> Function: __o1heapGetDiagnostics
 00009a6c : 9132c000 : ..2. : ADD     x0, x0, #&cb0             ; #3248, (long)-> &0000acb0 = "frag->header.used"
 00009a70 : 9400017e : ~... : BL      &0000a068                 ; -> Function: __assert_fail
-00009a74 : b0000003 : .... : ADRP    x3, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009a74 : b0000003 : .... : ADRP    x3, &0000a000             ; -> Function: __o1heapGetDiagnostics
 00009a78 : 9112c063 : c... : ADD     x3, x3, #&4b0             ; #1200, (long)-> &0000a4b0 = [&69626e75, &0000006e, &316f5f5f, &70616568]
 00009a7c : 91014063 : c@.. : ADD     x3, x3, #&50              ; #80  = 'P'
 00009a80 : 52803202 : .2.R : MOVZ    w2, #&190                 ; #400
-00009a84 : b0000001 : .... : ADRP    x1, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009a84 : b0000001 : .... : ADRP    x1, &0000a000             ; -> Function: __o1heapGetDiagnostics
 00009a88 : 911a2021 : ! .. : ADD     x1, x1, #&688             ; #1672, (long)-> &0000a688 = "heap/o1heap.c"
-00009a8c : b0000000 : .... : ADRP    x0, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009a8c : b0000000 : .... : ADRP    x0, &0000a000             ; -> Function: __o1heapGetDiagnostics
 00009a90 : 91332000 : . 3. : ADD     x0, x0, #&cc8             ; #3272, (long)-> &0000acc8 = "((size_t) frag->header.next) % sizeof(Fragment*) == 0U"
 00009a94 : 94000175 : u... : BL      &0000a068                 ; -> Function: __assert_fail
-00009a98 : b0000003 : .... : ADRP    x3, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009a98 : b0000003 : .... : ADRP    x3, &0000a000             ; -> Function: __o1heapGetDiagnostics
 00009a9c : 9112c063 : c... : ADD     x3, x3, #&4b0             ; #1200, (long)-> &0000a4b0 = [&69626e75, &0000006e, &316f5f5f, &70616568]
 00009aa0 : 91014063 : c@.. : ADD     x3, x3, #&50              ; #80  = 'P'
 00009aa4 : 52803222 : "2.R : MOVZ    w2, #&191                 ; #401
-00009aa8 : b0000001 : .... : ADRP    x1, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009aa8 : b0000001 : .... : ADRP    x1, &0000a000             ; -> Function: __o1heapGetDiagnostics
 00009aac : 911a2021 : ! .. : ADD     x1, x1, #&688             ; #1672, (long)-> &0000a688 = "heap/o1heap.c"
-00009ab0 : b0000000 : .... : ADRP    x0, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009ab0 : b0000000 : .... : ADRP    x0, &0000a000             ; -> Function: __o1heapGetDiagnostics
 00009ab4 : 91340000 : ..4. : ADD     x0, x0, #&d00             ; #3328, (long)-> &0000ad00 = "((size_t) frag->header.prev) % sizeof(Fragment*) == 0U"
 00009ab8 : 9400016c : l... : BL      &0000a068                 ; -> Function: __assert_fail
-00009abc : b0000003 : .... : ADRP    x3, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009abc : b0000003 : .... : ADRP    x3, &0000a000             ; -> Function: __o1heapGetDiagnostics
 00009ac0 : 9112c063 : c... : ADD     x3, x3, #&4b0             ; #1200, (long)-> &0000a4b0 = [&69626e75, &0000006e, &316f5f5f, &70616568]
 00009ac4 : 91014063 : c@.. : ADD     x3, x3, #&50              ; #80  = 'P'
 00009ac8 : 52803242 : B2.R : MOVZ    w2, #&192                 ; #402
-00009acc : b0000001 : .... : ADRP    x1, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009acc : b0000001 : .... : ADRP    x1, &0000a000             ; -> Function: __o1heapGetDiagnostics
 00009ad0 : 911a2021 : ! .. : ADD     x1, x1, #&688             ; #1672, (long)-> &0000a688 = "heap/o1heap.c"
-00009ad4 : b0000000 : .... : ADRP    x0, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009ad4 : b0000000 : .... : ADRP    x0, &0000a000             ; -> Function: __o1heapGetDiagnostics
 00009ad8 : 9134e000 : ..4. : ADD     x0, x0, #&d38             ; #3384, (long)-> &0000ad38 = "frag->header.size >= ((sizeof(void*) * 4U) * 2U)"
 00009adc : 94000163 : c... : BL      &0000a068                 ; -> Function: __assert_fail
-00009ae0 : b0000003 : .... : ADRP    x3, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009ae0 : b0000003 : .... : ADRP    x3, &0000a000             ; -> Function: __o1heapGetDiagnostics
 00009ae4 : 9112c063 : c... : ADD     x3, x3, #&4b0             ; #1200, (long)-> &0000a4b0 = [&69626e75, &0000006e, &316f5f5f, &70616568]
 00009ae8 : 91014063 : c@.. : ADD     x3, x3, #&50              ; #80  = 'P'
 00009aec : 52803262 : b2.R : MOVZ    w2, #&193                 ; #403
-00009af0 : b0000001 : .... : ADRP    x1, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009af0 : b0000001 : .... : ADRP    x1, &0000a000             ; -> Function: __o1heapGetDiagnostics
 00009af4 : 911a2021 : ! .. : ADD     x1, x1, #&688             ; #1672, (long)-> &0000a688 = "heap/o1heap.c"
-00009af8 : b0000000 : .... : ADRP    x0, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009af8 : b0000000 : .... : ADRP    x0, &0000a000             ; -> Function: __o1heapGetDiagnostics
 00009afc : 9135c000 : ..5. : ADD     x0, x0, #&d70             ; #3440, (long)-> &0000ad70 = "frag->header.size <= handle->diagnostics.capacity"
 00009b00 : 9400015a : Z... : BL      &0000a068                 ; -> Function: __assert_fail
-00009b04 : b0000003 : .... : ADRP    x3, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009b04 : b0000003 : .... : ADRP    x3, &0000a000             ; -> Function: __o1heapGetDiagnostics
 00009b08 : 9112c063 : c... : ADD     x3, x3, #&4b0             ; #1200, (long)-> &0000a4b0 = [&69626e75, &0000006e, &316f5f5f, &70616568]
 00009b0c : 91014063 : c@.. : ADD     x3, x3, #&50              ; #80  = 'P'
 00009b10 : 52803282 : .2.R : MOVZ    w2, #&194                 ; #404
-00009b14 : b0000001 : .... : ADRP    x1, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009b14 : b0000001 : .... : ADRP    x1, &0000a000             ; -> Function: __o1heapGetDiagnostics
 00009b18 : 911a2021 : ! .. : ADD     x1, x1, #&688             ; #1672, (long)-> &0000a688 = "heap/o1heap.c"
-00009b1c : b0000000 : .... : ADRP    x0, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009b1c : b0000000 : .... : ADRP    x0, &0000a000             ; -> Function: __o1heapGetDiagnostics
 00009b20 : 91268000 : ..&. : ADD     x0, x0, #&9a0             ; #2464, (long)-> &0000a9a0 = "(frag->header.size % ((sizeof(void*) * 4U) * 2U)) == 0U"
 00009b24 : 94000151 : Q... : BL      &0000a068                 ; -> Function: __assert_fail
-00009b28 : b0000003 : .... : ADRP    x3, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009b28 : b0000003 : .... : ADRP    x3, &0000a000             ; -> Function: __o1heapGetDiagnostics
 00009b2c : 9112c063 : c... : ADD     x3, x3, #&4b0             ; #1200, (long)-> &0000a4b0 = [&69626e75, &0000006e, &316f5f5f, &70616568]
 00009b30 : 91014063 : c@.. : ADD     x3, x3, #&50              ; #80  = 'P'
 00009b34 : 52803342 : B3.R : MOVZ    w2, #&19a                 ; #410
-00009b38 : b0000001 : .... : ADRP    x1, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009b38 : b0000001 : .... : ADRP    x1, &0000a000             ; -> Function: __o1heapGetDiagnostics
 00009b3c : 911a2021 : ! .. : ADD     x1, x1, #&688             ; #1672, (long)-> &0000a688 = "heap/o1heap.c"
-00009b40 : b0000000 : .... : ADRP    x0, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009b40 : b0000000 : .... : ADRP    x0, &0000a000             ; -> Function: __o1heapGetDiagnostics
 00009b44 : 9136a000 : ..6. : ADD     x0, x0, #&da8             ; #3496, (long)-> &0000ada8 = "handle->diagnostics.allocated >= frag->header.size"
 00009b48 : 94000148 : H... : BL      &0000a068                 ; -> Function: __assert_fail
-00009b4c : b0000003 : .... : ADRP    x3, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009b4c : b0000003 : .... : ADRP    x3, &0000a000             ; -> Function: __o1heapGetDiagnostics
 00009b50 : 9112c063 : c... : ADD     x3, x3, #&4b0             ; #1200, (long)-> &0000a4b0 = [&69626e75, &0000006e, &316f5f5f, &70616568]
 00009b54 : 91014063 : c@.. : ADD     x3, x3, #&50              ; #80  = 'P'
 00009b58 : 52803522 : "5.R : MOVZ    w2, #&1a9                 ; #425
-00009b5c : b0000001 : .... : ADRP    x1, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009b5c : b0000001 : .... : ADRP    x1, &0000a000             ; -> Function: __o1heapGetDiagnostics
 00009b60 : 911a2021 : ! .. : ADD     x1, x1, #&688             ; #1672, (long)-> &0000a688 = "heap/o1heap.c"
-00009b64 : b0000000 : .... : ADRP    x0, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009b64 : b0000000 : .... : ADRP    x0, &0000a000             ; -> Function: __o1heapGetDiagnostics
 00009b68 : 91378000 : ..7. : ADD     x0, x0, #&de0             ; #3552, (long)-> &0000ade0 = "(prev->header.size % ((sizeof(void*) * 4U) * 2U)) == 0U"
 00009b6c : 9400013f : ?... : BL      &0000a068                 ; -> Function: __assert_fail
-00009b70 : b0000003 : .... : ADRP    x3, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009b70 : b0000003 : .... : ADRP    x3, &0000a000             ; -> Function: __o1heapGetDiagnostics
 00009b74 : 9112c063 : c... : ADD     x3, x3, #&4b0             ; #1200, (long)-> &0000a4b0 = [&69626e75, &0000006e, &316f5f5f, &70616568]
 00009b78 : 91012063 : c .. : ADD     x3, x3, #&48              ; #72  = 'H'
 00009b7c : 52801902 : ...R : MOVZ    w2, #&c8                  ; #200
-00009b80 : b0000001 : .... : ADRP    x1, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009b80 : b0000001 : .... : ADRP    x1, &0000a000             ; -> Function: __o1heapGetDiagnostics
 00009b84 : 911a2021 : ! .. : ADD     x1, x1, #&688             ; #1672, (long)-> &0000a688 = "heap/o1heap.c"
-00009b88 : b0000000 : .... : ADRP    x0, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009b88 : b0000000 : .... : ADRP    x0, &0000a000             ; -> Function: __o1heapGetDiagnostics
 00009b8c : 911c0000 : .... : ADD     x0, x0, #&700             ; #1792, (long)-> &0000a700 = "(fragment->header.size % ((sizeof(void*) * 4U) * 2U)) == 0U"
 00009b90 : 94000136 : 6... : BL      &0000a068                 ; -> Function: __assert_fail
-00009b94 : b0000003 : .... : ADRP    x3, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009b94 : b0000003 : .... : ADRP    x3, &0000a000             ; -> Function: __o1heapGetDiagnostics
 00009b98 : 9112c063 : c... : ADD     x3, x3, #&4b0             ; #1200, (long)-> &0000a4b0 = [&69626e75, &0000006e, &316f5f5f, &70616568]
 00009b9c : 91014063 : c@.. : ADD     x3, x3, #&50              ; #80  = 'P'
 00009ba0 : 52803642 : B6.R : MOVZ    w2, #&1b2                 ; #434
-00009ba4 : b0000001 : .... : ADRP    x1, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009ba4 : b0000001 : .... : ADRP    x1, &0000a000             ; -> Function: __o1heapGetDiagnostics
 00009ba8 : 911a2021 : ! .. : ADD     x1, x1, #&688             ; #1672, (long)-> &0000a688 = "heap/o1heap.c"
-00009bac : b0000000 : .... : ADRP    x0, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009bac : b0000000 : .... : ADRP    x0, &0000a000             ; -> Function: __o1heapGetDiagnostics
 00009bb0 : 91378000 : ..7. : ADD     x0, x0, #&de0             ; #3552, (long)-> &0000ade0 = "(prev->header.size % ((sizeof(void*) * 4U) * 2U)) == 0U"
 00009bb4 : 9400012d : -... : BL      &0000a068                 ; -> Function: __assert_fail
-00009bb8 : b0000003 : .... : ADRP    x3, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009bb8 : b0000003 : .... : ADRP    x3, &0000a000             ; -> Function: __o1heapGetDiagnostics
 00009bbc : 9112c063 : c... : ADD     x3, x3, #&4b0             ; #1200, (long)-> &0000a4b0 = [&69626e75, &0000006e, &316f5f5f, &70616568]
 00009bc0 : 91012063 : c .. : ADD     x3, x3, #&48              ; #72  = 'H'
 00009bc4 : 52801902 : ...R : MOVZ    w2, #&c8                  ; #200
-00009bc8 : b0000001 : .... : ADRP    x1, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009bc8 : b0000001 : .... : ADRP    x1, &0000a000             ; -> Function: __o1heapGetDiagnostics
 00009bcc : 911a2021 : ! .. : ADD     x1, x1, #&688             ; #1672, (long)-> &0000a688 = "heap/o1heap.c"
-00009bd0 : b0000000 : .... : ADRP    x0, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009bd0 : b0000000 : .... : ADRP    x0, &0000a000             ; -> Function: __o1heapGetDiagnostics
 00009bd4 : 911c0000 : .... : ADD     x0, x0, #&700             ; #1792, (long)-> &0000a700 = "(fragment->header.size % ((sizeof(void*) * 4U) * 2U)) == 0U"
 00009bd8 : 94000124 : $... : BL      &0000a068                 ; -> Function: __assert_fail
-00009bdc : b0000003 : .... : ADRP    x3, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009bdc : b0000003 : .... : ADRP    x3, &0000a000             ; -> Function: __o1heapGetDiagnostics
 00009be0 : 9112c063 : c... : ADD     x3, x3, #&4b0             ; #1200, (long)-> &0000a4b0 = [&69626e75, &0000006e, &316f5f5f, &70616568]
 00009be4 : 91014063 : c@.. : ADD     x3, x3, #&50              ; #80  = 'P'
 00009be8 : 52803762 : b7.R : MOVZ    w2, #&1bb                 ; #443
-00009bec : b0000001 : .... : ADRP    x1, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009bec : b0000001 : .... : ADRP    x1, &0000a000             ; -> Function: __o1heapGetDiagnostics
 00009bf0 : 911a2021 : ! .. : ADD     x1, x1, #&688             ; #1672, (long)-> &0000a688 = "heap/o1heap.c"
-00009bf4 : b0000000 : .... : ADRP    x0, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009bf4 : b0000000 : .... : ADRP    x0, &0000a000             ; -> Function: __o1heapGetDiagnostics
 00009bf8 : 91268000 : ..&. : ADD     x0, x0, #&9a0             ; #2464, (long)-> &0000a9a0 = "(frag->header.size % ((sizeof(void*) * 4U) * 2U)) == 0U"
 00009bfc : 9400011b : .... : BL      &0000a068                 ; -> Function: __assert_fail
-00009c00 : b0000003 : .... : ADRP    x3, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009c00 : b0000003 : .... : ADRP    x3, &0000a000             ; -> Function: __o1heapGetDiagnostics
 00009c04 : 9112c063 : c... : ADD     x3, x3, #&4b0             ; #1200, (long)-> &0000a4b0 = [&69626e75, &0000006e, &316f5f5f, &70616568]
 00009c08 : 91012063 : c .. : ADD     x3, x3, #&48              ; #72  = 'H'
 00009c0c : 52801902 : ...R : MOVZ    w2, #&c8                  ; #200
-00009c10 : b0000001 : .... : ADRP    x1, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009c10 : b0000001 : .... : ADRP    x1, &0000a000             ; -> Function: __o1heapGetDiagnostics
 00009c14 : 911a2021 : ! .. : ADD     x1, x1, #&688             ; #1672, (long)-> &0000a688 = "heap/o1heap.c"
-00009c18 : b0000000 : .... : ADRP    x0, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009c18 : b0000000 : .... : ADRP    x0, &0000a000             ; -> Function: __o1heapGetDiagnostics
 00009c1c : 911c0000 : .... : ADD     x0, x0, #&700             ; #1792, (long)-> &0000a700 = "(fragment->header.size % ((sizeof(void*) * 4U) * 2U)) == 0U"
 00009c20 : 94000112 : .... : BL      &0000a068                 ; -> Function: __assert_fail
 00009c24 : f85f0260 : `._. : LDUR    x0, [x19, #-&10]
@@ -1825,58 +1825,58 @@
 00009c80 : a9425bf5 : .[B. : LDP     x21, x22, [sp, #&20]
 00009c84 : f9401bf7 : ..@. : LDR     x23, [sp, #&30]
 00009c88 : 17ffff3d : =... : B       &0000997c
-00009c8c : b0000003 : .... : ADRP    x3, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009c8c : b0000003 : .... : ADRP    x3, &0000a000             ; -> Function: __o1heapGetDiagnostics
 00009c90 : 9112c063 : c... : ADD     x3, x3, #&4b0             ; #1200, (long)-> &0000a4b0 = [&69626e75, &0000006e, &316f5f5f, &70616568]
 00009c94 : 91012063 : c .. : ADD     x3, x3, #&48              ; #72  = 'H'
 00009c98 : 528018e2 : ...R : MOVZ    w2, #&c7                  ; #199
-00009c9c : b0000001 : .... : ADRP    x1, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009c9c : b0000001 : .... : ADRP    x1, &0000a000             ; -> Function: __o1heapGetDiagnostics
 00009ca0 : 911a2021 : ! .. : ADD     x1, x1, #&688             ; #1672, (long)-> &0000a688 = "heap/o1heap.c"
-00009ca4 : b0000000 : .... : ADRP    x0, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009ca4 : b0000000 : .... : ADRP    x0, &0000a000             ; -> Function: __o1heapGetDiagnostics
 00009ca8 : 911b2000 : . .. : ADD     x0, x0, #&6c8             ; #1736, (long)-> &0000a6c8 = "fragment->header.size >= ((sizeof(void*) * 4U) * 2U)"
 00009cac : 940000ef : .... : BL      &0000a068                 ; -> Function: __assert_fail
-00009cb0 : b0000003 : .... : ADRP    x3, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009cb0 : b0000003 : .... : ADRP    x3, &0000a000             ; -> Function: __o1heapGetDiagnostics
 00009cb4 : 9112c063 : c... : ADD     x3, x3, #&4b0             ; #1200, (long)-> &0000a4b0 = [&69626e75, &0000006e, &316f5f5f, &70616568]
 00009cb8 : 91012063 : c .. : ADD     x3, x3, #&48              ; #72  = 'H'
 00009cbc : 52801902 : ...R : MOVZ    w2, #&c8                  ; #200
-00009cc0 : b0000001 : .... : ADRP    x1, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009cc0 : b0000001 : .... : ADRP    x1, &0000a000             ; -> Function: __o1heapGetDiagnostics
 00009cc4 : 911a2021 : ! .. : ADD     x1, x1, #&688             ; #1672, (long)-> &0000a688 = "heap/o1heap.c"
-00009cc8 : b0000000 : .... : ADRP    x0, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009cc8 : b0000000 : .... : ADRP    x0, &0000a000             ; -> Function: __o1heapGetDiagnostics
 00009ccc : 911c0000 : .... : ADD     x0, x0, #&700             ; #1792, (long)-> &0000a700 = "(fragment->header.size % ((sizeof(void*) * 4U) * 2U)) == 0U"
 00009cd0 : 940000e6 : .... : BL      &0000a068                 ; -> Function: __assert_fail
 00009cd4 : f9400aa0 : ..@. : LDR     x0, [x21, #&10]
 00009cd8 : f100fc1f : .... : CMP     x0, #&3f                  ; #63  = '?'
 00009cdc : 54ffe288 : ...T : B.HI    &0000992c
-00009ce0 : b0000003 : .... : ADRP    x3, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009ce0 : b0000003 : .... : ADRP    x3, &0000a000             ; -> Function: __o1heapGetDiagnostics
 00009ce4 : 9112c063 : c... : ADD     x3, x3, #&4b0             ; #1200, (long)-> &0000a4b0 = [&69626e75, &0000006e, &316f5f5f, &70616568]
 00009ce8 : 91012063 : c .. : ADD     x3, x3, #&48              ; #72  = 'H'
 00009cec : 528018e2 : ...R : MOVZ    w2, #&c7                  ; #199
-00009cf0 : b0000001 : .... : ADRP    x1, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009cf0 : b0000001 : .... : ADRP    x1, &0000a000             ; -> Function: __o1heapGetDiagnostics
 00009cf4 : 911a2021 : ! .. : ADD     x1, x1, #&688             ; #1672, (long)-> &0000a688 = "heap/o1heap.c"
-00009cf8 : b0000000 : .... : ADRP    x0, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009cf8 : b0000000 : .... : ADRP    x0, &0000a000             ; -> Function: __o1heapGetDiagnostics
 00009cfc : 911b2000 : . .. : ADD     x0, x0, #&6c8             ; #1736, (long)-> &0000a6c8 = "fragment->header.size >= ((sizeof(void*) * 4U) * 2U)"
 00009d00 : 940000da : .... : BL      &0000a068                 ; -> Function: __assert_fail
 00009d04 : f9400aa0 : ..@. : LDR     x0, [x21, #&10]
 00009d08 : f100fc1f : .... : CMP     x0, #&3f                  ; #63  = '?'
 00009d0c : 54000a88 : ...T : B.HI    &00009e5c
-00009d10 : b0000003 : .... : ADRP    x3, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009d10 : b0000003 : .... : ADRP    x3, &0000a000             ; -> Function: __o1heapGetDiagnostics
 00009d14 : 9112c063 : c... : ADD     x3, x3, #&4b0             ; #1200, (long)-> &0000a4b0 = [&69626e75, &0000006e, &316f5f5f, &70616568]
 00009d18 : 91012063 : c .. : ADD     x3, x3, #&48              ; #72  = 'H'
 00009d1c : 528018e2 : ...R : MOVZ    w2, #&c7                  ; #199
-00009d20 : b0000001 : .... : ADRP    x1, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009d20 : b0000001 : .... : ADRP    x1, &0000a000             ; -> Function: __o1heapGetDiagnostics
 00009d24 : 911a2021 : ! .. : ADD     x1, x1, #&688             ; #1672, (long)-> &0000a688 = "heap/o1heap.c"
-00009d28 : b0000000 : .... : ADRP    x0, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009d28 : b0000000 : .... : ADRP    x0, &0000a000             ; -> Function: __o1heapGetDiagnostics
 00009d2c : 911b2000 : . .. : ADD     x0, x0, #&6c8             ; #1736, (long)-> &0000a6c8 = "fragment->header.size >= ((sizeof(void*) * 4U) * 2U)"
 00009d30 : 940000ce : .... : BL      &0000a068                 ; -> Function: __assert_fail
 00009d34 : f85f0260 : `._. : LDUR    x0, [x19, #-&10]
 00009d38 : f100fc1f : .... : CMP     x0, #&3f                  ; #63  = '?'
 00009d3c : 540003c8 : ...T : B.HI    &00009db4
-00009d40 : b0000003 : .... : ADRP    x3, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009d40 : b0000003 : .... : ADRP    x3, &0000a000             ; -> Function: __o1heapGetDiagnostics
 00009d44 : 9112c063 : c... : ADD     x3, x3, #&4b0             ; #1200, (long)-> &0000a4b0 = [&69626e75, &0000006e, &316f5f5f, &70616568]
 00009d48 : 91012063 : c .. : ADD     x3, x3, #&48              ; #72  = 'H'
 00009d4c : 528018e2 : ...R : MOVZ    w2, #&c7                  ; #199
-00009d50 : b0000001 : .... : ADRP    x1, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009d50 : b0000001 : .... : ADRP    x1, &0000a000             ; -> Function: __o1heapGetDiagnostics
 00009d54 : 911a2021 : ! .. : ADD     x1, x1, #&688             ; #1672, (long)-> &0000a688 = "heap/o1heap.c"
-00009d58 : b0000000 : .... : ADRP    x0, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009d58 : b0000000 : .... : ADRP    x0, &0000a000             ; -> Function: __o1heapGetDiagnostics
 00009d5c : 911b2000 : . .. : ADD     x0, x0, #&6c8             ; #1736, (long)-> &0000a6c8 = "fragment->header.size >= ((sizeof(void*) * 4U) * 2U)"
 00009d60 : 940000c2 : .... : BL      &0000a068                 ; -> Function: __assert_fail
 00009d64 : aa1603e1 : .... : MOV     x1, x22
@@ -1963,7 +1963,7 @@
 00009ea8 : f9401bf7 : ..@. : LDR     x23, [sp, #&30]
 00009eac : 17fffeb4 : .... : B       &0000997c
 00009eb0 : 316f5f5f : __o1 : CMN     w26, #&bd7, lsl #12
-00009eb4 : 70616568 : heap : ADR     x8, &000CCB63
+00009eb4 : 70616568 : heap : ADR     x8, &000ccb63
 00009eb8 : 6e496f44 : DoIn : Undefined instruction
 00009ebc : 69726176 : vari : LDPSW   x22, x24, [x11, #-&70]
 00009ec0 : 73746e61 : ants : Undefined instruction
@@ -2007,13 +2007,13 @@
 00009f58 : d65f03c0 : .._. : RET
 00009f5c : a9bf7bfd : .{.. : STP     x29, x30, [sp, #-&10]!
 00009f60 : 910003fd : .... : MOV     x29, sp
-00009f64 : b0000003 : .... : ADRP    x3, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009f64 : b0000003 : .... : ADRP    x3, &0000a000             ; -> Function: __o1heapGetDiagnostics
 00009f68 : 9112c063 : c... : ADD     x3, x3, #&4b0             ; #1200, (long)-> &0000a4b0 = [&69626e75, &0000006e, &316f5f5f, &70616568]
 00009f6c : 91018063 : c... : ADD     x3, x3, #&60              ; #96  = '`'
 00009f70 : 52803902 : .9.R : MOVZ    w2, #&1c8                 ; #456
-00009f74 : b0000001 : .... : ADRP    x1, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009f74 : b0000001 : .... : ADRP    x1, &0000a000             ; -> Function: __o1heapGetDiagnostics
 00009f78 : 911a2021 : ! .. : ADD     x1, x1, #&688             ; #1672, (long)-> &0000a688 = "heap/o1heap.c"
-00009f7c : b0000000 : .... : ADRP    x0, &0000A000             ; -> Function: __o1heapGetDiagnostics
+00009f7c : b0000000 : .... : ADRP    x0, &0000a000             ; -> Function: __o1heapGetDiagnostics
 00009f80 : 911a6000 : .`.. : ADD     x0, x0, #&698             ; #1688, (long)-> &0000a698 = "handle != ((void *)0)"
 00009f84 : 94000039 : 9... : BL      &0000a068                 ; -> Function: __assert_fail
 00009f88 : eb04003f : ?... : CMP     x1, x4
@@ -2040,7 +2040,7 @@
 00009fdc : d65f03c0 : .._. : RET
 00009fe0 : d503201f : . .. : NOP
 00009fe4 : 316f5f5f : __o1 : CMN     w26, #&bd7, lsl #12
-00009fe8 : 70616568 : heap : ADR     x8, &000CCC97
+00009fe8 : 70616568 : heap : ADR     x8, &000ccc97
 00009fec : 44746547 : GetD : Undefined instruction
 00009ff0 : 6e676169 : iagn : RSUBHN2 v9.8h, v11.4s, v7.4s
 00009ff4 : 6974736f : osti : LDPSW   x15, x28, [x27, #-&60]
@@ -2055,13 +2055,13 @@
 0000a018 : d65f03c0 : .._. : RET
 0000a01c : a9bf7bfd : .{.. : STP     x29, x30, [sp, #-&10]!
 0000a020 : 910003fd : .... : MOV     x29, sp
-0000a024 : 90000003 : .... : ADRP    x3, &0000A000             ; -> Function: __o1heapGetDiagnostics
+0000a024 : 90000003 : .... : ADRP    x3, &0000a000             ; -> Function: __o1heapGetDiagnostics
 0000a028 : 9112c063 : c... : ADD     x3, x3, #&4b0             ; #1200, (long)-> &0000a4b0 = [&69626e75, &0000006e, &316f5f5f, &70616568]
 0000a02c : 91020063 : c... : ADD     x3, x3, #&80              ; #128 = bit 7
 0000a030 : 52803e02 : .>.R : MOVZ    w2, #&1f0                 ; #496
-0000a034 : 90000001 : .... : ADRP    x1, &0000A000             ; -> Function: __o1heapGetDiagnostics
+0000a034 : 90000001 : .... : ADRP    x1, &0000a000             ; -> Function: __o1heapGetDiagnostics
 0000a038 : 911a2021 : ! .. : ADD     x1, x1, #&688             ; #1672, (long)-> &0000a688 = "heap/o1heap.c"
-0000a03c : 90000000 : .... : ADRP    x0, &0000A000             ; -> Function: __o1heapGetDiagnostics
+0000a03c : 90000000 : .... : ADRP    x0, &0000a000             ; -> Function: __o1heapGetDiagnostics
 0000a040 : 911a6000 : .`.. : ADD     x0, x0, #&698             ; #1688, (long)-> &0000a698 = "handle != ((void *)0)"
 0000a044 : 94000009 : .... : BL      &0000a068                 ; -> Function: __assert_fail
 0000a048 : d503201f : . .. : NOP
@@ -2080,24 +2080,24 @@
 0000a07c : aa0103f5 : .... : MOV     x21, x1
 0000a080 : 2a0203f4 : ...* : MOV     w20, w2
 0000a084 : aa0303f3 : .... : MOV     x19, x3
-0000a088 : 90000000 : .... : ADRP    x0, &0000A000             ; -> Function: __o1heapGetDiagnostics
+0000a088 : 90000000 : .... : ADRP    x0, &0000a000             ; -> Function: __o1heapGetDiagnostics
 0000a08c : 91386000 : .`8. : ADD     x0, x0, #&e18             ; #3608, (long)-> &0000ae18 = "Assertion failed: "
 0000a090 : 97fff8a5 : .... : BL      &00008324
 0000a094 : aa1603e0 : .... : MOV     x0, x22
 0000a098 : 97fff8a3 : .... : BL      &00008324
 0000a09c : 97fff8b0 : .... : BL      &0000835c
-0000a0a0 : 90000000 : .... : ADRP    x0, &0000A000             ; -> Function: __o1heapGetDiagnostics
+0000a0a0 : 90000000 : .... : ADRP    x0, &0000a000             ; -> Function: __o1heapGetDiagnostics
 0000a0a4 : 9138c000 : ..8. : ADD     x0, x0, #&e30             ; #3632, (long)-> &0000ae30 = "              at: "
 0000a0a8 : 97fff89f : .... : BL      &00008324
 0000a0ac : b40000d3 : .... : CBZ     x19, &0000a0c4
 0000a0b0 : aa1303e0 : .... : MOV     x0, x19
 0000a0b4 : 97fff89c : .... : BL      &00008324
-0000a0b8 : 90000000 : .... : ADRP    x0, &0000A000             ; -> Function: __o1heapGetDiagnostics
+0000a0b8 : 90000000 : .... : ADRP    x0, &0000a000             ; -> Function: __o1heapGetDiagnostics
 0000a0bc : 91392000 : . 9. : ADD     x0, x0, #&e48             ; #3656, (long)-> &0000ae48 = [&206e6920, &00000000, &696c202c, &0020656e]
 0000a0c0 : 97fff899 : .... : BL      &00008324
 0000a0c4 : aa1503e0 : .... : MOV     x0, x21
 0000a0c8 : 97fff897 : .... : BL      &00008324
-0000a0cc : 90000000 : .... : ADRP    x0, &0000A000             ; -> Function: __o1heapGetDiagnostics
+0000a0cc : 90000000 : .... : ADRP    x0, &0000a000             ; -> Function: __o1heapGetDiagnostics
 0000a0d0 : 91394000 : .@9. : ADD     x0, x0, #&e50             ; #3664, (long)-> &0000ae50 = ", line "
 0000a0d4 : 97fff894 : .... : BL      &00008324
 0000a0d8 : 9100e3e1 : .... : ADD     x1, sp, #&38              ; #56  = '8'
@@ -2107,7 +2107,7 @@
 0000a0e8 : 97fff88f : .... : BL      &00008324
 0000a0ec : 97fff89c : .... : BL      &0000835c
 0000a0f0 : 9400000c : .... : BL      &0000a120                 ; -> Function: _kernel_backtrace
-0000a0f4 : 90000000 : .... : ADRP    x0, &0000A000             ; -> Function: __o1heapGetDiagnostics
+0000a0f4 : 90000000 : .... : ADRP    x0, &0000a000             ; -> Function: __o1heapGetDiagnostics
 0000a0f8 : 913b8000 : ..;. : ADD     x0, x0, #&ee0             ; #3808, (long)-> &0000aee0 = [&00000000, &65737341, &6f697472, &6166206e]
 0000a0fc : 97fff8a6 : .... : BL      &00008394
 0000a100 : d503201f : . .. : NOP
@@ -2122,7 +2122,7 @@
 0000a124 : 910003fd : .... : MOV     x29, sp
 0000a128 : a9067fff : .... : STP     xzr, xzr, [sp, #&60]
 0000a12c : a9077fff : .... : STP     xzr, xzr, [sp, #&70]
-0000a130 : 90000000 : .... : ADRP    x0, &0000A000             ; -> Function: __o1heapGetDiagnostics
+0000a130 : 90000000 : .... : ADRP    x0, &0000a000             ; -> Function: __o1heapGetDiagnostics
 0000a134 : 9139a000 : ..9. : ADD     x0, x0, #&e68             ; #3688, (long)-> &0000ae68 = "Backtrace:"
 0000a138 : 97fff87b : {... : BL      &00008324
 0000a13c : 97fff888 : .... : BL      &0000835c
@@ -2136,9 +2136,9 @@
 0000a15c : 2a0003f3 : ...* : MOV     w19, w0
 0000a160 : 52800037 : 7..R : MOVZ    w23, #&1
 0000a164 : 52800216 : ...R : MOVZ    w22, #&10                 ; #16 = bit 4
-0000a168 : 90000015 : .... : ADRP    x21, &0000A000            ; -> Function: __o1heapGetDiagnostics
+0000a168 : 90000015 : .... : ADRP    x21, &0000a000            ; -> Function: __o1heapGetDiagnostics
 0000a16c : 9139e2b5 : ..9. : ADD     x21, x21, #&e78           ; #3704, (long)-> &0000ae78 = [&00203a20, &00000000, &63617453, &7266206b]
-0000a170 : 90000014 : .... : ADRP    x20, &0000A000            ; -> Function: __o1heapGetDiagnostics
+0000a170 : 90000014 : .... : ADRP    x20, &0000a000            ; -> Function: __o1heapGetDiagnostics
 0000a174 : 91396294 : .b9. : ADD     x20, x20, #&e58           ; #3672, (long)-> &0000ae58 = "<unknown>"
 0000a178 : 2a1703e3 : ...* : MOV     w3, w23
 0000a17c : 2a1603e2 : ...* : MOV     w2, w22
@@ -2164,7 +2164,7 @@
 0000a1cc : a94153f3 : .SA. : LDP     x19, x20, [sp, #&10]
 0000a1d0 : a9425bf5 : .[B. : LDP     x21, x22, [sp, #&20]
 0000a1d4 : f9401bf7 : ..@. : LDR     x23, [sp, #&30]
-0000a1d8 : 90000000 : .... : ADRP    x0, &0000A000             ; -> Function: __o1heapGetDiagnostics
+0000a1d8 : 90000000 : .... : ADRP    x0, &0000a000             ; -> Function: __o1heapGetDiagnostics
 0000a1dc : 913a0000 : ..:. : ADD     x0, x0, #&e80             ; #3712, (long)-> &0000ae80 = "Stack frames corrupt"
 0000a1e0 : 97fff851 : Q... : BL      &00008324
 0000a1e4 : 97fff85e : ^... : BL      &0000835c
@@ -2240,7 +2240,7 @@
 0000a2fc : f9400484 : ..@. : LDR     x4, [x4, #8]
 0000a300 : f9000844 : D... : STR     x4, [x2, #&10]
 0000a304 : b4000081 : .... : CBZ     x1, &0000a314
-0000a308 : 90000000 : .... : ADRP    x0, &0000A000             ; -> Function: __o1heapGetDiagnostics
+0000a308 : 90000000 : .... : ADRP    x0, &0000a000             ; -> Function: __o1heapGetDiagnostics
 0000a30c : 913a6000 : .`:. : ADD     x0, x0, #&e98             ; #3736, (long)-> &0000ae98 = "Unknown"
 0000a310 : f9000020 :  ... : STR     x0, [x1]
 0000a314 : f9400040 : @.@. : LDR     x0, [x2]
@@ -2265,7 +2265,7 @@
 0000a360 : 93407c63 : c|@. : SXTW    x3, w3
 0000a364 : aa0103e2 : .... : MOV     x2, x1
 0000a368 : 52800025 : %..R : MOVZ    w5, #&1
-0000a36c : 90000006 : .... : ADRP    x6, &0000A000             ; -> Function: __o1heapGetDiagnostics
+0000a36c : 90000006 : .... : ADRP    x6, &0000a000             ; -> Function: __o1heapGetDiagnostics
 0000a370 : 911520c6 : . .. : ADD     x6, x6, #&548             ; #1352, (long)-> &0000a548 = [&00000001, &00000000, &0000000a, &00000000]
 0000a374 : 52800608 : ...R : MOVZ    w8, #&30                  ; #48  = '0'
 0000a378 : 52800007 : ...R : MOVZ    w7, #0
@@ -2308,7 +2308,7 @@
 0000a40c : aa0103e2 : .... : MOV     x2, x1
 0000a410 : 52800009 : ...R : MOVZ    w9, #0
 0000a414 : 5280040b : ...R : MOVZ    w11, #&20                 ; #32  = ' ' = bit 5
-0000a418 : 90000008 : .... : ADRP    x8, &0000A000             ; -> Function: __o1heapGetDiagnostics
+0000a418 : 90000008 : .... : ADRP    x8, &0000a000             ; -> Function: __o1heapGetDiagnostics
 0000a41c : 913a8108 : ..:. : ADD     x8, x8, #&ea0             ; #3744, (long)-> &0000aea0 = "0123456789ABCDEF"
 0000a420 : 5280002a : *..R : MOVZ    w10, #&1
 0000a424 : 14000007 : .... : B       &0000a440
@@ -2349,11 +2349,11 @@
 0000a4b0 : 69626e75 : unbi : LDPSW   x21, x27, [x19, #-&f0]
 0000a4b4 : 0000006e : n... : Undefined instruction
 0000a4b8 : 316f5f5f : __o1 : CMN     w26, #&bd7, lsl #12
-0000a4bc : 70616568 : heap : ADR     x8, &000CD16B
+0000a4bc : 70616568 : heap : ADR     x8, &000cd16b
 0000a4c0 : 74696e49 : Init : Undefined instruction
 0000a4c4 : 00000000 : .... : Undefined instruction
 0000a4c8 : 316f5f5f : __o1 : CMN     w26, #&bd7, lsl #12
-0000a4cc : 70616568 : heap : ADR     x8, &000CD17B
+0000a4cc : 70616568 : heap : ADR     x8, &000cd17b
 0000a4d0 : 6f6c6c41 : Allo : Undefined instruction
 0000a4d4 : 65746163 : cate : Undefined instruction
 0000a4d8 : 00000000 : .... : Undefined instruction
@@ -2367,11 +2367,11 @@
 0000a4f8 : 69626572 : rebi : LDPSW   x18, x25, [x11, #-&f0]
 0000a4fc : 0000006e : n... : Undefined instruction
 0000a500 : 316f5f5f : __o1 : CMN     w26, #&bd7, lsl #12
-0000a504 : 70616568 : heap : ADR     x8, &000CD1B3
+0000a504 : 70616568 : heap : ADR     x8, &000cd1b3
 0000a508 : 65657246 : Free : Undefined instruction
 0000a50c : 00000000 : .... : Undefined instruction
 0000a510 : 316f5f5f : __o1 : CMN     w26, #&bd7, lsl #12
-0000a514 : 70616568 : heap : ADR     x8, &000CD1C3
+0000a514 : 70616568 : heap : ADR     x8, &000cd1c3
 0000a518 : 6e496f44 : DoIn : Undefined instruction
 0000a51c : 69726176 : vari : LDPSW   x22, x24, [x11, #-&70]
 0000a520 : 73746e61 : ants : Undefined instruction
@@ -2379,7 +2379,7 @@
 0000a528 : 00000000 : .... : Undefined instruction
 0000a52c : 00000000 : .... : Undefined instruction
 0000a530 : 316f5f5f : __o1 : CMN     w26, #&bd7, lsl #12
-0000a534 : 70616568 : heap : ADR     x8, &000CD1E3
+0000a534 : 70616568 : heap : ADR     x8, &000cd1e3
 0000a538 : 44746547 : GetD : Undefined instruction
 0000a53c : 6e676169 : iagn : RSUBHN2 v9.8h, v11.4s, v7.4s
 0000a540 : 6974736f : osti : LDPSW   x15, x28, [x27, #-&60]
@@ -2412,7 +2412,7 @@
 0000a5ac : 000000e8 : .... : Undefined instruction
 0000a5b0 : 4e72a000 : ..rN : SMLSL2  v0.4s, v0.8h, v18.8h
 0000a5b4 : 00000918 : .... : Undefined instruction
-0000a5b8 : 107a4000 : .@z. : ADR     x0, &000FEDB8
+0000a5b8 : 107a4000 : .@z. : ADR     x0, &000fedb8
 0000a5bc : 00005af3 : .Z.. : Undefined instruction
 0000a5c0 : a4c68000 : .... : Undefined instruction
 0000a5c4 : 00038d7e : ~... : Undefined instruction
@@ -2433,7 +2433,7 @@
 0000a600 : 6d206867 : gh m : STP     d7, d26, [x3, #-&200]
 0000a604 : 726f6d65 : emor : Undefined instruction
 0000a608 : 6f662079 : y fo : UMLAL2  v25.4s, v3.8h, v6.h[2]
-0000a60c : 70612072 : r ap : ADR     x18, &000CCA1B
+0000a60c : 70612072 : r ap : ADR     x18, &000cca1b
 0000a610 : 63696c70 : plic : Undefined instruction
 0000a614 : 6f697461 : atio : UQSHL   v1.2d, v3.2d, #&29
 0000a618 : 0000006e : n... : Undefined instruction
@@ -2464,7 +2464,7 @@
 0000a67c : 00007972 : ry.. : Undefined instruction
 0000a680 : 0000b068 : h... : Undefined instruction
 0000a684 : 00000000 : .... : Undefined instruction
-0000a688 : 70616568 : heap : ADR     x8, &000CD337
+0000a688 : 70616568 : heap : ADR     x8, &000cd337
 0000a68c : 68316f2f : /o1h : Undefined instruction
 0000a690 : 2e706165 : eap. : RSUBHN  v5.4h, v11.4s, v16.4s
 0000a694 : 00000063 : c... : Undefined instruction
@@ -2472,7 +2472,7 @@
 0000a69c : 2120656c : le ! : Undefined instruction
 0000a6a0 : 2828203d : = (( : STNP    w29, w8, [x1, #-&c0]
 0000a6a4 : 64696f76 : void : Undefined instruction
-0000a6a8 : 30292a20 :  *)0 : ADR     x0, &0005CBED
+0000a6a8 : 30292a20 :  *)0 : ADR     x0, &0005cbed
 0000a6ac : 00000029 : )... : Undefined instruction
 0000a6b0 : 67617266 : frag : Undefined instruction
 0000a6b4 : 746e656d : ment : Undefined instruction
@@ -2532,7 +2532,7 @@
 0000a78c : 2a65636e : nce* : ORN     w14, w27, w5, lsr #24
 0000a790 : 3d3d2029 : ) == : STR     b9, [x1, #&f48]
 0000a794 : 00553020 :  0U. : Undefined instruction
-0000a798 : 70616328 : (cap : ADR     x8, &000CD3FF
+0000a798 : 70616328 : (cap : ADR     x8, &000cd3ff
 0000a79c : 74696361 : acit : Undefined instruction
 0000a7a0 : 3d3e2079 : y >= : STR     b25, [x3, #&f88]
 0000a7a4 : 73282820 :  ((s : Undefined instruction
@@ -2749,7 +2749,7 @@
 0000aaf0 : 6169643e : >dia : Undefined instruction
 0000aaf4 : 736f6e67 : gnos : Undefined instruction
 0000aaf8 : 73636974 : tics : Undefined instruction
-0000aafc : 7061632e : .cap : ADR     x14, &000CD763
+0000aafc : 7061632e : .cap : ADR     x14, &000cd763
 0000ab00 : 74696361 : acit : Undefined instruction
 0000ab04 : 00000079 : y... : Undefined instruction
 0000ab08 : 67617266 : frag : Undefined instruction
@@ -2775,7 +2775,7 @@
 0000ab58 : 61724628 : (Fra : Undefined instruction
 0000ab5c : 6e656d67 : gmen : UMIN    v7.8h, v11.8h, v5.8h
 0000ab60 : 20292a74 : t*)  : Undefined instruction
-0000ab64 : 30203d3d : == 0 : ADR     x29, &0004B309
+0000ab64 : 30203d3d : == 0 : ADR     x29, &0004b309
 0000ab68 : 00000055 : U... : Undefined instruction
 0000ab6c : 00000000 : .... : Undefined instruction
 0000ab70 : 69732828 : ((si : LDPSW   x8, x10, [x1, #-&68]
@@ -2883,7 +2883,7 @@
 0000ad08 : 72662029 : ) fr : Undefined instruction
 0000ad0c : 3e2d6761 : ag-> : Undefined instruction
 0000ad10 : 64616568 : head : Undefined instruction
-0000ad14 : 702e7265 : er.p : ADR     x5, &00067B63
+0000ad14 : 702e7265 : er.p : ADR     x5, &00067b63
 0000ad18 : 29766572 : rev) : LDP     w18, w25, [x11, #-&50]
 0000ad1c : 73202520 :  % s : Undefined instruction
 0000ad20 : 6f657a69 : izeo : Undefined instruction
@@ -2916,7 +2916,7 @@
 0000ad8c : 6169643e : >dia : Undefined instruction
 0000ad90 : 736f6e67 : gnos : Undefined instruction
 0000ad94 : 73636974 : tics : Undefined instruction
-0000ad98 : 7061632e : .cap : ADR     x14, &000CD9FF
+0000ad98 : 7061632e : .cap : ADR     x14, &000cd9ff
 0000ad9c : 74696361 : acit : Undefined instruction
 0000ada0 : 00000079 : y... : Undefined instruction
 0000ada4 : 00000000 : .... : Undefined instruction
