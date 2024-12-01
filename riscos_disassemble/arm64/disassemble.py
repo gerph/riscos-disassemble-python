@@ -536,22 +536,38 @@ class DisassembleARM64(base.DisassembleBase):
                 if i.operands[2].type == self._const.ARM64_OP_IMM:
                     op_str = self._fixup_shifted_constant(op_str, i.operands[2])
 
-                    if mnemonic == 'ADD':
+                    if mnemonic in ('ADD', 'SUB'):
                         if live_memory:
+                            # The opcode sequence for ADD is:
+                            #   %100100010s << 22
+                            # The opcode sequence for SUB is:
+                            #   %110100010s << 22
+                            # The opcode sequence for ADRP is:
+                            #   %1ll10000 << 24
+                            # Where 's' is the 12 bit shift flag.
+                            #       'l' is the low 2 bits of the immediate shift
+
                             # Check whether we're preceeded by ADRP
                             this = self.access.get_memory_word(address)
                             adrp = address - 4
                             before = self.access.get_memory_word(adrp)
+
                             imm = i.operands[2].imm
+                            if mnemonic == 'SUB':
+                                imm = -imm
                             rn = ((this>>5) & 31)
+
                             if before is not None and \
-                               (before & 0x9F800000) == 0x91000000 and \
+                               (before & 0xBF800000) == 0x91000000 and \
                                (before & 31) == rn:
-                                # Another ADD instruction
+                                # Another ADD/SUB instruction
                                 imm12 = (before >> 10) & 4095
                                 if before & (1<<22):
                                     imm12 = imm12 << 12
                                 rn = ((before>>5) & 31)
+                                if before & (1<<30):
+                                    # SUB instruction
+                                    imm12 = -imm12
                                 imm += imm12
                                 adrp = adrp - 4
                                 before = self.access.get_memory_word(adrp)
