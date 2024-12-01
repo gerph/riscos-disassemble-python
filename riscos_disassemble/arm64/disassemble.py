@@ -536,6 +536,30 @@ class DisassembleARM64(base.DisassembleBase):
                 if i.operands[2].type == self._const.ARM64_OP_IMM:
                     op_str = self._fixup_shifted_constant(op_str, i.operands[2])
 
+                    if mnemonic == 'ADD':
+                        if live_memory:
+                            # Check whether we're preceeded by ADRP
+                            this = self.access.get_memory_word(address)
+                            before = self.access.get_memory_word(address - 4)
+                            imm = i.operands[2].imm
+                            if before is not None and \
+                               (before & 0x90000000) == 0x90000000 and \
+                               (before & 31) == ((this>>5) & 31):
+                                # The instruction before is an ADRP,
+                                # and the ADRP Xd is the same as ADD Xn.
+                                # So we need to calculate the target address
+                                immhi = ((before & ((1<<24) - 1)) >> 5)
+                                immlo = ((before>>29) & 3)
+                                offset = ((immhi << 2) | immlo) << 12
+                                if offset & (1<<23):
+                                    offset -= (1<<24)
+
+                                target = ((address - 4) & ~4095) + offset + i.operands[2].imm
+
+                                desc = self.access.describe_address(target)
+                                if desc:
+                                    accumulator.append('(long)-> &%08x = %s' % (target, '; '.join(desc),))
+
                 if accumulator:
                     comment = ', '.join(accumulator)
 
