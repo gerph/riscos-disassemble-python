@@ -337,6 +337,9 @@ class DisassembleARM(base.DisassembleBase):
         @return:        String representation of the PSR values.
         """
 
+        if mask is None:
+            mask = 'fsxc'
+
         if mask == 'nzcvq':
             mask = 'f'
 
@@ -1064,13 +1067,24 @@ class DisassembleARM(base.DisassembleBase):
             elif mnemonic[0:3] == 'MSR':
 
                 accumulator = []
-                if live_registers and self.config.show_referenced_registers:
-                    accumulator.extend(self._operand_registers(i.operands[1]))
 
-                if i.operands[1].type == self._const.ARM_OP_IMM:
-                    imm = i.operands[1].imm
+                # Capstone doesn't report the operand properly (https://github.com/capstone-engine/capstone/issues/2684)
+                imm_index = None
+                if len(i.operands) > 1 and i.operands[1].type == self._const.ARM_OP_IMM:
+                    imm_index = 1
+                elif len(i.operands) == 1 and i.operands[0].type == self._const.ARM_OP_IMM:
+                    imm_index = 0
+
+                if live_registers and self.config.show_referenced_registers:
+                    accumulator.extend(self._operand_registers(i.operands[imm_index]))
+
+                if imm_index is not None:
+                    imm = i.operands[imm_index].imm
                     (psr, _) = op_str.split(',', 1)
-                    (_, mask) = psr.split('_', 1)
+                    if '_' in psr:
+                        (_, mask) = psr.split('_', 1)
+                    else:
+                        mask = None
                     accumulator.append("#%s" % (self.psr_name(imm, mask=mask),))
                 if accumulator:
                     comment = ', '.join(accumulator)
