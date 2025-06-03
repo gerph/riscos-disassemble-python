@@ -1136,7 +1136,7 @@ class DisassembleARM(base.DisassembleBase):
             if live_memory:
                 # Check if this is a function entry point
                 funcname = self.access.describe_code(address)
-                if funcname and '+' not in funcname:
+                if funcname:
                     if comment:
                         comment = 'Function: %s  ; %s' % (funcname, comment)
                     else:

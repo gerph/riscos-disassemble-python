@@ -75,6 +75,19 @@ class DisassembleARM64Config(object):
     Configuration for how the disassembly should be performed by the Disassemble class.
     """
 
+    format = 'riscos'
+    """
+    Configures how the disassembly will be formatted. By default a RISC OS-like
+    layout will be used for the disassembly. This takes more processing from the
+    Capstone library's output, but will be more familiar. It is possible to use
+    the raw Capstone format to save processing time.
+
+    Formats supported:
+
+        * `capstone` - Raw capstone disassembly.
+        * `riscos` - Processed disassembly to be more like RISC OS forms.
+    """
+
     show_referenced_registers = True
     """
     Controls whether disassembly will include details of the registers which are
@@ -139,6 +152,7 @@ class DisassembleARM64(base.DisassembleBase):
         super(DisassembleARM64, self).__init__(*args, **kwargs)
         self._capstone = None
         self._capstone_version = None
+        self._capstone_version_major = None
         self._const = None
         self.md = None
 
@@ -146,6 +160,10 @@ class DisassembleARM64(base.DisassembleBase):
         self.bit_numbers = dict((1<<bit, "bit %s" % (bit,)) for bit in range(64))
         self.bit_numbers.update(dict((self.value_max ^ (1<<bit), "~bit %s" % (bit,)) for bit in range(64)))
         self.bit_numbers.update(dict((-(1<<bit) - 1, "~bit %s" % (bit,)) for bit in range(64)))
+
+        # Values initialised when capstone is initialised
+        self.mnemonic_replacements = {}
+        self.cc_names = {}
 
         # Mapping of capstone registers to their names
         self.reg_map = {}
@@ -231,6 +249,15 @@ class DisassembleARM64(base.DisassembleBase):
                         capstone.arm64_const.ARM64_REG_X29: ('x29', 29, 0xFFFFFFFFFFFFFFFF),
                         capstone.arm64_const.ARM64_REG_X30: ('lr', 30, 0xFFFFFFFFFFFFFFFF),
                     }
+                # Map of capstone constant to CC name
+                self.cc_names = {}
+                for cc in dir(capstone.arm64_const):
+                    if cc.startswith('ARM64_CC_') and cc != 'ARM64_CC_INVALID':
+                        self.cc_names[getattr(capstone.arm64_const, cc)] = cc[-2:]
+
+                self.mnemonic_replacements = {}
+                self.mnemonic_replacements.update(dict(('B.%s' % (cc,), 'B%s' % (cc,)) for cc in self.cc_names.values()))
+
                 self.md.detail = True
                 return self._capstone
 
@@ -689,6 +716,10 @@ class DisassembleARM64(base.DisassembleBase):
                         comment = '%s  ; %s' % (content, comment)
                     else:
                         comment = content
+
+            # Apply any fixups for the mnemonic name which are easily translatable
+            if self.config.format == 'riscos':
+                mnemonic = self.mnemonic_replacements.get(mnemonic, mnemonic)
 
             return (4, mnemonic, op_str, comment)
 
