@@ -114,7 +114,7 @@ class ColourDisassembly(object):
             'space': '#ffffff',
             'inst-memmultiple': '#999999',
             'inst-mem': '#dddddd',
-            'inst-stack': '#999999',
+            'inst-stack': '#6666ee',
             'inst-swi': '#228800',
             'inst-branch': '#eeeebb',
             'inst-fp': '#dddddd',
@@ -188,13 +188,23 @@ class ColourDisassembly(object):
 
         @return list of either tuples of (colour, text) or just plain text string.
         """
-        col = state.dis.inst_category.get(state.inst, None)
+        col = None
+        (cond, ccol) = state.dis.inst_category_conditional.get(state.inst, (None, None))
+        if cond and cond in state.operands:
+            col = ccol
+
         if not col:
-            inst2 = state.inst[0:2]
-            col = state.dis.inst_category_prefix2.get(inst2, None)
+            col = state.dis.inst_category.get(state.inst, None)
             if not col:
-                inst3 = state.inst[0:3]
-                col = state.dis.inst_category_prefix3.get(inst3, None)
+                inst2 = state.inst[0:2]
+                col = state.dis.inst_category_prefix2.get(inst2, None)
+                if not col:
+                    inst3 = state.inst[0:3]
+                    col = state.dis.inst_category_prefix3.get(inst3, None)
+                    if not col:
+                        inst4 = state.inst[0:4]
+                        col = state.dis.inst_category_prefix4.get(inst4, None)
+
         if not col:
             # Not a known instruction prefix, so check for some specials
             if state.inst[0] == 'B':

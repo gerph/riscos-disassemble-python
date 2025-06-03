@@ -253,6 +253,9 @@ class DisassembleARM(base.DisassembleBase):
             'RFC': 'inst-fp',
         }
 
+    inst_category_prefix4 = {}
+    inst_category_conditional = {}
+
     def __init__(self, *args, **kwargs):
         super(DisassembleARM, self).__init__(*args, **kwargs)
         self._capstone = None

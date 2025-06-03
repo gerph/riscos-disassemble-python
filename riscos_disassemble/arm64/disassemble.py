@@ -130,7 +130,7 @@ class DisassembleARM64(base.DisassembleBase):
         ]
 
     inst_category = {
-            'PUSH': 'inst-stack',  # PUSH
+            'PUSH': 'inst-stack',
             'POP': 'inst-stack',
         }
 
@@ -146,6 +146,19 @@ class DisassembleARM64(base.DisassembleBase):
             'LDP': 'inst-memmultiple',
             'STP': 'inst-memmultiple',
             'BIC': 'inst',
+            'CBZ': 'inst-branch',
+            'TBZ': 'inst-branch',
+        }
+
+    inst_category_prefix4 = {
+            'CBNZ': 'inst-branch',
+            'TBNZ': 'inst-branch',
+        }
+
+    # Push and Pop instructions for entry and exit
+    inst_category_conditional = {
+            'LDP': ('[sp], #', 'inst-stack'),
+            'STP': ('[sp, #', 'inst-stack'),
         }
 
     def __init__(self, *args, **kwargs):
