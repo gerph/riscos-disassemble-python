@@ -1136,7 +1136,7 @@ class DisassembleARM(base.DisassembleBase):
             if live_memory:
                 # Check if this is a function entry point
                 funcname = self.access.describe_code(address)
-                if funcname:
+                if funcname and '+' not in funcname:
                     if comment:
                         comment = 'Function: %s  ; %s' % (funcname, comment)
                     else:
@@ -1154,7 +1154,25 @@ class DisassembleARM(base.DisassembleBase):
 
             return (2 if thumb else 4, mnemonic, op_str, comment)
 
-        return (2 if thumb else 4, self.undefined, '', '')
+        # Undefined instructions can still have comments
+        comment = None
+        if live_memory:
+            # Check if this is has a data description
+            content = self.access.describe_content(address)
+            if content:
+                if comment:
+                    comment = '%s  ; %s' % (content, comment)
+                else:
+                    comment = content
+
+            content = self.access.describe_code_comment(address)
+            if content:
+                if comment:
+                    comment = '%s  ; %s' % (content, comment)
+                else:
+                    comment = content
+
+        return (2 if thumb else 4, self.undefined, None, comment)
 
     def disassemble(self, address, inst,
                     live_registers=False, live_memory=False,

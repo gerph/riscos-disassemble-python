@@ -474,7 +474,7 @@ class DisassembleARM64(base.DisassembleBase):
                                 # FIXME: Truncate this string if it's long?
                                 string = self.access.get_memory_string(address + 4)
                                 if string:
-                                    string = "\"%s\"" % (string.decode('latin-1').encode('ascii', 'backslashreplace'),)
+                                    string = "\"%s\"" % (self.access.decode_string(string),)
                                     comment = ' (PC+4 = {})'.format(string)
 
                         elif swic == 2:
