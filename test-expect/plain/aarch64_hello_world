@@ -62,7 +62,7 @@
 000080f4 : 00000000 : .... : Undefined instruction
 000080f8 : 00000000 : .... : Undefined instruction
 000080fc : 00000000 : .... : Undefined instruction
-00008100 : d503201f : . .. : NOP                               ; AIF: Decompression branch
+00008100 : d503201f : . .. : NOP                               ; AIF: Self relocation branch
 00008104 : 94000004 : .... : BL      &00008114                 ; AIF: Zero init branch
 00008108 : 9400001f : .... : BL      &00008184                 ; AIF: Entry point branch
 0000810c : d280022a : *... : MOVZ    x10, #&11                 ; #17

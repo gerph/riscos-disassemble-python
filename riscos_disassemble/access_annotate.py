@@ -77,7 +77,7 @@ class DisassembleAccessAnnotate(object):
                 self.code_comments[dest] = self.code_comments[bl_offset][5:].replace('branch', 'code')
 
         if bitness == 64:
-            self.code_comments[0x100 + 0] = "AIF: Decompression branch"
+            self.code_comments[0x100 + 0] = "AIF: Self relocation branch"
             self.code_comments[0x100 + 4] = "AIF: Zero init branch"
             self.code_comments[0x100 + 8] = "AIF: Entry point branch"
 

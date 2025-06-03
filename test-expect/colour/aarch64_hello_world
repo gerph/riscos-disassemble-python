@@ -62,7 +62,7 @@
 000080f4 : 00000000 : .... : [31mUndefined instruction[m
 000080f8 : 00000000 : .... : [31mUndefined instruction[m
 000080fc : 00000000 : .... : [31mUndefined instruction[m
-00008100 : d503201f : . .. : [37mNOP[37m                               [32m; AIF: Decompression branch[m
+00008100 : d503201f : . .. : [37mNOP[37m                               [32m; AIF: Self relocation branch[m
 00008104 : 94000004 : .... : [37mBL[37m      [33m&00008114[37m                 [32m; AIF: Zero init branch[m
 00008108 : 9400001f : .... : [37mBL[37m      [33m&00008184[37m                 [32m; AIF: Entry point branch[m
 0000810c : d280022a : *... : [37mMOVZ[37m    [37mx10[37m,[37m [37m#[33m&11[37m                 [32m; #17[m
