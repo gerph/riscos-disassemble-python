@@ -142,7 +142,10 @@ class DisassembleARM64(base.DisassembleBase):
         self._const = None
         self.md = None
 
-        self.bit_numbers = dict((1<<bit, "bit %s" % (bit,)) for bit in range(32))
+        self.value_max = 0xFFFFFFFFFFFFFFFF
+        self.bit_numbers = dict((1<<bit, "bit %s" % (bit,)) for bit in range(64))
+        self.bit_numbers.update(dict((self.value_max ^ (1<<bit), "~bit %s" % (bit,)) for bit in range(64)))
+        self.bit_numbers.update(dict((-(1<<bit) - 1, "~bit %s" % (bit,)) for bit in range(64)))
 
         # Mapping of capstone registers to their names
         self.reg_map = {}
