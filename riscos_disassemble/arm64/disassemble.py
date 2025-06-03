@@ -271,7 +271,7 @@ class DisassembleARM64(base.DisassembleBase):
                     values.append("%-3i" % (imm,))
                     values.append("'%s'" % (chr(imm),))
                 elif negated:
-                    values.append('&%08x' % (imm,))
+                    values.append('&%016x' % (imm,))
                     values.append('%i' % (~operand.imm,))
                 else:
                     values.append('%i' % (imm,))
@@ -503,15 +503,15 @@ class DisassembleARM64(base.DisassembleBase):
                     if desc:
                         comment = '-> %s' % ('; '.join(desc),)
 
-            elif mnemonic[0:3] in ('LDR', 'STR'):
+            elif mnemonic[0:3] in ('LDR', 'STR') or mnemonic[0:4] in ('LDUR', 'STUR'):
                 if live_registers and self.config.show_referenced_registers:
-                    if mnemonic[0:3] == 'STR':
+                    if mnemonic[0:3] in ('STR', 'STU'):
                         accumulator = self._operand_registers(i.operands[0])
                         accumulator.extend(self._operand_registers(i.operands[1]))
                         more = ', '.join(accumulator)
                         comment = '%s; %s' % (comment, more) if comment else more
 
-                    elif mnemonic[0:3] == 'LDR':
+                    elif mnemonic[0:3] in ('LDR', 'LDU'):
                         # Show the values of the referenced registers
                         maybe_string = 'B' in mnemonic
                         accumulator = self._operand_registers(i.operands[1], maybe_presentable=maybe_string)
@@ -523,7 +523,25 @@ class DisassembleARM64(base.DisassembleBase):
                     op_str = "{}&{:08x}".format(before, int(after, 16))
                     # FIXME: Include the quad/word/byte/halfword we loaded?
 
-            elif (mnemonic[0:3] in ('ADD', 'SUB', 'ORR', 'AND', 'EOR', 'LSL', 'LSR') or
+            elif mnemonic[0:3] in ('LDP', 'STP'):
+                if live_registers and self.config.show_referenced_registers:
+                    if mnemonic[0:3] == 'STP':
+                        accumulator = self._operand_multiple_registers((i.operands[0], i.operands[1], i.operands[2]))
+                        more = ', '.join(accumulator)
+                        comment = '%s; %s' % (comment, more) if comment else more
+
+                    elif mnemonic[0:3] == 'LDP':
+                        # Show the values of the referenced registers
+                        accumulator = self._operand_registers(i.operands[2])
+                        more = ', '.join(accumulator)
+                        comment = '%s; %s' % (comment, more) if comment else more
+
+                if '[' not in op_str and '#&' in op_str:
+                    (before, after) = op_str.split('#&')
+                    op_str = "{}&{:08x}".format(before, int(after, 16))
+                    # FIXME: Include the quad/word/byte/halfword we loaded?
+
+            elif (mnemonic[0:3] in ('ADD', 'SUB', 'ORR', 'AND', 'EOR', 'BIC', 'LSL', 'LSR') or
                   mnemonic in ('CSEL',)):
 
                 accumulator = []
@@ -593,12 +611,12 @@ class DisassembleARM64(base.DisassembleBase):
                 if accumulator:
                     comment = ', '.join(accumulator)
 
-            elif mnemonic[0:3] in ('MOV', 'CMP'):
+            elif mnemonic[0:3] in ('MOV', 'CMP', 'TST'):
 
                 accumulator = []
 
                 if live_registers and self.config.show_referenced_registers:
-                    if mnemonic[0:4] == 'MOVK' or mnemonic[0:3] == 'CMP':
+                    if mnemonic[0:4] == 'MOVK' or mnemonic[0:3] in ('CMP', 'TST'):
                         accumulator.extend(self._operand_registers(i.operands[0]))
                     accumulator.extend(self._operand_registers(i.operands[1]))
 
@@ -610,20 +628,33 @@ class DisassembleARM64(base.DisassembleBase):
                 if accumulator:
                     comment = ', '.join(accumulator)
 
-            elif mnemonic in ('CBZ', 'CBNZ'):
+            elif mnemonic[0:3] in ('SXT',):
+
+                accumulator = []
+
+                if live_registers and self.config.show_referenced_registers:
+                    accumulator.extend(self._operand_registers(i.operands[1]))
+
+                if accumulator:
+                    comment = ', '.join(accumulator)
+
+            elif mnemonic in ('CBZ', 'CBNZ', 'TBZ', 'TBNZ'):
 
                 accumulator = []
                 if live_registers and self.config.show_referenced_registers:
                     accumulator.extend(self._operand_registers(i.operands[0]))
 
                 if '#&' in op_str:
-                    (before, after) = op_str.split('#&')
+                    (before, after) = op_str.rsplit('#&', 1)
                     op_str = "{}&{:08x}".format(before, int(after, 16))
 
                 if live_memory:
                     # We can allow this to be omitted in cases if the memory that's being debugged
                     # is not actually live memory (could be relocated, synthetic, etc).
-                    addr = i.operands[1].imm
+                    if mnemonic[0] == 'C':
+                        addr = i.operands[1].imm
+                    else:
+                        addr = i.operands[2].imm
                     func = self.access.describe_code(addr)
                     if func:
                         accumulator.append('-> Function: %s' % (func,))
