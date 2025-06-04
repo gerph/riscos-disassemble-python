@@ -533,6 +533,48 @@ class DisassembleARM64(base.DisassembleBase):
                     func = self.access.describe_code(addr)
                     if func:
                         comment = '-> Function: %s' % (func,)
+                    else:
+                        if mnemonic[:2] != 'BL':
+                            # Branch instructions can show relative distances
+                            diff = addr - address
+                            if abs(diff) < 128:
+                                if diff < 0:
+                                    comment = '-> Back %i instruction%s' % (-diff / 4, '' if diff == -1 else 's')
+                                elif diff > 0:
+                                    comment = '-> Forward %i instruction%s' % (diff / 4, '' if diff == 1 else 's')
+
+            elif mnemonic in ('CBZ', 'CBNZ', 'TBZ', 'TBNZ'):
+
+                # Compare and branch, or Test and branch
+                accumulator = []
+                if live_registers and self.config.show_referenced_registers:
+                    accumulator.extend(self._operand_registers(i.operands[0]))
+
+                if '#&' in op_str:
+                    (before, after) = op_str.rsplit('#&', 1)
+                    op_str = "{}&{:08x}".format(before, int(after, 16))
+
+                if live_memory:
+                    # We can allow this to be omitted in cases if the memory that's being debugged
+                    # is not actually live memory (could be relocated, synthetic, etc).
+                    if mnemonic[0] == 'C':
+                        addr = i.operands[1].imm
+                    else:
+                        addr = i.operands[2].imm
+                    func = self.access.describe_code(addr)
+                    if func:
+                        accumulator.append('-> Function: %s' % (func,))
+                    else:
+                        # Branch instructions can show relative distances
+                        diff = addr - address
+                        if abs(diff) < 128:
+                            if diff < 0:
+                                accumulator.append('-> Back %i instruction%s' % (-diff / 4, '' if diff == -1 else 's'))
+                            elif diff > 0:
+                                accumulator.append('-> Forward %i instruction%s' % (diff / 4, '' if diff == 1 else 's'))
+
+                if accumulator:
+                    comment = ', '.join(accumulator)
 
             elif mnemonic[0:3] == 'ADR' and \
                  i.operands[1].type == self._const.ARM64_OP_IMM:
@@ -690,30 +732,6 @@ class DisassembleARM64(base.DisassembleBase):
 
                 if live_registers and self.config.show_referenced_registers:
                     accumulator.extend(self._operand_registers(i.operands[1]))
-
-                if accumulator:
-                    comment = ', '.join(accumulator)
-
-            elif mnemonic in ('CBZ', 'CBNZ', 'TBZ', 'TBNZ'):
-
-                accumulator = []
-                if live_registers and self.config.show_referenced_registers:
-                    accumulator.extend(self._operand_registers(i.operands[0]))
-
-                if '#&' in op_str:
-                    (before, after) = op_str.rsplit('#&', 1)
-                    op_str = "{}&{:08x}".format(before, int(after, 16))
-
-                if live_memory:
-                    # We can allow this to be omitted in cases if the memory that's being debugged
-                    # is not actually live memory (could be relocated, synthetic, etc).
-                    if mnemonic[0] == 'C':
-                        addr = i.operands[1].imm
-                    else:
-                        addr = i.operands[2].imm
-                    func = self.access.describe_code(addr)
-                    if func:
-                        accumulator.append('-> Function: %s' % (func,))
 
                 if accumulator:
                     comment = ', '.join(accumulator)
