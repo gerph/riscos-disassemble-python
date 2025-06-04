@@ -542,9 +542,20 @@ class DisassembleARM64(base.DisassembleBase):
                 op_str = '%s, %s' % (op_prefix, op_suffix)
 
                 if live_memory:
-                    desc = self.access.describe_address(imm)
-                    if desc:
-                        comment = '-> %s' % ('; '.join(desc),)
+                    use_desc = True
+                    if mnemonic == 'ADRP':
+                        this = self.access.get_memory_word(address)
+                        rn = (this & 31)
+                        after = self.access.get_memory_word(address + 4)
+                        if after is not None and \
+                           (after & 0xBF800000) == 0x91000000 and \
+                           (after & 31) == rn:
+                            # The ADRP is followed by an ADD or SUB, so we shouldn't report the pointer
+                            use_desc = False
+                    if use_desc:
+                        desc = self.access.describe_address(imm)
+                        if desc:
+                            comment = '-> %s' % ('; '.join(desc),)
 
             elif mnemonic[0:3] in ('LDR', 'STR') or mnemonic[0:4] in ('LDUR', 'STUR'):
                 if live_registers and self.config.show_referenced_registers:
@@ -650,6 +661,8 @@ class DisassembleARM64(base.DisassembleBase):
                                 desc = self.access.describe_address(target)
                                 if desc:
                                     accumulator.append('(long)-> &%08x = %s' % (target, '; '.join(desc),))
+                                else:
+                                    accumulator.append('(long)-> &%08x' % (target,))
 
                 if accumulator:
                     comment = ', '.join(accumulator)
