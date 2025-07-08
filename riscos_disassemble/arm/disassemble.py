@@ -253,6 +253,9 @@ class DisassembleARM(base.DisassembleBase):
             'RFC': 'inst-fp',
         }
 
+    inst_category_prefix4 = {}
+    inst_category_conditional = {}
+
     def __init__(self, *args, **kwargs):
         super(DisassembleARM, self).__init__(*args, **kwargs)
         self._capstone = None
@@ -1154,7 +1157,25 @@ class DisassembleARM(base.DisassembleBase):
 
             return (2 if thumb else 4, mnemonic, op_str, comment)
 
-        return (2 if thumb else 4, self.undefined, '', '')
+        # Undefined instructions can still have comments
+        comment = None
+        if live_memory:
+            # Check if this is has a data description
+            content = self.access.describe_content(address)
+            if content:
+                if comment:
+                    comment = '%s  ; %s' % (content, comment)
+                else:
+                    comment = content
+
+            content = self.access.describe_code_comment(address)
+            if content:
+                if comment:
+                    comment = '%s  ; %s' % (content, comment)
+                else:
+                    comment = content
+
+        return (2 if thumb else 4, self.undefined, None, comment)
 
     def disassemble(self, address, inst,
                     live_registers=False, live_memory=False,
