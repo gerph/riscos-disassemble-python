@@ -21,7 +21,7 @@ with open(path.join(here, 'README.md'), encoding='utf-8') as f:
 
 
 setup(
-    name = 'riscos-disassemble',
+    name = 'riscos_disassemble',
     packages = ['riscos_disassemble',
                 'riscos_disassemble.arm',
                 'riscos_disassemble.arm64'],
