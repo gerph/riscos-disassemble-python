@@ -394,7 +394,7 @@ class DisassembleARM(base.DisassembleBase):
 
         return '%s %s %s' % (mode_name, exec_mode, ''.join(flags))
 
-    def _operand_constant(self, operand, shift=None, negated=False):
+    def _operand_constant(self, operand, shift=None, negated=False, negative=False):
         """
         Return a list of constant values if we can.
         """
@@ -403,6 +403,8 @@ class DisassembleARM(base.DisassembleBase):
             imm = operand.imm
             if negated:
                 imm = imm ^ 0xFFFFFFFF
+            elif negative:
+                imm = -imm
             if shift and shift.type == self._const.ARM_OP_IMM:
                 # Has an explicit rotate
                 imm = (imm << (32 - shift.imm)) | (imm >> shift.imm)
@@ -896,16 +898,21 @@ class DisassembleARM(base.DisassembleBase):
 
             elif mnemonic[0:3] in ('MVN', 'CMN'):
 
-                if mnemonic[0:3] != 'MVN':
+                negated = False
+                negative = False
+                if mnemonic[0:3] == 'CMN':
                     # This could be a 'P' operation but to find out we need to extract the word
                     word = struct.unpack('<L', i.bytes)[0]
                     armregd = (word>>12) & 15
                     if armregd == 15:
-                        # This is a TEQ/CMP/TSTP
+                        # This is a CMNP
                         mnemonic += 'P'
+                    negative = True
+                else:
+                    negated = True
 
                 accumulator = []
-                accumulator.extend(self._operand_constant(i.operands[1], negated=True))
+                accumulator.extend(self._operand_constant(i.operands[1], negated=negated, negative=negative))
                 if accumulator:
                     comment = ', '.join(accumulator)
 
