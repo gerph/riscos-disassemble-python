@@ -684,7 +684,22 @@ class DisassembleARM64(base.DisassembleBase):
                 if accumulator:
                     comment = ', '.join(accumulator)
 
-            elif mnemonic[0:3] in ('SXT',):
+            elif mnemonic in ('CCMP',):
+
+                accumulator = []
+
+                if live_registers and self.config.show_referenced_registers:
+                    accumulator.extend(self._operand_multiple_registers(i.operands[0:2]))
+
+                accumulator.extend(self._operand_constant(i.operands[1],))
+
+                if i.operands[1].type == self._const.ARM64_OP_IMM:
+                    op_str = self._fixup_shifted_constant(op_str, i.operands[1])
+
+                if accumulator:
+                    comment = ', '.join(accumulator)
+
+            elif mnemonic[0:3] in ('SXT', 'CLZ', 'NEG'):
 
                 accumulator = []
 
