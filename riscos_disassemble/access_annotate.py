@@ -108,7 +108,10 @@ class DisassembleAccessAnnotate(object):
         for mod_offset in range(0, Module_Extension + 4, 4):
             if mod_offset == Module_SWIChunk:
                 value = self.get_memory_word(self.baseaddr + mod_offset)
-                # Check if it's value
+                # Check if it's valid
+                if value is None:
+                    # Not valid, so we cannot handle this
+                    break
                 if value & 0x3F != 0:
                     break
                 if value & 0xFFF00000 != 0:
