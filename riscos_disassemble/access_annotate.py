@@ -17,6 +17,8 @@ Module_MsgFile = 0x2c
 Module_Extension = 0x30
 Module_ServiceMagic = 0xe1a00000
 
+Help_Is_Code_Flag = 0x20000000
+
 Util_Magic1 = 0x79766748
 Util_Magic2 = 0x216c6776
 
@@ -130,7 +132,33 @@ class DisassembleAccessAnnotate(object):
                         # Far too big to be sensible
                         break
 
-                if mod_offset in (Module_Start,
+                if mod_offset == Module_HC_Table:
+                    while True:
+                        cmd = self.get_memory_string(self.baseaddr + code_offset)
+                        if not cmd:
+                            # No more commands in the table
+                            break
+                        self.annotations[code_offset & ~3] = "Command table: *%s" % (cmd,)
+                        str_offset = (code_offset+4) & ~3
+                        code_offset = (code_offset + len(cmd) + 4) & ~3
+                        for offset in range(str_offset, code_offset, 4):
+                            self.annotations[offset] = "  ..."
+                        self.annotations[code_offset] = "  code offset"
+                        offset = self.get_memory_word(self.baseaddr + code_offset)
+                        if offset:
+                            self.code_comments[offset] = "Command *%s handler code" % (cmd,)
+                        self.annotations[code_offset + 4] = "  syntax message offset"
+                        self.annotations[code_offset + 8] = "  info word"
+                        infoword = self.get_memory_word(self.baseaddr + code_offset + 8)
+                        if infoword & Help_Is_Code_Flag:
+                            self.annotations[code_offset + 12] = "  help code offset"
+                            offset = self.get_memory_word(self.baseaddr + code_offset)
+                            if offset:
+                                self.code_comments[offset] = "Command *%s help handler code" % (cmd,)
+                        else:
+                            self.annotations[code_offset + 12] = "  help message offset"
+                        code_offset += 16
+                elif mod_offset in (Module_Start,
                                   Module_Init,
                                   Module_Die,
                                   Module_Service,
@@ -153,6 +181,8 @@ class DisassembleAccessAnnotate(object):
                         fast_offset = self.get_memory_word(self.baseaddr + table_offset + 4)
                         if fast_offset != 0:
                             self.code_comments[fast_offset] = "Fast service call entry"
+
+
 
     def annotate_utility(self):
         if self.get_memory_word(self.baseaddr + 4) != Util_Magic1 or \

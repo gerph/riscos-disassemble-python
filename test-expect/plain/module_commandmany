@@ -1,0 +1,2425 @@
+00000000 : 00000000 : .... : ; Module: Start offset
+00000004 : 00000390 : .... : ; Module: Initialisation code offset
+00000008 : 000003b0 : .... : ; Module: Finalisation code offset
+0000000c : 00000000 : .... : ; Module: Service handler offset
+00000010 : 00000038 : 8... : ; Module: Title string offset
+00000014 : 0000004b : K... : ; Module: Help string offset
+00000018 : 0000008c : .... : ; Module: Command table offset
+0000001c : 00000000 : .... : ; Module: SWI chunk
+00000020 : 00000000 : .... : ; Module: SWI handler code offset
+00000024 : 00000000 : .... : ; Module: SWI names table offset
+00000028 : 00000000 : .... : ; Module: SWI decoding code offset
+0000002c : 00000000 : .... : ; Module: Messages filename offset
+00000030 : 00000034 : 4... : ; Module: Extension flags offset
+00000034 : 00000001 : .... : ; Extension flags
+00000038 : 75646f4d : Modu : ; Title string
+0000003c : 6957656c : leWi : LDMDBVS r7, {r2, r3, r5, r6, r8, r10, sp, lr} ^
+00000040 : 6f436874 : thCo : SWIVS   &436874
+00000044 : 6e616d6d : mman : CDPVS   p13, #6, c6, c1, c13, #3
+00000048 : 4d007364 : ds.M : STCMI   p3, c7, [r0, #-&190]
+0000004c : 6c75646f : odul : LDCLVS  p4, c6, [r5], #-&1bc
+00000050 : 74695765 : eWit : STRBTVC r5, [r9], #-&765
+00000054 : 6d6f4368 : hCom : STCLVS  p3, c4, [pc, #-&1a0]!
+00000058 : 646e616d : mand : STRBTVS r6, [lr], #-&16d
+0000005c : 2e310973 : s.1. : MRCHS   p9, #1, r0, c1, c3, #3
+00000060 : 28203030 : 00 ( : STMDAHS r0!, {r4, r5, r12, sp}
+00000064 : 4a203131 : 11 J : BMI     &0080c530
+00000068 : 32206e75 : un 2 : EORLO   r6, r0, #&750             ; #1872
+0000006c : 29333230 : 023) : LDMDBHS r3!, {r4, r5, r9, r12, sp}
+00000070 : 74204120 :  A t : STRTVC  r4, [r0], #-&120
+00000074 : 20747365 : est  : RSBSHS  r7, r4, r5, ROR #6
+00000078 : 6320666f : of c : Undefined instruction
+0000007c : 616d6d6f : omma : Undefined instruction
+00000080 : 6420646e : nd d : STRTVS  r6, [r0], #-&46e
+00000084 : 61707369 : ispa : CMNVS   r0, r9, ROR #6
+00000088 : 00686374 : tch. : RSBEQ   r6, r8, r4, ROR r3
+0000008c : 74736554 : Test : ; Command table: *TestCommand0000
+00000090 : 6d6d6f43 : Comm : ;   ...
+00000094 : 30646e61 : and0 : ;   ...
+00000098 : 00303030 : 000. : ;   ...
+0000009c : 000003e8 : .... : ;   code offset
+000000a0 : 00ff0000 : .... : ;   syntax message offset
+000000a4 : 000002a9 : .... : ;   info word
+000000a8 : 000002d3 : .... : ;   help message offset
+000000ac : 74736554 : Test : ; Command table: *TestCommand0001
+000000b0 : 6d6d6f43 : Comm : ;   ...
+000000b4 : 30646e61 : and0 : ;   ...
+000000b8 : 00313030 : 001. : ;   ...
+000000bc : 00000410 : .... : ;   code offset
+000000c0 : 00ff0100 : .... : ;   syntax message offset
+000000c4 : 000002a9 : .... : ;   info word
+000000c8 : 000002d3 : .... : ;   help message offset
+000000cc : 74736554 : Test : ; Command table: *TestCommand0010
+000000d0 : 6d6d6f43 : Comm : ;   ...
+000000d4 : 30646e61 : and0 : ;   ...
+000000d8 : 00303130 : 010. : ;   ...
+000000dc : 00000438 : 8... : ;   code offset
+000000e0 : 00ff0200 : .... : ;   syntax message offset
+000000e4 : 000002a9 : .... : ;   info word
+000000e8 : 000002d3 : .... : ;   help message offset
+000000ec : 74736554 : Test : ; Command table: *TestCommand0011
+000000f0 : 6d6d6f43 : Comm : ;   ...
+000000f4 : 30646e61 : and0 : ;   ...
+000000f8 : 00313130 : 011. : ;   ...
+000000fc : 00000460 : `... : ;   code offset
+00000100 : 00ff0300 : .... : ;   syntax message offset
+00000104 : 000002a9 : .... : ;   info word
+00000108 : 000002d3 : .... : ;   help message offset
+0000010c : 74736554 : Test : ; Command table: *TestCommand0100
+00000110 : 6d6d6f43 : Comm : ;   ...
+00000114 : 30646e61 : and0 : ;   ...
+00000118 : 00303031 : 100. : ;   ...
+0000011c : 00000488 : .... : ;   code offset
+00000120 : 00ff0400 : .... : ;   syntax message offset
+00000124 : 000002a9 : .... : ;   info word
+00000128 : 000002d3 : .... : ;   help message offset
+0000012c : 74736554 : Test : ; Command table: *TestCommand0101
+00000130 : 6d6d6f43 : Comm : ;   ...
+00000134 : 30646e61 : and0 : ;   ...
+00000138 : 00313031 : 101. : ;   ...
+0000013c : 000004b0 : .... : ;   code offset
+00000140 : 00ff0500 : .... : ;   syntax message offset
+00000144 : 000002a9 : .... : ;   info word
+00000148 : 000002d3 : .... : ;   help message offset
+0000014c : 74736554 : Test : ; Command table: *TestCommand0110
+00000150 : 6d6d6f43 : Comm : ;   ...
+00000154 : 30646e61 : and0 : ;   ...
+00000158 : 00303131 : 110. : ;   ...
+0000015c : 000004d8 : .... : ;   code offset
+00000160 : 00ff0600 : .... : ;   syntax message offset
+00000164 : 000002a9 : .... : ;   info word
+00000168 : 000002d3 : .... : ;   help message offset
+0000016c : 74736554 : Test : ; Command table: *TestCommand0111
+00000170 : 6d6d6f43 : Comm : ;   ...
+00000174 : 30646e61 : and0 : ;   ...
+00000178 : 00313131 : 111. : ;   ...
+0000017c : 00000500 : .... : ;   code offset
+00000180 : 00ff0700 : .... : ;   syntax message offset
+00000184 : 000002a9 : .... : ;   info word
+00000188 : 000002d3 : .... : ;   help message offset
+0000018c : 74736554 : Test : ; Command table: *TestCommand1000
+00000190 : 6d6d6f43 : Comm : ;   ...
+00000194 : 31646e61 : and1 : ;   ...
+00000198 : 00303030 : 000. : ;   ...
+0000019c : 00000528 : (... : ;   code offset
+000001a0 : 00ff0800 : .... : ;   syntax message offset
+000001a4 : 000002a9 : .... : ;   info word
+000001a8 : 000002d3 : .... : ;   help message offset
+000001ac : 74736554 : Test : ; Command table: *TestCommand1001
+000001b0 : 6d6d6f43 : Comm : ;   ...
+000001b4 : 31646e61 : and1 : ;   ...
+000001b8 : 00313030 : 001. : ;   ...
+000001bc : 00000550 : P... : ;   code offset
+000001c0 : 00ff0900 : .... : ;   syntax message offset
+000001c4 : 000002a9 : .... : ;   info word
+000001c8 : 000002d3 : .... : ;   help message offset
+000001cc : 74736554 : Test : ; Command table: *TestCommand1010
+000001d0 : 6d6d6f43 : Comm : ;   ...
+000001d4 : 31646e61 : and1 : ;   ...
+000001d8 : 00303130 : 010. : ;   ...
+000001dc : 00000578 : x... : ;   code offset
+000001e0 : 00ff0a00 : .... : ;   syntax message offset
+000001e4 : 000002a9 : .... : ;   info word
+000001e8 : 000002d3 : .... : ;   help message offset
+000001ec : 74736554 : Test : ; Command table: *TestCommand1011
+000001f0 : 6d6d6f43 : Comm : ;   ...
+000001f4 : 31646e61 : and1 : ;   ...
+000001f8 : 00313130 : 011. : ;   ...
+000001fc : 000005a0 : .... : ;   code offset
+00000200 : 00ff0b00 : .... : ;   syntax message offset
+00000204 : 000002a9 : .... : ;   info word
+00000208 : 000002d3 : .... : ;   help message offset
+0000020c : 74736554 : Test : ; Command table: *TestCommand1100
+00000210 : 6d6d6f43 : Comm : ;   ...
+00000214 : 31646e61 : and1 : ;   ...
+00000218 : 00303031 : 100. : ;   ...
+0000021c : 000005c8 : .... : ;   code offset
+00000220 : 00ff0c00 : .... : ;   syntax message offset
+00000224 : 000002a9 : .... : ;   info word
+00000228 : 000002d3 : .... : ;   help message offset
+0000022c : 74736554 : Test : ; Command table: *TestCommand1101
+00000230 : 6d6d6f43 : Comm : ;   ...
+00000234 : 31646e61 : and1 : ;   ...
+00000238 : 00313031 : 101. : ;   ...
+0000023c : 000005f0 : .... : ;   code offset
+00000240 : 00ff0d00 : .... : ;   syntax message offset
+00000244 : 000002a9 : .... : ;   info word
+00000248 : 000002d3 : .... : ;   help message offset
+0000024c : 74736554 : Test : ; Command table: *TestCommand1110
+00000250 : 6d6d6f43 : Comm : ;   ...
+00000254 : 31646e61 : and1 : ;   ...
+00000258 : 00303131 : 110. : ;   ...
+0000025c : 00000618 : .... : ;   code offset
+00000260 : 00ff0e00 : .... : ;   syntax message offset
+00000264 : 000002a9 : .... : ;   info word
+00000268 : 000002d3 : .... : ;   help message offset
+0000026c : 74736554 : Test : ; Command table: *TestCommand1111
+00000270 : 6d6d6f43 : Comm : ;   ...
+00000274 : 31646e61 : and1 : ;   ...
+00000278 : 00313131 : 111. : ;   ...
+0000027c : 00000640 : @... : ;   code offset
+00000280 : 00ff0f00 : .... : ;   syntax message offset
+00000284 : 000002a9 : .... : ;   info word
+00000288 : 000002d3 : .... : ;   help message offset
+0000028c : 546e7552 : RunT : ; Command table: *RunTests
+00000290 : 73747365 : ests : ;   ...
+00000294 : 00000000 : .... : ;   ...
+00000298 : 000007c0 : .... : ;   code offset
+0000029c : 00000000 : .... : ;   syntax message offset
+000002a0 : 00000339 : 9... : ;   info word
+000002a4 : 0000034b : K... : ;   help message offset
+000002a8 : 6e795300 : .Syn : CDPVS   p3, #7, c5, c9, c0, #0
+000002ac : 3a786174 : tax: : BLO     &01e18884
+000002b0 : 65542a20 :  *Te : LDRBVS  r2, [r4, #-&a20]
+000002b4 : 6f437473 : stCo : SWIVS   &437473
+000002b8 : 6e616d6d : mman : CDPVS   p13, #6, c6, c1, c13, #3
+000002bc : 75733c64 : d<su : LDRBVC  r3, [r3, #-&c64]!
+000002c0 : 78696666 : ffix : STMDAVC r9!, {r1, r2, r5, r6, r9, r10, sp, lr} ^
+000002c4 : 703c203e : > <p : EORSVC  r2, r12, lr, LSR r0
+000002c8 : 6d617261 : aram : SFMVS   F7, 2, [R1, #-388]!
+000002cc : 72657465 : eter : RSBVC   r7, r5, #&65000000        ; #1694498816 = 101<<24
+000002d0 : 2a003e73 : s>.* : BHS     &0000fca4
+000002d4 : 74736554 : Test : LDRBTVC r6, [r3], #-&554
+000002d8 : 6d6d6f43 : Comm : STCLVS  p15, c6, [sp, #-&10c]!
+000002dc : 3c646e61 : and< : STCLLO  p14, c6, [r4], #-&184
+000002e0 : 66667573 : suff : UQSUB16VSr7, r6, r3
+000002e4 : 203e7869 : ix>  : EORSHS  r7, lr, r9, ROR #16
+000002e8 : 6f706572 : repo : SWIVS   &706572
+000002ec : 20737472 : rts  : RSBSHS  r7, r3, r2, ROR r4
+000002f0 : 77206e6f : on w : STRVC   r6, [r0, -pc, ROR #28]!
+000002f4 : 20746168 : hat  : RSBSHS  r6, r4, r8, ROR #2
+000002f8 : 72207469 : it r : EORVC   r7, r0, #&69000000        ; #1761607680 = 105<<24
+000002fc : 69656365 : ecei : STMDBVS r5!, {r0, r2, r5, r6, r8, r9, sp, lr} ^
+00000300 : 20646576 : ved  : RSBHS   r6, r4, r6, ROR r5
+00000304 : 70207361 : as p : EORVC   r7, r0, r1, ROR #6
+00000308 : 6d617261 : aram : SFMVS   F7, 2, [R1, #-388]!
+0000030c : 72657465 : eter : RSBVC   r7, r5, #&65000000        ; #1694498816 = 101<<24
+00000310 : 54202e73 : s. T : STRTPL  r2, [r0], #-&e73
+00000314 : 73206568 : he s : Undefined instruction
+00000318 : 69666675 : uffi : STMDBVS r6!, {r0, r2, r4, r5, r6, r9, r10, sp, lr} ^
+0000031c : 73692078 : x is : Undefined instruction
+00000320 : 65687420 :  the : STRBVS  r7, [r8, #-&420]!
+00000324 : 6e696220 :  bin : CDPVS   p2, #6, c6, c9, c0, #1
+00000328 : 20797261 : ary  : RSBSHS  r7, r9, r1, ROR #4
+0000032c : 72545347 : GSTr : SUBSVC  r5, r4, #&1c000001        ; #469762049
+00000330 : 20736e61 : ans  : RSBSHS  r6, r3, r1, ROR #28
+00000334 : 2e70616d : map. : RPWCSSZ F6, F0, #5
+00000338 : 6e795300 : .Syn : CDPVS   p3, #7, c5, c9, c0, #0
+0000033c : 3a786174 : tax: : BLO     &01e18914
+00000340 : 75522a20 :  *Ru : LDRBVC  r2, [r2, #-&a20]
+00000344 : 7365546e : nTes : Undefined instruction
+00000348 : 2a007374 : ts.* : BHS     &0001d120
+0000034c : 546e7552 : RunT : STRBTPL r7, [lr], #-&552
+00000350 : 73747365 : ests : CMNVC   r4, #&94000001            ; #1811939327
+00000354 : 6e757220 :  run : CDPVS   p2, #7, c7, c5, c0, #1
+00000358 : 20612073 : s a  : RSBHS   r2, r1, r3, ROR r0
+0000035c : 636e7562 : bunc : Undefined instruction
+00000360 : 666f2068 : h of : STRBTVS r2, &00000368
+00000364 : 73657420 :  tes : Undefined instruction
+00000368 : 61207374 : ts a : Undefined instruction
+0000036c : 7220646e : nd r : EORVC   r6, r0, #&6e000000        ; #1845493760 = 110<<24
+00000370 : 726f7065 : epor : ADRVC   r7, &00000313             ; -> "The suffix is the binary GSTrans map."
+00000374 : 6f207374 : ts o : SWIVS   &207374
+00000378 : 6874206e : n th : LDMDAVS r4!, {r1, r2, r3, r5, r6, sp} ^
+0000037c : 74732065 : e st : LDRBTVC r2, [r3], #-&65
+00000380 : 73757461 : atus : CMNVC   r5, #&61000000            ; #-1627389952 = 159<<24
+00000384 : 20666f20 :  of  : RSBHS   r6, r6, r0, LSR #30
+00000388 : 68636165 : each : STMDAVS r3!, {r0, r2, r5, r6, r8, sp, lr} ^
+0000038c : 0000002e : .... : ANDEQ   r0, r0, lr, LSR #32
+00000390 : e92d4000 : .@-. : STMDB   sp!, {lr}                 ; Initialisation code
+00000394 : e3a00006 : .... : MOV     r0, #6
+00000398 : e3a03b01 : .;.. : MOV     r3, #&400                 ; #1024 = bit 10
+0000039c : ef00001e : .... : SWI     OS_Module
+000003a0 : 6a000001 : ...j : BVS     &000003ac
+000003a4 : e58c2000 : . .. : STR     r2, [r12]
+000003a8 : e1500000 : ..P. : CMP     r0, r0
+000003ac : e8bd8000 : .... : LDMIA   sp!, {pc}
+000003b0 : e92d4000 : .@-. : STMDB   sp!, {lr}                 ; Finalisation code
+000003b4 : e3a00007 : .... : MOV     r0, #7
+000003b8 : e59c2000 : . .. : LDR     r2, [r12]
+000003bc : ef00001e : .... : SWI     OS_Module
+000003c0 : 73a02000 : . .s : MOVVC   r2, #0
+000003c4 : 758c2000 : . .u : STRVC   r2, [r12]
+000003c8 : e8bd8000 : .... : LDMIA   sp!, {pc}
+000003cc : 74736574 : test : LDRBTVC r6, [r3], #-&574
+000003d0 : 6d6d6f63 : comm : STCLVS  p15, c6, [sp, #-&18c]!
+000003d4 : 5f646e61 : and_ : SWIPL   &646e61
+000003d8 : 65646f63 : code : STRBVS  r6, [r4, #-&f63]!
+000003dc : 30303030 : 0000 : EORSLO  r3, r0, r0, LSR r0
+000003e0 : 00000000 : .... : ANDEQ   r0, r0, r0
+000003e4 : ff000018 : .... : Undefined instruction
+000003e8 : e92d5ffe : ._-. : PUSH    {r1, r2, r3, r4, r5, r6, r7, r8, r9, r10, r11, r12, lr}  ; Command *TestCommand0000 handler code  ; Function: testcommand_code0000
+000003ec : e3a02000 : . .. : MOV     r2, #0
+000003f0 : ea00009b : .... : B       &00000664                 ; -> Function: testcommand_code
+000003f4 : 74736574 : test : LDRBTVC r6, [r3], #-&574
+000003f8 : 6d6d6f63 : comm : STCLVS  p15, c6, [sp, #-&18c]!
+000003fc : 5f646e61 : and_ : SWIPL   &646e61
+00000400 : 65646f63 : code : STRBVS  r6, [r4, #-&f63]!
+00000404 : 31303030 : 0001 : TEQLO   r0, r0, LSR r0
+00000408 : 00000000 : .... : ANDEQ   r0, r0, r0
+0000040c : ff000018 : .... : Undefined instruction
+00000410 : e92d5ffe : ._-. : PUSH    {r1, r2, r3, r4, r5, r6, r7, r8, r9, r10, r11, r12, lr}  ; Command *TestCommand0001 handler code  ; Function: testcommand_code0001
+00000414 : e3a02001 : . .. : MOV     r2, #1
+00000418 : ea000091 : .... : B       &00000664                 ; -> Function: testcommand_code
+0000041c : 74736574 : test : LDRBTVC r6, [r3], #-&574
+00000420 : 6d6d6f63 : comm : STCLVS  p15, c6, [sp, #-&18c]!
+00000424 : 5f646e61 : and_ : SWIPL   &646e61
+00000428 : 65646f63 : code : STRBVS  r6, [r4, #-&f63]!
+0000042c : 30313030 : 0010 : EORSLO  r3, r1, r0, LSR r0
+00000430 : 00000000 : .... : ANDEQ   r0, r0, r0
+00000434 : ff000018 : .... : Undefined instruction
+00000438 : e92d5ffe : ._-. : PUSH    {r1, r2, r3, r4, r5, r6, r7, r8, r9, r10, r11, r12, lr}  ; Command *TestCommand0010 handler code  ; Function: testcommand_code0010
+0000043c : e3a02002 : . .. : MOV     r2, #2
+00000440 : ea000087 : .... : B       &00000664                 ; -> Function: testcommand_code
+00000444 : 74736574 : test : LDRBTVC r6, [r3], #-&574
+00000448 : 6d6d6f63 : comm : STCLVS  p15, c6, [sp, #-&18c]!
+0000044c : 5f646e61 : and_ : SWIPL   &646e61
+00000450 : 65646f63 : code : STRBVS  r6, [r4, #-&f63]!
+00000454 : 31313030 : 0011 : TEQLO   r1, r0, LSR r0
+00000458 : 00000000 : .... : ANDEQ   r0, r0, r0
+0000045c : ff000018 : .... : Undefined instruction
+00000460 : e92d5ffe : ._-. : PUSH    {r1, r2, r3, r4, r5, r6, r7, r8, r9, r10, r11, r12, lr}  ; Command *TestCommand0011 handler code  ; Function: testcommand_code0011
+00000464 : e3a02003 : . .. : MOV     r2, #3
+00000468 : ea00007d : }... : B       &00000664                 ; -> Function: testcommand_code
+0000046c : 74736574 : test : LDRBTVC r6, [r3], #-&574
+00000470 : 6d6d6f63 : comm : STCLVS  p15, c6, [sp, #-&18c]!
+00000474 : 5f646e61 : and_ : SWIPL   &646e61
+00000478 : 65646f63 : code : STRBVS  r6, [r4, #-&f63]!
+0000047c : 30303130 : 0100 : EORSLO  r3, r0, r0, LSR r1
+00000480 : 00000000 : .... : ANDEQ   r0, r0, r0
+00000484 : ff000018 : .... : Undefined instruction
+00000488 : e92d5ffe : ._-. : PUSH    {r1, r2, r3, r4, r5, r6, r7, r8, r9, r10, r11, r12, lr}  ; Command *TestCommand0100 handler code  ; Function: testcommand_code0100
+0000048c : e3a02004 : . .. : MOV     r2, #4
+00000490 : ea000073 : s... : B       &00000664                 ; -> Function: testcommand_code
+00000494 : 74736574 : test : LDRBTVC r6, [r3], #-&574
+00000498 : 6d6d6f63 : comm : STCLVS  p15, c6, [sp, #-&18c]!
+0000049c : 5f646e61 : and_ : SWIPL   &646e61
+000004a0 : 65646f63 : code : STRBVS  r6, [r4, #-&f63]!
+000004a4 : 31303130 : 0101 : TEQLO   r0, r0, LSR r1
+000004a8 : 00000000 : .... : ANDEQ   r0, r0, r0
+000004ac : ff000018 : .... : Undefined instruction
+000004b0 : e92d5ffe : ._-. : PUSH    {r1, r2, r3, r4, r5, r6, r7, r8, r9, r10, r11, r12, lr}  ; Command *TestCommand0101 handler code  ; Function: testcommand_code0101
+000004b4 : e3a02005 : . .. : MOV     r2, #5
+000004b8 : ea000069 : i... : B       &00000664                 ; -> Function: testcommand_code
+000004bc : 74736574 : test : LDRBTVC r6, [r3], #-&574
+000004c0 : 6d6d6f63 : comm : STCLVS  p15, c6, [sp, #-&18c]!
+000004c4 : 5f646e61 : and_ : SWIPL   &646e61
+000004c8 : 65646f63 : code : STRBVS  r6, [r4, #-&f63]!
+000004cc : 30313130 : 0110 : EORSLO  r3, r1, r0, LSR r1
+000004d0 : 00000000 : .... : ANDEQ   r0, r0, r0
+000004d4 : ff000018 : .... : Undefined instruction
+000004d8 : e92d5ffe : ._-. : PUSH    {r1, r2, r3, r4, r5, r6, r7, r8, r9, r10, r11, r12, lr}  ; Command *TestCommand0110 handler code  ; Function: testcommand_code0110
+000004dc : e3a02006 : . .. : MOV     r2, #6
+000004e0 : ea00005f : _... : B       &00000664                 ; -> Function: testcommand_code
+000004e4 : 74736574 : test : LDRBTVC r6, [r3], #-&574
+000004e8 : 6d6d6f63 : comm : STCLVS  p15, c6, [sp, #-&18c]!
+000004ec : 5f646e61 : and_ : SWIPL   &646e61
+000004f0 : 65646f63 : code : STRBVS  r6, [r4, #-&f63]!
+000004f4 : 31313130 : 0111 : TEQLO   r1, r0, LSR r1
+000004f8 : 00000000 : .... : ANDEQ   r0, r0, r0
+000004fc : ff000018 : .... : Undefined instruction
+00000500 : e92d5ffe : ._-. : PUSH    {r1, r2, r3, r4, r5, r6, r7, r8, r9, r10, r11, r12, lr}  ; Command *TestCommand0111 handler code  ; Function: testcommand_code0111
+00000504 : e3a02007 : . .. : MOV     r2, #7
+00000508 : ea000055 : U... : B       &00000664                 ; -> Function: testcommand_code
+0000050c : 74736574 : test : LDRBTVC r6, [r3], #-&574
+00000510 : 6d6d6f63 : comm : STCLVS  p15, c6, [sp, #-&18c]!
+00000514 : 5f646e61 : and_ : SWIPL   &646e61
+00000518 : 65646f63 : code : STRBVS  r6, [r4, #-&f63]!
+0000051c : 30303031 : 1000 : EORSLO  r3, r0, r1, LSR r0
+00000520 : 00000000 : .... : ANDEQ   r0, r0, r0
+00000524 : ff000018 : .... : Undefined instruction
+00000528 : e92d5ffe : ._-. : PUSH    {r1, r2, r3, r4, r5, r6, r7, r8, r9, r10, r11, r12, lr}  ; Command *TestCommand1000 handler code  ; Function: testcommand_code1000
+0000052c : e3a02008 : . .. : MOV     r2, #8
+00000530 : ea00004b : K... : B       &00000664                 ; -> Function: testcommand_code
+00000534 : 74736574 : test : LDRBTVC r6, [r3], #-&574
+00000538 : 6d6d6f63 : comm : STCLVS  p15, c6, [sp, #-&18c]!
+0000053c : 5f646e61 : and_ : SWIPL   &646e61
+00000540 : 65646f63 : code : STRBVS  r6, [r4, #-&f63]!
+00000544 : 31303031 : 1001 : TEQLO   r0, r1, LSR r0
+00000548 : 00000000 : .... : ANDEQ   r0, r0, r0
+0000054c : ff000018 : .... : Undefined instruction
+00000550 : e92d5ffe : ._-. : PUSH    {r1, r2, r3, r4, r5, r6, r7, r8, r9, r10, r11, r12, lr}  ; Command *TestCommand1001 handler code  ; Function: testcommand_code1001
+00000554 : e3a02009 : . .. : MOV     r2, #9
+00000558 : ea000041 : A... : B       &00000664                 ; -> Function: testcommand_code
+0000055c : 74736574 : test : LDRBTVC r6, [r3], #-&574
+00000560 : 6d6d6f63 : comm : STCLVS  p15, c6, [sp, #-&18c]!
+00000564 : 5f646e61 : and_ : SWIPL   &646e61
+00000568 : 65646f63 : code : STRBVS  r6, [r4, #-&f63]!
+0000056c : 30313031 : 1010 : EORSLO  r3, r1, r1, LSR r0
+00000570 : 00000000 : .... : ANDEQ   r0, r0, r0
+00000574 : ff000018 : .... : Undefined instruction
+00000578 : e92d5ffe : ._-. : PUSH    {r1, r2, r3, r4, r5, r6, r7, r8, r9, r10, r11, r12, lr}  ; Command *TestCommand1010 handler code  ; Function: testcommand_code1010
+0000057c : e3a0200a : . .. : MOV     r2, #&a
+00000580 : ea000037 : 7... : B       &00000664                 ; -> Function: testcommand_code
+00000584 : 74736574 : test : LDRBTVC r6, [r3], #-&574
+00000588 : 6d6d6f63 : comm : STCLVS  p15, c6, [sp, #-&18c]!
+0000058c : 5f646e61 : and_ : SWIPL   &646e61
+00000590 : 65646f63 : code : STRBVS  r6, [r4, #-&f63]!
+00000594 : 31313031 : 1011 : TEQLO   r1, r1, LSR r0
+00000598 : 00000000 : .... : ANDEQ   r0, r0, r0
+0000059c : ff000018 : .... : Undefined instruction
+000005a0 : e92d5ffe : ._-. : PUSH    {r1, r2, r3, r4, r5, r6, r7, r8, r9, r10, r11, r12, lr}  ; Command *TestCommand1011 handler code  ; Function: testcommand_code1011
+000005a4 : e3a0200b : . .. : MOV     r2, #&b                   ; #11
+000005a8 : ea00002d : -... : B       &00000664                 ; -> Function: testcommand_code
+000005ac : 74736574 : test : LDRBTVC r6, [r3], #-&574
+000005b0 : 6d6d6f63 : comm : STCLVS  p15, c6, [sp, #-&18c]!
+000005b4 : 5f646e61 : and_ : SWIPL   &646e61
+000005b8 : 65646f63 : code : STRBVS  r6, [r4, #-&f63]!
+000005bc : 30303131 : 1100 : EORSLO  r3, r0, r1, LSR r1
+000005c0 : 00000000 : .... : ANDEQ   r0, r0, r0
+000005c4 : ff000018 : .... : Undefined instruction
+000005c8 : e92d5ffe : ._-. : PUSH    {r1, r2, r3, r4, r5, r6, r7, r8, r9, r10, r11, r12, lr}  ; Command *TestCommand1100 handler code  ; Function: testcommand_code1100
+000005cc : e3a0200c : . .. : MOV     r2, #&c                   ; #12
+000005d0 : ea000023 : #... : B       &00000664                 ; -> Function: testcommand_code
+000005d4 : 74736574 : test : LDRBTVC r6, [r3], #-&574
+000005d8 : 6d6d6f63 : comm : STCLVS  p15, c6, [sp, #-&18c]!
+000005dc : 5f646e61 : and_ : SWIPL   &646e61
+000005e0 : 65646f63 : code : STRBVS  r6, [r4, #-&f63]!
+000005e4 : 31303131 : 1101 : TEQLO   r0, r1, LSR r1
+000005e8 : 00000000 : .... : ANDEQ   r0, r0, r0
+000005ec : ff000018 : .... : Undefined instruction
+000005f0 : e92d5ffe : ._-. : PUSH    {r1, r2, r3, r4, r5, r6, r7, r8, r9, r10, r11, r12, lr}  ; Command *TestCommand1101 handler code  ; Function: testcommand_code1101
+000005f4 : e3a0200d : . .. : MOV     r2, #&d                   ; #13
+000005f8 : ea000019 : .... : B       &00000664                 ; -> Function: testcommand_code
+000005fc : 74736574 : test : LDRBTVC r6, [r3], #-&574
+00000600 : 6d6d6f63 : comm : STCLVS  p15, c6, [sp, #-&18c]!
+00000604 : 5f646e61 : and_ : SWIPL   &646e61
+00000608 : 65646f63 : code : STRBVS  r6, [r4, #-&f63]!
+0000060c : 30313131 : 1110 : EORSLO  r3, r1, r1, LSR r1
+00000610 : 00000000 : .... : ANDEQ   r0, r0, r0
+00000614 : ff000018 : .... : Undefined instruction
+00000618 : e92d5ffe : ._-. : PUSH    {r1, r2, r3, r4, r5, r6, r7, r8, r9, r10, r11, r12, lr}  ; Command *TestCommand1110 handler code  ; Function: testcommand_code1110
+0000061c : e3a0200e : . .. : MOV     r2, #&e                   ; #14
+00000620 : ea00000f : .... : B       &00000664                 ; -> Function: testcommand_code
+00000624 : 74736574 : test : LDRBTVC r6, [r3], #-&574
+00000628 : 6d6d6f63 : comm : STCLVS  p15, c6, [sp, #-&18c]!
+0000062c : 5f646e61 : and_ : SWIPL   &646e61
+00000630 : 65646f63 : code : STRBVS  r6, [r4, #-&f63]!
+00000634 : 31313131 : 1111 : TEQLO   r1, r1, LSR r1
+00000638 : 00000000 : .... : ANDEQ   r0, r0, r0
+0000063c : ff000018 : .... : Undefined instruction
+00000640 : e92d5ffe : ._-. : PUSH    {r1, r2, r3, r4, r5, r6, r7, r8, r9, r10, r11, r12, lr}  ; Command *TestCommand1111 handler code  ; Function: testcommand_code1111
+00000644 : e3a0200f : . .. : MOV     r2, #&f                   ; #15
+00000648 : ea000005 : .... : B       &00000664                 ; -> Function: testcommand_code
+0000064c : 74736574 : test : LDRBTVC r6, [r3], #-&574
+00000650 : 6d6d6f63 : comm : STCLVS  p15, c6, [sp, #-&18c]!
+00000654 : 5f646e61 : and_ : SWIPL   &646e61
+00000658 : 65646f63 : code : STRBVS  r6, [r4, #-&f63]!
+0000065c : 00000000 : .... : ANDEQ   r0, r0, r0
+00000660 : ff000014 : .... : Undefined instruction
+00000664 : e59cc000 : .... : LDR     r12, [r12]                ; Function: testcommand_code
+00000668 : e92d0003 : ..-. : PUSH    {r0, r1}
+0000066c : e28f8b07 : .... : ADR     r8, &00002274             ; -> "r input <"
+00000670 : e2888fca : .... : ADD     r8, r8, #&328             ; #808
+00000674 : e598e000 : .... : LDR     lr, [r8]
+00000678 : e13e0001 : ..>. : TEQ     lr, r1
+0000067c : 03a00050 : P... : MOVEQ   r0, #&50                  ; #80  = 'P'
+00000680 : 13a00046 : F... : MOVNE   r0, #&46                  ; #70  = 'F'
+00000684 : e1a04000 : .@.. : MOV     r4, r0
+00000688 : ef000000 : .... : SWI     OS_WriteC
+0000068c : e59d0000 : .... : LDR     r0, [sp]
+00000690 : e5181004 : .... : LDR     r1, [r8, #-4]
+00000694 : eb0007c5 : .... : BL      &000025b0                 ; -> Function: strcmp
+00000698 : 03a00050 : P... : MOVEQ   r0, #&50                  ; #80  = 'P'
+0000069c : 13a00046 : F... : MOVNE   r0, #&46                  ; #70  = 'F'
+000006a0 : e1a05000 : .P.. : MOV     r5, r0
+000006a4 : ef000000 : .... : SWI     OS_WriteC
+000006a8 : e8bd0003 : .... : POP     {r0, r1}
+000006ac : e3340046 : F.4. : TEQ     r4, #&46                  ; #70  = 'F'
+000006b0 : 13350046 : F.5. : TEQNE   r5, #&46                  ; #70  = 'F'
+000006b4 : 0598e004 : .... : LDREQ   lr, [r8, #4]
+000006b8 : 028ee001 : .... : ADDEQ   lr, lr, #1
+000006bc : 0588e004 : .... : STREQ   lr, [r8, #4]
+000006c0 : ef000001 : .... : SWI     OS_WriteS                 ; R15+4 = " : "
+000006c4 : 00203a20 :  : . : EOREQ   r3, r0, r0, LSR #20
+000006c8 : e92d0007 : ..-. : PUSH    {r0, r1, r2}
+000006cc : e1a00001 : .... : MOV     r0, r1
+000006d0 : e1a0100c : .... : MOV     r1, r12
+000006d4 : e3a02014 : . .. : MOV     r2, #&14                  ; #20
+000006d8 : ef0000dc : .... : SWI     OS_ConvertInteger4
+000006dc : ef000002 : .... : SWI     OS_Write0
+000006e0 : e2622014 : . b. : RSB     r2, r2, #&14              ; #20
+000006e4 : e2722002 : . r. : RSBS    r2, r2, #2
+000006e8 : 4a000002 : ...J : BMI     &000006f8
+000006ec : 1f000120 :  ... : SWINE   OS_WriteI+" "
+000006f0 : e2522001 : . R. : SUBS    r2, r2, #1
+000006f4 : 5afffffc : ...Z : BPL     &000006ec
+000006f8 : e8bd0007 : .... : POP     {r0, r1, r2}
+000006fc : e3340050 : P.4. : TEQ     r4, #&50                  ; #80  = 'P'
+00000700 : 0a000010 : .... : BEQ     &00000748
+00000704 : ef000001 : .... : SWI     OS_WriteS                 ; R15+4 = "!="
+00000708 : 00003d21 : !=.. : ANDEQ   r3, r0, r1, LSR #26
+0000070c : e598e000 : .... : LDR     lr, [r8]
+00000710 : e92d0007 : ..-. : PUSH    {r0, r1, r2}
+00000714 : e1a0000e : .... : MOV     r0, lr
+00000718 : e1a0100c : .... : MOV     r1, r12
+0000071c : e3a02014 : . .. : MOV     r2, #&14                  ; #20
+00000720 : ef0000dc : .... : SWI     OS_ConvertInteger4
+00000724 : ef000002 : .... : SWI     OS_Write0
+00000728 : e2622014 : . b. : RSB     r2, r2, #&14              ; #20
+0000072c : e2722002 : . r. : RSBS    r2, r2, #2
+00000730 : 4a000002 : ...J : BMI     &00000740
+00000734 : 1f000120 :  ... : SWINE   OS_WriteI+" "
+00000738 : e2522001 : . R. : SUBS    r2, r2, #1
+0000073c : 5afffffc : ...Z : BPL     &00000734
+00000740 : e8bd0007 : .... : POP     {r0, r1, r2}
+00000744 : ea000002 : .... : B       &00000754
+00000748 : ef000001 : .... : SWI     OS_WriteS                 ; R15+4 = "    "
+0000074c : 20202020 :      : EORHS   r2, r0, r0, LSR #32
+00000750 : 00000000 : .... : ANDEQ   r0, r0, r0
+00000754 : ef000001 : .... : SWI     OS_WriteS                 ; R15+4 = " : "
+00000758 : 00203a20 :  : . : EOREQ   r3, r0, r0, LSR #20
+0000075c : ef00013c : <... : SWI     OS_WriteI+"<"
+00000760 : e92d0001 : ..-. : STMDB   sp!, {r0}
+00000764 : ef000002 : .... : SWI     OS_Write0
+00000768 : e8bd0001 : .... : LDMIA   sp!, {r0}
+0000076c : ef00013e : >... : SWI     OS_WriteI+">"
+00000770 : e3350050 : P.5. : TEQ     r5, #&50                  ; #80  = 'P'
+00000774 : 0a000009 : .... : BEQ     &000007a0
+00000778 : ef000001 : .... : SWI     OS_WriteS                 ; R15+4 = " != "
+0000077c : 203d2120 :  !=  : EORSHS  r2, sp, r0, LSR #2
+00000780 : 00000000 : .... : ANDEQ   r0, r0, r0
+00000784 : e5180004 : .... : LDR     r0, [r8, #-4]
+00000788 : ef00013c : <... : SWI     OS_WriteI+"<"
+0000078c : e92d0001 : ..-. : STMDB   sp!, {r0}
+00000790 : ef000002 : .... : SWI     OS_Write0
+00000794 : e8bd0001 : .... : LDMIA   sp!, {r0}
+00000798 : ef00013e : >... : SWI     OS_WriteI+">"
+0000079c : eaffffff : .... : B       &000007a0
+000007a0 : ef000003 : .... : SWI     OS_NewLine
+000007a4 : e1500000 : ..P. : CMP     r0, r0
+000007a8 : e8bd9ffe : .... : POP     {r1, r2, r3, r4, r5, r6, r7, r8, r9, r10, r11, r12, pc}
+000007ac : 746e7572 : runt : STRBTVC r7, [lr], #-&572
+000007b0 : 73747365 : ests : CMNVC   r4, #&94000001            ; #1811939327
+000007b4 : 646f635f : _cod : STRBTVS r6, &000007bc
+000007b8 : 00000065 : e... : ANDEQ   r0, r0, r5, RRX
+000007bc : ff000010 : .... : Undefined instruction
+000007c0 : e92d5fff : ._-. : PUSH    {r0, r1, r2, r3, r4, r5, r6, r7, r8, r9, r10, r11, r12, lr}  ; Command *RunTests handler code  ; Function: runtests_code
+000007c4 : e59cc000 : .... : LDR     r12, [r12]
+000007c8 : e28f0004 : .... : ADR     r0, &000007d4             ; -> "Set Variable Value"
+000007cc : ef000005 : .... : SWI     OS_CLI
+000007d0 : ea000004 : .... : B       &000007e8
+000007d4 : 20746553 : Set  : RSBSHS  r6, r4, r3, ASR r5
+000007d8 : 69726156 : Vari : LDMDBVS r2!, {r1, r2, r4, r6, r8, sp, lr} ^
+000007dc : 656c6261 : able : STRBVS  r6, [r12, #-&261]!
+000007e0 : 6c615620 :  Val : STCLVS  p6, c5, [r1], #-&80
+000007e4 : 00006575 : ue.. : ANDEQ   r6, r0, r5, ROR r5
+000007e8 : ef000001 : .... : SWI     OS_WriteS                 ; R15+4 = "GSTrans map: 0000 : "
+000007ec : 72545347 : GSTr : SUBSVC  r5, r4, #&1c000001        ; #469762049
+000007f0 : 20736e61 : ans  : RSBSHS  r6, r3, r1, ROR #28
+000007f4 : 3a70616d : map: : BLO     &01c18db0
+000007f8 : 30303020 :  000 : EORSLO  r3, r0, r0, LSR #32
+000007fc : 203a2030 : 0 :  : EORSHS  r2, r10, r0, LSR r0
+00000800 : 00000000 : .... : ANDEQ   r0, r0, r0
+00000804 : e3a00001 : .... : MOV     r0, #1
+00000808 : e28f1b07 : .... : ADR     r1, &00002410             ; -> [&e92d0001, &ef000002, &e8bd0001, &e8bd0003]
+0000080c : e2811f63 : c... : ADD     r1, r1, #&18c             ; #396
+00000810 : e5810000 : .... : STR     r0, [r1]
+00000814 : e28f00a0 : .... : ADR     r0, &000008bc             ; -> [&6c6c6548, &0000006f, &ef000001, &72545347]
+00000818 : e5010004 : .... : STR     r0, [r1, #-4]
+0000081c : e28f0088 : .... : ADR     r0, &000008ac             ; -> "TestCommand0000 Hello"
+00000820 : ef020005 : .... : SWI     XOS_CLI
+00000824 : 7a000026 : &..z : BVC     &000008c4
+00000828 : ef000001 : .... : SWI     OS_WriteS                 ; R15+4 = "ERROR: "
+0000082c : 4f525245 : ERRO : SWIMI   &525245
+00000830 : 00203a52 : R: . : EOREQ   r3, r0, r2, ASR r10
+00000834 : e92d0003 : ..-. : PUSH    {r0, r1}
+00000838 : ef00015b : [... : SWI     OS_WriteI+"["
+0000083c : e4901004 : .... : LDR     r1, [r0], #4
+00000840 : ef000126 : &... : SWI     OS_WriteI+"&"
+00000844 : e92d0007 : ..-. : PUSH    {r0, r1, r2}
+00000848 : e1a00001 : .... : MOV     r0, r1
+0000084c : e1a0100c : .... : MOV     r1, r12
+00000850 : e3a02014 : . .. : MOV     r2, #&14                  ; #20
+00000854 : ef0000d4 : .... : SWI     OS_ConvertHex8
+00000858 : ef000002 : .... : SWI     OS_Write0
+0000085c : e8bd0007 : .... : POP     {r0, r1, r2}
+00000860 : ef00015d : ]... : SWI     OS_WriteI+"]"
+00000864 : ef000120 :  ... : SWI     OS_WriteI+" "
+00000868 : e92d0001 : ..-. : STMDB   sp!, {r0}
+0000086c : ef000002 : .... : SWI     OS_Write0
+00000870 : e8bd0001 : .... : LDMIA   sp!, {r0}
+00000874 : e8bd0003 : .... : POP     {r0, r1}
+00000878 : ef000001 : .... : SWI     OS_WriteS                 ; R15+4 = " (for input <"
+0000087c : 6f662820 :  (fo : SWIVS   &662820
+00000880 : 6e692072 : r in : MCRVS   p0, #3, r2, c9, c2, #3
+00000884 : 20747570 : put  : RSBSHS  r7, r4, r0, ROR r5
+00000888 : 0000003c : <... : ANDEQ   r0, r0, r12, LSR r0
+0000088c : e28f0028 : (... : ADR     r0, &000008bc             ; -> [&6c6c6548, &0000006f, &ef000001, &72545347]
+00000890 : e92d0001 : ..-. : STMDB   sp!, {r0}
+00000894 : ef000002 : .... : SWI     OS_Write0
+00000898 : e8bd0001 : .... : LDMIA   sp!, {r0}
+0000089c : ef000001 : .... : SWI     OS_WriteS                 ; R15+4 = ">)"
+000008a0 : 0000293e : >).. : ANDEQ   r2, r0, lr, LSR r9
+000008a4 : ef000003 : .... : SWI     OS_NewLine
+000008a8 : ea000005 : .... : B       &000008c4
+000008ac : 74736554 : Test : LDRBTVC r6, [r3], #-&554
+000008b0 : 6d6d6f43 : Comm : STCLVS  p15, c6, [sp, #-&10c]!
+000008b4 : 30646e61 : and0 : RSBLO   r6, r4, r1, ROR #28
+000008b8 : 20303030 : 000  : EORSHS  r3, r0, r0, LSR r0
+000008bc : 6c6c6548 : Hell : STCLVS  p5, c6, [r12], #-&120
+000008c0 : 0000006f : o... : ANDEQ   r0, r0, pc, RRX
+000008c4 : ef000001 : .... : SWI     OS_WriteS                 ; R15+4 = "GSTrans map: 0000 : "
+000008c8 : 72545347 : GSTr : SUBSVC  r5, r4, #&1c000001        ; #469762049
+000008cc : 20736e61 : ans  : RSBSHS  r6, r3, r1, ROR #28
+000008d0 : 3a70616d : map: : BLO     &01c18e8c
+000008d4 : 30303020 :  000 : EORSLO  r3, r0, r0, LSR #32
+000008d8 : 203a2030 : 0 :  : EORSHS  r2, r10, r0, LSR r0
+000008dc : 00000000 : .... : ANDEQ   r0, r0, r0
+000008e0 : e3a00002 : .... : MOV     r0, #2
+000008e4 : e28f1a01 : .... : ADR     r1, &000018ec             ; -> [&ef000126, &e92d0007, &e1a00001, &e1a0100c]
+000008e8 : e2811ecb : .... : ADD     r1, r1, #&cb0             ; #3248
+000008ec : e5810000 : .... : STR     r0, [r1]
+000008f0 : e28f00a0 : .... : ADR     r0, &00000998             ; -> "Hello There"
+000008f4 : e5010004 : .... : STR     r0, [r1, #-4]
+000008f8 : e28f0088 : .... : ADR     r0, &00000988             ; -> "TestCommand0000 Hello There"
+000008fc : ef020005 : .... : SWI     XOS_CLI
+00000900 : 7a000027 : '..z : BVC     &000009a4
+00000904 : ef000001 : .... : SWI     OS_WriteS                 ; R15+4 = "ERROR: "
+00000908 : 4f525245 : ERRO : SWIMI   &525245
+0000090c : 00203a52 : R: . : EOREQ   r3, r0, r2, ASR r10
+00000910 : e92d0003 : ..-. : PUSH    {r0, r1}
+00000914 : ef00015b : [... : SWI     OS_WriteI+"["
+00000918 : e4901004 : .... : LDR     r1, [r0], #4
+0000091c : ef000126 : &... : SWI     OS_WriteI+"&"
+00000920 : e92d0007 : ..-. : PUSH    {r0, r1, r2}
+00000924 : e1a00001 : .... : MOV     r0, r1
+00000928 : e1a0100c : .... : MOV     r1, r12
+0000092c : e3a02014 : . .. : MOV     r2, #&14                  ; #20
+00000930 : ef0000d4 : .... : SWI     OS_ConvertHex8
+00000934 : ef000002 : .... : SWI     OS_Write0
+00000938 : e8bd0007 : .... : POP     {r0, r1, r2}
+0000093c : ef00015d : ]... : SWI     OS_WriteI+"]"
+00000940 : ef000120 :  ... : SWI     OS_WriteI+" "
+00000944 : e92d0001 : ..-. : STMDB   sp!, {r0}
+00000948 : ef000002 : .... : SWI     OS_Write0
+0000094c : e8bd0001 : .... : LDMIA   sp!, {r0}
+00000950 : e8bd0003 : .... : POP     {r0, r1}
+00000954 : ef000001 : .... : SWI     OS_WriteS                 ; R15+4 = " (for input <"
+00000958 : 6f662820 :  (fo : SWIVS   &662820
+0000095c : 6e692072 : r in : MCRVS   p0, #3, r2, c9, c2, #3
+00000960 : 20747570 : put  : RSBSHS  r7, r4, r0, ROR r5
+00000964 : 0000003c : <... : ANDEQ   r0, r0, r12, LSR r0
+00000968 : e28f0028 : (... : ADR     r0, &00000998             ; -> "Hello There"
+0000096c : e92d0001 : ..-. : STMDB   sp!, {r0}
+00000970 : ef000002 : .... : SWI     OS_Write0
+00000974 : e8bd0001 : .... : LDMIA   sp!, {r0}
+00000978 : ef000001 : .... : SWI     OS_WriteS                 ; R15+4 = ">)"
+0000097c : 0000293e : >).. : ANDEQ   r2, r0, lr, LSR r9
+00000980 : ef000003 : .... : SWI     OS_NewLine
+00000984 : ea000006 : .... : B       &000009a4
+00000988 : 74736554 : Test : LDRBTVC r6, [r3], #-&554
+0000098c : 6d6d6f43 : Comm : STCLVS  p15, c6, [sp, #-&10c]!
+00000990 : 30646e61 : and0 : RSBLO   r6, r4, r1, ROR #28
+00000994 : 20303030 : 000  : EORSHS  r3, r0, r0, LSR r0
+00000998 : 6c6c6548 : Hell : STCLVS  p5, c6, [r12], #-&120
+0000099c : 6854206f : o Th : LDMDAVS r4, {r0, r1, r2, r3, r5, r6, sp} ^
+000009a0 : 00657265 : ere. : RSBEQ   r7, r5, r5, ROR #4
+000009a4 : ef000001 : .... : SWI     OS_WriteS                 ; R15+4 = "GSTrans map: 0000 : "
+000009a8 : 72545347 : GSTr : SUBSVC  r5, r4, #&1c000001        ; #469762049
+000009ac : 20736e61 : ans  : RSBSHS  r6, r3, r1, ROR #28
+000009b0 : 3a70616d : map: : BLO     &01c18f6c
+000009b4 : 30303020 :  000 : EORSLO  r3, r0, r0, LSR #32
+000009b8 : 203a2030 : 0 :  : EORSHS  r2, r10, r0, LSR r0
+000009bc : 00000000 : .... : ANDEQ   r0, r0, r0
+000009c0 : e3a00002 : .... : MOV     r0, #2
+000009c4 : e28f1a01 : .... : ADR     r1, &000019cc             ; -> [&00203a52, &e92d0003, &ef00015b, &e4901004]
+000009c8 : e2811ebd : .... : ADD     r1, r1, #&bd0             ; #3024
+000009cc : e5810000 : .... : STR     r0, [r1]
+000009d0 : e28f00ad : .... : ADR     r0, &00000a85             ; -> "Hello There"
+000009d4 : e5010004 : .... : STR     r0, [r1, #-4]
+000009d8 : e28f0088 : .... : ADR     r0, &00000a68             ; -> "TestCommand0000  Hello There"
+000009dc : ef020005 : .... : SWI     XOS_CLI
+000009e0 : 7a00002b : +..z : BVC     &00000a94
+000009e4 : ef000001 : .... : SWI     OS_WriteS                 ; R15+4 = "ERROR: "
+000009e8 : 4f525245 : ERRO : SWIMI   &525245
+000009ec : 00203a52 : R: . : EOREQ   r3, r0, r2, ASR r10
+000009f0 : e92d0003 : ..-. : PUSH    {r0, r1}
+000009f4 : ef00015b : [... : SWI     OS_WriteI+"["
+000009f8 : e4901004 : .... : LDR     r1, [r0], #4
+000009fc : ef000126 : &... : SWI     OS_WriteI+"&"
+00000a00 : e92d0007 : ..-. : PUSH    {r0, r1, r2}
+00000a04 : e1a00001 : .... : MOV     r0, r1
+00000a08 : e1a0100c : .... : MOV     r1, r12
+00000a0c : e3a02014 : . .. : MOV     r2, #&14                  ; #20
+00000a10 : ef0000d4 : .... : SWI     OS_ConvertHex8
+00000a14 : ef000002 : .... : SWI     OS_Write0
+00000a18 : e8bd0007 : .... : POP     {r0, r1, r2}
+00000a1c : ef00015d : ]... : SWI     OS_WriteI+"]"
+00000a20 : ef000120 :  ... : SWI     OS_WriteI+" "
+00000a24 : e92d0001 : ..-. : STMDB   sp!, {r0}
+00000a28 : ef000002 : .... : SWI     OS_Write0
+00000a2c : e8bd0001 : .... : LDMIA   sp!, {r0}
+00000a30 : e8bd0003 : .... : POP     {r0, r1}
+00000a34 : ef000001 : .... : SWI     OS_WriteS                 ; R15+4 = " (for input <"
+00000a38 : 6f662820 :  (fo : SWIVS   &662820
+00000a3c : 6e692072 : r in : MCRVS   p0, #3, r2, c9, c2, #3
+00000a40 : 20747570 : put  : RSBSHS  r7, r4, r0, ROR r5
+00000a44 : 0000003c : <... : ANDEQ   r0, r0, r12, LSR r0
+00000a48 : e28f0028 : (... : ADR     r0, &00000a78             ; -> " Hello There"
+00000a4c : e92d0001 : ..-. : STMDB   sp!, {r0}
+00000a50 : ef000002 : .... : SWI     OS_Write0
+00000a54 : e8bd0001 : .... : LDMIA   sp!, {r0}
+00000a58 : ef000001 : .... : SWI     OS_WriteS                 ; R15+4 = ">)"
+00000a5c : 0000293e : >).. : ANDEQ   r2, r0, lr, LSR r9
+00000a60 : ef000003 : .... : SWI     OS_NewLine
+00000a64 : ea00000a : .... : B       &00000a94
+00000a68 : 74736554 : Test : LDRBTVC r6, [r3], #-&554
+00000a6c : 6d6d6f43 : Comm : STCLVS  p15, c6, [sp, #-&10c]!
+00000a70 : 30646e61 : and0 : RSBLO   r6, r4, r1, ROR #28
+00000a74 : 20303030 : 000  : EORSHS  r3, r0, r0, LSR r0
+00000a78 : 6c654820 :  Hel : STCLVS  p8, c4, [r5], #-&80
+00000a7c : 54206f6c : lo T : STRTPL  r6, [r0], #-&f6c
+00000a80 : 65726568 : here : LDRBVS  r6, [r2, #-&568]!
+00000a84 : 6c654800 : .Hel : STCLVS  p8, c4, [r5], #-0
+00000a88 : 54206f6c : lo T : STRTPL  r6, [r0], #-&f6c
+00000a8c : 65726568 : here : LDRBVS  r6, [r2, #-&568]!
+00000a90 : 00000000 : .... : ANDEQ   r0, r0, r0
+00000a94 : ef000001 : .... : SWI     OS_WriteS                 ; R15+4 = "GSTrans map: 0000 : "
+00000a98 : 72545347 : GSTr : SUBSVC  r5, r4, #&1c000001        ; #469762049
+00000a9c : 20736e61 : ans  : RSBSHS  r6, r3, r1, ROR #28
+00000aa0 : 3a70616d : map: : BLO     &01c1905c
+00000aa4 : 30303020 :  000 : EORSLO  r3, r0, r0, LSR #32
+00000aa8 : 203a2030 : 0 :  : EORSHS  r2, r10, r0, LSR r0
+00000aac : 00000000 : .... : ANDEQ   r0, r0, r0
+00000ab0 : e3a00002 : .... : MOV     r0, #2
+00000ab4 : e28f1a01 : .... : ADR     r1, &00001abc             ; -> [&ef020005, &7a000030, &ef000001, &4f525245]
+00000ab8 : e2811eae : .... : ADD     r1, r1, #&ae0             ; #2784
+00000abc : e5810000 : .... : STR     r0, [r1]
+00000ac0 : e28f00ae : .... : ADR     r0, &00000b76             ; -> "Hello  There"
+00000ac4 : e5010004 : .... : STR     r0, [r1, #-4]
+00000ac8 : e28f0088 : .... : ADR     r0, &00000b58             ; -> "TestCommand0000  Hello  There"
+00000acc : ef020005 : .... : SWI     XOS_CLI
+00000ad0 : 7a00002b : +..z : BVC     &00000b84
+00000ad4 : ef000001 : .... : SWI     OS_WriteS                 ; R15+4 = "ERROR: "
+00000ad8 : 4f525245 : ERRO : SWIMI   &525245
+00000adc : 00203a52 : R: . : EOREQ   r3, r0, r2, ASR r10
+00000ae0 : e92d0003 : ..-. : PUSH    {r0, r1}
+00000ae4 : ef00015b : [... : SWI     OS_WriteI+"["
+00000ae8 : e4901004 : .... : LDR     r1, [r0], #4
+00000aec : ef000126 : &... : SWI     OS_WriteI+"&"
+00000af0 : e92d0007 : ..-. : PUSH    {r0, r1, r2}
+00000af4 : e1a00001 : .... : MOV     r0, r1
+00000af8 : e1a0100c : .... : MOV     r1, r12
+00000afc : e3a02014 : . .. : MOV     r2, #&14                  ; #20
+00000b00 : ef0000d4 : .... : SWI     OS_ConvertHex8
+00000b04 : ef000002 : .... : SWI     OS_Write0
+00000b08 : e8bd0007 : .... : POP     {r0, r1, r2}
+00000b0c : ef00015d : ]... : SWI     OS_WriteI+"]"
+00000b10 : ef000120 :  ... : SWI     OS_WriteI+" "
+00000b14 : e92d0001 : ..-. : STMDB   sp!, {r0}
+00000b18 : ef000002 : .... : SWI     OS_Write0
+00000b1c : e8bd0001 : .... : LDMIA   sp!, {r0}
+00000b20 : e8bd0003 : .... : POP     {r0, r1}
+00000b24 : ef000001 : .... : SWI     OS_WriteS                 ; R15+4 = " (for input <"
+00000b28 : 6f662820 :  (fo : SWIVS   &662820
+00000b2c : 6e692072 : r in : MCRVS   p0, #3, r2, c9, c2, #3
+00000b30 : 20747570 : put  : RSBSHS  r7, r4, r0, ROR r5
+00000b34 : 0000003c : <... : ANDEQ   r0, r0, r12, LSR r0
+00000b38 : e28f0028 : (... : ADR     r0, &00000b68             ; -> " Hello  There"
+00000b3c : e92d0001 : ..-. : STMDB   sp!, {r0}
+00000b40 : ef000002 : .... : SWI     OS_Write0
+00000b44 : e8bd0001 : .... : LDMIA   sp!, {r0}
+00000b48 : ef000001 : .... : SWI     OS_WriteS                 ; R15+4 = ">)"
+00000b4c : 0000293e : >).. : ANDEQ   r2, r0, lr, LSR r9
+00000b50 : ef000003 : .... : SWI     OS_NewLine
+00000b54 : ea00000a : .... : B       &00000b84
+00000b58 : 74736554 : Test : LDRBTVC r6, [r3], #-&554
+00000b5c : 6d6d6f43 : Comm : STCLVS  p15, c6, [sp, #-&10c]!
+00000b60 : 30646e61 : and0 : RSBLO   r6, r4, r1, ROR #28
+00000b64 : 20303030 : 000  : EORSHS  r3, r0, r0, LSR r0
+00000b68 : 6c654820 :  Hel : STCLVS  p8, c4, [r5], #-&80
+00000b6c : 20206f6c : lo   : EORHS   r6, r0, r12, ROR #30
+00000b70 : 72656854 : Ther : RSBVC   r6, r5, #84, #16          ; #5505024 = 84<<16
+00000b74 : 65480065 : e.He : STRBVS  r0, [r8, #-&65]
+00000b78 : 206f6c6c : llo  : RSBHS   r6, pc, r12, ROR #24
+00000b7c : 65685420 :  The : STRBVS  r5, [r8, #-&420]!
+00000b80 : 00006572 : re.. : ANDEQ   r6, r0, r2, ROR r5
+00000b84 : ef000001 : .... : SWI     OS_WriteS                 ; R15+4 = "GSTrans map: 0000 : "
+00000b88 : 72545347 : GSTr : SUBSVC  r5, r4, #&1c000001        ; #469762049
+00000b8c : 20736e61 : ans  : RSBSHS  r6, r3, r1, ROR #28
+00000b90 : 3a70616d : map: : BLO     &01c1914c
+00000b94 : 30303020 :  000 : EORSLO  r3, r0, r0, LSR #32
+00000b98 : 203a2030 : 0 :  : EORSHS  r2, r10, r0, LSR r0
+00000b9c : 00000000 : .... : ANDEQ   r0, r0, r0
+00000ba0 : e3a00004 : .... : MOV     r0, #4
+00000ba4 : e28f1a01 : .... : ADR     r1, &00001bac             ; -> [&e2811f7b, &e5810000, &e28f00a0, &e5010004]
+00000ba8 : e2811e9f : .... : ADD     r1, r1, #&9f0             ; #2544
+00000bac : e5810000 : .... : STR     r0, [r1]
+00000bb0 : e28f00b7 : .... : ADR     r0, &00000c6f             ; -> "Hello  There  RISC OS"
+00000bb4 : e5010004 : .... : STR     r0, [r1, #-4]
+00000bb8 : e28f0088 : .... : ADR     r0, &00000c48             ; -> "TestCommand0000  Hello  There  RISC OS"
+00000bbc : ef020005 : .... : SWI     XOS_CLI
+00000bc0 : 7a000030 : 0..z : BVC     &00000c88
+00000bc4 : ef000001 : .... : SWI     OS_WriteS                 ; R15+4 = "ERROR: "
+00000bc8 : 4f525245 : ERRO : SWIMI   &525245
+00000bcc : 00203a52 : R: . : EOREQ   r3, r0, r2, ASR r10
+00000bd0 : e92d0003 : ..-. : PUSH    {r0, r1}
+00000bd4 : ef00015b : [... : SWI     OS_WriteI+"["
+00000bd8 : e4901004 : .... : LDR     r1, [r0], #4
+00000bdc : ef000126 : &... : SWI     OS_WriteI+"&"
+00000be0 : e92d0007 : ..-. : PUSH    {r0, r1, r2}
+00000be4 : e1a00001 : .... : MOV     r0, r1
+00000be8 : e1a0100c : .... : MOV     r1, r12
+00000bec : e3a02014 : . .. : MOV     r2, #&14                  ; #20
+00000bf0 : ef0000d4 : .... : SWI     OS_ConvertHex8
+00000bf4 : ef000002 : .... : SWI     OS_Write0
+00000bf8 : e8bd0007 : .... : POP     {r0, r1, r2}
+00000bfc : ef00015d : ]... : SWI     OS_WriteI+"]"
+00000c00 : ef000120 :  ... : SWI     OS_WriteI+" "
+00000c04 : e92d0001 : ..-. : STMDB   sp!, {r0}
+00000c08 : ef000002 : .... : SWI     OS_Write0
+00000c0c : e8bd0001 : .... : LDMIA   sp!, {r0}
+00000c10 : e8bd0003 : .... : POP     {r0, r1}
+00000c14 : ef000001 : .... : SWI     OS_WriteS                 ; R15+4 = " (for input <"
+00000c18 : 6f662820 :  (fo : SWIVS   &662820
+00000c1c : 6e692072 : r in : MCRVS   p0, #3, r2, c9, c2, #3
+00000c20 : 20747570 : put  : RSBSHS  r7, r4, r0, ROR r5
+00000c24 : 0000003c : <... : ANDEQ   r0, r0, r12, LSR r0
+00000c28 : e28f0028 : (... : ADR     r0, &00000c58             ; -> " Hello  There  RISC OS"
+00000c2c : e92d0001 : ..-. : STMDB   sp!, {r0}
+00000c30 : ef000002 : .... : SWI     OS_Write0
+00000c34 : e8bd0001 : .... : LDMIA   sp!, {r0}
+00000c38 : ef000001 : .... : SWI     OS_WriteS                 ; R15+4 = ">)"
+00000c3c : 0000293e : >).. : ANDEQ   r2, r0, lr, LSR r9
+00000c40 : ef000003 : .... : SWI     OS_NewLine
+00000c44 : ea00000f : .... : B       &00000c88
+00000c48 : 74736554 : Test : LDRBTVC r6, [r3], #-&554
+00000c4c : 6d6d6f43 : Comm : STCLVS  p15, c6, [sp, #-&10c]!
+00000c50 : 30646e61 : and0 : RSBLO   r6, r4, r1, ROR #28
+00000c54 : 20303030 : 000  : EORSHS  r3, r0, r0, LSR r0
+00000c58 : 6c654820 :  Hel : STCLVS  p8, c4, [r5], #-&80
+00000c5c : 20206f6c : lo   : EORHS   r6, r0, r12, ROR #30
+00000c60 : 72656854 : Ther : RSBVC   r6, r5, #84, #16          ; #5505024 = 84<<16
+00000c64 : 52202065 : e  R : EORPL   r2, r0, #&65              ; #101 = 'e'
+00000c68 : 20435349 : ISC  : SUBHS   r5, r3, r9, ASR #6
+00000c6c : 4800534f : OS.H : STMDAMI r0, {r0, r1, r2, r3, r6, r8, r9, r12, lr}
+00000c70 : 6f6c6c65 : ello : SWIVS   &6c6c65
+00000c74 : 68542020 :   Th : LDMDAVS r4, {r5, sp} ^
+00000c78 : 20657265 : ere  : RSBHS   r7, r5, r5, ROR #4
+00000c7c : 53495220 :  RIS : MOVTPL  r5, #&9220                ; #37408
+00000c80 : 534f2043 : C OS : MOVTPL  r2, #&f043                ; #61507
+00000c84 : 00000000 : .... : ANDEQ   r0, r0, r0
+00000c88 : ef000001 : .... : SWI     OS_WriteS                 ; R15+4 = "GSTrans map: 0000 : "
+00000c8c : 72545347 : GSTr : SUBSVC  r5, r4, #&1c000001        ; #469762049
+00000c90 : 20736e61 : ans  : RSBSHS  r6, r3, r1, ROR #28
+00000c94 : 3a70616d : map: : BLO     &01c19250
+00000c98 : 30303020 :  000 : EORSLO  r3, r0, r0, LSR #32
+00000c9c : 203a2030 : 0 :  : EORSHS  r2, r10, r0, LSR r0
+00000ca0 : 00000000 : .... : ANDEQ   r0, r0, r0
+00000ca4 : e3a00001 : .... : MOV     r0, #1
+00000ca8 : e28f1b06 : .... : ADR     r1, &000024b0             ; -> "ERROR: "
+00000cac : e2811f3b : ;... : ADD     r1, r1, #59, #30          ; #236
+00000cb0 : e5810000 : .... : STR     r0, [r1]
+00000cb4 : e28f00a0 : .... : ADR     r0, &00000d5c             ; -> "<variable>"
+00000cb8 : e5010004 : .... : STR     r0, [r1, #-4]
+00000cbc : e28f0088 : .... : ADR     r0, &00000d4c             ; -> "TestCommand0000 <variable>"
+00000cc0 : ef020005 : .... : SWI     XOS_CLI
+00000cc4 : 7a000027 : '..z : BVC     &00000d68
+00000cc8 : ef000001 : .... : SWI     OS_WriteS                 ; R15+4 = "ERROR: "
+00000ccc : 4f525245 : ERRO : SWIMI   &525245
+00000cd0 : 00203a52 : R: . : EOREQ   r3, r0, r2, ASR r10
+00000cd4 : e92d0003 : ..-. : PUSH    {r0, r1}
+00000cd8 : ef00015b : [... : SWI     OS_WriteI+"["
+00000cdc : e4901004 : .... : LDR     r1, [r0], #4
+00000ce0 : ef000126 : &... : SWI     OS_WriteI+"&"
+00000ce4 : e92d0007 : ..-. : PUSH    {r0, r1, r2}
+00000ce8 : e1a00001 : .... : MOV     r0, r1
+00000cec : e1a0100c : .... : MOV     r1, r12
+00000cf0 : e3a02014 : . .. : MOV     r2, #&14                  ; #20
+00000cf4 : ef0000d4 : .... : SWI     OS_ConvertHex8
+00000cf8 : ef000002 : .... : SWI     OS_Write0
+00000cfc : e8bd0007 : .... : POP     {r0, r1, r2}
+00000d00 : ef00015d : ]... : SWI     OS_WriteI+"]"
+00000d04 : ef000120 :  ... : SWI     OS_WriteI+" "
+00000d08 : e92d0001 : ..-. : STMDB   sp!, {r0}
+00000d0c : ef000002 : .... : SWI     OS_Write0
+00000d10 : e8bd0001 : .... : LDMIA   sp!, {r0}
+00000d14 : e8bd0003 : .... : POP     {r0, r1}
+00000d18 : ef000001 : .... : SWI     OS_WriteS                 ; R15+4 = " (for input <"
+00000d1c : 6f662820 :  (fo : SWIVS   &662820
+00000d20 : 6e692072 : r in : MCRVS   p0, #3, r2, c9, c2, #3
+00000d24 : 20747570 : put  : RSBSHS  r7, r4, r0, ROR r5
+00000d28 : 0000003c : <... : ANDEQ   r0, r0, r12, LSR r0
+00000d2c : e28f0028 : (... : ADR     r0, &00000d5c             ; -> "<variable>"
+00000d30 : e92d0001 : ..-. : STMDB   sp!, {r0}
+00000d34 : ef000002 : .... : SWI     OS_Write0
+00000d38 : e8bd0001 : .... : LDMIA   sp!, {r0}
+00000d3c : ef000001 : .... : SWI     OS_WriteS                 ; R15+4 = ">)"
+00000d40 : 0000293e : >).. : ANDEQ   r2, r0, lr, LSR r9
+00000d44 : ef000003 : .... : SWI     OS_NewLine
+00000d48 : ea000006 : .... : B       &00000d68
+00000d4c : 74736554 : Test : LDRBTVC r6, [r3], #-&554
+00000d50 : 6d6d6f43 : Comm : STCLVS  p15, c6, [sp, #-&10c]!
+00000d54 : 30646e61 : and0 : RSBLO   r6, r4, r1, ROR #28
+00000d58 : 20303030 : 000  : EORSHS  r3, r0, r0, LSR r0
+00000d5c : 7261763c : <var : RSBVC   r7, r1, #60, #12          ; #62914560 = 60<<20
+00000d60 : 6c626169 : iabl : STFVSE  F6, [R2], #-420
+00000d64 : 00003e65 : e>.. : ANDEQ   r3, r0, r5, ROR #28
+00000d68 : ef000001 : .... : SWI     OS_WriteS                 ; R15+4 = "GSTrans map: 0001 : "
+00000d6c : 72545347 : GSTr : SUBSVC  r5, r4, #&1c000001        ; #469762049
+00000d70 : 20736e61 : ans  : RSBSHS  r6, r3, r1, ROR #28
+00000d74 : 3a70616d : map: : BLO     &01c19330
+00000d78 : 30303020 :  000 : EORSLO  r3, r0, r0, LSR #32
+00000d7c : 203a2031 : 1 :  : EORSHS  r2, r10, r1, LSR r0
+00000d80 : 00000000 : .... : ANDEQ   r0, r0, r0
+00000d84 : e3a00001 : .... : MOV     r0, #1
+00000d88 : e28f1b06 : .... : ADR     r1, &00002590             ; -> [&e1500000, &e8bd9fff, &00000000, &00000000]
+00000d8c : e2811f03 : .... : ADD     r1, r1, #3, #30           ; #12
+00000d90 : e5810000 : .... : STR     r0, [r1]
+00000d94 : e28f00ab : .... : ADR     r0, &00000e47             ; -> "Value "
+00000d98 : e5010004 : .... : STR     r0, [r1, #-4]
+00000d9c : e28f0088 : .... : ADR     r0, &00000e2c             ; -> "TestCommand0001 <variable>"
+00000da0 : ef020005 : .... : SWI     XOS_CLI
+00000da4 : 7a000029 : )..z : BVC     &00000e50
+00000da8 : ef000001 : .... : SWI     OS_WriteS                 ; R15+4 = "ERROR: "
+00000dac : 4f525245 : ERRO : SWIMI   &525245
+00000db0 : 00203a52 : R: . : EOREQ   r3, r0, r2, ASR r10
+00000db4 : e92d0003 : ..-. : PUSH    {r0, r1}
+00000db8 : ef00015b : [... : SWI     OS_WriteI+"["
+00000dbc : e4901004 : .... : LDR     r1, [r0], #4
+00000dc0 : ef000126 : &... : SWI     OS_WriteI+"&"
+00000dc4 : e92d0007 : ..-. : PUSH    {r0, r1, r2}
+00000dc8 : e1a00001 : .... : MOV     r0, r1
+00000dcc : e1a0100c : .... : MOV     r1, r12
+00000dd0 : e3a02014 : . .. : MOV     r2, #&14                  ; #20
+00000dd4 : ef0000d4 : .... : SWI     OS_ConvertHex8
+00000dd8 : ef000002 : .... : SWI     OS_Write0
+00000ddc : e8bd0007 : .... : POP     {r0, r1, r2}
+00000de0 : ef00015d : ]... : SWI     OS_WriteI+"]"
+00000de4 : ef000120 :  ... : SWI     OS_WriteI+" "
+00000de8 : e92d0001 : ..-. : STMDB   sp!, {r0}
+00000dec : ef000002 : .... : SWI     OS_Write0
+00000df0 : e8bd0001 : .... : LDMIA   sp!, {r0}
+00000df4 : e8bd0003 : .... : POP     {r0, r1}
+00000df8 : ef000001 : .... : SWI     OS_WriteS                 ; R15+4 = " (for input <"
+00000dfc : 6f662820 :  (fo : SWIVS   &662820
+00000e00 : 6e692072 : r in : MCRVS   p0, #3, r2, c9, c2, #3
+00000e04 : 20747570 : put  : RSBSHS  r7, r4, r0, ROR r5
+00000e08 : 0000003c : <... : ANDEQ   r0, r0, r12, LSR r0
+00000e0c : e28f0028 : (... : ADR     r0, &00000e3c             ; -> "<variable>"
+00000e10 : e92d0001 : ..-. : STMDB   sp!, {r0}
+00000e14 : ef000002 : .... : SWI     OS_Write0
+00000e18 : e8bd0001 : .... : LDMIA   sp!, {r0}
+00000e1c : ef000001 : .... : SWI     OS_WriteS                 ; R15+4 = ">)"
+00000e20 : 0000293e : >).. : ANDEQ   r2, r0, lr, LSR r9
+00000e24 : ef000003 : .... : SWI     OS_NewLine
+00000e28 : ea000008 : .... : B       &00000e50
+00000e2c : 74736554 : Test : LDRBTVC r6, [r3], #-&554
+00000e30 : 6d6d6f43 : Comm : STCLVS  p15, c6, [sp, #-&10c]!
+00000e34 : 30646e61 : and0 : RSBLO   r6, r4, r1, ROR #28
+00000e38 : 20313030 : 001  : EORSHS  r3, r1, r0, LSR r0
+00000e3c : 7261763c : <var : RSBVC   r7, r1, #60, #12          ; #62914560 = 60<<20
+00000e40 : 6c626169 : iabl : STFVSE  F6, [R2], #-420
+00000e44 : 56003e65 : e>.V : STRPL   r3, [r0], -r5, ROR #28
+00000e48 : 65756c61 : alue : LDRBVS  r6, [r5, #-&c61]!
+00000e4c : 00000020 :  ... : ANDEQ   r0, r0, r0, LSR #32
+00000e50 : ef000001 : .... : SWI     OS_WriteS                 ; R15+4 = "GSTrans map: 0001 : "
+00000e54 : 72545347 : GSTr : SUBSVC  r5, r4, #&1c000001        ; #469762049
+00000e58 : 20736e61 : ans  : RSBSHS  r6, r3, r1, ROR #28
+00000e5c : 3a70616d : map: : BLO     &01c19418
+00000e60 : 30303020 :  000 : EORSLO  r3, r0, r0, LSR #32
+00000e64 : 203a2031 : 1 :  : EORSHS  r2, r10, r1, LSR r0
+00000e68 : 00000000 : .... : ANDEQ   r0, r0, r0
+00000e6c : e3a00004 : .... : MOV     r0, #4
+00000e70 : e28f1b05 : .... : ADR     r1, &00002278             ; -> [&20747570, &0000003c, &e28f0028, &e92d0001]
+00000e74 : e2811fc9 : .... : ADD     r1, r1, #&324             ; #804
+00000e78 : e5810000 : .... : STR     r0, [r1]
+00000e7c : e28f00b7 : .... : ADR     r0, &00000f3b             ; -> "Hello There RISC OS "
+00000e80 : e5010004 : .... : STR     r0, [r1, #-4]
+00000e84 : e28f0088 : .... : ADR     r0, &00000f14             ; -> "TestCommand0001  Hello  There  RISC OS"
+00000e88 : ef020005 : .... : SWI     XOS_CLI
+00000e8c : 7a00002f : /..z : BVC     &00000f50
+00000e90 : ef000001 : .... : SWI     OS_WriteS                 ; R15+4 = "ERROR: "
+00000e94 : 4f525245 : ERRO : SWIMI   &525245
+00000e98 : 00203a52 : R: . : EOREQ   r3, r0, r2, ASR r10
+00000e9c : e92d0003 : ..-. : PUSH    {r0, r1}
+00000ea0 : ef00015b : [... : SWI     OS_WriteI+"["
+00000ea4 : e4901004 : .... : LDR     r1, [r0], #4
+00000ea8 : ef000126 : &... : SWI     OS_WriteI+"&"
+00000eac : e92d0007 : ..-. : PUSH    {r0, r1, r2}
+00000eb0 : e1a00001 : .... : MOV     r0, r1
+00000eb4 : e1a0100c : .... : MOV     r1, r12
+00000eb8 : e3a02014 : . .. : MOV     r2, #&14                  ; #20
+00000ebc : ef0000d4 : .... : SWI     OS_ConvertHex8
+00000ec0 : ef000002 : .... : SWI     OS_Write0
+00000ec4 : e8bd0007 : .... : POP     {r0, r1, r2}
+00000ec8 : ef00015d : ]... : SWI     OS_WriteI+"]"
+00000ecc : ef000120 :  ... : SWI     OS_WriteI+" "
+00000ed0 : e92d0001 : ..-. : STMDB   sp!, {r0}
+00000ed4 : ef000002 : .... : SWI     OS_Write0
+00000ed8 : e8bd0001 : .... : LDMIA   sp!, {r0}
+00000edc : e8bd0003 : .... : POP     {r0, r1}
+00000ee0 : ef000001 : .... : SWI     OS_WriteS                 ; R15+4 = " (for input <"
+00000ee4 : 6f662820 :  (fo : SWIVS   &662820
+00000ee8 : 6e692072 : r in : MCRVS   p0, #3, r2, c9, c2, #3
+00000eec : 20747570 : put  : RSBSHS  r7, r4, r0, ROR r5
+00000ef0 : 0000003c : <... : ANDEQ   r0, r0, r12, LSR r0
+00000ef4 : e28f0028 : (... : ADR     r0, &00000f24             ; -> " Hello  There  RISC OS"
+00000ef8 : e92d0001 : ..-. : STMDB   sp!, {r0}
+00000efc : ef000002 : .... : SWI     OS_Write0
+00000f00 : e8bd0001 : .... : LDMIA   sp!, {r0}
+00000f04 : ef000001 : .... : SWI     OS_WriteS                 ; R15+4 = ">)"
+00000f08 : 0000293e : >).. : ANDEQ   r2, r0, lr, LSR r9
+00000f0c : ef000003 : .... : SWI     OS_NewLine
+00000f10 : ea00000e : .... : B       &00000f50
+00000f14 : 74736554 : Test : LDRBTVC r6, [r3], #-&554
+00000f18 : 6d6d6f43 : Comm : STCLVS  p15, c6, [sp, #-&10c]!
+00000f1c : 30646e61 : and0 : RSBLO   r6, r4, r1, ROR #28
+00000f20 : 20313030 : 001  : EORSHS  r3, r1, r0, LSR r0
+00000f24 : 6c654820 :  Hel : STCLVS  p8, c4, [r5], #-&80
+00000f28 : 20206f6c : lo   : EORHS   r6, r0, r12, ROR #30
+00000f2c : 72656854 : Ther : RSBVC   r6, r5, #84, #16          ; #5505024 = 84<<16
+00000f30 : 52202065 : e  R : EORPL   r2, r0, #&65              ; #101 = 'e'
+00000f34 : 20435349 : ISC  : SUBHS   r5, r3, r9, ASR #6
+00000f38 : 4800534f : OS.H : STMDAMI r0, {r0, r1, r2, r3, r6, r8, r9, r12, lr}
+00000f3c : 6f6c6c65 : ello : SWIVS   &6c6c65
+00000f40 : 65685420 :  The : STRBVS  r5, [r8, #-&420]!
+00000f44 : 52206572 : re R : EORPL   r6, r0, #&1c800000        ; #478150656 = 456<<20
+00000f48 : 20435349 : ISC  : SUBHS   r5, r3, r9, ASR #6
+00000f4c : 0020534f : OS . : EOREQ   r5, r0, pc, ASR #6
+00000f50 : ef000001 : .... : SWI     OS_WriteS                 ; R15+4 = "GSTrans map: 0010 : "
+00000f54 : 72545347 : GSTr : SUBSVC  r5, r4, #&1c000001        ; #469762049
+00000f58 : 20736e61 : ans  : RSBSHS  r6, r3, r1, ROR #28
+00000f5c : 3a70616d : map: : BLO     &01c19518
+00000f60 : 31303020 :  001 : TEQLO   r0, r0, LSR #32
+00000f64 : 203a2030 : 0 :  : EORSHS  r2, r10, r0, LSR r0
+00000f68 : 00000000 : .... : ANDEQ   r0, r0, r0
+00000f6c : e3a00004 : .... : MOV     r0, #4
+00000f70 : e28f1b05 : .... : ADR     r1, &00002378             ; -> "TestCommand0001 """
+00000f74 : e2811f89 : .... : ADD     r1, r1, #&224             ; #548
+00000f78 : e5810000 : .... : STR     r0, [r1]
+00000f7c : e28f00b7 : .... : ADR     r0, &0000103b             ; -> "Hello There RISC OS "
+00000f80 : e5010004 : .... : STR     r0, [r1, #-4]
+00000f84 : e28f0088 : .... : ADR     r0, &00001014             ; -> "TestCommand0010  Hello  There  RISC OS"
+00000f88 : ef020005 : .... : SWI     XOS_CLI
+00000f8c : 7a00002f : /..z : BVC     &00001050
+00000f90 : ef000001 : .... : SWI     OS_WriteS                 ; R15+4 = "ERROR: "
+00000f94 : 4f525245 : ERRO : SWIMI   &525245
+00000f98 : 00203a52 : R: . : EOREQ   r3, r0, r2, ASR r10
+00000f9c : e92d0003 : ..-. : PUSH    {r0, r1}
+00000fa0 : ef00015b : [... : SWI     OS_WriteI+"["
+00000fa4 : e4901004 : .... : LDR     r1, [r0], #4
+00000fa8 : ef000126 : &... : SWI     OS_WriteI+"&"
+00000fac : e92d0007 : ..-. : PUSH    {r0, r1, r2}
+00000fb0 : e1a00001 : .... : MOV     r0, r1
+00000fb4 : e1a0100c : .... : MOV     r1, r12
+00000fb8 : e3a02014 : . .. : MOV     r2, #&14                  ; #20
+00000fbc : ef0000d4 : .... : SWI     OS_ConvertHex8
+00000fc0 : ef000002 : .... : SWI     OS_Write0
+00000fc4 : e8bd0007 : .... : POP     {r0, r1, r2}
+00000fc8 : ef00015d : ]... : SWI     OS_WriteI+"]"
+00000fcc : ef000120 :  ... : SWI     OS_WriteI+" "
+00000fd0 : e92d0001 : ..-. : STMDB   sp!, {r0}
+00000fd4 : ef000002 : .... : SWI     OS_Write0
+00000fd8 : e8bd0001 : .... : LDMIA   sp!, {r0}
+00000fdc : e8bd0003 : .... : POP     {r0, r1}
+00000fe0 : ef000001 : .... : SWI     OS_WriteS                 ; R15+4 = " (for input <"
+00000fe4 : 6f662820 :  (fo : SWIVS   &662820
+00000fe8 : 6e692072 : r in : MCRVS   p0, #3, r2, c9, c2, #3
+00000fec : 20747570 : put  : RSBSHS  r7, r4, r0, ROR r5
+00000ff0 : 0000003c : <... : ANDEQ   r0, r0, r12, LSR r0
+00000ff4 : e28f0028 : (... : ADR     r0, &00001024             ; -> " Hello  There  RISC OS"
+00000ff8 : e92d0001 : ..-. : STMDB   sp!, {r0}
+00000ffc : ef000002 : .... : SWI     OS_Write0
+00001000 : e8bd0001 : .... : LDMIA   sp!, {r0}
+00001004 : ef000001 : .... : SWI     OS_WriteS                 ; R15+4 = ">)"
+00001008 : 0000293e : >).. : ANDEQ   r2, r0, lr, LSR r9
+0000100c : ef000003 : .... : SWI     OS_NewLine
+00001010 : ea00000e : .... : B       &00001050
+00001014 : 74736554 : Test : LDRBTVC r6, [r3], #-&554
+00001018 : 6d6d6f43 : Comm : STCLVS  p15, c6, [sp, #-&10c]!
+0000101c : 30646e61 : and0 : RSBLO   r6, r4, r1, ROR #28
+00001020 : 20303130 : 010  : EORSHS  r3, r0, r0, LSR r1
+00001024 : 6c654820 :  Hel : STCLVS  p8, c4, [r5], #-&80
+00001028 : 20206f6c : lo   : EORHS   r6, r0, r12, ROR #30
+0000102c : 72656854 : Ther : RSBVC   r6, r5, #84, #16          ; #5505024 = 84<<16
+00001030 : 52202065 : e  R : EORPL   r2, r0, #&65              ; #101 = 'e'
+00001034 : 20435349 : ISC  : SUBHS   r5, r3, r9, ASR #6
+00001038 : 4800534f : OS.H : STMDAMI r0, {r0, r1, r2, r3, r6, r8, r9, r12, lr}
+0000103c : 6f6c6c65 : ello : SWIVS   &6c6c65
+00001040 : 65685420 :  The : STRBVS  r5, [r8, #-&420]!
+00001044 : 52206572 : re R : EORPL   r6, r0, #&1c800000        ; #478150656 = 456<<20
+00001048 : 20435349 : ISC  : SUBHS   r5, r3, r9, ASR #6
+0000104c : 0020534f : OS . : EOREQ   r5, r0, pc, ASR #6
+00001050 : ef000001 : .... : SWI     OS_WriteS                 ; R15+4 = "GSTrans map: 0100 : "
+00001054 : 72545347 : GSTr : SUBSVC  r5, r4, #&1c000001        ; #469762049
+00001058 : 20736e61 : ans  : RSBSHS  r6, r3, r1, ROR #28
+0000105c : 3a70616d : map: : BLO     &01c19618
+00001060 : 30313020 :  010 : EORSLO  r3, r1, r0, LSR #32
+00001064 : 203a2030 : 0 :  : EORSHS  r2, r10, r0, LSR r0
+00001068 : 00000000 : .... : ANDEQ   r0, r0, r0
+0000106c : e3a00004 : .... : MOV     r0, #4
+00001070 : e28f1b05 : .... : ADR     r1, &00002478             ; -> "map: 0001 : "
+00001074 : e2811f49 : I... : ADD     r1, r1, #&124             ; #292
+00001078 : e5810000 : .... : STR     r0, [r1]
+0000107c : e28f00b7 : .... : ADR     r0, &0000113b             ; -> "Hello There RISC OS "
+00001080 : e5010004 : .... : STR     r0, [r1, #-4]
+00001084 : e28f0088 : .... : ADR     r0, &00001114             ; -> "TestCommand0100  Hello  There  RISC OS"
+00001088 : ef020005 : .... : SWI     XOS_CLI
+0000108c : 7a00002f : /..z : BVC     &00001150
+00001090 : ef000001 : .... : SWI     OS_WriteS                 ; R15+4 = "ERROR: "
+00001094 : 4f525245 : ERRO : SWIMI   &525245
+00001098 : 00203a52 : R: . : EOREQ   r3, r0, r2, ASR r10
+0000109c : e92d0003 : ..-. : PUSH    {r0, r1}
+000010a0 : ef00015b : [... : SWI     OS_WriteI+"["
+000010a4 : e4901004 : .... : LDR     r1, [r0], #4
+000010a8 : ef000126 : &... : SWI     OS_WriteI+"&"
+000010ac : e92d0007 : ..-. : PUSH    {r0, r1, r2}
+000010b0 : e1a00001 : .... : MOV     r0, r1
+000010b4 : e1a0100c : .... : MOV     r1, r12
+000010b8 : e3a02014 : . .. : MOV     r2, #&14                  ; #20
+000010bc : ef0000d4 : .... : SWI     OS_ConvertHex8
+000010c0 : ef000002 : .... : SWI     OS_Write0
+000010c4 : e8bd0007 : .... : POP     {r0, r1, r2}
+000010c8 : ef00015d : ]... : SWI     OS_WriteI+"]"
+000010cc : ef000120 :  ... : SWI     OS_WriteI+" "
+000010d0 : e92d0001 : ..-. : STMDB   sp!, {r0}
+000010d4 : ef000002 : .... : SWI     OS_Write0
+000010d8 : e8bd0001 : .... : LDMIA   sp!, {r0}
+000010dc : e8bd0003 : .... : POP     {r0, r1}
+000010e0 : ef000001 : .... : SWI     OS_WriteS                 ; R15+4 = " (for input <"
+000010e4 : 6f662820 :  (fo : SWIVS   &662820
+000010e8 : 6e692072 : r in : MCRVS   p0, #3, r2, c9, c2, #3
+000010ec : 20747570 : put  : RSBSHS  r7, r4, r0, ROR r5
+000010f0 : 0000003c : <... : ANDEQ   r0, r0, r12, LSR r0
+000010f4 : e28f0028 : (... : ADR     r0, &00001124             ; -> " Hello  There  RISC OS"
+000010f8 : e92d0001 : ..-. : STMDB   sp!, {r0}
+000010fc : ef000002 : .... : SWI     OS_Write0
+00001100 : e8bd0001 : .... : LDMIA   sp!, {r0}
+00001104 : ef000001 : .... : SWI     OS_WriteS                 ; R15+4 = ">)"
+00001108 : 0000293e : >).. : ANDEQ   r2, r0, lr, LSR r9
+0000110c : ef000003 : .... : SWI     OS_NewLine
+00001110 : ea00000e : .... : B       &00001150
+00001114 : 74736554 : Test : LDRBTVC r6, [r3], #-&554
+00001118 : 6d6d6f43 : Comm : STCLVS  p15, c6, [sp, #-&10c]!
+0000111c : 30646e61 : and0 : RSBLO   r6, r4, r1, ROR #28
+00001120 : 20303031 : 100  : EORSHS  r3, r0, r1, LSR r0
+00001124 : 6c654820 :  Hel : STCLVS  p8, c4, [r5], #-&80
+00001128 : 20206f6c : lo   : EORHS   r6, r0, r12, ROR #30
+0000112c : 72656854 : Ther : RSBVC   r6, r5, #84, #16          ; #5505024 = 84<<16
+00001130 : 52202065 : e  R : EORPL   r2, r0, #&65              ; #101 = 'e'
+00001134 : 20435349 : ISC  : SUBHS   r5, r3, r9, ASR #6
+00001138 : 4800534f : OS.H : STMDAMI r0, {r0, r1, r2, r3, r6, r8, r9, r12, lr}
+0000113c : 6f6c6c65 : ello : SWIVS   &6c6c65
+00001140 : 65685420 :  The : STRBVS  r5, [r8, #-&420]!
+00001144 : 52206572 : re R : EORPL   r6, r0, #&1c800000        ; #478150656 = 456<<20
+00001148 : 20435349 : ISC  : SUBHS   r5, r3, r9, ASR #6
+0000114c : 0020534f : OS . : EOREQ   r5, r0, pc, ASR #6
+00001150 : ef000001 : .... : SWI     OS_WriteS                 ; R15+4 = "GSTrans map: 1000 : "
+00001154 : 72545347 : GSTr : SUBSVC  r5, r4, #&1c000001        ; #469762049
+00001158 : 20736e61 : ans  : RSBSHS  r6, r3, r1, ROR #28
+0000115c : 3a70616d : map: : BLO     &01c19718
+00001160 : 30303120 :  100 : EORSLO  r3, r0, r0, LSR #2
+00001164 : 203a2030 : 0 :  : EORSHS  r2, r10, r0, LSR r0
+00001168 : 00000000 : .... : ANDEQ   r0, r0, r0
+0000116c : e3a00004 : .... : MOV     r0, #4
+00001170 : e28f1b05 : .... : ADR     r1, &00002578             ; -> [&ef000002, &e8bd0007, &ef000001, &73657420]
+00001174 : e2811f09 : .... : ADD     r1, r1, #9, #30           ; #36  = '$'
+00001178 : e5810000 : .... : STR     r0, [r1]
+0000117c : e28f00b7 : .... : ADR     r0, &0000123b             ; -> "Hello There RISC OS "
+00001180 : e5010004 : .... : STR     r0, [r1, #-4]
+00001184 : e28f0088 : .... : ADR     r0, &00001214             ; -> "TestCommand1000  Hello  There  RISC OS"
+00001188 : ef020005 : .... : SWI     XOS_CLI
+0000118c : 7a00002f : /..z : BVC     &00001250
+00001190 : ef000001 : .... : SWI     OS_WriteS                 ; R15+4 = "ERROR: "
+00001194 : 4f525245 : ERRO : SWIMI   &525245
+00001198 : 00203a52 : R: . : EOREQ   r3, r0, r2, ASR r10
+0000119c : e92d0003 : ..-. : PUSH    {r0, r1}
+000011a0 : ef00015b : [... : SWI     OS_WriteI+"["
+000011a4 : e4901004 : .... : LDR     r1, [r0], #4
+000011a8 : ef000126 : &... : SWI     OS_WriteI+"&"
+000011ac : e92d0007 : ..-. : PUSH    {r0, r1, r2}
+000011b0 : e1a00001 : .... : MOV     r0, r1
+000011b4 : e1a0100c : .... : MOV     r1, r12
+000011b8 : e3a02014 : . .. : MOV     r2, #&14                  ; #20
+000011bc : ef0000d4 : .... : SWI     OS_ConvertHex8
+000011c0 : ef000002 : .... : SWI     OS_Write0
+000011c4 : e8bd0007 : .... : POP     {r0, r1, r2}
+000011c8 : ef00015d : ]... : SWI     OS_WriteI+"]"
+000011cc : ef000120 :  ... : SWI     OS_WriteI+" "
+000011d0 : e92d0001 : ..-. : STMDB   sp!, {r0}
+000011d4 : ef000002 : .... : SWI     OS_Write0
+000011d8 : e8bd0001 : .... : LDMIA   sp!, {r0}
+000011dc : e8bd0003 : .... : POP     {r0, r1}
+000011e0 : ef000001 : .... : SWI     OS_WriteS                 ; R15+4 = " (for input <"
+000011e4 : 6f662820 :  (fo : SWIVS   &662820
+000011e8 : 6e692072 : r in : MCRVS   p0, #3, r2, c9, c2, #3
+000011ec : 20747570 : put  : RSBSHS  r7, r4, r0, ROR r5
+000011f0 : 0000003c : <... : ANDEQ   r0, r0, r12, LSR r0
+000011f4 : e28f0028 : (... : ADR     r0, &00001224             ; -> " Hello  There  RISC OS"
+000011f8 : e92d0001 : ..-. : STMDB   sp!, {r0}
+000011fc : ef000002 : .... : SWI     OS_Write0
+00001200 : e8bd0001 : .... : LDMIA   sp!, {r0}
+00001204 : ef000001 : .... : SWI     OS_WriteS                 ; R15+4 = ">)"
+00001208 : 0000293e : >).. : ANDEQ   r2, r0, lr, LSR r9
+0000120c : ef000003 : .... : SWI     OS_NewLine
+00001210 : ea00000e : .... : B       &00001250
+00001214 : 74736554 : Test : LDRBTVC r6, [r3], #-&554
+00001218 : 6d6d6f43 : Comm : STCLVS  p15, c6, [sp, #-&10c]!
+0000121c : 31646e61 : and1 : Undefined instruction
+00001220 : 20303030 : 000  : EORSHS  r3, r0, r0, LSR r0
+00001224 : 6c654820 :  Hel : STCLVS  p8, c4, [r5], #-&80
+00001228 : 20206f6c : lo   : EORHS   r6, r0, r12, ROR #30
+0000122c : 72656854 : Ther : RSBVC   r6, r5, #84, #16          ; #5505024 = 84<<16
+00001230 : 52202065 : e  R : EORPL   r2, r0, #&65              ; #101 = 'e'
+00001234 : 20435349 : ISC  : SUBHS   r5, r3, r9, ASR #6
+00001238 : 4800534f : OS.H : STMDAMI r0, {r0, r1, r2, r3, r6, r8, r9, r12, lr}
+0000123c : 6f6c6c65 : ello : SWIVS   &6c6c65
+00001240 : 65685420 :  The : STRBVS  r5, [r8, #-&420]!
+00001244 : 52206572 : re R : EORPL   r6, r0, #&1c800000        ; #478150656 = 456<<20
+00001248 : 20435349 : ISC  : SUBHS   r5, r3, r9, ASR #6
+0000124c : 0020534f : OS . : EOREQ   r5, r0, pc, ASR #6
+00001250 : ef000001 : .... : SWI     OS_WriteS                 ; R15+4 = "GSTrans map: 0000 : "
+00001254 : 72545347 : GSTr : SUBSVC  r5, r4, #&1c000001        ; #469762049
+00001258 : 20736e61 : ans  : RSBSHS  r6, r3, r1, ROR #28
+0000125c : 3a70616d : map: : BLO     &01c19818
+00001260 : 30303020 :  000 : EORSLO  r3, r0, r0, LSR #32
+00001264 : 203a2030 : 0 :  : EORSHS  r2, r10, r0, LSR r0
+00001268 : 00000000 : .... : ANDEQ   r0, r0, r0
+0000126c : e3a00001 : .... : MOV     r0, #1
+00001270 : e28f1a01 : .... : ADR     r1, &00002278             ; -> [&20747570, &0000003c, &e28f0028, &e92d0001]
+00001274 : e2811fc9 : .... : ADD     r1, r1, #&324             ; #804
+00001278 : e5810000 : .... : STR     r0, [r1]
+0000127c : e28f00a0 : .... : ADR     r0, &00001324             ; -> ""Hello""
+00001280 : e5010004 : .... : STR     r0, [r1, #-4]
+00001284 : e28f0088 : .... : ADR     r0, &00001314             ; -> "TestCommand0000 "Hello""
+00001288 : ef020005 : .... : SWI     XOS_CLI
+0000128c : 7a000026 : &..z : BVC     &0000132c
+00001290 : ef000001 : .... : SWI     OS_WriteS                 ; R15+4 = "ERROR: "
+00001294 : 4f525245 : ERRO : SWIMI   &525245
+00001298 : 00203a52 : R: . : EOREQ   r3, r0, r2, ASR r10
+0000129c : e92d0003 : ..-. : PUSH    {r0, r1}
+000012a0 : ef00015b : [... : SWI     OS_WriteI+"["
+000012a4 : e4901004 : .... : LDR     r1, [r0], #4
+000012a8 : ef000126 : &... : SWI     OS_WriteI+"&"
+000012ac : e92d0007 : ..-. : PUSH    {r0, r1, r2}
+000012b0 : e1a00001 : .... : MOV     r0, r1
+000012b4 : e1a0100c : .... : MOV     r1, r12
+000012b8 : e3a02014 : . .. : MOV     r2, #&14                  ; #20
+000012bc : ef0000d4 : .... : SWI     OS_ConvertHex8
+000012c0 : ef000002 : .... : SWI     OS_Write0
+000012c4 : e8bd0007 : .... : POP     {r0, r1, r2}
+000012c8 : ef00015d : ]... : SWI     OS_WriteI+"]"
+000012cc : ef000120 :  ... : SWI     OS_WriteI+" "
+000012d0 : e92d0001 : ..-. : STMDB   sp!, {r0}
+000012d4 : ef000002 : .... : SWI     OS_Write0
+000012d8 : e8bd0001 : .... : LDMIA   sp!, {r0}
+000012dc : e8bd0003 : .... : POP     {r0, r1}
+000012e0 : ef000001 : .... : SWI     OS_WriteS                 ; R15+4 = " (for input <"
+000012e4 : 6f662820 :  (fo : SWIVS   &662820
+000012e8 : 6e692072 : r in : MCRVS   p0, #3, r2, c9, c2, #3
+000012ec : 20747570 : put  : RSBSHS  r7, r4, r0, ROR r5
+000012f0 : 0000003c : <... : ANDEQ   r0, r0, r12, LSR r0
+000012f4 : e28f0028 : (... : ADR     r0, &00001324             ; -> ""Hello""
+000012f8 : e92d0001 : ..-. : STMDB   sp!, {r0}
+000012fc : ef000002 : .... : SWI     OS_Write0
+00001300 : e8bd0001 : .... : LDMIA   sp!, {r0}
+00001304 : ef000001 : .... : SWI     OS_WriteS                 ; R15+4 = ">)"
+00001308 : 0000293e : >).. : ANDEQ   r2, r0, lr, LSR r9
+0000130c : ef000003 : .... : SWI     OS_NewLine
+00001310 : ea000005 : .... : B       &0000132c
+00001314 : 74736554 : Test : LDRBTVC r6, [r3], #-&554
+00001318 : 6d6d6f43 : Comm : STCLVS  p15, c6, [sp, #-&10c]!
+0000131c : 30646e61 : and0 : RSBLO   r6, r4, r1, ROR #28
+00001320 : 20303030 : 000  : EORSHS  r3, r0, r0, LSR r0
+00001324 : 6c654822 : "Hel : STCLVS  p8, c4, [r5], #-&88
+00001328 : 00226f6c : lo". : EOREQ   r6, r2, r12, ROR #30
+0000132c : ef000001 : .... : SWI     OS_WriteS                 ; R15+4 = "GSTrans map: 0000 : "
+00001330 : 72545347 : GSTr : SUBSVC  r5, r4, #&1c000001        ; #469762049
+00001334 : 20736e61 : ans  : RSBSHS  r6, r3, r1, ROR #28
+00001338 : 3a70616d : map: : BLO     &01c198f4
+0000133c : 30303020 :  000 : EORSLO  r3, r0, r0, LSR #32
+00001340 : 203a2030 : 0 :  : EORSHS  r2, r10, r0, LSR r0
+00001344 : 00000000 : .... : ANDEQ   r0, r0, r0
+00001348 : e3a00002 : .... : MOV     r0, #2
+0000134c : e28f1a01 : .... : ADR     r1, &00002354             ; -> [&0000003c, &e28f0028, &e92d0001, &ef000002]
+00001350 : e2811f92 : .... : ADD     r1, r1, #&248             ; #584
+00001354 : e5810000 : .... : STR     r0, [r1]
+00001358 : e28f00a0 : .... : ADR     r0, &00001400             ; -> "Hello "There""
+0000135c : e5010004 : .... : STR     r0, [r1, #-4]
+00001360 : e28f0088 : .... : ADR     r0, &000013f0             ; -> "TestCommand0000 Hello "There""
+00001364 : ef020005 : .... : SWI     XOS_CLI
+00001368 : 7a000028 : (..z : BVC     &00001410
+0000136c : ef000001 : .... : SWI     OS_WriteS                 ; R15+4 = "ERROR: "
+00001370 : 4f525245 : ERRO : SWIMI   &525245
+00001374 : 00203a52 : R: . : EOREQ   r3, r0, r2, ASR r10
+00001378 : e92d0003 : ..-. : PUSH    {r0, r1}
+0000137c : ef00015b : [... : SWI     OS_WriteI+"["
+00001380 : e4901004 : .... : LDR     r1, [r0], #4
+00001384 : ef000126 : &... : SWI     OS_WriteI+"&"
+00001388 : e92d0007 : ..-. : PUSH    {r0, r1, r2}
+0000138c : e1a00001 : .... : MOV     r0, r1
+00001390 : e1a0100c : .... : MOV     r1, r12
+00001394 : e3a02014 : . .. : MOV     r2, #&14                  ; #20
+00001398 : ef0000d4 : .... : SWI     OS_ConvertHex8
+0000139c : ef000002 : .... : SWI     OS_Write0
+000013a0 : e8bd0007 : .... : POP     {r0, r1, r2}
+000013a4 : ef00015d : ]... : SWI     OS_WriteI+"]"
+000013a8 : ef000120 :  ... : SWI     OS_WriteI+" "
+000013ac : e92d0001 : ..-. : STMDB   sp!, {r0}
+000013b0 : ef000002 : .... : SWI     OS_Write0
+000013b4 : e8bd0001 : .... : LDMIA   sp!, {r0}
+000013b8 : e8bd0003 : .... : POP     {r0, r1}
+000013bc : ef000001 : .... : SWI     OS_WriteS                 ; R15+4 = " (for input <"
+000013c0 : 6f662820 :  (fo : SWIVS   &662820
+000013c4 : 6e692072 : r in : MCRVS   p0, #3, r2, c9, c2, #3
+000013c8 : 20747570 : put  : RSBSHS  r7, r4, r0, ROR r5
+000013cc : 0000003c : <... : ANDEQ   r0, r0, r12, LSR r0
+000013d0 : e28f0028 : (... : ADR     r0, &00001400             ; -> "Hello "There""
+000013d4 : e92d0001 : ..-. : STMDB   sp!, {r0}
+000013d8 : ef000002 : .... : SWI     OS_Write0
+000013dc : e8bd0001 : .... : LDMIA   sp!, {r0}
+000013e0 : ef000001 : .... : SWI     OS_WriteS                 ; R15+4 = ">)"
+000013e4 : 0000293e : >).. : ANDEQ   r2, r0, lr, LSR r9
+000013e8 : ef000003 : .... : SWI     OS_NewLine
+000013ec : ea000007 : .... : B       &00001410
+000013f0 : 74736554 : Test : LDRBTVC r6, [r3], #-&554
+000013f4 : 6d6d6f43 : Comm : STCLVS  p15, c6, [sp, #-&10c]!
+000013f8 : 30646e61 : and0 : RSBLO   r6, r4, r1, ROR #28
+000013fc : 20303030 : 000  : EORSHS  r3, r0, r0, LSR r0
+00001400 : 6c6c6548 : Hell : STCLVS  p5, c6, [r12], #-&120
+00001404 : 5422206f : o "T : STRTPL  r2, [r2], #-&6f
+00001408 : 65726568 : here : LDRBVS  r6, [r2, #-&568]!
+0000140c : 00000022 : "... : ANDEQ   r0, r0, r2, LSR #32
+00001410 : ef000001 : .... : SWI     OS_WriteS                 ; R15+4 = "GSTrans map: 0001 : "
+00001414 : 72545347 : GSTr : SUBSVC  r5, r4, #&1c000001        ; #469762049
+00001418 : 20736e61 : ans  : RSBSHS  r6, r3, r1, ROR #28
+0000141c : 3a70616d : map: : BLO     &01c199d8
+00001420 : 30303020 :  000 : EORSLO  r3, r0, r0, LSR #32
+00001424 : 203a2031 : 1 :  : EORSHS  r2, r10, r1, LSR r0
+00001428 : 00000000 : .... : ANDEQ   r0, r0, r0
+0000142c : e3a00001 : .... : MOV     r0, #1
+00001430 : e28f1a01 : .... : ADR     r1, &00002438             ; -> [&e92d0001, &ef000002, &e8bd0001, &ef000001]
+00001434 : e2811f59 : Y... : ADD     r1, r1, #&164             ; #356
+00001438 : e5810000 : .... : STR     r0, [r1]
+0000143c : e28f00a8 : .... : ADR     r0, &000014ec             ; -> "Hello "
+00001440 : e5010004 : .... : STR     r0, [r1, #-4]
+00001444 : e28f0088 : .... : ADR     r0, &000014d4             ; -> "TestCommand0001 "Hello""
+00001448 : ef020005 : .... : SWI     XOS_CLI
+0000144c : 7a000028 : (..z : BVC     &000014f4
+00001450 : ef000001 : .... : SWI     OS_WriteS                 ; R15+4 = "ERROR: "
+00001454 : 4f525245 : ERRO : SWIMI   &525245
+00001458 : 00203a52 : R: . : EOREQ   r3, r0, r2, ASR r10
+0000145c : e92d0003 : ..-. : PUSH    {r0, r1}
+00001460 : ef00015b : [... : SWI     OS_WriteI+"["
+00001464 : e4901004 : .... : LDR     r1, [r0], #4
+00001468 : ef000126 : &... : SWI     OS_WriteI+"&"
+0000146c : e92d0007 : ..-. : PUSH    {r0, r1, r2}
+00001470 : e1a00001 : .... : MOV     r0, r1
+00001474 : e1a0100c : .... : MOV     r1, r12
+00001478 : e3a02014 : . .. : MOV     r2, #&14                  ; #20
+0000147c : ef0000d4 : .... : SWI     OS_ConvertHex8
+00001480 : ef000002 : .... : SWI     OS_Write0
+00001484 : e8bd0007 : .... : POP     {r0, r1, r2}
+00001488 : ef00015d : ]... : SWI     OS_WriteI+"]"
+0000148c : ef000120 :  ... : SWI     OS_WriteI+" "
+00001490 : e92d0001 : ..-. : STMDB   sp!, {r0}
+00001494 : ef000002 : .... : SWI     OS_Write0
+00001498 : e8bd0001 : .... : LDMIA   sp!, {r0}
+0000149c : e8bd0003 : .... : POP     {r0, r1}
+000014a0 : ef000001 : .... : SWI     OS_WriteS                 ; R15+4 = " (for input <"
+000014a4 : 6f662820 :  (fo : SWIVS   &662820
+000014a8 : 6e692072 : r in : MCRVS   p0, #3, r2, c9, c2, #3
+000014ac : 20747570 : put  : RSBSHS  r7, r4, r0, ROR r5
+000014b0 : 0000003c : <... : ANDEQ   r0, r0, r12, LSR r0
+000014b4 : e28f0028 : (... : ADR     r0, &000014e4             ; -> ""Hello""
+000014b8 : e92d0001 : ..-. : STMDB   sp!, {r0}
+000014bc : ef000002 : .... : SWI     OS_Write0
+000014c0 : e8bd0001 : .... : LDMIA   sp!, {r0}
+000014c4 : ef000001 : .... : SWI     OS_WriteS                 ; R15+4 = ">)"
+000014c8 : 0000293e : >).. : ANDEQ   r2, r0, lr, LSR r9
+000014cc : ef000003 : .... : SWI     OS_NewLine
+000014d0 : ea000007 : .... : B       &000014f4
+000014d4 : 74736554 : Test : LDRBTVC r6, [r3], #-&554
+000014d8 : 6d6d6f43 : Comm : STCLVS  p15, c6, [sp, #-&10c]!
+000014dc : 30646e61 : and0 : RSBLO   r6, r4, r1, ROR #28
+000014e0 : 20313030 : 001  : EORSHS  r3, r1, r0, LSR r0
+000014e4 : 6c654822 : "Hel : STCLVS  p8, c4, [r5], #-&88
+000014e8 : 00226f6c : lo". : EOREQ   r6, r2, r12, ROR #30
+000014ec : 6c6c6548 : Hell : STCLVS  p5, c6, [r12], #-&120
+000014f0 : 0000206f : o .. : ANDEQ   r2, r0, pc, RRX
+000014f4 : ef000001 : .... : SWI     OS_WriteS                 ; R15+4 = "GSTrans map: 0010 : "
+000014f8 : 72545347 : GSTr : SUBSVC  r5, r4, #&1c000001        ; #469762049
+000014fc : 20736e61 : ans  : RSBSHS  r6, r3, r1, ROR #28
+00001500 : 3a70616d : map: : BLO     &01c19abc
+00001504 : 31303020 :  001 : TEQLO   r0, r0, LSR #32
+00001508 : 203a2030 : 0 :  : EORSHS  r2, r10, r0, LSR r0
+0000150c : 00000000 : .... : ANDEQ   r0, r0, r0
+00001510 : e3a00001 : .... : MOV     r0, #1
+00001514 : e28f1a01 : .... : ADR     r1, &0000251c             ; -> [&e8bd0001, &ef000001, &0000293e, &ef000003]
+00001518 : e2811d02 : .... : ADD     r1, r1, #2, #26           ; #128 = bit 7
+0000151c : e5810000 : .... : STR     r0, [r1]
+00001520 : e28f00a8 : .... : ADR     r0, &000015d0             ; -> ""Hello" "
+00001524 : e5010004 : .... : STR     r0, [r1, #-4]
+00001528 : e28f0088 : .... : ADR     r0, &000015b8             ; -> "TestCommand0010 "Hello""
+0000152c : ef020005 : .... : SWI     XOS_CLI
+00001530 : 7a000029 : )..z : BVC     &000015dc
+00001534 : ef000001 : .... : SWI     OS_WriteS                 ; R15+4 = "ERROR: "
+00001538 : 4f525245 : ERRO : SWIMI   &525245
+0000153c : 00203a52 : R: . : EOREQ   r3, r0, r2, ASR r10
+00001540 : e92d0003 : ..-. : PUSH    {r0, r1}
+00001544 : ef00015b : [... : SWI     OS_WriteI+"["
+00001548 : e4901004 : .... : LDR     r1, [r0], #4
+0000154c : ef000126 : &... : SWI     OS_WriteI+"&"
+00001550 : e92d0007 : ..-. : PUSH    {r0, r1, r2}
+00001554 : e1a00001 : .... : MOV     r0, r1
+00001558 : e1a0100c : .... : MOV     r1, r12
+0000155c : e3a02014 : . .. : MOV     r2, #&14                  ; #20
+00001560 : ef0000d4 : .... : SWI     OS_ConvertHex8
+00001564 : ef000002 : .... : SWI     OS_Write0
+00001568 : e8bd0007 : .... : POP     {r0, r1, r2}
+0000156c : ef00015d : ]... : SWI     OS_WriteI+"]"
+00001570 : ef000120 :  ... : SWI     OS_WriteI+" "
+00001574 : e92d0001 : ..-. : STMDB   sp!, {r0}
+00001578 : ef000002 : .... : SWI     OS_Write0
+0000157c : e8bd0001 : .... : LDMIA   sp!, {r0}
+00001580 : e8bd0003 : .... : POP     {r0, r1}
+00001584 : ef000001 : .... : SWI     OS_WriteS                 ; R15+4 = " (for input <"
+00001588 : 6f662820 :  (fo : SWIVS   &662820
+0000158c : 6e692072 : r in : MCRVS   p0, #3, r2, c9, c2, #3
+00001590 : 20747570 : put  : RSBSHS  r7, r4, r0, ROR r5
+00001594 : 0000003c : <... : ANDEQ   r0, r0, r12, LSR r0
+00001598 : e28f0028 : (... : ADR     r0, &000015c8             ; -> ""Hello""
+0000159c : e92d0001 : ..-. : STMDB   sp!, {r0}
+000015a0 : ef000002 : .... : SWI     OS_Write0
+000015a4 : e8bd0001 : .... : LDMIA   sp!, {r0}
+000015a8 : ef000001 : .... : SWI     OS_WriteS                 ; R15+4 = ">)"
+000015ac : 0000293e : >).. : ANDEQ   r2, r0, lr, LSR r9
+000015b0 : ef000003 : .... : SWI     OS_NewLine
+000015b4 : ea000008 : .... : B       &000015dc
+000015b8 : 74736554 : Test : LDRBTVC r6, [r3], #-&554
+000015bc : 6d6d6f43 : Comm : STCLVS  p15, c6, [sp, #-&10c]!
+000015c0 : 30646e61 : and0 : RSBLO   r6, r4, r1, ROR #28
+000015c4 : 20303130 : 010  : EORSHS  r3, r0, r0, LSR r1
+000015c8 : 6c654822 : "Hel : STCLVS  p8, c4, [r5], #-&88
+000015cc : 00226f6c : lo". : EOREQ   r6, r2, r12, ROR #30
+000015d0 : 6c654822 : "Hel : STCLVS  p8, c4, [r5], #-&88
+000015d4 : 20226f6c : lo"  : EORHS   r6, r2, r12, ROR #30
+000015d8 : 00000000 : .... : ANDEQ   r0, r0, r0
+000015dc : ef000001 : .... : SWI     OS_WriteS                 ; R15+4 = "GSTrans map: 0000 : "
+000015e0 : 72545347 : GSTr : SUBSVC  r5, r4, #&1c000001        ; #469762049
+000015e4 : 20736e61 : ans  : RSBSHS  r6, r3, r1, ROR #28
+000015e8 : 3a70616d : map: : BLO     &01c19ba4
+000015ec : 30303020 :  000 : EORSLO  r3, r0, r0, LSR #32
+000015f0 : 203a2030 : 0 :  : EORSHS  r2, r10, r0, LSR r0
+000015f4 : 00000000 : .... : ANDEQ   r0, r0, r0
+000015f8 : e3a00001 : .... : MOV     r0, #1
+000015fc : e28f1b03 : .... : ADR     r1, &00002204             ; -> [&e5810000, &e28f00a0, &e5010004, &e28f0088]
+00001600 : e2811fe6 : .... : ADD     r1, r1, #&398             ; #920
+00001604 : e5810000 : .... : STR     r0, [r1]
+00001608 : e28f00a0 : .... : ADR     r0, &000016b0             ; -> ""Hello There""
+0000160c : e5010004 : .... : STR     r0, [r1, #-4]
+00001610 : e28f0088 : .... : ADR     r0, &000016a0             ; -> "TestCommand0000 "Hello There""
+00001614 : ef020005 : .... : SWI     XOS_CLI
+00001618 : 7a000028 : (..z : BVC     &000016c0
+0000161c : ef000001 : .... : SWI     OS_WriteS                 ; R15+4 = "ERROR: "
+00001620 : 4f525245 : ERRO : SWIMI   &525245
+00001624 : 00203a52 : R: . : EOREQ   r3, r0, r2, ASR r10
+00001628 : e92d0003 : ..-. : PUSH    {r0, r1}
+0000162c : ef00015b : [... : SWI     OS_WriteI+"["
+00001630 : e4901004 : .... : LDR     r1, [r0], #4
+00001634 : ef000126 : &... : SWI     OS_WriteI+"&"
+00001638 : e92d0007 : ..-. : PUSH    {r0, r1, r2}
+0000163c : e1a00001 : .... : MOV     r0, r1
+00001640 : e1a0100c : .... : MOV     r1, r12
+00001644 : e3a02014 : . .. : MOV     r2, #&14                  ; #20
+00001648 : ef0000d4 : .... : SWI     OS_ConvertHex8
+0000164c : ef000002 : .... : SWI     OS_Write0
+00001650 : e8bd0007 : .... : POP     {r0, r1, r2}
+00001654 : ef00015d : ]... : SWI     OS_WriteI+"]"
+00001658 : ef000120 :  ... : SWI     OS_WriteI+" "
+0000165c : e92d0001 : ..-. : STMDB   sp!, {r0}
+00001660 : ef000002 : .... : SWI     OS_Write0
+00001664 : e8bd0001 : .... : LDMIA   sp!, {r0}
+00001668 : e8bd0003 : .... : POP     {r0, r1}
+0000166c : ef000001 : .... : SWI     OS_WriteS                 ; R15+4 = " (for input <"
+00001670 : 6f662820 :  (fo : SWIVS   &662820
+00001674 : 6e692072 : r in : MCRVS   p0, #3, r2, c9, c2, #3
+00001678 : 20747570 : put  : RSBSHS  r7, r4, r0, ROR r5
+0000167c : 0000003c : <... : ANDEQ   r0, r0, r12, LSR r0
+00001680 : e28f0028 : (... : ADR     r0, &000016b0             ; -> ""Hello There""
+00001684 : e92d0001 : ..-. : STMDB   sp!, {r0}
+00001688 : ef000002 : .... : SWI     OS_Write0
+0000168c : e8bd0001 : .... : LDMIA   sp!, {r0}
+00001690 : ef000001 : .... : SWI     OS_WriteS                 ; R15+4 = ">)"
+00001694 : 0000293e : >).. : ANDEQ   r2, r0, lr, LSR r9
+00001698 : ef000003 : .... : SWI     OS_NewLine
+0000169c : ea000007 : .... : B       &000016c0
+000016a0 : 74736554 : Test : LDRBTVC r6, [r3], #-&554
+000016a4 : 6d6d6f43 : Comm : STCLVS  p15, c6, [sp, #-&10c]!
+000016a8 : 30646e61 : and0 : RSBLO   r6, r4, r1, ROR #28
+000016ac : 20303030 : 000  : EORSHS  r3, r0, r0, LSR r0
+000016b0 : 6c654822 : "Hel : STCLVS  p8, c4, [r5], #-&88
+000016b4 : 54206f6c : lo T : STRTPL  r6, [r0], #-&f6c
+000016b8 : 65726568 : here : LDRBVS  r6, [r2, #-&568]!
+000016bc : 00000022 : "... : ANDEQ   r0, r0, r2, LSR #32
+000016c0 : ef000001 : .... : SWI     OS_WriteS                 ; R15+4 = "GSTrans map: 0001 : "
+000016c4 : 72545347 : GSTr : SUBSVC  r5, r4, #&1c000001        ; #469762049
+000016c8 : 20736e61 : ans  : RSBSHS  r6, r3, r1, ROR #28
+000016cc : 3a70616d : map: : BLO     &01c19c88
+000016d0 : 30303020 :  000 : EORSLO  r3, r0, r0, LSR #32
+000016d4 : 203a2031 : 1 :  : EORSHS  r2, r10, r1, LSR r0
+000016d8 : 00000000 : .... : ANDEQ   r0, r0, r0
+000016dc : e3a00001 : .... : MOV     r0, #1
+000016e0 : e28f1b03 : .... : ADR     r1, &000022e8             ; -> [&e28f0088, &ef020005, &7a000026, &ef000001]
+000016e4 : e2811fad : .... : ADD     r1, r1, #&2b4             ; #692
+000016e8 : e5810000 : .... : STR     r0, [r1]
+000016ec : e28f00ae : .... : ADR     r0, &000017a2             ; -> "Hello There "
+000016f0 : e5010004 : .... : STR     r0, [r1, #-4]
+000016f4 : e28f0088 : .... : ADR     r0, &00001784             ; -> "TestCommand0001 "Hello There""
+000016f8 : ef020005 : .... : SWI     XOS_CLI
+000016fc : 7a00002b : +..z : BVC     &000017b0
+00001700 : ef000001 : .... : SWI     OS_WriteS                 ; R15+4 = "ERROR: "
+00001704 : 4f525245 : ERRO : SWIMI   &525245
+00001708 : 00203a52 : R: . : EOREQ   r3, r0, r2, ASR r10
+0000170c : e92d0003 : ..-. : PUSH    {r0, r1}
+00001710 : ef00015b : [... : SWI     OS_WriteI+"["
+00001714 : e4901004 : .... : LDR     r1, [r0], #4
+00001718 : ef000126 : &... : SWI     OS_WriteI+"&"
+0000171c : e92d0007 : ..-. : PUSH    {r0, r1, r2}
+00001720 : e1a00001 : .... : MOV     r0, r1
+00001724 : e1a0100c : .... : MOV     r1, r12
+00001728 : e3a02014 : . .. : MOV     r2, #&14                  ; #20
+0000172c : ef0000d4 : .... : SWI     OS_ConvertHex8
+00001730 : ef000002 : .... : SWI     OS_Write0
+00001734 : e8bd0007 : .... : POP     {r0, r1, r2}
+00001738 : ef00015d : ]... : SWI     OS_WriteI+"]"
+0000173c : ef000120 :  ... : SWI     OS_WriteI+" "
+00001740 : e92d0001 : ..-. : STMDB   sp!, {r0}
+00001744 : ef000002 : .... : SWI     OS_Write0
+00001748 : e8bd0001 : .... : LDMIA   sp!, {r0}
+0000174c : e8bd0003 : .... : POP     {r0, r1}
+00001750 : ef000001 : .... : SWI     OS_WriteS                 ; R15+4 = " (for input <"
+00001754 : 6f662820 :  (fo : SWIVS   &662820
+00001758 : 6e692072 : r in : MCRVS   p0, #3, r2, c9, c2, #3
+0000175c : 20747570 : put  : RSBSHS  r7, r4, r0, ROR r5
+00001760 : 0000003c : <... : ANDEQ   r0, r0, r12, LSR r0
+00001764 : e28f0028 : (... : ADR     r0, &00001794             ; -> ""Hello There""
+00001768 : e92d0001 : ..-. : STMDB   sp!, {r0}
+0000176c : ef000002 : .... : SWI     OS_Write0
+00001770 : e8bd0001 : .... : LDMIA   sp!, {r0}
+00001774 : ef000001 : .... : SWI     OS_WriteS                 ; R15+4 = ">)"
+00001778 : 0000293e : >).. : ANDEQ   r2, r0, lr, LSR r9
+0000177c : ef000003 : .... : SWI     OS_NewLine
+00001780 : ea00000a : .... : B       &000017b0
+00001784 : 74736554 : Test : LDRBTVC r6, [r3], #-&554
+00001788 : 6d6d6f43 : Comm : STCLVS  p15, c6, [sp, #-&10c]!
+0000178c : 30646e61 : and0 : RSBLO   r6, r4, r1, ROR #28
+00001790 : 20313030 : 001  : EORSHS  r3, r1, r0, LSR r0
+00001794 : 6c654822 : "Hel : STCLVS  p8, c4, [r5], #-&88
+00001798 : 54206f6c : lo T : STRTPL  r6, [r0], #-&f6c
+0000179c : 65726568 : here : LDRBVS  r6, [r2, #-&568]!
+000017a0 : 65480022 : ".He : STRBVS  r0, [r8, #-&22]
+000017a4 : 206f6c6c : llo  : RSBHS   r6, pc, r12, ROR #24
+000017a8 : 72656854 : Ther : RSBVC   r6, r5, #84, #16          ; #5505024 = 84<<16
+000017ac : 00002065 : e .. : ANDEQ   r2, r0, r5, RRX
+000017b0 : ef000001 : .... : SWI     OS_WriteS                 ; R15+4 = "GSTrans map: 0000 : "
+000017b4 : 72545347 : GSTr : SUBSVC  r5, r4, #&1c000001        ; #469762049
+000017b8 : 20736e61 : ans  : RSBSHS  r6, r3, r1, ROR #28
+000017bc : 3a70616d : map: : BLO     &01c19d78
+000017c0 : 30303020 :  000 : EORSLO  r3, r0, r0, LSR #32
+000017c4 : 203a2030 : 0 :  : EORSHS  r2, r10, r0, LSR r0
+000017c8 : 00000000 : .... : ANDEQ   r0, r0, r0
+000017cc : e3a00001 : .... : MOV     r0, #1
+000017d0 : e28f1b03 : .... : ADR     r1, &000023d8             ; -> [&00203a52, &e92d0003, &ef00015b, &e4901004]
+000017d4 : e2811f71 : q... : ADD     r1, r1, #&1c4             ; #452
+000017d8 : e5810000 : .... : STR     r0, [r1]
+000017dc : e28f00a0 : .... : ADR     r0, &00001884             ; -> ""Hello There" "
+000017e0 : e5010004 : .... : STR     r0, [r1, #-4]
+000017e4 : e28f0088 : .... : ADR     r0, &00001874             ; -> "TestCommand0000 "Hello There" "
+000017e8 : ef020005 : .... : SWI     XOS_CLI
+000017ec : 7a000028 : (..z : BVC     &00001894
+000017f0 : ef000001 : .... : SWI     OS_WriteS                 ; R15+4 = "ERROR: "
+000017f4 : 4f525245 : ERRO : SWIMI   &525245
+000017f8 : 00203a52 : R: . : EOREQ   r3, r0, r2, ASR r10
+000017fc : e92d0003 : ..-. : PUSH    {r0, r1}
+00001800 : ef00015b : [... : SWI     OS_WriteI+"["
+00001804 : e4901004 : .... : LDR     r1, [r0], #4
+00001808 : ef000126 : &... : SWI     OS_WriteI+"&"
+0000180c : e92d0007 : ..-. : PUSH    {r0, r1, r2}
+00001810 : e1a00001 : .... : MOV     r0, r1
+00001814 : e1a0100c : .... : MOV     r1, r12
+00001818 : e3a02014 : . .. : MOV     r2, #&14                  ; #20
+0000181c : ef0000d4 : .... : SWI     OS_ConvertHex8
+00001820 : ef000002 : .... : SWI     OS_Write0
+00001824 : e8bd0007 : .... : POP     {r0, r1, r2}
+00001828 : ef00015d : ]... : SWI     OS_WriteI+"]"
+0000182c : ef000120 :  ... : SWI     OS_WriteI+" "
+00001830 : e92d0001 : ..-. : STMDB   sp!, {r0}
+00001834 : ef000002 : .... : SWI     OS_Write0
+00001838 : e8bd0001 : .... : LDMIA   sp!, {r0}
+0000183c : e8bd0003 : .... : POP     {r0, r1}
+00001840 : ef000001 : .... : SWI     OS_WriteS                 ; R15+4 = " (for input <"
+00001844 : 6f662820 :  (fo : SWIVS   &662820
+00001848 : 6e692072 : r in : MCRVS   p0, #3, r2, c9, c2, #3
+0000184c : 20747570 : put  : RSBSHS  r7, r4, r0, ROR r5
+00001850 : 0000003c : <... : ANDEQ   r0, r0, r12, LSR r0
+00001854 : e28f0028 : (... : ADR     r0, &00001884             ; -> ""Hello There" "
+00001858 : e92d0001 : ..-. : STMDB   sp!, {r0}
+0000185c : ef000002 : .... : SWI     OS_Write0
+00001860 : e8bd0001 : .... : LDMIA   sp!, {r0}
+00001864 : ef000001 : .... : SWI     OS_WriteS                 ; R15+4 = ">)"
+00001868 : 0000293e : >).. : ANDEQ   r2, r0, lr, LSR r9
+0000186c : ef000003 : .... : SWI     OS_NewLine
+00001870 : ea000007 : .... : B       &00001894
+00001874 : 74736554 : Test : LDRBTVC r6, [r3], #-&554
+00001878 : 6d6d6f43 : Comm : STCLVS  p15, c6, [sp, #-&10c]!
+0000187c : 30646e61 : and0 : RSBLO   r6, r4, r1, ROR #28
+00001880 : 20303030 : 000  : EORSHS  r3, r0, r0, LSR r0
+00001884 : 6c654822 : "Hel : STCLVS  p8, c4, [r5], #-&88
+00001888 : 54206f6c : lo T : STRTPL  r6, [r0], #-&f6c
+0000188c : 65726568 : here : LDRBVS  r6, [r2, #-&568]!
+00001890 : 00002022 : " .. : ANDEQ   r2, r0, r2, LSR #32
+00001894 : ef000001 : .... : SWI     OS_WriteS                 ; R15+4 = "GSTrans map: 0001 : "
+00001898 : 72545347 : GSTr : SUBSVC  r5, r4, #&1c000001        ; #469762049
+0000189c : 20736e61 : ans  : RSBSHS  r6, r3, r1, ROR #28
+000018a0 : 3a70616d : map: : BLO     &01c19e5c
+000018a4 : 30303020 :  000 : EORSLO  r3, r0, r0, LSR #32
+000018a8 : 203a2031 : 1 :  : EORSHS  r2, r10, r1, LSR r0
+000018ac : 00000000 : .... : ANDEQ   r0, r0, r0
+000018b0 : e3a00001 : .... : MOV     r0, #1
+000018b4 : e28f1b03 : .... : ADR     r1, &000024bc             ; -> [&ef00015b, &e4901004, &ef000126, &e92d0007]
+000018b8 : e2811e0e : .... : ADD     r1, r1, #14, #28          ; #224
+000018bc : e5810000 : .... : STR     r0, [r1]
+000018c0 : e28f00af : .... : ADR     r0, &00001977             ; -> "Hello There "
+000018c4 : e5010004 : .... : STR     r0, [r1, #-4]
+000018c8 : e28f0088 : .... : ADR     r0, &00001958             ; -> "TestCommand0001 "Hello There" "
+000018cc : ef020005 : .... : SWI     XOS_CLI
+000018d0 : 7a00002b : +..z : BVC     &00001984
+000018d4 : ef000001 : .... : SWI     OS_WriteS                 ; R15+4 = "ERROR: "
+000018d8 : 4f525245 : ERRO : SWIMI   &525245
+000018dc : 00203a52 : R: . : EOREQ   r3, r0, r2, ASR r10
+000018e0 : e92d0003 : ..-. : PUSH    {r0, r1}
+000018e4 : ef00015b : [... : SWI     OS_WriteI+"["
+000018e8 : e4901004 : .... : LDR     r1, [r0], #4
+000018ec : ef000126 : &... : SWI     OS_WriteI+"&"
+000018f0 : e92d0007 : ..-. : PUSH    {r0, r1, r2}
+000018f4 : e1a00001 : .... : MOV     r0, r1
+000018f8 : e1a0100c : .... : MOV     r1, r12
+000018fc : e3a02014 : . .. : MOV     r2, #&14                  ; #20
+00001900 : ef0000d4 : .... : SWI     OS_ConvertHex8
+00001904 : ef000002 : .... : SWI     OS_Write0
+00001908 : e8bd0007 : .... : POP     {r0, r1, r2}
+0000190c : ef00015d : ]... : SWI     OS_WriteI+"]"
+00001910 : ef000120 :  ... : SWI     OS_WriteI+" "
+00001914 : e92d0001 : ..-. : STMDB   sp!, {r0}
+00001918 : ef000002 : .... : SWI     OS_Write0
+0000191c : e8bd0001 : .... : LDMIA   sp!, {r0}
+00001920 : e8bd0003 : .... : POP     {r0, r1}
+00001924 : ef000001 : .... : SWI     OS_WriteS                 ; R15+4 = " (for input <"
+00001928 : 6f662820 :  (fo : SWIVS   &662820
+0000192c : 6e692072 : r in : MCRVS   p0, #3, r2, c9, c2, #3
+00001930 : 20747570 : put  : RSBSHS  r7, r4, r0, ROR r5
+00001934 : 0000003c : <... : ANDEQ   r0, r0, r12, LSR r0
+00001938 : e28f0028 : (... : ADR     r0, &00001968             ; -> ""Hello There" "
+0000193c : e92d0001 : ..-. : STMDB   sp!, {r0}
+00001940 : ef000002 : .... : SWI     OS_Write0
+00001944 : e8bd0001 : .... : LDMIA   sp!, {r0}
+00001948 : ef000001 : .... : SWI     OS_WriteS                 ; R15+4 = ">)"
+0000194c : 0000293e : >).. : ANDEQ   r2, r0, lr, LSR r9
+00001950 : ef000003 : .... : SWI     OS_NewLine
+00001954 : ea00000a : .... : B       &00001984
+00001958 : 74736554 : Test : LDRBTVC r6, [r3], #-&554
+0000195c : 6d6d6f43 : Comm : STCLVS  p15, c6, [sp, #-&10c]!
+00001960 : 30646e61 : and0 : RSBLO   r6, r4, r1, ROR #28
+00001964 : 20313030 : 001  : EORSHS  r3, r1, r0, LSR r0
+00001968 : 6c654822 : "Hel : STCLVS  p8, c4, [r5], #-&88
+0000196c : 54206f6c : lo T : STRTPL  r6, [r0], #-&f6c
+00001970 : 65726568 : here : LDRBVS  r6, [r2, #-&568]!
+00001974 : 48002022 : " .H : STMDAMI r0, {r1, r5, sp}
+00001978 : 6f6c6c65 : ello : SWIVS   &6c6c65
+0000197c : 65685420 :  The : STRBVS  r5, [r8, #-&420]!
+00001980 : 00206572 : re . : EOREQ   r6, r0, r2, ROR r5
+00001984 : ef000001 : .... : SWI     OS_WriteS                 ; R15+4 = "GSTrans map: 0001 : "
+00001988 : 72545347 : GSTr : SUBSVC  r5, r4, #&1c000001        ; #469762049
+0000198c : 20736e61 : ans  : RSBSHS  r6, r3, r1, ROR #28
+00001990 : 3a70616d : map: : BLO     &01c19f4c
+00001994 : 30303020 :  000 : EORSLO  r3, r0, r0, LSR #32
+00001998 : 203a2031 : 1 :  : EORSHS  r2, r10, r1, LSR r0
+0000199c : 00000000 : .... : ANDEQ   r0, r0, r0
+000019a0 : e3a00003 : .... : MOV     r0, #3
+000019a4 : e28f1b02 : .... : ADR     r1, &000021ac             ; -> "Command0001 TrailingSpaces  "
+000019a8 : e2811e3f : ?... : ADD     r1, r1, #&3f0             ; #1008
+000019ac : e5810000 : .... : STR     r0, [r1]
+000019b0 : e28f00b6 : .... : ADR     r0, &00001a6e             ; -> "Hello There RISC OS "
+000019b4 : e5010004 : .... : STR     r0, [r1, #-4]
+000019b8 : e28f0088 : .... : ADR     r0, &00001a48             ; -> "TestCommand0001 "Hello There" RISC OS"
+000019bc : ef020005 : .... : SWI     XOS_CLI
+000019c0 : 7a00002f : /..z : BVC     &00001a84
+000019c4 : ef000001 : .... : SWI     OS_WriteS                 ; R15+4 = "ERROR: "
+000019c8 : 4f525245 : ERRO : SWIMI   &525245
+000019cc : 00203a52 : R: . : EOREQ   r3, r0, r2, ASR r10
+000019d0 : e92d0003 : ..-. : PUSH    {r0, r1}
+000019d4 : ef00015b : [... : SWI     OS_WriteI+"["
+000019d8 : e4901004 : .... : LDR     r1, [r0], #4
+000019dc : ef000126 : &... : SWI     OS_WriteI+"&"
+000019e0 : e92d0007 : ..-. : PUSH    {r0, r1, r2}
+000019e4 : e1a00001 : .... : MOV     r0, r1
+000019e8 : e1a0100c : .... : MOV     r1, r12
+000019ec : e3a02014 : . .. : MOV     r2, #&14                  ; #20
+000019f0 : ef0000d4 : .... : SWI     OS_ConvertHex8
+000019f4 : ef000002 : .... : SWI     OS_Write0
+000019f8 : e8bd0007 : .... : POP     {r0, r1, r2}
+000019fc : ef00015d : ]... : SWI     OS_WriteI+"]"
+00001a00 : ef000120 :  ... : SWI     OS_WriteI+" "
+00001a04 : e92d0001 : ..-. : STMDB   sp!, {r0}
+00001a08 : ef000002 : .... : SWI     OS_Write0
+00001a0c : e8bd0001 : .... : LDMIA   sp!, {r0}
+00001a10 : e8bd0003 : .... : POP     {r0, r1}
+00001a14 : ef000001 : .... : SWI     OS_WriteS                 ; R15+4 = " (for input <"
+00001a18 : 6f662820 :  (fo : SWIVS   &662820
+00001a1c : 6e692072 : r in : MCRVS   p0, #3, r2, c9, c2, #3
+00001a20 : 20747570 : put  : RSBSHS  r7, r4, r0, ROR r5
+00001a24 : 0000003c : <... : ANDEQ   r0, r0, r12, LSR r0
+00001a28 : e28f0028 : (... : ADR     r0, &00001a58             ; -> ""Hello There" RISC OS"
+00001a2c : e92d0001 : ..-. : STMDB   sp!, {r0}
+00001a30 : ef000002 : .... : SWI     OS_Write0
+00001a34 : e8bd0001 : .... : LDMIA   sp!, {r0}
+00001a38 : ef000001 : .... : SWI     OS_WriteS                 ; R15+4 = ">)"
+00001a3c : 0000293e : >).. : ANDEQ   r2, r0, lr, LSR r9
+00001a40 : ef000003 : .... : SWI     OS_NewLine
+00001a44 : ea00000e : .... : B       &00001a84
+00001a48 : 74736554 : Test : LDRBTVC r6, [r3], #-&554
+00001a4c : 6d6d6f43 : Comm : STCLVS  p15, c6, [sp, #-&10c]!
+00001a50 : 30646e61 : and0 : RSBLO   r6, r4, r1, ROR #28
+00001a54 : 20313030 : 001  : EORSHS  r3, r1, r0, LSR r0
+00001a58 : 6c654822 : "Hel : STCLVS  p8, c4, [r5], #-&88
+00001a5c : 54206f6c : lo T : STRTPL  r6, [r0], #-&f6c
+00001a60 : 65726568 : here : LDRBVS  r6, [r2, #-&568]!
+00001a64 : 49522022 : " RI : LDMDBMI r2, {r1, r5, sp} ^
+00001a68 : 4f204353 : SC O : SWIMI   &204353
+00001a6c : 65480053 : S.He : STRBVS  r0, [r8, #-&53]
+00001a70 : 206f6c6c : llo  : RSBHS   r6, pc, r12, ROR #24
+00001a74 : 72656854 : Ther : RSBVC   r6, r5, #84, #16          ; #5505024 = 84<<16
+00001a78 : 49522065 : e RI : LDMDBMI r2, {r0, r2, r5, r6, sp} ^
+00001a7c : 4f204353 : SC O : SWIMI   &204353
+00001a80 : 00002053 : S .. : ANDEQ   r2, r0, r3, ASR r0
+00001a84 : ef000001 : .... : SWI     OS_WriteS                 ; R15+4 = "GSTrans map: 0010 : "
+00001a88 : 72545347 : GSTr : SUBSVC  r5, r4, #&1c000001        ; #469762049
+00001a8c : 20736e61 : ans  : RSBSHS  r6, r3, r1, ROR #28
+00001a90 : 3a70616d : map: : BLO     &01c1a04c
+00001a94 : 31303020 :  001 : TEQLO   r0, r0, LSR #32
+00001a98 : 203a2030 : 0 :  : EORSHS  r2, r10, r0, LSR r0
+00001a9c : 00000000 : .... : ANDEQ   r0, r0, r0
+00001aa0 : e3a00003 : .... : MOV     r0, #3
+00001aa4 : e28f1b02 : .... : ADR     r1, &000022ac             ; -> "000 """
+00001aa8 : e2811e2f : /... : ADD     r1, r1, #&2f0             ; #752
+00001aac : e5810000 : .... : STR     r0, [r1]
+00001ab0 : e28f00b6 : .... : ADR     r0, &00001b6e             ; -> ""Hello There" RISC OS "
+00001ab4 : e5010004 : .... : STR     r0, [r1, #-4]
+00001ab8 : e28f0088 : .... : ADR     r0, &00001b48             ; -> "TestCommand0010 "Hello There" RISC OS"
+00001abc : ef020005 : .... : SWI     XOS_CLI
+00001ac0 : 7a000030 : 0..z : BVC     &00001b88
+00001ac4 : ef000001 : .... : SWI     OS_WriteS                 ; R15+4 = "ERROR: "
+00001ac8 : 4f525245 : ERRO : SWIMI   &525245
+00001acc : 00203a52 : R: . : EOREQ   r3, r0, r2, ASR r10
+00001ad0 : e92d0003 : ..-. : PUSH    {r0, r1}
+00001ad4 : ef00015b : [... : SWI     OS_WriteI+"["
+00001ad8 : e4901004 : .... : LDR     r1, [r0], #4
+00001adc : ef000126 : &... : SWI     OS_WriteI+"&"
+00001ae0 : e92d0007 : ..-. : PUSH    {r0, r1, r2}
+00001ae4 : e1a00001 : .... : MOV     r0, r1
+00001ae8 : e1a0100c : .... : MOV     r1, r12
+00001aec : e3a02014 : . .. : MOV     r2, #&14                  ; #20
+00001af0 : ef0000d4 : .... : SWI     OS_ConvertHex8
+00001af4 : ef000002 : .... : SWI     OS_Write0
+00001af8 : e8bd0007 : .... : POP     {r0, r1, r2}
+00001afc : ef00015d : ]... : SWI     OS_WriteI+"]"
+00001b00 : ef000120 :  ... : SWI     OS_WriteI+" "
+00001b04 : e92d0001 : ..-. : STMDB   sp!, {r0}
+00001b08 : ef000002 : .... : SWI     OS_Write0
+00001b0c : e8bd0001 : .... : LDMIA   sp!, {r0}
+00001b10 : e8bd0003 : .... : POP     {r0, r1}
+00001b14 : ef000001 : .... : SWI     OS_WriteS                 ; R15+4 = " (for input <"
+00001b18 : 6f662820 :  (fo : SWIVS   &662820
+00001b1c : 6e692072 : r in : MCRVS   p0, #3, r2, c9, c2, #3
+00001b20 : 20747570 : put  : RSBSHS  r7, r4, r0, ROR r5
+00001b24 : 0000003c : <... : ANDEQ   r0, r0, r12, LSR r0
+00001b28 : e28f0028 : (... : ADR     r0, &00001b58             ; -> ""Hello There" RISC OS"
+00001b2c : e92d0001 : ..-. : STMDB   sp!, {r0}
+00001b30 : ef000002 : .... : SWI     OS_Write0
+00001b34 : e8bd0001 : .... : LDMIA   sp!, {r0}
+00001b38 : ef000001 : .... : SWI     OS_WriteS                 ; R15+4 = ">)"
+00001b3c : 0000293e : >).. : ANDEQ   r2, r0, lr, LSR r9
+00001b40 : ef000003 : .... : SWI     OS_NewLine
+00001b44 : ea00000f : .... : B       &00001b88
+00001b48 : 74736554 : Test : LDRBTVC r6, [r3], #-&554
+00001b4c : 6d6d6f43 : Comm : STCLVS  p15, c6, [sp, #-&10c]!
+00001b50 : 30646e61 : and0 : RSBLO   r6, r4, r1, ROR #28
+00001b54 : 20303130 : 010  : EORSHS  r3, r0, r0, LSR r1
+00001b58 : 6c654822 : "Hel : STCLVS  p8, c4, [r5], #-&88
+00001b5c : 54206f6c : lo T : STRTPL  r6, [r0], #-&f6c
+00001b60 : 65726568 : here : LDRBVS  r6, [r2, #-&568]!
+00001b64 : 49522022 : " RI : LDMDBMI r2, {r1, r5, sp} ^
+00001b68 : 4f204353 : SC O : SWIMI   &204353
+00001b6c : 48220053 : S."H : STMDAMI r2!, {r0, r1, r4, r6}
+00001b70 : 6f6c6c65 : ello : SWIVS   &6c6c65
+00001b74 : 65685420 :  The : STRBVS  r5, [r8, #-&420]!
+00001b78 : 20226572 : re"  : EORHS   r6, r2, r2, ROR r5
+00001b7c : 43534952 : RISC : CMPMI   r3, #&148000              ; #1343488 = 328<<12
+00001b80 : 20534f20 :  OS  : SUBSHS  r4, r3, r0, LSR #30
+00001b84 : 00000000 : .... : ANDEQ   r0, r0, r0
+00001b88 : ef000001 : .... : SWI     OS_WriteS                 ; R15+4 = "GSTrans map: 0000 : "
+00001b8c : 72545347 : GSTr : SUBSVC  r5, r4, #&1c000001        ; #469762049
+00001b90 : 20736e61 : ans  : RSBSHS  r6, r3, r1, ROR #28
+00001b94 : 3a70616d : map: : BLO     &01c1a150
+00001b98 : 30303020 :  000 : EORSLO  r3, r0, r0, LSR #32
+00001b9c : 203a2030 : 0 :  : EORSHS  r2, r10, r0, LSR r0
+00001ba0 : 00000000 : .... : ANDEQ   r0, r0, r0
+00001ba4 : e3a00001 : .... : MOV     r0, #1
+00001ba8 : e28f1b02 : .... : ADR     r1, &000023b0             ; -> [&e28f1c01, &e2811f39, &e5810000, &e28f00a0]
+00001bac : e2811f7b : {... : ADD     r1, r1, #&1ec             ; #492
+00001bb0 : e5810000 : .... : STR     r0, [r1]
+00001bb4 : e28f00a0 : .... : ADR     r0, &00001c5c             ; -> "Hello"There"
+00001bb8 : e5010004 : .... : STR     r0, [r1, #-4]
+00001bbc : e28f0088 : .... : ADR     r0, &00001c4c             ; -> "TestCommand0000 Hello"There"
+00001bc0 : ef020005 : .... : SWI     XOS_CLI
+00001bc4 : 7a000027 : '..z : BVC     &00001c68
+00001bc8 : ef000001 : .... : SWI     OS_WriteS                 ; R15+4 = "ERROR: "
+00001bcc : 4f525245 : ERRO : SWIMI   &525245
+00001bd0 : 00203a52 : R: . : EOREQ   r3, r0, r2, ASR r10
+00001bd4 : e92d0003 : ..-. : PUSH    {r0, r1}
+00001bd8 : ef00015b : [... : SWI     OS_WriteI+"["
+00001bdc : e4901004 : .... : LDR     r1, [r0], #4
+00001be0 : ef000126 : &... : SWI     OS_WriteI+"&"
+00001be4 : e92d0007 : ..-. : PUSH    {r0, r1, r2}
+00001be8 : e1a00001 : .... : MOV     r0, r1
+00001bec : e1a0100c : .... : MOV     r1, r12
+00001bf0 : e3a02014 : . .. : MOV     r2, #&14                  ; #20
+00001bf4 : ef0000d4 : .... : SWI     OS_ConvertHex8
+00001bf8 : ef000002 : .... : SWI     OS_Write0
+00001bfc : e8bd0007 : .... : POP     {r0, r1, r2}
+00001c00 : ef00015d : ]... : SWI     OS_WriteI+"]"
+00001c04 : ef000120 :  ... : SWI     OS_WriteI+" "
+00001c08 : e92d0001 : ..-. : STMDB   sp!, {r0}
+00001c0c : ef000002 : .... : SWI     OS_Write0
+00001c10 : e8bd0001 : .... : LDMIA   sp!, {r0}
+00001c14 : e8bd0003 : .... : POP     {r0, r1}
+00001c18 : ef000001 : .... : SWI     OS_WriteS                 ; R15+4 = " (for input <"
+00001c1c : 6f662820 :  (fo : SWIVS   &662820
+00001c20 : 6e692072 : r in : MCRVS   p0, #3, r2, c9, c2, #3
+00001c24 : 20747570 : put  : RSBSHS  r7, r4, r0, ROR r5
+00001c28 : 0000003c : <... : ANDEQ   r0, r0, r12, LSR r0
+00001c2c : e28f0028 : (... : ADR     r0, &00001c5c             ; -> "Hello"There"
+00001c30 : e92d0001 : ..-. : STMDB   sp!, {r0}
+00001c34 : ef000002 : .... : SWI     OS_Write0
+00001c38 : e8bd0001 : .... : LDMIA   sp!, {r0}
+00001c3c : ef000001 : .... : SWI     OS_WriteS                 ; R15+4 = ">)"
+00001c40 : 0000293e : >).. : ANDEQ   r2, r0, lr, LSR r9
+00001c44 : ef000003 : .... : SWI     OS_NewLine
+00001c48 : ea000006 : .... : B       &00001c68
+00001c4c : 74736554 : Test : LDRBTVC r6, [r3], #-&554
+00001c50 : 6d6d6f43 : Comm : STCLVS  p15, c6, [sp, #-&10c]!
+00001c54 : 30646e61 : and0 : RSBLO   r6, r4, r1, ROR #28
+00001c58 : 20303030 : 000  : EORSHS  r3, r0, r0, LSR r0
+00001c5c : 6c6c6548 : Hell : STCLVS  p5, c6, [r12], #-&120
+00001c60 : 6854226f : o"Th : LDMDAVS r4, {r0, r1, r2, r3, r5, r6, r9, sp} ^
+00001c64 : 00657265 : ere. : RSBEQ   r7, r5, r5, ROR #4
+00001c68 : ef000001 : .... : SWI     OS_WriteS                 ; R15+4 = "GSTrans map: 0000 : "
+00001c6c : 72545347 : GSTr : SUBSVC  r5, r4, #&1c000001        ; #469762049
+00001c70 : 20736e61 : ans  : RSBSHS  r6, r3, r1, ROR #28
+00001c74 : 3a70616d : map: : BLO     &01c1a230
+00001c78 : 30303020 :  000 : EORSLO  r3, r0, r0, LSR #32
+00001c7c : 203a2030 : 0 :  : EORSHS  r2, r10, r0, LSR r0
+00001c80 : 00000000 : .... : ANDEQ   r0, r0, r0
+00001c84 : e3a00002 : .... : MOV     r0, #2
+00001c88 : e28f1b02 : .... : ADR     r1, &00002490             ; -> [&e2811f02, &e5810000, &e28f00a5, &e5010004]
+00001c8c : e2811f43 : C... : ADD     r1, r1, #&10c             ; #268
+00001c90 : e5810000 : .... : STR     r0, [r1]
+00001c94 : e28f00a0 : .... : ADR     r0, &00001d3c             ; -> "[|"] Quote"
+00001c98 : e5010004 : .... : STR     r0, [r1, #-4]
+00001c9c : e28f0088 : .... : ADR     r0, &00001d2c             ; -> "TestCommand0000 [|"] Quote"
+00001ca0 : ef020005 : .... : SWI     XOS_CLI
+00001ca4 : 7a000027 : '..z : BVC     &00001d48
+00001ca8 : ef000001 : .... : SWI     OS_WriteS                 ; R15+4 = "ERROR: "
+00001cac : 4f525245 : ERRO : SWIMI   &525245
+00001cb0 : 00203a52 : R: . : EOREQ   r3, r0, r2, ASR r10
+00001cb4 : e92d0003 : ..-. : PUSH    {r0, r1}
+00001cb8 : ef00015b : [... : SWI     OS_WriteI+"["
+00001cbc : e4901004 : .... : LDR     r1, [r0], #4
+00001cc0 : ef000126 : &... : SWI     OS_WriteI+"&"
+00001cc4 : e92d0007 : ..-. : PUSH    {r0, r1, r2}
+00001cc8 : e1a00001 : .... : MOV     r0, r1
+00001ccc : e1a0100c : .... : MOV     r1, r12
+00001cd0 : e3a02014 : . .. : MOV     r2, #&14                  ; #20
+00001cd4 : ef0000d4 : .... : SWI     OS_ConvertHex8
+00001cd8 : ef000002 : .... : SWI     OS_Write0
+00001cdc : e8bd0007 : .... : POP     {r0, r1, r2}
+00001ce0 : ef00015d : ]... : SWI     OS_WriteI+"]"
+00001ce4 : ef000120 :  ... : SWI     OS_WriteI+" "
+00001ce8 : e92d0001 : ..-. : STMDB   sp!, {r0}
+00001cec : ef000002 : .... : SWI     OS_Write0
+00001cf0 : e8bd0001 : .... : LDMIA   sp!, {r0}
+00001cf4 : e8bd0003 : .... : POP     {r0, r1}
+00001cf8 : ef000001 : .... : SWI     OS_WriteS                 ; R15+4 = " (for input <"
+00001cfc : 6f662820 :  (fo : SWIVS   &662820
+00001d00 : 6e692072 : r in : MCRVS   p0, #3, r2, c9, c2, #3
+00001d04 : 20747570 : put  : RSBSHS  r7, r4, r0, ROR r5
+00001d08 : 0000003c : <... : ANDEQ   r0, r0, r12, LSR r0
+00001d0c : e28f0028 : (... : ADR     r0, &00001d3c             ; -> "[|"] Quote"
+00001d10 : e92d0001 : ..-. : STMDB   sp!, {r0}
+00001d14 : ef000002 : .... : SWI     OS_Write0
+00001d18 : e8bd0001 : .... : LDMIA   sp!, {r0}
+00001d1c : ef000001 : .... : SWI     OS_WriteS                 ; R15+4 = ">)"
+00001d20 : 0000293e : >).. : ANDEQ   r2, r0, lr, LSR r9
+00001d24 : ef000003 : .... : SWI     OS_NewLine
+00001d28 : ea000006 : .... : B       &00001d48
+00001d2c : 74736554 : Test : LDRBTVC r6, [r3], #-&554
+00001d30 : 6d6d6f43 : Comm : STCLVS  p15, c6, [sp, #-&10c]!
+00001d34 : 30646e61 : and0 : RSBLO   r6, r4, r1, ROR #28
+00001d38 : 20303030 : 000  : EORSHS  r3, r0, r0, LSR r0
+00001d3c : 5d227c5b : [|"] : STCPL   p12, c7, [r2, #-&16c]!
+00001d40 : 6f755120 :  Quo : SWIVS   &755120
+00001d44 : 00006574 : te.. : ANDEQ   r6, r0, r4, ROR r5
+00001d48 : ef000001 : .... : SWI     OS_WriteS                 ; R15+4 = "GSTrans map: 0001 : "
+00001d4c : 72545347 : GSTr : SUBSVC  r5, r4, #&1c000001        ; #469762049
+00001d50 : 20736e61 : ans  : RSBSHS  r6, r3, r1, ROR #28
+00001d54 : 3a70616d : map: : BLO     &01c1a310
+00001d58 : 30303020 :  000 : EORSLO  r3, r0, r0, LSR #32
+00001d5c : 203a2031 : 1 :  : EORSHS  r2, r10, r1, LSR r0
+00001d60 : 00000000 : .... : ANDEQ   r0, r0, r0
+00001d64 : e3a00002 : .... : MOV     r0, #2
+00001d68 : e28f1b02 : .... : ADR     r1, &00002570             ; -> [&e3a02014, &ef0000dc, &ef000002, &e8bd0007]
+00001d6c : e2811f0b : .... : ADD     r1, r1, #11, #30          ; #44  = ','
+00001d70 : e5810000 : .... : STR     r0, [r1]
+00001d74 : e28f00ab : .... : ADR     r0, &00001e27             ; -> "["] Quote "
+00001d78 : e5010004 : .... : STR     r0, [r1, #-4]
+00001d7c : e28f0088 : .... : ADR     r0, &00001e0c             ; -> "TestCommand0001 [|"] Quote"
+00001d80 : ef020005 : .... : SWI     XOS_CLI
+00001d84 : 7a00002a : *..z : BVC     &00001e34
+00001d88 : ef000001 : .... : SWI     OS_WriteS                 ; R15+4 = "ERROR: "
+00001d8c : 4f525245 : ERRO : SWIMI   &525245
+00001d90 : 00203a52 : R: . : EOREQ   r3, r0, r2, ASR r10
+00001d94 : e92d0003 : ..-. : PUSH    {r0, r1}
+00001d98 : ef00015b : [... : SWI     OS_WriteI+"["
+00001d9c : e4901004 : .... : LDR     r1, [r0], #4
+00001da0 : ef000126 : &... : SWI     OS_WriteI+"&"
+00001da4 : e92d0007 : ..-. : PUSH    {r0, r1, r2}
+00001da8 : e1a00001 : .... : MOV     r0, r1
+00001dac : e1a0100c : .... : MOV     r1, r12
+00001db0 : e3a02014 : . .. : MOV     r2, #&14                  ; #20
+00001db4 : ef0000d4 : .... : SWI     OS_ConvertHex8
+00001db8 : ef000002 : .... : SWI     OS_Write0
+00001dbc : e8bd0007 : .... : POP     {r0, r1, r2}
+00001dc0 : ef00015d : ]... : SWI     OS_WriteI+"]"
+00001dc4 : ef000120 :  ... : SWI     OS_WriteI+" "
+00001dc8 : e92d0001 : ..-. : STMDB   sp!, {r0}
+00001dcc : ef000002 : .... : SWI     OS_Write0
+00001dd0 : e8bd0001 : .... : LDMIA   sp!, {r0}
+00001dd4 : e8bd0003 : .... : POP     {r0, r1}
+00001dd8 : ef000001 : .... : SWI     OS_WriteS                 ; R15+4 = " (for input <"
+00001ddc : 6f662820 :  (fo : SWIVS   &662820
+00001de0 : 6e692072 : r in : MCRVS   p0, #3, r2, c9, c2, #3
+00001de4 : 20747570 : put  : RSBSHS  r7, r4, r0, ROR r5
+00001de8 : 0000003c : <... : ANDEQ   r0, r0, r12, LSR r0
+00001dec : e28f0028 : (... : ADR     r0, &00001e1c             ; -> "[|"] Quote"
+00001df0 : e92d0001 : ..-. : STMDB   sp!, {r0}
+00001df4 : ef000002 : .... : SWI     OS_Write0
+00001df8 : e8bd0001 : .... : LDMIA   sp!, {r0}
+00001dfc : ef000001 : .... : SWI     OS_WriteS                 ; R15+4 = ">)"
+00001e00 : 0000293e : >).. : ANDEQ   r2, r0, lr, LSR r9
+00001e04 : ef000003 : .... : SWI     OS_NewLine
+00001e08 : ea000009 : .... : B       &00001e34
+00001e0c : 74736554 : Test : LDRBTVC r6, [r3], #-&554
+00001e10 : 6d6d6f43 : Comm : STCLVS  p15, c6, [sp, #-&10c]!
+00001e14 : 30646e61 : and0 : RSBLO   r6, r4, r1, ROR #28
+00001e18 : 20313030 : 001  : EORSHS  r3, r1, r0, LSR r0
+00001e1c : 5d227c5b : [|"] : STCPL   p12, c7, [r2, #-&16c]!
+00001e20 : 6f755120 :  Quo : SWIVS   &755120
+00001e24 : 5b006574 : te.[ : BLPL    &0001b3fc
+00001e28 : 51205d22 : "] Q : Undefined instruction
+00001e2c : 65746f75 : uote : LDRBVS  r6, [r4, #-&f75]!
+00001e30 : 00000020 :  ... : ANDEQ   r0, r0, r0, LSR #32
+00001e34 : ef000001 : .... : SWI     OS_WriteS                 ; R15+4 = "GSTrans map: 0000 : "
+00001e38 : 72545347 : GSTr : SUBSVC  r5, r4, #&1c000001        ; #469762049
+00001e3c : 20736e61 : ans  : RSBSHS  r6, r3, r1, ROR #28
+00001e40 : 3a70616d : map: : BLO     &01c1a3fc
+00001e44 : 30303020 :  000 : EORSLO  r3, r0, r0, LSR #32
+00001e48 : 203a2030 : 0 :  : EORSHS  r2, r10, r0, LSR r0
+00001e4c : 00000000 : .... : ANDEQ   r0, r0, r0
+00001e50 : e3a00001 : .... : MOV     r0, #1
+00001e54 : e28f1b01 : .... : ADR     r1, &0000225c             ; -> [&e92d0001, &ef000002, &e8bd0001, &e8bd0003]
+00001e58 : e2811d0d : .... : ADD     r1, r1, #&340             ; #832
+00001e5c : e5810000 : .... : STR     r0, [r1]
+00001e60 : e28f00a0 : .... : ADR     r0, &00001f08             ; -> "TrailingSpace "
+00001e64 : e5010004 : .... : STR     r0, [r1, #-4]
+00001e68 : e28f0088 : .... : ADR     r0, &00001ef8             ; -> "TestCommand0000 TrailingSpace "
+00001e6c : ef020005 : .... : SWI     XOS_CLI
+00001e70 : 7a000028 : (..z : BVC     &00001f18
+00001e74 : ef000001 : .... : SWI     OS_WriteS                 ; R15+4 = "ERROR: "
+00001e78 : 4f525245 : ERRO : SWIMI   &525245
+00001e7c : 00203a52 : R: . : EOREQ   r3, r0, r2, ASR r10
+00001e80 : e92d0003 : ..-. : PUSH    {r0, r1}
+00001e84 : ef00015b : [... : SWI     OS_WriteI+"["
+00001e88 : e4901004 : .... : LDR     r1, [r0], #4
+00001e8c : ef000126 : &... : SWI     OS_WriteI+"&"
+00001e90 : e92d0007 : ..-. : PUSH    {r0, r1, r2}
+00001e94 : e1a00001 : .... : MOV     r0, r1
+00001e98 : e1a0100c : .... : MOV     r1, r12
+00001e9c : e3a02014 : . .. : MOV     r2, #&14                  ; #20
+00001ea0 : ef0000d4 : .... : SWI     OS_ConvertHex8
+00001ea4 : ef000002 : .... : SWI     OS_Write0
+00001ea8 : e8bd0007 : .... : POP     {r0, r1, r2}
+00001eac : ef00015d : ]... : SWI     OS_WriteI+"]"
+00001eb0 : ef000120 :  ... : SWI     OS_WriteI+" "
+00001eb4 : e92d0001 : ..-. : STMDB   sp!, {r0}
+00001eb8 : ef000002 : .... : SWI     OS_Write0
+00001ebc : e8bd0001 : .... : LDMIA   sp!, {r0}
+00001ec0 : e8bd0003 : .... : POP     {r0, r1}
+00001ec4 : ef000001 : .... : SWI     OS_WriteS                 ; R15+4 = " (for input <"
+00001ec8 : 6f662820 :  (fo : SWIVS   &662820
+00001ecc : 6e692072 : r in : MCRVS   p0, #3, r2, c9, c2, #3
+00001ed0 : 20747570 : put  : RSBSHS  r7, r4, r0, ROR r5
+00001ed4 : 0000003c : <... : ANDEQ   r0, r0, r12, LSR r0
+00001ed8 : e28f0028 : (... : ADR     r0, &00001f08             ; -> "TrailingSpace "
+00001edc : e92d0001 : ..-. : STMDB   sp!, {r0}
+00001ee0 : ef000002 : .... : SWI     OS_Write0
+00001ee4 : e8bd0001 : .... : LDMIA   sp!, {r0}
+00001ee8 : ef000001 : .... : SWI     OS_WriteS                 ; R15+4 = ">)"
+00001eec : 0000293e : >).. : ANDEQ   r2, r0, lr, LSR r9
+00001ef0 : ef000003 : .... : SWI     OS_NewLine
+00001ef4 : ea000007 : .... : B       &00001f18
+00001ef8 : 74736554 : Test : LDRBTVC r6, [r3], #-&554
+00001efc : 6d6d6f43 : Comm : STCLVS  p15, c6, [sp, #-&10c]!
+00001f00 : 30646e61 : and0 : RSBLO   r6, r4, r1, ROR #28
+00001f04 : 20303030 : 000  : EORSHS  r3, r0, r0, LSR r0
+00001f08 : 69617254 : Trai : STMDBVS r1!, {r2, r4, r6, r9, r12, sp, lr} ^
+00001f0c : 676e696c : ling : STRBVS  r6, [lr, -r12, ROR #18]!
+00001f10 : 63617053 : Spac : Undefined instruction
+00001f14 : 00002065 : e .. : ANDEQ   r2, r0, r5, RRX
+00001f18 : ef000001 : .... : SWI     OS_WriteS                 ; R15+4 = "GSTrans map: 0001 : "
+00001f1c : 72545347 : GSTr : SUBSVC  r5, r4, #&1c000001        ; #469762049
+00001f20 : 20736e61 : ans  : RSBSHS  r6, r3, r1, ROR #28
+00001f24 : 3a70616d : map: : BLO     &01c1a4e0
+00001f28 : 30303020 :  000 : EORSLO  r3, r0, r0, LSR #32
+00001f2c : 203a2031 : 1 :  : EORSHS  r2, r10, r1, LSR r0
+00001f30 : 00000000 : .... : ANDEQ   r0, r0, r0
+00001f34 : e3a00001 : .... : MOV     r0, #1
+00001f38 : e28f1b01 : .... : ADR     r1, &00002340             ; -> [&e8bd0003, &ef000001, &6f662820, &6e692072]
+00001f3c : e2811f97 : .... : ADD     r1, r1, #&25c             ; #604
+00001f40 : e5810000 : .... : STR     r0, [r1]
+00001f44 : e28f00a0 : .... : ADR     r0, &00001fec             ; -> "TrailingSpace "
+00001f48 : e5010004 : .... : STR     r0, [r1, #-4]
+00001f4c : e28f0088 : .... : ADR     r0, &00001fdc             ; -> "TestCommand0001 TrailingSpace "
+00001f50 : ef020005 : .... : SWI     XOS_CLI
+00001f54 : 7a000028 : (..z : BVC     &00001ffc
+00001f58 : ef000001 : .... : SWI     OS_WriteS                 ; R15+4 = "ERROR: "
+00001f5c : 4f525245 : ERRO : SWIMI   &525245
+00001f60 : 00203a52 : R: . : EOREQ   r3, r0, r2, ASR r10
+00001f64 : e92d0003 : ..-. : PUSH    {r0, r1}
+00001f68 : ef00015b : [... : SWI     OS_WriteI+"["
+00001f6c : e4901004 : .... : LDR     r1, [r0], #4
+00001f70 : ef000126 : &... : SWI     OS_WriteI+"&"
+00001f74 : e92d0007 : ..-. : PUSH    {r0, r1, r2}
+00001f78 : e1a00001 : .... : MOV     r0, r1
+00001f7c : e1a0100c : .... : MOV     r1, r12
+00001f80 : e3a02014 : . .. : MOV     r2, #&14                  ; #20
+00001f84 : ef0000d4 : .... : SWI     OS_ConvertHex8
+00001f88 : ef000002 : .... : SWI     OS_Write0
+00001f8c : e8bd0007 : .... : POP     {r0, r1, r2}
+00001f90 : ef00015d : ]... : SWI     OS_WriteI+"]"
+00001f94 : ef000120 :  ... : SWI     OS_WriteI+" "
+00001f98 : e92d0001 : ..-. : STMDB   sp!, {r0}
+00001f9c : ef000002 : .... : SWI     OS_Write0
+00001fa0 : e8bd0001 : .... : LDMIA   sp!, {r0}
+00001fa4 : e8bd0003 : .... : POP     {r0, r1}
+00001fa8 : ef000001 : .... : SWI     OS_WriteS                 ; R15+4 = " (for input <"
+00001fac : 6f662820 :  (fo : SWIVS   &662820
+00001fb0 : 6e692072 : r in : MCRVS   p0, #3, r2, c9, c2, #3
+00001fb4 : 20747570 : put  : RSBSHS  r7, r4, r0, ROR r5
+00001fb8 : 0000003c : <... : ANDEQ   r0, r0, r12, LSR r0
+00001fbc : e28f0028 : (... : ADR     r0, &00001fec             ; -> "TrailingSpace "
+00001fc0 : e92d0001 : ..-. : STMDB   sp!, {r0}
+00001fc4 : ef000002 : .... : SWI     OS_Write0
+00001fc8 : e8bd0001 : .... : LDMIA   sp!, {r0}
+00001fcc : ef000001 : .... : SWI     OS_WriteS                 ; R15+4 = ">)"
+00001fd0 : 0000293e : >).. : ANDEQ   r2, r0, lr, LSR r9
+00001fd4 : ef000003 : .... : SWI     OS_NewLine
+00001fd8 : ea000007 : .... : B       &00001ffc
+00001fdc : 74736554 : Test : LDRBTVC r6, [r3], #-&554
+00001fe0 : 6d6d6f43 : Comm : STCLVS  p15, c6, [sp, #-&10c]!
+00001fe4 : 30646e61 : and0 : RSBLO   r6, r4, r1, ROR #28
+00001fe8 : 20313030 : 001  : EORSHS  r3, r1, r0, LSR r0
+00001fec : 69617254 : Trai : STMDBVS r1!, {r2, r4, r6, r9, r12, sp, lr} ^
+00001ff0 : 676e696c : ling : STRBVS  r6, [lr, -r12, ROR #18]!
+00001ff4 : 63617053 : Spac : Undefined instruction
+00001ff8 : 00002065 : e .. : ANDEQ   r2, r0, r5, RRX
+00001ffc : ef000001 : .... : SWI     OS_WriteS                 ; R15+4 = "GSTrans map: 0000 : "
+00002000 : 72545347 : GSTr : SUBSVC  r5, r4, #&1c000001        ; #469762049
+00002004 : 20736e61 : ans  : RSBSHS  r6, r3, r1, ROR #28
+00002008 : 3a70616d : map: : BLO     &01c1a5c4
+0000200c : 30303020 :  000 : EORSLO  r3, r0, r0, LSR #32
+00002010 : 203a2030 : 0 :  : EORSHS  r2, r10, r0, LSR r0
+00002014 : 00000000 : .... : ANDEQ   r0, r0, r0
+00002018 : e3a00001 : .... : MOV     r0, #1
+0000201c : e28f1b01 : .... : ADR     r1, &00002424             ; -> " (for input <"
+00002020 : e2811f5e : ^... : ADD     r1, r1, #&178             ; #376
+00002024 : e5810000 : .... : STR     r0, [r1]
+00002028 : e28f00a0 : .... : ADR     r0, &000020d0             ; -> "TrailingSpaces  "
+0000202c : e5010004 : .... : STR     r0, [r1, #-4]
+00002030 : e28f0088 : .... : ADR     r0, &000020c0             ; -> "TestCommand0000 TrailingSpaces  "
+00002034 : ef020005 : .... : SWI     XOS_CLI
+00002038 : 7a000029 : )..z : BVC     &000020e4
+0000203c : ef000001 : .... : SWI     OS_WriteS                 ; R15+4 = "ERROR: "
+00002040 : 4f525245 : ERRO : SWIMI   &525245
+00002044 : 00203a52 : R: . : EOREQ   r3, r0, r2, ASR r10
+00002048 : e92d0003 : ..-. : PUSH    {r0, r1}
+0000204c : ef00015b : [... : SWI     OS_WriteI+"["
+00002050 : e4901004 : .... : LDR     r1, [r0], #4
+00002054 : ef000126 : &... : SWI     OS_WriteI+"&"
+00002058 : e92d0007 : ..-. : PUSH    {r0, r1, r2}
+0000205c : e1a00001 : .... : MOV     r0, r1
+00002060 : e1a0100c : .... : MOV     r1, r12
+00002064 : e3a02014 : . .. : MOV     r2, #&14                  ; #20
+00002068 : ef0000d4 : .... : SWI     OS_ConvertHex8
+0000206c : ef000002 : .... : SWI     OS_Write0
+00002070 : e8bd0007 : .... : POP     {r0, r1, r2}
+00002074 : ef00015d : ]... : SWI     OS_WriteI+"]"
+00002078 : ef000120 :  ... : SWI     OS_WriteI+" "
+0000207c : e92d0001 : ..-. : STMDB   sp!, {r0}
+00002080 : ef000002 : .... : SWI     OS_Write0
+00002084 : e8bd0001 : .... : LDMIA   sp!, {r0}
+00002088 : e8bd0003 : .... : POP     {r0, r1}
+0000208c : ef000001 : .... : SWI     OS_WriteS                 ; R15+4 = " (for input <"
+00002090 : 6f662820 :  (fo : SWIVS   &662820
+00002094 : 6e692072 : r in : MCRVS   p0, #3, r2, c9, c2, #3
+00002098 : 20747570 : put  : RSBSHS  r7, r4, r0, ROR r5
+0000209c : 0000003c : <... : ANDEQ   r0, r0, r12, LSR r0
+000020a0 : e28f0028 : (... : ADR     r0, &000020d0             ; -> "TrailingSpaces  "
+000020a4 : e92d0001 : ..-. : STMDB   sp!, {r0}
+000020a8 : ef000002 : .... : SWI     OS_Write0
+000020ac : e8bd0001 : .... : LDMIA   sp!, {r0}
+000020b0 : ef000001 : .... : SWI     OS_WriteS                 ; R15+4 = ">)"
+000020b4 : 0000293e : >).. : ANDEQ   r2, r0, lr, LSR r9
+000020b8 : ef000003 : .... : SWI     OS_NewLine
+000020bc : ea000008 : .... : B       &000020e4
+000020c0 : 74736554 : Test : LDRBTVC r6, [r3], #-&554
+000020c4 : 6d6d6f43 : Comm : STCLVS  p15, c6, [sp, #-&10c]!
+000020c8 : 30646e61 : and0 : RSBLO   r6, r4, r1, ROR #28
+000020cc : 20303030 : 000  : EORSHS  r3, r0, r0, LSR r0
+000020d0 : 69617254 : Trai : STMDBVS r1!, {r2, r4, r6, r9, r12, sp, lr} ^
+000020d4 : 676e696c : ling : STRBVS  r6, [lr, -r12, ROR #18]!
+000020d8 : 63617053 : Spac : Undefined instruction
+000020dc : 20207365 : es   : EORHS   r7, r0, r5, ROR #6
+000020e0 : 00000000 : .... : ANDEQ   r0, r0, r0
+000020e4 : ef000001 : .... : SWI     OS_WriteS                 ; R15+4 = "GSTrans map: 0001 : "
+000020e8 : 72545347 : GSTr : SUBSVC  r5, r4, #&1c000001        ; #469762049
+000020ec : 20736e61 : ans  : RSBSHS  r6, r3, r1, ROR #28
+000020f0 : 3a70616d : map: : BLO     &01c1a6ac
+000020f4 : 30303020 :  000 : EORSLO  r3, r0, r0, LSR #32
+000020f8 : 203a2031 : 1 :  : EORSHS  r2, r10, r1, LSR r0
+000020fc : 00000000 : .... : ANDEQ   r0, r0, r0
+00002100 : e3a00001 : .... : MOV     r0, #1
+00002104 : e28f1b01 : .... : ADR     r1, &0000250c             ; -> [&0000003c, &e28f0028, &e92d0001, &ef000002]
+00002108 : e2811e09 : .... : ADD     r1, r1, #9, #28           ; #144
+0000210c : e5810000 : .... : STR     r0, [r1]
+00002110 : e28f00b1 : .... : ADR     r0, &000021c9             ; -> "TrailingSpaces "
+00002114 : e5010004 : .... : STR     r0, [r1, #-4]
+00002118 : e28f0088 : .... : ADR     r0, &000021a8             ; -> "TestCommand0001 TrailingSpaces  "
+0000211c : ef020005 : .... : SWI     XOS_CLI
+00002120 : 7a00002d : -..z : BVC     &000021dc
+00002124 : ef000001 : .... : SWI     OS_WriteS                 ; R15+4 = "ERROR: "
+00002128 : 4f525245 : ERRO : SWIMI   &525245
+0000212c : 00203a52 : R: . : EOREQ   r3, r0, r2, ASR r10
+00002130 : e92d0003 : ..-. : PUSH    {r0, r1}
+00002134 : ef00015b : [... : SWI     OS_WriteI+"["
+00002138 : e4901004 : .... : LDR     r1, [r0], #4
+0000213c : ef000126 : &... : SWI     OS_WriteI+"&"
+00002140 : e92d0007 : ..-. : PUSH    {r0, r1, r2}
+00002144 : e1a00001 : .... : MOV     r0, r1
+00002148 : e1a0100c : .... : MOV     r1, r12
+0000214c : e3a02014 : . .. : MOV     r2, #&14                  ; #20
+00002150 : ef0000d4 : .... : SWI     OS_ConvertHex8
+00002154 : ef000002 : .... : SWI     OS_Write0
+00002158 : e8bd0007 : .... : POP     {r0, r1, r2}
+0000215c : ef00015d : ]... : SWI     OS_WriteI+"]"
+00002160 : ef000120 :  ... : SWI     OS_WriteI+" "
+00002164 : e92d0001 : ..-. : STMDB   sp!, {r0}
+00002168 : ef000002 : .... : SWI     OS_Write0
+0000216c : e8bd0001 : .... : LDMIA   sp!, {r0}
+00002170 : e8bd0003 : .... : POP     {r0, r1}
+00002174 : ef000001 : .... : SWI     OS_WriteS                 ; R15+4 = " (for input <"
+00002178 : 6f662820 :  (fo : SWIVS   &662820
+0000217c : 6e692072 : r in : MCRVS   p0, #3, r2, c9, c2, #3
+00002180 : 20747570 : put  : RSBSHS  r7, r4, r0, ROR r5
+00002184 : 0000003c : <... : ANDEQ   r0, r0, r12, LSR r0
+00002188 : e28f0028 : (... : ADR     r0, &000021b8             ; -> "TrailingSpaces  "
+0000218c : e92d0001 : ..-. : STMDB   sp!, {r0}
+00002190 : ef000002 : .... : SWI     OS_Write0
+00002194 : e8bd0001 : .... : LDMIA   sp!, {r0}
+00002198 : ef000001 : .... : SWI     OS_WriteS                 ; R15+4 = ">)"
+0000219c : 0000293e : >).. : ANDEQ   r2, r0, lr, LSR r9
+000021a0 : ef000003 : .... : SWI     OS_NewLine
+000021a4 : ea00000c : .... : B       &000021dc
+000021a8 : 74736554 : Test : LDRBTVC r6, [r3], #-&554
+000021ac : 6d6d6f43 : Comm : STCLVS  p15, c6, [sp, #-&10c]!
+000021b0 : 30646e61 : and0 : RSBLO   r6, r4, r1, ROR #28
+000021b4 : 20313030 : 001  : EORSHS  r3, r1, r0, LSR r0
+000021b8 : 69617254 : Trai : STMDBVS r1!, {r2, r4, r6, r9, r12, sp, lr} ^
+000021bc : 676e696c : ling : STRBVS  r6, [lr, -r12, ROR #18]!
+000021c0 : 63617053 : Spac : Undefined instruction
+000021c4 : 20207365 : es   : EORHS   r7, r0, r5, ROR #6
+000021c8 : 61725400 : .Tra : CMNVS   r2, r0, LSL #8
+000021cc : 6e696c69 : ilin : CDPVS   p12, #6, c6, c9, c9, #3
+000021d0 : 61705367 : gSpa : CMNVS   r0, r7, ROR #6
+000021d4 : 20736563 : ces  : RSBSHS  r6, r3, r3, ROR #10
+000021d8 : 00000000 : .... : ANDEQ   r0, r0, r0
+000021dc : ef000001 : .... : SWI     OS_WriteS                 ; R15+4 = "GSTrans map: 0000 : "
+000021e0 : 72545347 : GSTr : SUBSVC  r5, r4, #&1c000001        ; #469762049
+000021e4 : 20736e61 : ans  : RSBSHS  r6, r3, r1, ROR #28
+000021e8 : 3a70616d : map: : BLO     &01c1a7a4
+000021ec : 30303020 :  000 : EORSLO  r3, r0, r0, LSR #32
+000021f0 : 203a2030 : 0 :  : EORSHS  r2, r10, r0, LSR r0
+000021f4 : 00000000 : .... : ANDEQ   r0, r0, r0
+000021f8 : e3a00001 : .... : MOV     r0, #1
+000021fc : e28f1c03 : .... : ADR     r1, &00002504             ; -> "r input <"
+00002200 : e2811f26 : &... : ADD     r1, r1, #38, #30          ; #152
+00002204 : e5810000 : .... : STR     r0, [r1]
+00002208 : e28f00a0 : .... : ADR     r0, &000022b0             ; -> [&00002222, &ef000001, &72545347, &20736e61]
+0000220c : e5010004 : .... : STR     r0, [r1, #-4]
+00002210 : e28f0088 : .... : ADR     r0, &000022a0             ; -> "TestCommand0000 """
+00002214 : ef020005 : .... : SWI     XOS_CLI
+00002218 : 7a000025 : %..z : BVC     &000022b4
+0000221c : ef000001 : .... : SWI     OS_WriteS                 ; R15+4 = "ERROR: "
+00002220 : 4f525245 : ERRO : SWIMI   &525245
+00002224 : 00203a52 : R: . : EOREQ   r3, r0, r2, ASR r10
+00002228 : e92d0003 : ..-. : PUSH    {r0, r1}
+0000222c : ef00015b : [... : SWI     OS_WriteI+"["
+00002230 : e4901004 : .... : LDR     r1, [r0], #4
+00002234 : ef000126 : &... : SWI     OS_WriteI+"&"
+00002238 : e92d0007 : ..-. : PUSH    {r0, r1, r2}
+0000223c : e1a00001 : .... : MOV     r0, r1
+00002240 : e1a0100c : .... : MOV     r1, r12
+00002244 : e3a02014 : . .. : MOV     r2, #&14                  ; #20
+00002248 : ef0000d4 : .... : SWI     OS_ConvertHex8
+0000224c : ef000002 : .... : SWI     OS_Write0
+00002250 : e8bd0007 : .... : POP     {r0, r1, r2}
+00002254 : ef00015d : ]... : SWI     OS_WriteI+"]"
+00002258 : ef000120 :  ... : SWI     OS_WriteI+" "
+0000225c : e92d0001 : ..-. : STMDB   sp!, {r0}
+00002260 : ef000002 : .... : SWI     OS_Write0
+00002264 : e8bd0001 : .... : LDMIA   sp!, {r0}
+00002268 : e8bd0003 : .... : POP     {r0, r1}
+0000226c : ef000001 : .... : SWI     OS_WriteS                 ; R15+4 = " (for input <"
+00002270 : 6f662820 :  (fo : SWIVS   &662820
+00002274 : 6e692072 : r in : MCRVS   p0, #3, r2, c9, c2, #3
+00002278 : 20747570 : put  : RSBSHS  r7, r4, r0, ROR r5
+0000227c : 0000003c : <... : ANDEQ   r0, r0, r12, LSR r0
+00002280 : e28f0028 : (... : ADR     r0, &000022b0             ; -> [&00002222, &ef000001, &72545347, &20736e61]
+00002284 : e92d0001 : ..-. : STMDB   sp!, {r0}
+00002288 : ef000002 : .... : SWI     OS_Write0
+0000228c : e8bd0001 : .... : LDMIA   sp!, {r0}
+00002290 : ef000001 : .... : SWI     OS_WriteS                 ; R15+4 = ">)"
+00002294 : 0000293e : >).. : ANDEQ   r2, r0, lr, LSR r9
+00002298 : ef000003 : .... : SWI     OS_NewLine
+0000229c : ea000004 : .... : B       &000022b4
+000022a0 : 74736554 : Test : LDRBTVC r6, [r3], #-&554
+000022a4 : 6d6d6f43 : Comm : STCLVS  p15, c6, [sp, #-&10c]!
+000022a8 : 30646e61 : and0 : RSBLO   r6, r4, r1, ROR #28
+000022ac : 20303030 : 000  : EORSHS  r3, r0, r0, LSR r0
+000022b0 : 00002222 : "".. : ANDEQ   r2, r0, r2, LSR #4
+000022b4 : ef000001 : .... : SWI     OS_WriteS                 ; R15+4 = "GSTrans map: 0001 : "
+000022b8 : 72545347 : GSTr : SUBSVC  r5, r4, #&1c000001        ; #469762049
+000022bc : 20736e61 : ans  : RSBSHS  r6, r3, r1, ROR #28
+000022c0 : 3a70616d : map: : BLO     &01c1a87c
+000022c4 : 30303020 :  000 : EORSLO  r3, r0, r0, LSR #32
+000022c8 : 203a2031 : 1 :  : EORSHS  r2, r10, r1, LSR r0
+000022cc : 00000000 : .... : ANDEQ   r0, r0, r0
+000022d0 : e3a00001 : .... : MOV     r0, #1
+000022d4 : e28f1c02 : .... : ADR     r1, &000024dc             ; -> [&ef000002, &e8bd0007, &ef00015d, &ef000120]
+000022d8 : e2811d03 : .... : ADD     r1, r1, #3, #26           ; #192
+000022dc : e5810000 : .... : STR     r0, [r1]
+000022e0 : e28f00a3 : .... : ADR     r0, &0000238b
+000022e4 : e5010004 : .... : STR     r0, [r1, #-4]
+000022e8 : e28f0088 : .... : ADR     r0, &00002378             ; -> "TestCommand0001 """
+000022ec : ef020005 : .... : SWI     XOS_CLI
+000022f0 : 7a000026 : &..z : BVC     &00002390
+000022f4 : ef000001 : .... : SWI     OS_WriteS                 ; R15+4 = "ERROR: "
+000022f8 : 4f525245 : ERRO : SWIMI   &525245
+000022fc : 00203a52 : R: . : EOREQ   r3, r0, r2, ASR r10
+00002300 : e92d0003 : ..-. : PUSH    {r0, r1}
+00002304 : ef00015b : [... : SWI     OS_WriteI+"["
+00002308 : e4901004 : .... : LDR     r1, [r0], #4
+0000230c : ef000126 : &... : SWI     OS_WriteI+"&"
+00002310 : e92d0007 : ..-. : PUSH    {r0, r1, r2}
+00002314 : e1a00001 : .... : MOV     r0, r1
+00002318 : e1a0100c : .... : MOV     r1, r12
+0000231c : e3a02014 : . .. : MOV     r2, #&14                  ; #20
+00002320 : ef0000d4 : .... : SWI     OS_ConvertHex8
+00002324 : ef000002 : .... : SWI     OS_Write0
+00002328 : e8bd0007 : .... : POP     {r0, r1, r2}
+0000232c : ef00015d : ]... : SWI     OS_WriteI+"]"
+00002330 : ef000120 :  ... : SWI     OS_WriteI+" "
+00002334 : e92d0001 : ..-. : STMDB   sp!, {r0}
+00002338 : ef000002 : .... : SWI     OS_Write0
+0000233c : e8bd0001 : .... : LDMIA   sp!, {r0}
+00002340 : e8bd0003 : .... : POP     {r0, r1}
+00002344 : ef000001 : .... : SWI     OS_WriteS                 ; R15+4 = " (for input <"
+00002348 : 6f662820 :  (fo : SWIVS   &662820
+0000234c : 6e692072 : r in : MCRVS   p0, #3, r2, c9, c2, #3
+00002350 : 20747570 : put  : RSBSHS  r7, r4, r0, ROR r5
+00002354 : 0000003c : <... : ANDEQ   r0, r0, r12, LSR r0
+00002358 : e28f0028 : (... : ADR     r0, &00002388             ; -> [&22002222, &00002022, &ef000001, &72545347]
+0000235c : e92d0001 : ..-. : STMDB   sp!, {r0}
+00002360 : ef000002 : .... : SWI     OS_Write0
+00002364 : e8bd0001 : .... : LDMIA   sp!, {r0}
+00002368 : ef000001 : .... : SWI     OS_WriteS                 ; R15+4 = ">)"
+0000236c : 0000293e : >).. : ANDEQ   r2, r0, lr, LSR r9
+00002370 : ef000003 : .... : SWI     OS_NewLine
+00002374 : ea000005 : .... : B       &00002390
+00002378 : 74736554 : Test : LDRBTVC r6, [r3], #-&554
+0000237c : 6d6d6f43 : Comm : STCLVS  p15, c6, [sp, #-&10c]!
+00002380 : 30646e61 : and0 : RSBLO   r6, r4, r1, ROR #28
+00002384 : 20313030 : 001  : EORSHS  r3, r1, r0, LSR r0
+00002388 : 22002222 : ""." : ANDHS   r2, r0, #&20000002        ; #536870914
+0000238c : 00002022 : " .. : ANDEQ   r2, r0, r2, LSR #32
+00002390 : ef000001 : .... : SWI     OS_WriteS                 ; R15+4 = "GSTrans map: 0000 : "
+00002394 : 72545347 : GSTr : SUBSVC  r5, r4, #&1c000001        ; #469762049
+00002398 : 20736e61 : ans  : RSBSHS  r6, r3, r1, ROR #28
+0000239c : 3a70616d : map: : BLO     &01c1a958
+000023a0 : 30303020 :  000 : EORSLO  r3, r0, r0, LSR #32
+000023a4 : 203a2030 : 0 :  : EORSHS  r2, r10, r0, LSR r0
+000023a8 : 00000000 : .... : ANDEQ   r0, r0, r0
+000023ac : e3a00002 : .... : MOV     r0, #2
+000023b0 : e28f1c01 : .... : ADR     r1, &000024b8             ; -> [&e92d0003, &ef00015b, &e4901004, &ef000126]
+000023b4 : e2811f39 : 9... : ADD     r1, r1, #57, #30          ; #228
+000023b8 : e5810000 : .... : STR     r0, [r1]
+000023bc : e28f00a0 : .... : ADR     r0, &00002464             ; -> [&22222058, &00000000, &ef000001, &72545347]
+000023c0 : e5010004 : .... : STR     r0, [r1, #-4]
+000023c4 : e28f0088 : .... : ADR     r0, &00002454             ; -> "TestCommand0000 X """
+000023c8 : ef020005 : .... : SWI     XOS_CLI
+000023cc : 7a000026 : &..z : BVC     &0000246c
+000023d0 : ef000001 : .... : SWI     OS_WriteS                 ; R15+4 = "ERROR: "
+000023d4 : 4f525245 : ERRO : SWIMI   &525245
+000023d8 : 00203a52 : R: . : EOREQ   r3, r0, r2, ASR r10
+000023dc : e92d0003 : ..-. : PUSH    {r0, r1}
+000023e0 : ef00015b : [... : SWI     OS_WriteI+"["
+000023e4 : e4901004 : .... : LDR     r1, [r0], #4
+000023e8 : ef000126 : &... : SWI     OS_WriteI+"&"
+000023ec : e92d0007 : ..-. : PUSH    {r0, r1, r2}
+000023f0 : e1a00001 : .... : MOV     r0, r1
+000023f4 : e1a0100c : .... : MOV     r1, r12
+000023f8 : e3a02014 : . .. : MOV     r2, #&14                  ; #20
+000023fc : ef0000d4 : .... : SWI     OS_ConvertHex8
+00002400 : ef000002 : .... : SWI     OS_Write0
+00002404 : e8bd0007 : .... : POP     {r0, r1, r2}
+00002408 : ef00015d : ]... : SWI     OS_WriteI+"]"
+0000240c : ef000120 :  ... : SWI     OS_WriteI+" "
+00002410 : e92d0001 : ..-. : STMDB   sp!, {r0}
+00002414 : ef000002 : .... : SWI     OS_Write0
+00002418 : e8bd0001 : .... : LDMIA   sp!, {r0}
+0000241c : e8bd0003 : .... : POP     {r0, r1}
+00002420 : ef000001 : .... : SWI     OS_WriteS                 ; R15+4 = " (for input <"
+00002424 : 6f662820 :  (fo : SWIVS   &662820
+00002428 : 6e692072 : r in : MCRVS   p0, #3, r2, c9, c2, #3
+0000242c : 20747570 : put  : RSBSHS  r7, r4, r0, ROR r5
+00002430 : 0000003c : <... : ANDEQ   r0, r0, r12, LSR r0
+00002434 : e28f0028 : (... : ADR     r0, &00002464             ; -> [&22222058, &00000000, &ef000001, &72545347]
+00002438 : e92d0001 : ..-. : STMDB   sp!, {r0}
+0000243c : ef000002 : .... : SWI     OS_Write0
+00002440 : e8bd0001 : .... : LDMIA   sp!, {r0}
+00002444 : ef000001 : .... : SWI     OS_WriteS                 ; R15+4 = ">)"
+00002448 : 0000293e : >).. : ANDEQ   r2, r0, lr, LSR r9
+0000244c : ef000003 : .... : SWI     OS_NewLine
+00002450 : ea000005 : .... : B       &0000246c
+00002454 : 74736554 : Test : LDRBTVC r6, [r3], #-&554
+00002458 : 6d6d6f43 : Comm : STCLVS  p15, c6, [sp, #-&10c]!
+0000245c : 30646e61 : and0 : RSBLO   r6, r4, r1, ROR #28
+00002460 : 20303030 : 000  : EORSHS  r3, r0, r0, LSR r0
+00002464 : 22222058 : X "" : EORHS   r2, r2, #&58              ; #88  = 'X'
+00002468 : 00000000 : .... : ANDEQ   r0, r0, r0
+0000246c : ef000001 : .... : SWI     OS_WriteS                 ; R15+4 = "GSTrans map: 0001 : "
+00002470 : 72545347 : GSTr : SUBSVC  r5, r4, #&1c000001        ; #469762049
+00002474 : 20736e61 : ans  : RSBSHS  r6, r3, r1, ROR #28
+00002478 : 3a70616d : map: : BLO     &01c1aa34
+0000247c : 30303020 :  000 : EORSLO  r3, r0, r0, LSR #32
+00002480 : 203a2031 : 1 :  : EORSHS  r2, r10, r1, LSR r0
+00002484 : 00000000 : .... : ANDEQ   r0, r0, r0
+00002488 : e3a00002 : .... : MOV     r0, #2
+0000248c : e28f1c01 : .... : ADR     r1, &00002594             ; -> "\xff\x9f\xbd\xe8"
+00002490 : e2811f02 : .... : ADD     r1, r1, #2, #30
+00002494 : e5810000 : .... : STR     r0, [r1]
+00002498 : e28f00a5 : .... : ADR     r0, &00002545
+0000249c : e5010004 : .... : STR     r0, [r1, #-4]
+000024a0 : e28f0088 : .... : ADR     r0, &00002530             ; -> "TestCommand0001 X """
+000024a4 : ef020005 : .... : SWI     XOS_CLI
+000024a8 : 7a000027 : '..z : BVC     &0000254c
+000024ac : ef000001 : .... : SWI     OS_WriteS                 ; R15+4 = "ERROR: "
+000024b0 : 4f525245 : ERRO : SWIMI   &525245
+000024b4 : 00203a52 : R: . : EOREQ   r3, r0, r2, ASR r10
+000024b8 : e92d0003 : ..-. : PUSH    {r0, r1}
+000024bc : ef00015b : [... : SWI     OS_WriteI+"["
+000024c0 : e4901004 : .... : LDR     r1, [r0], #4
+000024c4 : ef000126 : &... : SWI     OS_WriteI+"&"
+000024c8 : e92d0007 : ..-. : PUSH    {r0, r1, r2}
+000024cc : e1a00001 : .... : MOV     r0, r1
+000024d0 : e1a0100c : .... : MOV     r1, r12
+000024d4 : e3a02014 : . .. : MOV     r2, #&14                  ; #20
+000024d8 : ef0000d4 : .... : SWI     OS_ConvertHex8
+000024dc : ef000002 : .... : SWI     OS_Write0
+000024e0 : e8bd0007 : .... : POP     {r0, r1, r2}
+000024e4 : ef00015d : ]... : SWI     OS_WriteI+"]"
+000024e8 : ef000120 :  ... : SWI     OS_WriteI+" "
+000024ec : e92d0001 : ..-. : STMDB   sp!, {r0}
+000024f0 : ef000002 : .... : SWI     OS_Write0
+000024f4 : e8bd0001 : .... : LDMIA   sp!, {r0}
+000024f8 : e8bd0003 : .... : POP     {r0, r1}
+000024fc : ef000001 : .... : SWI     OS_WriteS                 ; R15+4 = " (for input <"
+00002500 : 6f662820 :  (fo : SWIVS   &662820
+00002504 : 6e692072 : r in : MCRVS   p0, #3, r2, c9, c2, #3
+00002508 : 20747570 : put  : RSBSHS  r7, r4, r0, ROR r5
+0000250c : 0000003c : <... : ANDEQ   r0, r0, r12, LSR r0
+00002510 : e28f0028 : (... : ADR     r0, &00002540             ; -> [&22222058, &22205800, &00002022, &ef000003]
+00002514 : e92d0001 : ..-. : STMDB   sp!, {r0}
+00002518 : ef000002 : .... : SWI     OS_Write0
+0000251c : e8bd0001 : .... : LDMIA   sp!, {r0}
+00002520 : ef000001 : .... : SWI     OS_WriteS                 ; R15+4 = ">)"
+00002524 : 0000293e : >).. : ANDEQ   r2, r0, lr, LSR r9
+00002528 : ef000003 : .... : SWI     OS_NewLine
+0000252c : ea000006 : .... : B       &0000254c
+00002530 : 74736554 : Test : LDRBTVC r6, [r3], #-&554
+00002534 : 6d6d6f43 : Comm : STCLVS  p15, c6, [sp, #-&10c]!
+00002538 : 30646e61 : and0 : RSBLO   r6, r4, r1, ROR #28
+0000253c : 20313030 : 001  : EORSHS  r3, r1, r0, LSR r0
+00002540 : 22222058 : X "" : EORHS   r2, r2, #&58              ; #88  = 'X'
+00002544 : 22205800 : .X " : EORHS   r5, r0, #0, #16
+00002548 : 00002022 : " .. : ANDEQ   r2, r0, r2, LSR #32
+0000254c : ef000003 : .... : SWI     OS_NewLine
+00002550 : e59f0048 : H... : LDR     r0, &000025a0
+00002554 : e3300000 : ..0. : TEQ     r0, #0
+00002558 : 0a00000c : .... : BEQ     &00002590
+0000255c : ef000001 : .... : SWI     OS_WriteS                 ; R15+4 = "FAILED "
+00002560 : 4c494146 : FAIL : STFMIE  F4, [R9], #-280
+00002564 : 00204445 : ED . : EOREQ   r4, r0, r5, ASR #8
+00002568 : e92d0007 : ..-. : PUSH    {r0, r1, r2}
+0000256c : e1a0100c : .... : MOV     r1, r12
+00002570 : e3a02014 : . .. : MOV     r2, #&14                  ; #20
+00002574 : ef0000dc : .... : SWI     OS_ConvertInteger4
+00002578 : ef000002 : .... : SWI     OS_Write0
+0000257c : e8bd0007 : .... : POP     {r0, r1, r2}
+00002580 : ef000001 : .... : SWI     OS_WriteS                 ; R15+4 = " tests"
+00002584 : 73657420 :  tes : Undefined instruction
+00002588 : 00007374 : ts.. : ANDEQ   r7, r0, r4, ROR r3
+0000258c : ef000003 : .... : SWI     OS_NewLine
+00002590 : e1500000 : ..P. : CMP     r0, r0
+00002594 : e8bd9fff : .... : POP     {r0, r1, r2, r3, r4, r5, r6, r7, r8, r9, r10, r11, r12, pc}
+00002598 : 00000000 : .... : ANDEQ   r0, r0, r0
+0000259c : 00000000 : .... : ANDEQ   r0, r0, r0
+000025a0 : 00000000 : .... : ANDEQ   r0, r0, r0
+000025a4 : 63727473 : strc : CMNVS   r2, #&73000000            ; #-1929379840 = 141<<24
+000025a8 : 0000706d : mp.. : ANDEQ   r7, r0, sp, RRX
+000025ac : ff000008 : .... : Undefined instruction
+000025b0 : e92d000f : ..-. : PUSH    {r0, r1, r2, r3}          ; Function: strcmp
+000025b4 : e4d02001 : . .. : LDRB    r2, [r0], #1
+000025b8 : e4d13001 : .0.. : LDRB    r3, [r1], #1
+000025bc : e3520020 :  .R. : CMP     r2, #&20                  ; #32  = ' ' = bit 5
+000025c0 : b3a02000 : . .. : MOVLT   r2, #0
+000025c4 : e3530020 :  .S. : CMP     r3, #&20                  ; #32  = ' ' = bit 5
+000025c8 : b3a03000 : .0.. : MOVLT   r3, #0
+000025cc : e1320003 : ..2. : TEQ     r2, r3
+000025d0 : 1a000001 : .... : BNE     &000025dc
+000025d4 : e3320000 : ..2. : TEQ     r2, #0
+000025d8 : 1afffff5 : .... : BNE     &000025b4
+000025dc : e8bd000f : .... : POP     {r0, r1, r2, r3}
+000025e0 : e1a0f00e : .... : MOV     pc, lr
