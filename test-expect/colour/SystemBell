@@ -33,8 +33,8 @@
 00000080 : e49df004 : .... : [34mPOP[37m     [37m{[37mpc[37m}[m
 00000084 : 00000000 : .... : [32m; Fast service call table (flags)[m
 00000088 : 000000a4 : .... : [32m; Fast service call code offset[m
-0000008c : 00000016 : .... : [37mANDEQ[37m   [37mr0[37m,[37m [37mr0[37m,[37m [37mr6[37m,[37m [37mLSL[37m [37mr0[m
-00000090 : 00000000 : .... : [37mANDEQ[37m   [37mr0[37m,[37m [37mr0[37m,[37m [37mr0[m
+0000008c : 00000016 : .... : [32m;   Service_ExternalBell[m
+00000090 : 00000000 : .... : [32m; Service table terminator[m
 00000094 : 00000084 : .... : [32m; Fast service call table offset[m
 00000098 : e1a00000 : .... : [37mMOV[37m     [37mr0[37m,[37m [37mr0[37m                    [32m; Service handler[m
 0000009c : e3300016 : ..0. : [37mTEQ[37m     [37mr0[37m,[37m [37m#[33m&16[37m                  [32m; #22[m

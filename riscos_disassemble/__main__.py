@@ -15,7 +15,7 @@ from . import colours
 from .arm import postprocess
 
 from .access import DisassembleAccess
-from .access_helpers import DisassembleAccessDescriptions, DisassembleAccessSWIs
+from .access_helpers import DisassembleAccessDescriptions, DisassembleAccessSWIs, DisassembleAccessServices
 from .access_memory import DisassembleAccessFile
 from .access_annotate import DisassembleAccessAnnotate
 from . import get_disassembler
@@ -46,6 +46,7 @@ class BadARMFlagError(ToolError):
 
 
 class OurAccess(DisassembleAccessSWIs,
+                DisassembleAccessServices,
                 DisassembleAccessFile,
                 DisassembleAccessDescriptions,
                 DisassembleAccessAnnotate,
@@ -99,7 +100,7 @@ def disassemble_file(filename, arch='arm', colourer=None, postprocess=None, base
     @param funcmatch:       Function matching string
     """
 
-    access = OurAccess()
+    access = OurAccess(arch)
     access.baseaddr = baseaddr
 
     dis_cls = get_disassembler(arch)

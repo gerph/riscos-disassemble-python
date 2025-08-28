@@ -15,7 +15,9 @@ Module_NameTable = 0x24
 Module_NameCode = 0x28
 Module_MsgFile = 0x2c
 Module_Extension = 0x30
+
 Module_ServiceMagic = 0xe1a00000
+Module_ServiceMagic64 = 0xd65f03c0
 
 Help_Is_Code_Flag = 0x20000000
 
@@ -221,7 +223,12 @@ class DisassembleAccessAnnotate(object):
 
                 if mod_offset == Module_Service:
                     code_data = self.get_memory_word(self.baseaddr + code_offset)
-                    if code_data == Module_ServiceMagic:
+                    magic = -1
+                    if self.arch == 'arm64':
+                        magic = Module_ServiceMagic64
+                    else:
+                        magic = Module_ServiceMagic
+                    if code_data == magic:
                         # Ursula service block exists
                         self.annotations[code_offset - 4] = "Fast service call table offset"
                         table_offset = self.get_memory_word(self.baseaddr + code_offset - 4)
@@ -230,6 +237,19 @@ class DisassembleAccessAnnotate(object):
                         fast_offset = self.get_memory_word(self.baseaddr + table_offset + 4)
                         if fast_offset != 0:
                             self.code_comments[fast_offset] = "Fast service call entry"
+
+                        # Populate the service numbers
+                        table_offset += 8
+                        while True:
+                            service = self.get_memory_word(self.baseaddr + table_offset)
+                            if service is None:
+                                break
+                            if service == 0:
+                                self.annotations[table_offset] = "Service table terminator"
+                                break
+                            else:
+                                self.annotations[table_offset] = '  ' + self.decode_service(service)
+                            table_offset += 4
 
     def annotate_utility(self):
         if self.get_memory_word(self.baseaddr + 4) != Util_Magic1 or \

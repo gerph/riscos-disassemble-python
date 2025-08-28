@@ -33,8 +33,8 @@
 00000080 : e49df004 : .... : POP     {pc}
 00000084 : 00000000 : .... : ; Fast service call table (flags)
 00000088 : 000000a4 : .... : ; Fast service call code offset
-0000008c : 00000016 : .... : ANDEQ   r0, r0, r6, LSL r0
-00000090 : 00000000 : .... : ANDEQ   r0, r0, r0
+0000008c : 00000016 : .... : ;   Service_ExternalBell
+00000090 : 00000000 : .... : ; Service table terminator
 00000094 : 00000084 : .... : ; Fast service call table offset
 00000098 : e1a00000 : .... : MOV     r0, r0                    ; Service handler
 0000009c : e3300016 : ..0. : TEQ     r0, #&16                  ; #22

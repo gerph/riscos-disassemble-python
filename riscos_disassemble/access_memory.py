@@ -10,7 +10,7 @@ import struct
 
 class DisassembleAccessFile(object):
     """
-    Mixin for the Disassemble classes, which adds in memory decoding by seeking.
+    Mixin for the DisassembleAccess classes, which adds in memory decoding by seeking.
     """
 
     # Initialise with the base address of the file
@@ -118,7 +118,7 @@ class DisassembleAccessFile(object):
 
             data = bytearray(self.fh.read(self.fast_memory_string))
             for b in data:
-                if b < 32:
+                if (zeroterm and b == 0) or (not zeroterm and b < 32):
                     break
                 blist.append(b)
             addr += len(blist)
