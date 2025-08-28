@@ -74,12 +74,13 @@ class DisassembleAccess(object):
             words.append(word)
         return words
 
-    def get_memory_string(self, addr):
+    def get_memory_string(self, addr, zeroterm=False):
         """
         Read the current value of a control terminated string from memory
         (only used when live_memory is True).
 
-        @param addr:    Address to read the value of
+        @param addr:        Address to read the value of
+        @param zeroterm:    True to terminiate only on 0
 
         @return:    String read (as a bytes sequence)
                     None if no memory is present

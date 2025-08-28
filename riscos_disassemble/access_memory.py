@@ -89,12 +89,13 @@ class DisassembleAccessFile(object):
         w = struct.unpack("<L", self.fh.read(4))[0]
         return w
 
-    def get_memory_string(self, addr):
+    def get_memory_string(self, addr, zeroterm=False):
         """
         Read the current value of a control terminated string from memory
         (only used when live_memory is True).
 
-        @param addr:    Address to read the value of
+        @param addr:        Address to read the value of
+        @param zeroterm:    True to terminiate only on 0
 
         @return:    String read (as a bytes sequence)
                     None if no memory is present
@@ -127,7 +128,7 @@ class DisassembleAccessFile(object):
             b = self.get_memory_byte(addr)
             if b is None:
                 return None
-            if b < 32:
+            if (zeroterm and b == 0) or (not zeroterm and b < 32):
                 break
             blist.append(b)
             addr += 1
