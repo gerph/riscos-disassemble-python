@@ -20,6 +20,7 @@ Module_ServiceMagic = 0xe1a00000
 Module_ServiceMagic64 = 0xd65f03c0
 
 Help_Is_Code_Flag = 0x20000000
+Status_Keyword_Flag = 0x40000000
 
 Util_Magic1 = 0x79766748
 Util_Magic2 = 0x216c6776
@@ -159,16 +160,20 @@ class DisassembleAccessAnnotate(object):
                         if not cmd:
                             # No more commands in the table
                             break
-                        self.annotate_string(code_offset, "Command table: *%s" % (cmd,))
-
+                        cmd_offset = code_offset
                         code_offset = (code_offset + len(cmd) + 4) & ~3
+
+                        self.annotations[code_offset + 4] = "  info word"
+                        infoword = self.get_memory_word(self.baseaddr + code_offset + 4)
+
+                        if infoword & Status_Keyword_Flag:
+                            cmd = "Configure %s" % (cmd,)
+                        self.annotate_string(cmd_offset, "Command table: *%s" % (cmd,))
+
                         self.annotations[code_offset] = "  code offset"
                         offset = self.get_memory_word(self.baseaddr + code_offset)
                         if offset:
                             self.code_comments[offset] = "Command *%s handler code" % (cmd,)
-
-                        self.annotations[code_offset + 4] = "  info word"
-                        infoword = self.get_memory_word(self.baseaddr + code_offset + 4)
 
                         self.annotations[code_offset + 8] = "  syntax message offset"
                         offset = self.get_memory_word(self.baseaddr + code_offset + 8)
