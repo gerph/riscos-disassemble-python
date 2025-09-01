@@ -222,6 +222,8 @@ class DisassembleAccessAnnotate(object):
                     # This is data
                     name = self.annotations[mod_offset][8:].replace(' offset', '')
                     if 'string' in name:
+                        if mod_offset == Module_Title:
+                            name = "%s: %s" % (name, self.get_memory_string(self.baseaddr + code_offset))
                         self.annotate_string(code_offset, name, zeroterm=True)
                     else:
                         self.annotations[code_offset] = name
