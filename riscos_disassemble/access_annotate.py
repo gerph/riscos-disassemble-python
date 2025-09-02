@@ -226,7 +226,12 @@ class DisassembleAccessAnnotate(object):
                             name = "%s: %s" % (name, self.get_memory_string(self.baseaddr + code_offset))
                         self.annotate_string(code_offset, name, zeroterm=True)
                     else:
-                        self.annotations[code_offset] = name
+                        if mod_offset == Module_HelpStr and \
+                           code_offset == self.get_memory_word(self.baseaddr + Module_Title):
+                           # This is the help string which has the same address as title; skip
+                           pass
+                        else:
+                            self.annotations[code_offset] = name
 
                 if mod_offset == Module_Service:
                     code_data = self.get_memory_word(self.baseaddr + code_offset)
