@@ -184,7 +184,7 @@ class DisassembleARM64(base.DisassembleBase):
 
     @property
     def capstone(self):
-        if self._capstone is not False:
+        if self._capstone is None:
             try:
                 # Capstone is written by the same guy that provides Unicorn, which is
                 # pretty neat.
@@ -277,7 +277,9 @@ class DisassembleARM64(base.DisassembleBase):
             except ImportError:
                 self._capstone = False
 
-        return None
+        if self._capstone is False:
+            return None
+        return self._capstone
 
     @property
     def available(self):
