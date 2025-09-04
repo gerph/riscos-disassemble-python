@@ -272,6 +272,12 @@ class DisassembleARM64(base.DisassembleBase):
                 self.mnemonic_replacements.update(dict(('B.%s' % (cc,), 'B%s' % (cc,)) for cc in self.cc_names.values()))
 
                 self.md.detail = True
+
+                # Replace the capstone property with the real value, to improve
+                # performance.
+                # (we don't change self.__class__.capstone, as this allows the
+                # implementation to be modified by subclasses if necessary)
+                DisassembleARM64.capstone = self._capstone
                 return self._capstone
 
             except ImportError:
