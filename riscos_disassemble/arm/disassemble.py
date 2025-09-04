@@ -263,13 +263,14 @@ class DisassembleARM(base.DisassembleBase):
         self._const = None
         self.md = None
 
+        self.value_max = 0xFFFFFFFF
+        self.bit_numbers = dict((1<<bit, "bit %s" % (bit,)) for bit in range(64))
+
         # Values initialised when capstone is initialised
         self.mnemonic_replacements = {}
         self.reg_map = []
         self.inv_reg_map = {}
         self.cc_names = {}
-
-        self.bit_numbers = dict((1<<bit, "bit %s" % (bit,)) for bit in range(32))
 
     @property
     def capstone(self):

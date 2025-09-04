@@ -320,8 +320,24 @@ class DisassembleARM64(base.DisassembleBase):
                     values.append('%i' % (~operand.imm,))
                 else:
                     values.append('%i' % (imm,))
+
                 if imm in self.bit_numbers:
                     values.append(self.bit_numbers[imm])
+                else:
+                    imm32 = imm & 0xFFFFFFFF
+                    if imm32 > 4096:
+                        for bitshift, mask in ((28, 0xFFFFFFF),
+                                               (24, 0xFFFFFF),
+                                               (20, 0xFFFFF),
+                                               (16, 0xFFFF),
+                                               (12, 0xFFF),
+                                               (8, 0xFF)):
+                            if (imm32 & mask) == 0:
+                                shifted = imm32 >> bitshift
+                                if shifted != 1:
+                                    # Never report 1<<bit as that's covered by the 'bit #' check
+                                    values.append("%i<<%i" % (shifted, bitshift))
+                                break
 
                 accumulator.append("#%s" % (' = '.join(values),))
 
