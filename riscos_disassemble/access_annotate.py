@@ -52,9 +52,10 @@ class DisassembleAccessAnnotate(object):
         else:
             self.annotations[base_offset] = msg
         s = self.get_memory_string(self.baseaddr + offset, zeroterm=zeroterm)
-        end = (offset + len(s) + 4) & ~3
-        for offset in range(base_offset + 4, end, 4):
-            self.annotations[offset] = "  ..."
+        if s:
+            end = (offset + len(s) + 4) & ~3
+            for offset in range(base_offset + 4, end, 4):
+                self.annotations[offset] = "  ..."
 
     def annotate_aif(self):
         if self.get_memory_word(self.baseaddr + 0x10) != 0xef000011:

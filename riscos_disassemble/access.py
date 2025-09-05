@@ -41,6 +41,9 @@ class DisassembleAccess(object):
         """
         self.arch = arch
 
+        # Cache for code descriptions
+        self.cache_dcode = {}
+
     ##### Memory access functions #####
 
     def get_memory_byte(self, addr):
@@ -162,7 +165,8 @@ class DisassembleAccess(object):
                 # This looks like a signature, so we can report it
                 offset = (signature & 0xFF) + 4
                 function_name = self.get_memory_string(addr - offset)
-                return self.decode_string(function_name)
+                decoded = self.decode_string(function_name)
+                return decoded
         return None
 
     def decode_swi(self, swi):

@@ -129,8 +129,7 @@ def disassemble_file(filename, arch='arm', colourer=None, postprocess=None, base
 
         enable = True if not funcmatch else False
         while True:
-            access.fh_reset()
-            data = fh.read(inst_width)
+            data = access.fh_read(inst_width, addr)
             if len(data) < inst_width:
                 break
 
@@ -204,8 +203,7 @@ def map_functions(filename, baseaddr=0, funcmatch=None):
         access.fh = fh
         addr = baseaddr
         while True:
-            access.fh_reset()
-            data = fh.read(4)
+            data = access.fh_read(4, addr)
             if len(data) < 4:
                 break
 
