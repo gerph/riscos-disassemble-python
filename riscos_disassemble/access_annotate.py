@@ -15,7 +15,12 @@ Module_NameTable = 0x24
 Module_NameCode = 0x28
 Module_MsgFile = 0x2c
 Module_Extension = 0x30
+
 Module_ServiceMagic = 0xe1a00000
+Module_ServiceMagic64 = 0xd65f03c0
+
+Help_Is_Code_Flag = 0x20000000
+Status_Keyword_Flag = 0x40000000
 
 Util_Magic1 = 0x79766748
 Util_Magic2 = 0x216c6776
@@ -31,6 +36,26 @@ class DisassembleAccessAnnotate(object):
 
     # The lowest address we'll append function descriptions
     minimum_funcname_offset = 0x40
+
+    def annotate_string(self, offset, msg, zeroterm=False, note_offset=True):
+        base_offset = offset & ~3
+        if base_offset in self.annotations:
+            if self.annotations[base_offset] == '  ...':
+                if note_offset:
+                    self.annotations[base_offset] = '+%i: %s' % (offset & 3, msg)
+                else:
+                    self.annotations[base_offset] = msg
+            else:
+                if len(self.annotations[base_offset]) < 60:
+                    self.annotations[base_offset] += ' & %s' % (msg)
+                # We only append if this string wouldn't be REALLY long
+        else:
+            self.annotations[base_offset] = msg
+        s = self.get_memory_string(self.baseaddr + offset, zeroterm=zeroterm)
+        if s:
+            end = (offset + len(s) + 4) & ~3
+            for offset in range(base_offset + 4, end, 4):
+                self.annotations[offset] = "  ..."
 
     def annotate_aif(self):
         if self.get_memory_word(self.baseaddr + 0x10) != 0xef000011:
@@ -130,21 +155,93 @@ class DisassembleAccessAnnotate(object):
                         # Far too big to be sensible
                         break
 
-                if mod_offset in (Module_Start,
-                                  Module_Init,
-                                  Module_Die,
-                                  Module_Service,
-                                  Module_SWIEntry,
-                                  Module_NameCode):
+                if mod_offset == Module_HC_Table:
+                    while True:
+                        cmd = self.get_memory_string(self.baseaddr + code_offset)
+                        if not cmd:
+                            # No more commands in the table
+                            break
+                        cmd_offset = code_offset
+                        code_offset = (code_offset + len(cmd) + 4) & ~3
+
+                        self.annotations[code_offset + 4] = "  info word"
+                        infoword = self.get_memory_word(self.baseaddr + code_offset + 4)
+
+                        if infoword & Status_Keyword_Flag:
+                            cmd = "Configure %s" % (cmd,)
+                        self.annotate_string(cmd_offset, "Command table: *%s" % (cmd,))
+
+                        self.annotations[code_offset] = "  code offset"
+                        offset = self.get_memory_word(self.baseaddr + code_offset)
+                        if offset:
+                            self.code_comments[offset] = "Command *%s handler code" % (cmd,)
+
+                        self.annotations[code_offset + 8] = "  syntax message offset"
+                        offset = self.get_memory_word(self.baseaddr + code_offset + 8)
+                        if offset:
+                            self.annotate_string(offset, "*%s syntax message" % (cmd,))
+
+                        if infoword & Help_Is_Code_Flag:
+                            self.annotations[code_offset + 12] = "  help code offset"
+                            offset = self.get_memory_word(self.baseaddr + code_offset)
+                            if offset:
+                                self.code_comments[offset] = "Command *%s help handler code" % (cmd,)
+                        else:
+                            self.annotations[code_offset + 12] = "  help message offset"
+                            offset = self.get_memory_word(self.baseaddr + code_offset + 12)
+                            if offset:
+                                self.annotate_string(offset, "*%s help message" % (cmd,))
+
+                        code_offset += 16
+
+                elif mod_offset == Module_NameTable:
+                    prefix = self.get_memory_string(self.baseaddr + code_offset)
+                    if not prefix:
+                        name = self.annotations[mod_offset][8:].replace(' offset', '')
+                        self.annotations[code_offset] = name
+                    else:
+                        self.annotate_string(code_offset, "SWI prefix: %s" % (prefix,), note_offset=False)
+                        code_offset += len(prefix) + 1
+                        n = 0
+                        while True:
+                            s = self.get_memory_string(self.baseaddr + code_offset)
+                            if not s:
+                                break
+                            self.annotate_string(code_offset, "SWI +&%02x: %s_%s" % (n, prefix, s), note_offset=False)
+                            n += 1
+                            code_offset += len(s) + 1
+
+                elif mod_offset in (Module_Start,
+                                    Module_Init,
+                                    Module_Die,
+                                    Module_Service,
+                                    Module_SWIEntry,
+                                    Module_NameCode):
                     # This is code
                     self.code_comments[code_offset] = self.annotations[mod_offset][8:].replace(' offset', '')
                 else:
                     # This is data
-                    self.annotations[code_offset] = self.annotations[mod_offset][8:].replace(' offset', '')
+                    name = self.annotations[mod_offset][8:].replace(' offset', '')
+                    if 'string' in name:
+                        if mod_offset == Module_Title:
+                            name = "%s: %s" % (name, self.get_memory_string(self.baseaddr + code_offset))
+                        self.annotate_string(code_offset, name, zeroterm=True)
+                    else:
+                        if mod_offset == Module_HelpStr and \
+                           code_offset == self.get_memory_word(self.baseaddr + Module_Title):
+                           # This is the help string which has the same address as title; skip
+                           pass
+                        else:
+                            self.annotations[code_offset] = name
 
                 if mod_offset == Module_Service:
                     code_data = self.get_memory_word(self.baseaddr + code_offset)
-                    if code_data == Module_ServiceMagic:
+                    magic = -1
+                    if self.arch == 'arm64':
+                        magic = Module_ServiceMagic64
+                    else:
+                        magic = Module_ServiceMagic
+                    if code_data == magic:
                         # Ursula service block exists
                         self.annotations[code_offset - 4] = "Fast service call table offset"
                         table_offset = self.get_memory_word(self.baseaddr + code_offset - 4)
@@ -153,6 +250,19 @@ class DisassembleAccessAnnotate(object):
                         fast_offset = self.get_memory_word(self.baseaddr + table_offset + 4)
                         if fast_offset != 0:
                             self.code_comments[fast_offset] = "Fast service call entry"
+
+                        # Populate the service numbers
+                        table_offset += 8
+                        while True:
+                            service = self.get_memory_word(self.baseaddr + table_offset)
+                            if service is None:
+                                break
+                            if service == 0:
+                                self.annotations[table_offset] = "Service table terminator"
+                                break
+                            else:
+                                self.annotations[table_offset] = '  ' + self.decode_service(service)
+                            table_offset += 4
 
     def annotate_utility(self):
         if self.get_memory_word(self.baseaddr + 4) != Util_Magic1 or \

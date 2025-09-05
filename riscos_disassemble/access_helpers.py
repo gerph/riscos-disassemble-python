@@ -2,12 +2,13 @@
 Mixin classes for information about SWIs and address descriptions.
 
 * `DisassembleAccessSWIs` provides name lookup for SWIs.
+* `DisassembleAccessServices` provides name lookup for Services.
 * `DisassembleAccessDescriptions` provices descriptions for code.
 """
 
 class DisassembleAccessSWIs(object):
     """
-    Mixin for the Disassemble classes, which adds in SWI decoding.
+    Mixin for the DisassembleAccess classes, which adds in SWI decoding.
     """
 
     swi_cache = None
@@ -39,6 +40,36 @@ class DisassembleAccessSWIs(object):
                 name = 'X' + name
             return name
         return '&{:x}'.format(swi)
+
+
+class DisassembleAccessServices(object):
+    """
+    Mixin for the DisassembleAccess classes, which adds in Service decoding.
+    """
+    service_cache = None
+
+    def decode_service(self, service):
+        """
+        Decode a service number into a service name.
+
+        @param service: Service number to decode
+
+        @return:        Service name, eg "Service_Error"
+                        Service number, eg "&XXXXXX"
+        """
+        if self.service_cache is None:
+            from . import services
+            service_cache = {}
+            for name in dir(services):
+                if name[0:8] == 'Service_':
+                    number = getattr(services, name)
+                    service_cache[number] = name
+            self.service_cache = service_cache
+
+        name = self.service_cache.get(service, None)
+        if name:
+            return name
+        return '&{:x}'.format(service)
 
 
 class DisassembleAccessDescriptions(object):

@@ -263,17 +263,18 @@ class DisassembleARM(base.DisassembleBase):
         self._const = None
         self.md = None
 
+        self.value_max = 0xFFFFFFFF
+        self.bit_numbers = dict((1<<bit, "bit %s" % (bit,)) for bit in range(64))
+
         # Values initialised when capstone is initialised
         self.mnemonic_replacements = {}
         self.reg_map = []
         self.inv_reg_map = {}
         self.cc_names = {}
 
-        self.bit_numbers = dict((1<<bit, "bit %s" % (bit,)) for bit in range(32))
-
     @property
     def capstone(self):
-        if self._capstone is not False:
+        if self._capstone is None:
             try:
                 # Capstone is written by the same guy that provides Unicorn, which is
                 # pretty neat.
@@ -319,12 +320,20 @@ class DisassembleARM(base.DisassembleBase):
                 self.mnemonic_replacements['STM'] = 'STMIA'
 
                 self.md.detail = True
+
+                # Replace the capstone property with the real value, to improve
+                # performance.
+                # (we don't change self.__class__.capstone, as this allows the
+                # implementation to be modified by subclasses if necessary)
+                DisassembleARM.capstone = self._capstone
                 return self._capstone
 
             except ImportError:
                 self._capstone = False
 
-        return None
+        if self._capstone is False:
+            return None
+        return self._capstone
 
     @property
     def available(self):

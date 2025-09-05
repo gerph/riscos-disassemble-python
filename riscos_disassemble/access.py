@@ -17,6 +17,7 @@ Decoding of the data in the system:
 * `describe_region`:    More information about the region an address lies in
 * `describe_code`:      Read the name of the function at an address
 * `decode_swi`:         Decode a SWI number into a SWI name
+* `decode_service`:     Decode a Service number into a service name
 
 Register access functions:
 
@@ -31,6 +32,17 @@ class DisassembleAccess(object):
     """
     Base class to provide access to the source data, and details about the
     """
+
+    def __init__(self, arch='unknown'):
+        """
+        DisassembleAccess provides access to the content within the core, and system information.
+
+        @param arch:    Architecture name, or 'unknown' if not known (may be determined later)
+        """
+        self.arch = arch
+
+        # Cache for code descriptions
+        self.cache_dcode = {}
 
     ##### Memory access functions #####
 
@@ -74,12 +86,13 @@ class DisassembleAccess(object):
             words.append(word)
         return words
 
-    def get_memory_string(self, addr):
+    def get_memory_string(self, addr, zeroterm=False):
         """
         Read the current value of a control terminated string from memory
         (only used when live_memory is True).
 
-        @param addr:    Address to read the value of
+        @param addr:        Address to read the value of
+        @param zeroterm:    True to terminiate only on 0
 
         @return:    String read (as a bytes sequence)
                     None if no memory is present
@@ -152,7 +165,8 @@ class DisassembleAccess(object):
                 # This looks like a signature, so we can report it
                 offset = (signature & 0xFF) + 4
                 function_name = self.get_memory_string(addr - offset)
-                return self.decode_string(function_name)
+                decoded = self.decode_string(function_name)
+                return decoded
         return None
 
     def decode_swi(self, swi):
@@ -164,6 +178,17 @@ class DisassembleAccess(object):
         @return:    SWI name, eg "OS_WriteC", "OS_WriteI+'B'", "XIIC_Control", or &XXXXX
         """
         return '&{:x}'.format(swi)
+
+    def decode_service(self, service):
+        """
+        Decode a service number into a service name.
+
+        @param service: Service number to decode
+
+        @return:        Service name, eg "Service_Error"
+                        Service number, eg "&XXXXXX"
+        """
+        return '&{:x}'.format(service)
 
     def decode_string(self, string):
         """

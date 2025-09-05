@@ -15,7 +15,7 @@ from . import colours
 from .arm import postprocess
 
 from .access import DisassembleAccess
-from .access_helpers import DisassembleAccessDescriptions, DisassembleAccessSWIs
+from .access_helpers import DisassembleAccessDescriptions, DisassembleAccessSWIs, DisassembleAccessServices
 from .access_memory import DisassembleAccessFile
 from .access_annotate import DisassembleAccessAnnotate
 from . import get_disassembler
@@ -46,6 +46,7 @@ class BadARMFlagError(ToolError):
 
 
 class OurAccess(DisassembleAccessSWIs,
+                DisassembleAccessServices,
                 DisassembleAccessFile,
                 DisassembleAccessDescriptions,
                 DisassembleAccessAnnotate,
@@ -99,7 +100,7 @@ def disassemble_file(filename, arch='arm', colourer=None, postprocess=None, base
     @param funcmatch:       Function matching string
     """
 
-    access = OurAccess()
+    access = OurAccess(arch)
     access.baseaddr = baseaddr
 
     dis_cls = get_disassembler(arch)
@@ -128,8 +129,7 @@ def disassemble_file(filename, arch='arm', colourer=None, postprocess=None, base
 
         enable = True if not funcmatch else False
         while True:
-            access.fh_reset()
-            data = fh.read(inst_width)
+            data = access.fh_read(inst_width, addr)
             if len(data) < inst_width:
                 break
 
@@ -203,8 +203,7 @@ def map_functions(filename, baseaddr=0, funcmatch=None):
         access.fh = fh
         addr = baseaddr
         while True:
-            access.fh_reset()
-            data = fh.read(4)
+            data = access.fh_read(4, addr)
             if len(data) < 4:
                 break
 

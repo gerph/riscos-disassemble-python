@@ -25,7 +25,7 @@
 00008060 : 20746f6e : not  : Undefined instruction
 00008064 : 72206562 : be r : ANDS    w2, w11, #&3ffffff        ; #67108863
 00008068 : 6f206e75 : un o : Undefined instruction
-0000806c : 3233206e : n 32 : ORR     w14, w3, #&3fe000         ; #4186112
+0000806c : 3233206e : n 32 : ORR     w14, w3, #&3fe000         ; #4186112 = 1022<<12
 00008070 : 20746962 : bit  : Undefined instruction
 00008074 : 43534952 : RISC : Undefined instruction
 00008078 : 00534f20 :  OS. : Undefined instruction
@@ -2183,7 +2183,7 @@
 0000a218 : 00000000 : .... : Undefined instruction
 0000a21c : ff000014 : .... : Undefined instruction
 0000a220 : 52800001 : ...R : MOVZ    w1, #0                    ; Function: _kernel_procname
-0000a224 : 52bfe004 : ...R : MOVZ    w4, #&ff000000            ; #4278190080
+0000a224 : 52bfe004 : ...R : MOVZ    w4, #&ff000000            ; #4278190080 = 255<<24
 0000a228 : b85fcc02 : .._. : LDR     w2, [x0, #-4]!
 0000a22c : 12104443 : CD.. : AND     w3, w2, #&ffff0003        ; #4294901763
 0000a230 : 6b04007f : ...k : CMP     w3, w4
@@ -2256,7 +2256,7 @@
 0000a33c : 00000000 : .... : Undefined instruction
 0000a340 : ff000018 : .... : Undefined instruction
 0000a344 : d29c7fe2 : .... : MOVZ    x2, #&e3ff                ; Function: __cvt_uint64_decimal  ; #58367
-0000a348 : f2aa8162 : b... : MOVK    x2, #&540b0000            ; #1410007040
+0000a348 : f2aa8162 : b... : MOVK    x2, #&540b0000            ; #1410007040 = 21515<<16
 0000a34c : f2c00042 : B... : MOVK    x2, #&200000000           ; #8589934592 = bit 33
 0000a350 : eb02001f : .... : CMP     x0, x2
 0000a354 : 52800263 : c..R : MOVZ    w3, #&13                  ; #19

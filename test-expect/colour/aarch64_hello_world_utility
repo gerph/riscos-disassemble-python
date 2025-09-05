@@ -17,7 +17,7 @@
 00000040 : 20746f6e : not  : [31mUndefined instruction[m
 00000044 : 72206562 : be r : [37mANDS[37m    [37mw2[37m,[37m [37mw11[37m,[37m [37m#[33m&3ffffff[37m        [32m; #67108863[m
 00000048 : 6f206e75 : un o : [31mUndefined instruction[m
-0000004c : 3233206e : n 32 : [37mORR[37m     [37mw14[37m,[37m [37mw3[37m,[37m [37m#[33m&3fe000[37m         [32m; #4186112[m
+0000004c : 3233206e : n 32 : [37mORR[37m     [37mw14[37m,[37m [37mw3[37m,[37m [37m#[33m&3fe000[37m         [32m; #4186112 = 1022<<12[m
 00000050 : 20746962 : bit  : [31mUndefined instruction[m
 00000054 : 43534952 : RISC : [31mUndefined instruction[m
 00000058 : 00534f20 :  OS. : [31mUndefined instruction[m

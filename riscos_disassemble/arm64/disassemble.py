@@ -184,7 +184,7 @@ class DisassembleARM64(base.DisassembleBase):
 
     @property
     def capstone(self):
-        if self._capstone is not False:
+        if self._capstone is None:
             try:
                 # Capstone is written by the same guy that provides Unicorn, which is
                 # pretty neat.
@@ -272,12 +272,20 @@ class DisassembleARM64(base.DisassembleBase):
                 self.mnemonic_replacements.update(dict(('B.%s' % (cc,), 'B%s' % (cc,)) for cc in self.cc_names.values()))
 
                 self.md.detail = True
+
+                # Replace the capstone property with the real value, to improve
+                # performance.
+                # (we don't change self.__class__.capstone, as this allows the
+                # implementation to be modified by subclasses if necessary)
+                DisassembleARM64.capstone = self._capstone
                 return self._capstone
 
             except ImportError:
                 self._capstone = False
 
-        return None
+        if self._capstone is False:
+            return None
+        return self._capstone
 
     @property
     def available(self):
@@ -318,8 +326,24 @@ class DisassembleARM64(base.DisassembleBase):
                     values.append('%i' % (~operand.imm,))
                 else:
                     values.append('%i' % (imm,))
+
                 if imm in self.bit_numbers:
                     values.append(self.bit_numbers[imm])
+                else:
+                    imm32 = imm & 0xFFFFFFFF
+                    if imm32 > 4096:
+                        for bitshift, mask in ((28, 0xFFFFFFF),
+                                               (24, 0xFFFFFF),
+                                               (20, 0xFFFFF),
+                                               (16, 0xFFFF),
+                                               (12, 0xFFF),
+                                               (8, 0xFF)):
+                            if (imm32 & mask) == 0:
+                                shifted = imm32 >> bitshift
+                                if shifted != 1:
+                                    # Never report 1<<bit as that's covered by the 'bit #' check
+                                    values.append("%i<<%i" % (shifted, bitshift))
+                                break
 
                 accumulator.append("#%s" % (' = '.join(values),))
 
