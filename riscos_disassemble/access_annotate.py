@@ -245,24 +245,25 @@ class DisassembleAccessAnnotate(object):
                         # Ursula service block exists
                         self.annotations[code_offset - 4] = "Fast service call table offset"
                         table_offset = self.get_memory_word(self.baseaddr + code_offset - 4)
-                        self.annotations[table_offset] = "Fast service call table (flags)"
-                        self.annotations[table_offset + 4] = "Fast service call code offset"
-                        fast_offset = self.get_memory_word(self.baseaddr + table_offset + 4)
-                        if fast_offset != 0:
-                            self.code_comments[fast_offset] = "Fast service call entry"
+                        if table_offset != 0:
+                            self.annotations[table_offset] = "Fast service call table (flags)"
+                            self.annotations[table_offset + 4] = "Fast service call code offset"
+                            fast_offset = self.get_memory_word(self.baseaddr + table_offset + 4)
+                            if fast_offset != 0:
+                                self.code_comments[fast_offset] = "Fast service call entry"
 
-                        # Populate the service numbers
-                        table_offset += 8
-                        while True:
-                            service = self.get_memory_word(self.baseaddr + table_offset)
-                            if service is None:
-                                break
-                            if service == 0:
-                                self.annotations[table_offset] = "Service table terminator"
-                                break
-                            else:
-                                self.annotations[table_offset] = '  ' + self.decode_service(service)
-                            table_offset += 4
+                            # Populate the service numbers
+                            table_offset += 8
+                            while True:
+                                service = self.get_memory_word(self.baseaddr + table_offset)
+                                if service is None:
+                                    break
+                                if service == 0:
+                                    self.annotations[table_offset] = "Service table terminator"
+                                    break
+                                else:
+                                    self.annotations[table_offset] = '  ' + self.decode_service(service)
+                                table_offset += 4
 
     def annotate_utility(self):
         if self.get_memory_word(self.baseaddr + 4) != Util_Magic1 or \
