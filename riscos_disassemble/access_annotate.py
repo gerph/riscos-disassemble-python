@@ -161,6 +161,8 @@ class DisassembleAccessAnnotate(object):
                         if not cmd:
                             # No more commands in the table
                             break
+                        cmd = self.decode_string(cmd)
+
                         cmd_offset = code_offset
                         code_offset = (code_offset + len(cmd) + 4) & ~3
 
@@ -200,6 +202,7 @@ class DisassembleAccessAnnotate(object):
                         name = self.annotations[mod_offset][8:].replace(' offset', '')
                         self.annotations[code_offset] = name
                     else:
+                        prefix = self.decode_string(prefix)
                         self.annotate_string(code_offset, "SWI prefix: %s" % (prefix,), note_offset=False)
                         code_offset += len(prefix) + 1
                         n = 0
@@ -207,6 +210,7 @@ class DisassembleAccessAnnotate(object):
                             s = self.get_memory_string(self.baseaddr + code_offset)
                             if not s:
                                 break
+                            s = self.decode_string(s)
                             self.annotate_string(code_offset, "SWI +&%02x: %s_%s" % (n, prefix, s), note_offset=False)
                             n += 1
                             code_offset += len(s) + 1
@@ -224,7 +228,9 @@ class DisassembleAccessAnnotate(object):
                     name = self.annotations[mod_offset][8:].replace(' offset', '')
                     if 'string' in name:
                         if mod_offset == Module_Title:
-                            name = "%s: %s" % (name, self.get_memory_string(self.baseaddr + code_offset))
+                            title = self.get_memory_string(self.baseaddr + code_offset)
+                            title = self.decode_string(title)
+                            name = "%s: %s" % (name, title)
                         self.annotate_string(code_offset, name, zeroterm=True)
                     else:
                         if mod_offset == Module_HelpStr and \
