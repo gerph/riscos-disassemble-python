@@ -1,0 +1,41 @@
+---
+
+name: Python build
+
+# Controls when the action will run. Triggers the workflow on:
+#   * push on any branch.
+#   * tag creation for tags beginning with a 'v'
+#   * pull requests
+on:
+  push:
+    branches: ["*"]
+    tags: ["v*"]
+  pull_request:
+    types: [opened, reopened, synchronize]
+    branches: ["*"]
+
+jobs:
+  build-package:
+
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Obtain prerequisite build tool
+        run: |
+          pip install 'capstone<5'
+
+      - name: Run tests
+        run: |
+          make tests
+
+      - name: Build package
+        run: |
+          make package
+
+      - uses: actions/upload-artifact@v6
+        with:
+          name: Package
+          path: dist
