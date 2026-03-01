@@ -36,7 +36,7 @@ jobs:
         run: |
           make package
 
-      - uses: actions/upload-artifact@v6
+      - uses: actions/upload-artifact@v7
         if: github.ref == 'refs/heads/master'
         with:
           name: Package
