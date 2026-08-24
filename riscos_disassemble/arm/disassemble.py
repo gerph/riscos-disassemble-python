@@ -357,7 +357,7 @@ class DisassembleARM(base.DisassembleBase):
 
         # Logic taken from BTSDump/arm.c
         if psr is None:
-            psr = self.get_pstate()
+            psr = self.access.get_pstate()
         is26bit = (psr & (1<<4)) == 0
         mode = psr & 15
         mode_name = self.psr_modes[mode]
@@ -482,19 +482,19 @@ class DisassembleARM(base.DisassembleBase):
         if operand.type == self._const.ARM_OP_REG:
             regnum = self.inv_reg_map.get(operand.reg, None)
             if regnum is not None:
-                accumulator.append('R%i = &%08x' % (regnum, self.get_reg(regnum)))
+                accumulator.append('R%i = &%08x' % (regnum, self.access.get_reg(regnum)))
         if operand.type == self._const.ARM_OP_MEM:
             # Base
             base = None
             regnum = self.inv_reg_map.get(operand.mem.base, None)
             if regnum is not None:
-                base = self.get_reg(regnum)
+                base = self.access.get_reg(regnum)
                 accumulator.append('R%i = &%08x' % (regnum, base))
 
             # Index
             regnum = self.inv_reg_map.get(operand.mem.index, None)
             if regnum is not None:
-                accumulator.append('R%i = &%08x' % (regnum, self.get_reg(regnum)))
+                accumulator.append('R%i = &%08x' % (regnum, self.access.get_reg(regnum)))
             else:
                 # There's no index, so we'll check if there's a presentable value string at that position
                 if base is not None and maybe_presentable and self.config.show_referenced_pointers:
@@ -514,7 +514,7 @@ class DisassembleARM(base.DisassembleBase):
                 # This is a shift by a register, so we can include its value in the result
                 regnum = self.inv_reg_map.get(operand.shift.value, None)
                 if regnum is not None:
-                    accumulator.append('R%i = &%08x' % (regnum, self.get_reg(regnum)))
+                    accumulator.append('R%i = &%08x' % (regnum, self.access.get_reg(regnum)))
 
         return accumulator
 
@@ -875,7 +875,7 @@ class DisassembleARM(base.DisassembleBase):
                 if swic in (0x6f, 0x71):
                     rn = 10 if swi & 255 == 0x6f else 12
                     if live_registers:
-                        real_swi = self.get_reg(rn)
+                        real_swi = self.access.get_reg(rn)
                         comment = 'R%s = &%x' % (rn, real_swi)
                         callaswi_name = self.access.decode_swi(real_swi)
                         if callaswi_name:
@@ -976,7 +976,7 @@ class DisassembleARM(base.DisassembleBase):
                     regnum = self.inv_reg_map.get(i.operands[2].reg, None)
                     if regnum is not None:
                         if live_registers:
-                            comment = 'Table dispatch index #%s' % (self.get_reg(regnum),)
+                            comment = 'Table dispatch index #%s' % (self.access.get_reg(regnum),)
                         else:
                             comment = 'Table dispatch index R%s' % (regnum,)
                 else:

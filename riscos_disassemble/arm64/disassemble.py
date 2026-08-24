@@ -377,7 +377,7 @@ class DisassembleARM64(base.DisassembleBase):
         @return: String describing its current value
         """
         regnum = regmap[1]
-        value = self.get_reg(regnum & 31)
+        value = self.access.get_reg(regnum & 31)
         value = value & regmap[2]
         return "%s = %s" % (regmap[0], self._value_description(value))
 
@@ -390,7 +390,7 @@ class DisassembleARM64(base.DisassembleBase):
         @return: Value of the register
         """
         regnum = regmap[1]
-        value = self.get_reg(regnum & 31)
+        value = self.access.get_reg(regnum & 31)
         value = value & regmap[2]
         return value
 
@@ -500,7 +500,7 @@ class DisassembleARM64(base.DisassembleBase):
                         # This is a RISC OS system SWI
 
                         # Look up the SWI number, if we can.
-                        swi = self.get_reg(10)
+                        swi = self.access.get_reg(10)
 
                         # Special cases for some SWIs
                         swic = swi & ~0x20000
@@ -517,7 +517,7 @@ class DisassembleARM64(base.DisassembleBase):
                         elif swic == 2:
                             # OS_Write0
                             if live_memory and live_registers:
-                                r0 = self.get_reg(0)
+                                r0 = self.access.get_reg(0)
                                 string = self.access.get_memory_string(r0)
                                 if string:
                                     string = "\"%s\"" % (string.decode('latin-1').encode('ascii', 'backslashreplace'),)
