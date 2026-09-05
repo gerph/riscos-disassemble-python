@@ -61,8 +61,8 @@ class DisassembleBase(object):
     undefined = 'Undefined instruction'
 
     # Colouring parameters
-    inst_re = re.compile('([A-Za-z][A-Za-z0-9]+|B)(\s*)')
-    comment_re = re.compile('(^|\s+)(;.*)$')
+    inst_re = re.compile(r'([A-Za-z][A-Za-z0-9]+|B)(\s*)')
+    comment_re = re.compile(r'(^|\s+)(;.*)$')
 
     operand_categories = [
             (re.compile(r'\s+'), 'space'),

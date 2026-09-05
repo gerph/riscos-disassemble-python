@@ -120,7 +120,7 @@ class DisassembleARM64(base.DisassembleBase):
     default_config = DisassembleARM64Config
 
     # Colouring parameters
-    inst_re = re.compile('([A-Za-z][A-Za-z0-9]+|B(?:\.[A-Z]+)?)(\s*)')
+    inst_re = re.compile(r'([A-Za-z][A-Za-z0-9]+|B(?:\.[A-Z]+)?)(\s*)')
 
     operand_categories = base.DisassembleBase.operand_categories + [
             (re.compile(r'[XW]3[01]|[XW][12][0-9]|[XW][0-9]|xzr|wzr|sp|lr|pc', re.IGNORECASE), 'register'),
